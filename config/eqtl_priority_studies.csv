@@ -1,0 +1,11 @@
+study_id,priority,reason
+GTEx,1,Imported broad tissue resource with chrX support
+CommonMind,2,Brain tissue with chrX support
+Braineac2,3,Brain tissue with chrX support
+Young_2019,4,Microglia chrX support
+CEDAR,5,Immune cell / tissue chrX support
+Fairfax_2012,6,B-cell chrX support
+Fairfax_2014,7,Monocyte chrX support
+Naranbhai_2015,8,Neutrophil chrX support
+FUSION,9,Muscle and adipose nonPAR support
+iPSCORE,10,iPSC nonPAR support

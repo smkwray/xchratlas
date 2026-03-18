@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_mind_risk_core",
+    "slug": "mind-and-risk",
+    "title": "Mind And Risk",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "categorical__1920__both_sexes__1920__nan",
+    "query_id": "mood_swings",
+    "slug": "mood-swings",
+    "description": "Mood swings",
+    "domain": "behavioral",
+    "x_evidence_score": 74.51,
+    "coverage_grade": "B",
+    "n_loci": 3,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 2,
+    "eqtl_total_hit_count": 8,
+    "top_candidate_genes": [
+      "AL645819.1",
+      "HS6ST2",
+      "HPRT1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "trait_type": "categorical",
+    "phenocode": 1920,
+    "pheno_sex": "both_sexes",
+    "coding": 1920,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Mental health",
+    "description_more": "ACE touchscreen question \"Does your mood often go up and down?\" If the participant activated the Help button they were shown the message:     Work through these questions quickly and do not think about the exact meaning of the question     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 3,
+    "in_max_independent_set": false,
+    "tier": "B",
+    "selection_rank": 1,
+    "selection_score": 162,
+    "lead_neglog10_pvalue": 10.81,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 190611
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__1920__both_sexes__1920__nan:nonPAR:131633040-131787928",
+      "x_region": "nonPAR",
+      "locus_start": 131633040,
+      "locus_end": 131787928,
+      "lead_pos": 131742143,
+      "lead_rsid": "rs242911",
+      "lead_varid": "X:131742143_C_G",
+      "lead_neglog10_pvalue": 10.81,
+      "top_gene_id": "ENSG00000171004",
+      "top_gene_name": "HS6ST2",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 6,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000171004",
+          "gene_name": "HS6ST2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 17901,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000206900",
+          "gene_name": "RNU6-98P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 27892,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000123728",
+          "gene_name": "RAP2C",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 388672,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0003438180137891
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000232160",
+          "gene_name": "RAP2C-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 175253,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0416885018348693
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000134602",
+          "gene_name": "MST4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 532172,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1889500021934509
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000165694",
+          "gene_name": "FRMD7",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 480095,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3903110027313232
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000076770",
+          "gene_name": "MBNL3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 118147,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4446220099925995
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000076716",
+          "gene_name": "GPC4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 691988,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4941670000553131
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__1920__both_sexes__1920__nan:nonPAR:124824114-124891105",
+      "x_region": "nonPAR",
+      "locus_start": 124824114,
+      "locus_end": 124891105,
+      "lead_pos": 124891105,
+      "lead_rsid": "rs4130717",
+      "lead_varid": "X:124891105_C_A",
+      "lead_neglog10_pvalue": 8.779,
+      "top_gene_id": "ENSG00000222518",
+      "top_gene_name": "AL645819.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000041",
+      "eqtl_lookup_n_hits": 2,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000222518",
+          "gene_name": "AL645819.1",
+          "gene_biotype": "miRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 94116,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000198354",
+          "gene_name": "DCAF12L2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 407232,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5338919758796692
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000009694",
+          "gene_name": "TENM1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 793439,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8104709982872009
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__1920__both_sexes__1920__nan:nonPAR:133651621-133651621",
+      "x_region": "nonPAR",
+      "locus_start": 133651621,
+      "locus_end": 133651621,
+      "lead_pos": 133651621,
+      "lead_rsid": "rs58123736",
+      "lead_varid": "X:133651621_C_CA",
+      "lead_neglog10_pvalue": 7.538,
+      "top_gene_id": "ENSG00000165704",
+      "top_gene_name": "HPRT1",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000165704",
+          "gene_name": "HPRT1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

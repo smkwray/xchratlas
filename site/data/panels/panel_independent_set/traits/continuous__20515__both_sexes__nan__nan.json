@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__20515__both_sexes__nan__nan",
+    "query_id": "recent_trouble_relaxing",
+    "slug": "recent-trouble-relaxing",
+    "description": "Recent trouble relaxing",
+    "domain": "anxiety",
+    "x_evidence_score": 64.64,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "DMD"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "20515",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "Online follow-up > Mental health > Anxiety",
+    "description_more": "Question asked: \"Over the last 2 weeks, how often have you been bothered by any of the following problems? [anxiety symptoms] Trouble relaxing\"",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 105,
+    "selection_score": 251.37069130839407,
+    "lead_neglog10_pvalue": 7.938,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 137109
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__20515__both_sexes__nan__nan:nonPAR:32282963-32282963",
+      "x_region": "nonPAR",
+      "locus_start": 32282963,
+      "locus_end": 32282963,
+      "lead_pos": 32282963,
+      "lead_rsid": "rs143633489",
+      "lead_varid": "X:32282963_A_G",
+      "lead_neglog10_pvalue": 7.938,
+      "top_gene_id": "ENSG00000198947",
+      "top_gene_name": "DMD",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000198947",
+          "gene_name": "DMD",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

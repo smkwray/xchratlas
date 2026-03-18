@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_mind_risk_core",
+    "slug": "mind-and-risk",
+    "title": "Mind And Risk",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "continuous__1200__both_sexes__nan__nan",
+    "query_id": "insomnia",
+    "slug": "insomnia",
+    "description": "Sleeplessness / insomnia",
+    "domain": "sleep",
+    "x_evidence_score": 55.28,
+    "coverage_grade": "U",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 2,
+    "top_candidate_genes": [
+      "RNU6-330P",
+      "TERF1P4",
+      "KIAA2022"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": 1200,
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sleep",
+    "description_more": "ACE touchscreen question \"Do you have trouble falling asleep at night or do you wake up in the middle of the night?\" If the participant activated the Help button they were shown the message:     If this varies a lot, answer this question in relation to the last 4 weeks.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 0,
+    "in_max_independent_set": false,
+    "tier": "B",
+    "selection_rank": 1,
+    "selection_score": 144,
+    "lead_neglog10_pvalue": 9.585,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": null
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1200__both_sexes__nan__nan:nonPAR:82843222-83418677",
+      "x_region": "nonPAR",
+      "locus_start": 82843222,
+      "locus_end": 83418677,
+      "lead_pos": 82900669,
+      "lead_rsid": "rs2515779",
+      "lead_varid": "X:82900669_A_G",
+      "lead_neglog10_pvalue": 9.585,
+      "top_gene_id": "ENSG00000215102",
+      "top_gene_name": "TERF1P4",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 2,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000215102",
+          "gene_name": "TERF1P4",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 103164,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000183035",
+          "gene_name": "CYLC1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 215485,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000072133",
+          "gene_name": "RPS6KA6",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 418315,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0560498982667923
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000165259",
+          "gene_name": "HDX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 672213,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.953707993030548
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__1200__both_sexes__nan__nan:nonPAR:73887700-73992932",
+      "x_region": "nonPAR",
+      "locus_start": 73887700,
+      "locus_end": 73992932,
+      "lead_pos": 73887700,
+      "lead_rsid": "rs7889418",
+      "lead_varid": "X:73887700_T_C",
+      "lead_neglog10_pvalue": 7.955,
+      "top_gene_id": "ENSG00000199885",
+      "top_gene_name": "RNU6-330P",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000199885",
+          "gene_name": "RNU6-330P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 12188,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000050030",
+          "gene_name": "KIAA2022",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 64984,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000271589",
+          "gene_name": "RP11-130N24.2",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 101774,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__1160__both_sexes__nan__nan",
+    "query_id": "sleep_duration",
+    "slug": "sleep-duration",
+    "description": "Sleep duration",
+    "domain": "sleep",
+    "x_evidence_score": 64.41,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "PLXNA3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "1160",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sleep",
+    "description_more": "ACE touchscreen question \"About how many hours sleep do you get in every 24 hours? (please include naps)\" The following checks were performed:  If answer   If answer > 23 then rejected  If answer   If answer > 12 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If the time you spend sleeping varies a lot, give the average time for a 24 hour day in the last 4 weeks.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 49,
+    "selection_score": 256.22790971371705,
+    "lead_neglog10_pvalue": 7.71,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 419556
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1160__both_sexes__nan__nan:nonPAR:153680108-153687093",
+      "x_region": "nonPAR",
+      "locus_start": 153680108,
+      "locus_end": 153687093,
+      "lead_pos": 153684394,
+      "lead_rsid": "X:153684394_CTTG_C",
+      "lead_varid": "X:153684394_CTTG_C",
+      "lead_neglog10_pvalue": 7.71,
+      "top_gene_id": "ENSG00000130827",
+      "top_gene_name": "PLXNA3",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000130827",
+          "gene_name": "PLXNA3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 2227,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

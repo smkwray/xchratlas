@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__2277__both_sexes__nan__nan",
+    "query_id": "frequency_of_solarium_sunlamp_use",
+    "slug": "frequency-of-solarium-sunlamp-use",
+    "description": "Frequency of solarium/sunlamp use",
+    "domain": "sun_exposure",
+    "x_evidence_score": 91.07,
+    "coverage_grade": "A",
+    "n_loci": 8,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "GPM6B",
+      "PRDX4",
+      "AC092198.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "2277",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
+    "description_more": "ACE touchscreen question \"How many times a year would you use a solarium or sunlamp?\" The following checks were performed:  If answer > 9999 then rejected  If answer > 400 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 65,
+    "selection_score": 256.0642006289476,
+    "lead_neglog10_pvalue": 18.37,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 404035
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:23561572-23672114",
+      "x_region": "nonPAR",
+      "locus_start": 23561572,
+      "locus_end": 23672114,
+      "lead_pos": 23672114,
+      "lead_rsid": "rs781400773",
+      "lead_varid": "X:23672114_C_T",
+      "lead_neglog10_pvalue": 18.37,
+      "top_gene_id": "ENSG00000123131",
+      "top_gene_name": "PRDX4",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000123131",
+          "gene_name": "PRDX4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 10265,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000123130",
+          "gene_name": "ACOT9",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 48256,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:92513596-92513596",
+      "x_region": "nonPAR",
+      "locus_start": 92513596,
+      "locus_end": 92513596,
+      "lead_pos": 92513596,
+      "lead_rsid": "rs142261931",
+      "lead_varid": "X:92513596_T_C",
+      "lead_neglog10_pvalue": 9.881,
+      "top_gene_id": "ENSG00000234322",
+      "top_gene_name": "ST13P18",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000234322",
+          "gene_name": "ST13P18",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 29136,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000234130",
+          "gene_name": "RP13-88F20.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 33582,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:39880825-39880825",
+      "x_region": "nonPAR",
+      "locus_start": 39880825,
+      "locus_end": 39880825,
+      "lead_pos": 39880825,
+      "lead_rsid": "rs147069668",
+      "lead_varid": "X:39880825_C_T",
+      "lead_neglog10_pvalue": 9.379,
+      "top_gene_id": "ENSG00000223486",
+      "top_gene_name": "AC092198.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000223486",
+          "gene_name": "AC092198.1",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 9390,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000183337",
+          "gene_name": "BCOR",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 28243,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:137096742-137109315",
+      "x_region": "nonPAR",
+      "locus_start": 137096742,
+      "locus_end": 137109315,
+      "lead_pos": 137096742,
+      "lead_rsid": "rs774222358",
+      "lead_varid": "X:137096742_G_A",
+      "lead_neglog10_pvalue": 9.343,
+      "top_gene_id": "ENSG00000222114",
+      "top_gene_name": "RNU6-985P",
+      "best_mapping_relation": "nearest_gene",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000222114",
+          "gene_name": "RNU6-985P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 326589,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000229562",
+          "gene_name": "ZFYVE9P1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 352341,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000252163",
+          "gene_name": "RN7SKP31",
+          "gene_biotype": "misc_RNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 382768,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000239579",
+          "gene_name": "RN7SL325P",
+          "gene_biotype": "misc_RNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 419032,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000156925",
+          "gene_name": "ZIC3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 436892,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:13840863-13840863",
+      "x_region": "nonPAR",
+      "locus_start": 13840863,
+      "locus_end": 13840863,
+      "lead_pos": 13840863,
+      "lead_rsid": "X:13840863_G_A",
+      "lead_varid": "X:13840863_G_A",
+      "lead_neglog10_pvalue": 8.651,
+      "top_gene_id": "ENSG00000046653",
+      "top_gene_name": "GPM6B",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000046653",
+          "gene_name": "GPM6B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:147734520-147734520",
+      "x_region": "nonPAR",
+      "locus_start": 147734520,
+      "locus_end": 147734520,
+      "lead_pos": 147734520,
+      "lead_rsid": "rs73619941",
+      "lead_varid": "X:147734520_C_A",
+      "lead_neglog10_pvalue": 8.119,
+      "top_gene_id": "ENSG00000155966",
+      "top_gene_name": "AFF2",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000155966",
+          "gene_name": "AFF2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:93428602-93428602",
+      "x_region": "nonPAR",
+      "locus_start": 93428602,
+      "locus_end": 93428602,
+      "lead_pos": 93428602,
+      "lead_rsid": "rs771149326",
+      "lead_varid": "X:93428602_T_C",
+      "lead_neglog10_pvalue": 7.762,
+      "top_gene_id": "ENSG00000202410",
+      "top_gene_name": "Y_RNA",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000202410",
+          "gene_name": "Y_RNA",
+          "gene_biotype": "misc_RNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 4402,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2277__both_sexes__nan__nan:nonPAR:148413647-148413647",
+      "x_region": "nonPAR",
+      "locus_start": 148413647,
+      "locus_end": 148413647,
+      "lead_pos": 148413647,
+      "lead_rsid": "rs183883589",
+      "lead_varid": "X:148413647_C_T",
+      "lead_neglog10_pvalue": 7.484,
+      "top_gene_id": "ENSG00000251797",
+      "top_gene_name": "RNU7-98P",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000251797",
+          "gene_name": "RNU7-98P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 1155,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000264702",
+          "gene_name": "AC231656.1",
+          "gene_biotype": "miRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 19802,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

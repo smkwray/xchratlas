@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_expanded",
+    "slug": "broad-atlas",
+    "title": "Broad Atlas",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "continuous__20016__both_sexes__nan__irnt",
+    "query_id": "fluid_intelligence",
+    "slug": "fluid-intelligence",
+    "description": "Fluid intelligence score",
+    "domain": "cognitive",
+    "x_evidence_score": 48.12,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "CYCSP43",
+      "AL158069.1",
+      "FAM155B"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "20016",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": "irnt",
+    "category": "UK Biobank Assessment Centre > Cognitive function > Fluid intelligence / reasoning",
+    "description_more": "This is a simple unweighted sum of the number of correct answers given to the 13 fluid intelligence questions. Participants who did not answer all of the questions within the allotted 2 minute limit are scored as zero for each of the unattempted questions.",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": false,
+    "tier": "C",
+    "selection_rank": 1,
+    "selection_score": 171,
+    "lead_neglog10_pvalue": 7.418,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 139298
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__20016__both_sexes__nan__irnt:nonPAR:68579313-68579313",
+      "x_region": "nonPAR",
+      "locus_start": 68579313,
+      "locus_end": 68579313,
+      "lead_pos": 68579313,
+      "lead_rsid": "rs779727850",
+      "lead_varid": "X:68579313_A_G",
+      "lead_neglog10_pvalue": 7.418,
+      "top_gene_id": "ENSG00000231706",
+      "top_gene_name": "CYCSP43",
+      "best_mapping_relation": "nearest_gene",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000231706",
+          "gene_name": "CYCSP43",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 125873,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000264604",
+          "gene_name": "AL158069.1",
+          "gene_biotype": "miRNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 145235,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000130054",
+          "gene_name": "FAM155B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 145771,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000215162",
+          "gene_name": "LINC00269",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 149546,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000172186",
+          "gene_name": "HMGN1P35",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 184753,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

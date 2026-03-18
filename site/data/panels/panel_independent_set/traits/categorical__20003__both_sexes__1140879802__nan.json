@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__20003__both_sexes__1140879802__nan",
+    "query_id": "treatment_medication_code",
+    "slug": "treatment-medication-code",
+    "description": "Treatment/medication code",
+    "domain": "medications",
+    "x_evidence_score": 73.1,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 6,
+    "top_candidate_genes": [
+      "NDP-AS1",
+      "NDP",
+      "FUNDC1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "categorical",
+    "phenocode": "20003",
+    "pheno_sex": "both_sexes",
+    "coding": 1140879802,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Verbal interview > Medications",
+    "description_more": "Code for treatment Negative codes indicate free-text entry.",
+    "coding_description": "amlodipine",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 134,
+    "selection_score": 242.4976074088798,
+    "lead_neglog10_pvalue": 11.4,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 17772
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__20003__both_sexes__1140879802__nan:nonPAR:43824858-43886416",
+      "x_region": "nonPAR",
+      "locus_start": 43824858,
+      "locus_end": 43886416,
+      "lead_pos": 43824858,
+      "lead_rsid": "rs5906307",
+      "lead_varid": "X:43824858_A_G",
+      "lead_neglog10_pvalue": 11.4,
+      "top_gene_id": "ENSG00000236276",
+      "top_gene_name": "NDP-AS1",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 6,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000236276",
+          "gene_name": "NDP-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000124479",
+          "gene_name": "NDP",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8814460039138794
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000069509",
+          "gene_name": "FUNDC1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 558027,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2585279941558838
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000183690",
+          "gene_name": "EFHC2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 182270,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3561969995498657
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000189221",
+          "gene_name": "MAOA",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 218790,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6516280174255371
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000147050",
+          "gene_name": "KDM6A",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 907899,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.840349018573761
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000069535",
+          "gene_name": "MAOB",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 83165,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.967976987361908
+        }
+      ]
+    }
+  ]
+}

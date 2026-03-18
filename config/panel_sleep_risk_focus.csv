@@ -1,0 +1,12 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+insomnia,sleep,1,Sleeplessness / insomnia,continuous,both_sexes,Direct sleep-disruption trait
+sleep_duration,sleep,2,Sleep duration,continuous,both_sexes,Core sleep quantity trait
+risk_taking,behavioral,1,Risk taking,categorical,both_sexes,Risk preference proxy
+mood_swings,behavioral,2,Mood swings,categorical,both_sexes,Mood instability proxy
+irritability,behavioral,3,Irritability,categorical,both_sexes,Aggression-adjacent proxy
+trouble_relaxing,mental_health,1,Recent trouble relaxing,continuous,both_sexes,Anxiety symptom
+worry_cannot_stop,mental_health,2,Frequency of inability to stop worrying during worst period of anxiety,continuous,both_sexes,Worry severity
+depressed_mood,mental_health,3,Frequency of depressed mood in last 2 weeks,continuous,both_sexes,Mood symptom
+current_smoking,substance_use,1,Current tobacco smoking,continuous,both_sexes,Behavioral exposure
+alcohol_frequency,substance_use,2,Alcohol intake frequency,continuous,both_sexes,Alcohol behavior
+heavy_drinking,substance_use,3,Frequency of consuming six or more units of alcohol,continuous,both_sexes,Binge-drinking proxy

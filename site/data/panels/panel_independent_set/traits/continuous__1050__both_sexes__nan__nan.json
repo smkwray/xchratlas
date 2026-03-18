@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__1050__both_sexes__nan__nan",
+    "query_id": "time_spend_outdoors_in_summer",
+    "slug": "time-spend-outdoors-in-summer",
+    "description": "Time spend outdoors in summer",
+    "domain": "sun_exposure",
+    "x_evidence_score": 75.85,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 10,
+    "top_candidate_genes": [
+      "RP13-52K8.1",
+      "BRWD3",
+      "SH3BGRL"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "1050",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
+    "description_more": "ACE touchscreen question \"In a typical DAY in summer, how many hours do you spend outdoors?\" The following checks were performed:  If answer   If answer > 24 then rejected  If answer > 10 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If the time you spend outdoors in summer varies a lot, give the average time per day. For example if you spend 1 hour a day on each weekday and 4 hours a day on the weekend, the total hours in a week is 13 (5 + 8), so you spend approximately 2 hours a day.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 70,
+    "selection_score": 255.89490502627848,
+    "lead_neglog10_pvalue": 8.152,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 388588
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1050__both_sexes__nan__nan:nonPAR:80736456-80736456",
+      "x_region": "nonPAR",
+      "locus_start": 80736456,
+      "locus_end": 80736456,
+      "lead_pos": 80736456,
+      "lead_rsid": "rs12843837",
+      "lead_varid": "X:80736456_T_C",
+      "lead_neglog10_pvalue": 8.152,
+      "top_gene_id": "ENSG00000224523",
+      "top_gene_name": "RP13-52K8.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000041",
+      "eqtl_lookup_n_hits": 10,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000224523",
+          "gene_name": "RP13-52K8.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 53681,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000165288",
+          "gene_name": "BRWD3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 671269,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2664749920368194
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000131171",
+          "gene_name": "SH3BGRL",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 182410,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2785960137844085
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000198157",
+          "gene_name": "HMGN5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 279015,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6312339901924133
+        }
+      ]
+    }
+  ]
+}

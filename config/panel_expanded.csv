@@ -1,0 +1,49 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+bmi,anthropometrics,1,body mass index,continuous,both_sexes,Core anthropometric trait
+height,anthropometrics,1,standing height,continuous,both_sexes,Core anthropometric trait
+waist,anthropometrics,2,waist circumference,continuous,both_sexes,Adiposity distribution
+hip,anthropometrics,3,hip circumference,continuous,both_sexes,Adiposity distribution
+body_fat_mass,body_composition,1,Whole body fat mass,continuous,both_sexes,Whole-body adiposity complement to BMI waist hip
+grip_strength,musculoskeletal,1,Hand grip strength (left),continuous,both_sexes,Objective strength trait
+heel_bmd,bone_health,1,Heel bone mineral density (BMD),continuous,both_sexes,Skeletal trait with strong ascertainment
+sbp,cardiometabolic,1,systolic blood pressure,continuous,both_sexes,Cardiovascular trait
+dbp,cardiometabolic,2,diastolic blood pressure,continuous,both_sexes,Cardiovascular trait
+current_smoking,substance_use,3,Current tobacco smoking,continuous,both_sexes,Exposure trait with observed chrX loci in probe panel
+ldl,lipids,1,LDL direct,biomarkers,both_sexes,Lipid trait
+hdl,lipids,2,HDL cholesterol,biomarkers,both_sexes,Lipid trait
+tg,lipids,3,triglycerides,biomarkers,both_sexes,Lipid trait
+apolipoprotein_a,lipids,4,Apolipoprotein A,biomarkers,both_sexes,Additional lipid transport biology
+apolipoprotein_b,lipids,5,Apolipoprotein B,biomarkers,both_sexes,Atherogenic lipid marker
+hba1c,glycemic,1,glycated haemoglobin,biomarkers,both_sexes,Glycemic trait
+glucose,glycemic,2,glucose,biomarkers,both_sexes,Glycemic trait
+t2d,disease,1,type 2 diabetes,phecode,both_sexes,Common disease anchor
+coronary_atherosclerosis,disease,2,Coronary atherosclerosis,phecode,both_sexes,Disease anchor with observed chrX loci in probe panel
+bilirubin_total,liver,5,Total bilirubin,biomarkers,both_sexes,Observed chrX-signal biomarker replacement for zero-locus seed
+hypothyroidism,disease,4,Hypothyroidism,phecode,both_sexes,Common endocrine disease anchor
+hb,hematology,1,Haemoglobin concentration,continuous,both_sexes,Hematologic trait
+rbc,hematology,2,red blood cell (erythrocyte) count,continuous,both_sexes,Hematologic trait
+plt,hematology,3,platelet count,biomarkers,both_sexes,Hematologic trait
+lymphocyte,hematology,4,Lymphocyte count,continuous,both_sexes,Immune cell count anchor
+crp,inflammation,1,C-reactive protein,biomarkers,both_sexes,Inflammation anchor
+alt,liver,1,alanine aminotransferase,biomarkers,both_sexes,Liver biomarker
+alp,liver,2,alkaline phosphatase,biomarkers,both_sexes,Liver biomarker
+ast,liver,3,Aspartate aminotransferase,biomarkers,both_sexes,Complementary liver enzyme
+ggt,liver,4,Gamma glutamyltransferase,biomarkers,both_sexes,Complementary liver enzyme
+albumin,inflammation_nutrition,1,Albumin,biomarkers,both_sexes,Nutritional / inflammatory biomarker
+creatinine,kidney,1,creatinine,biomarkers,both_sexes,Kidney biomarker
+urate,kidney,2,urate,biomarkers,both_sexes,Metabolic / renal
+egfr,kidney,3,"Estimated glomerular filtration rate, serum creatinine",continuous,both_sexes,Renal function estimate
+cystatin_c,kidney,4,Cystatin C,biomarkers,both_sexes,Creatinine-independent filtration marker
+urea,kidney,5,Urea,biomarkers,both_sexes,Renal / metabolic complement
+testosterone,endocrine,1,testosterone,biomarkers,both_sexes,Endocrine trait
+shbg,endocrine,2,SHBG,biomarkers,both_sexes,Exact SHBG manifest label to avoid prior mis-selection
+igf_1,endocrine,3,IGF-1,biomarkers,both_sexes,Growth / aging endocrine axis
+vitamin_d,micronutrients,1,Vitamin D,biomarkers,both_sexes,Micronutrient biology
+fev1,respiratory,1,Forced expiratory volume in 1-second (FEV1),continuous,both_sexes,Core lung function trait
+fvc,respiratory,2,Forced vital capacity (FVC),continuous,both_sexes,Complementary lung function trait
+insomnia,neuropsychiatric,1,Sleeplessness / insomnia,continuous,both_sexes,Neuropsychiatric proxy
+depression,neuropsychiatric,2,Frequency of depressed mood in last 2 weeks,continuous,both_sexes,Neuropsychiatric proxy
+neuroticism,behavioral,1,neuroticism score,continuous,both_sexes,Behavioral trait
+fluid_intelligence,cognitive,1,fluid intelligence score,continuous,both_sexes,Cognitive trait
+menarche,reproductive,1,Age when periods started (menarche),continuous,both_sexes,Sex-specific trait
+menopause,reproductive,2,age at menopause,continuous,females,Sex-specific trait

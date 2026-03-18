@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__20498__both_sexes__nan__nan",
+    "query_id": "felt_very_upset_when_reminded_of_stressful_experience_in_past_mo",
+    "slug": "felt-very-upset-when-reminded-of-stressful-experience-in-past-mo",
+    "description": "Felt very upset when reminded of stressful experience in past month",
+    "domain": "traumatic_events",
+    "x_evidence_score": 60.45,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "RP11-298C3.2",
+      "RP11-86A5.1",
+      "RPP40P1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "20498",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "Online follow-up > Mental health > Traumatic events",
+    "description_more": "Question asked: \"Next is a list of problems and complaints that people sometimes have in response to such extremely stressful experiences. Please indicate how much you have been bothered by that problem in the past month: Feeling very upset when something reminded you of a stressful experience?\"",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 103,
+    "selection_score": 251.3775909518085,
+    "lead_neglog10_pvalue": 7.752,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 137327
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__20498__both_sexes__nan__nan:nonPAR:25772696-25775677",
+      "x_region": "nonPAR",
+      "locus_start": 25772696,
+      "locus_end": 25775677,
+      "lead_pos": 25772696,
+      "lead_rsid": "rs6653535",
+      "lead_varid": "X:25772696_T_C",
+      "lead_neglog10_pvalue": 7.752,
+      "top_gene_id": "ENSG00000228519",
+      "top_gene_name": "RP11-298C3.2",
+      "best_mapping_relation": "nearest_gene",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000228519",
+          "gene_name": "RP11-298C3.2",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 108252,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000233403",
+          "gene_name": "RP11-86A5.1",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 123760,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000229310",
+          "gene_name": "RPP40P1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 162771,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000176774",
+          "gene_name": "MAGEB18",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 383764,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000232446",
+          "gene_name": "RP13-60P5.2",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 393195,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

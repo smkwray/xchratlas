@@ -1,0 +1,45 @@
+# Environment
+.env
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Data (large pipeline data, not tracked)
+data/
+
+# site/data/ is tracked (small JSON bundle for GitHub Pages)
+
+# Tabix index files
+*.tbi
+*.bgz.tbi
+
+# Caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+
+# OS
+.DS_Store
+
+# Playwright / screenshots
+.playwright-mcp/
+*.png
+
+# Agent / plan / working notes (not for repo)
+do/
+CODEX_HANDOFF.md
+CLAUDE.md
+.claude/
+*.plan
+*.plan.md
+*handoff*
+*todo*
+uv.lock
+*.tbi
+docs/

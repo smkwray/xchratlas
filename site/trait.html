@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="chrXatlas trait detail — chromosome X evidence for a specific trait.">
+  <title>Trait — chrXatlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">chr<span class="logo-x">X</span>atlas</a>
+      <nav class="nav" id="nav">
+        <a href="index.html#panels" class="nav-link">Panels</a>
+        <a href="index.html#results" class="nav-link">Results</a>
+        <a href="index.html#methods" class="nav-link">Methods</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <span class="nav-divider"></span>
+        <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Risk</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">chrXatlas</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="#" id="trait-breadcrumb-panel">Panel</a>
+          <span class="breadcrumb-sep">/</span>
+          <span id="trait-breadcrumb-name">Trait</span>
+        </div>
+        <div class="trait-hero-header">
+          <h1 class="page-hero-title" id="trait-title">Loading...</h1>
+          <span class="domain-badge" id="trait-domain" style="font-size:0.78rem"></span>
+          <span class="trait-grade" id="trait-grade"></span>
+        </div>
+        <div class="trait-detail-score">
+          <span class="trait-detail-score-val" id="trait-score-value">&mdash;</span>
+          <div class="trait-detail-score-bar">
+            <div class="trait-detail-score-fill" id="trait-score-fill" style="width:0"></div>
+          </div>
+          <span style="font-size:0.78rem;color:var(--text-tertiary)">evidence score</span>
+        </div>
+        <div class="trait-stats-row">
+          <div class="trait-stat">
+            <span class="trait-stat-value" id="ts-loci">&mdash;</span>
+            <span class="trait-stat-label">ChrX Loci</span>
+          </div>
+          <div class="trait-stat">
+            <span class="trait-stat-value" id="ts-eqtl-loci">&mdash;</span>
+            <span class="trait-stat-label">eQTL-supported loci</span>
+          </div>
+          <div class="trait-stat">
+            <span class="trait-stat-value" id="ts-eqtl-hits">&mdash;</span>
+            <span class="trait-stat-label">Total eQTL hits</span>
+          </div>
+          <div class="trait-stat">
+            <span class="trait-stat-value" id="ts-pval">&mdash;</span>
+            <span class="trait-stat-label">Lead &minus;log<sub>10</sub>(p)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="support-section">
+      <div class="container">
+        <div id="support-card"></div>
+      </div>
+    </section>
+
+    <section class="metadata-section">
+      <div class="container">
+        <h3>Trait Metadata</h3>
+        <div class="metadata-grid" id="metadata-grid"></div>
+      </div>
+    </section>
+
+    <section class="loci-section">
+      <div class="container">
+        <h3 id="loci-heading">Chromosome X Loci</h3>
+        <div id="loci-list"></div>
+      </div>
+    </section>
+
+    <section class="notes-section">
+      <div class="container">
+        <div class="notes-card">
+          <h3>Notes &amp; Caveats</h3>
+          <div id="trait-notes-content"><p>Loading...</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">chr<span class="logo-x">X</span>atlas</span>
+        <p class="footer-tagline">Chromosome X Evidence Atlas</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Atlas</h4>
+          <a href="index.html#panels">Panels</a>
+          <a href="index.html#results">Results</a>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <a href="index.html#methods">Methods</a>
+          <a href="index.html#about">About</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Data sources: Pan-UK Biobank &middot; eQTL Catalogue &middot; Ensembl GRCh37</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/trait.js"></script>
+</body>
+</html>

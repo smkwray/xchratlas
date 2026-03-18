@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="chrXatlas panel detail — curated chromosome X evidence panel.">
+  <title>Panel — chrXatlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">chr<span class="logo-x">X</span>atlas</a>
+      <nav class="nav" id="nav">
+        <a href="index.html#panels" class="nav-link">Panels</a>
+        <a href="index.html#results" class="nav-link">Results</a>
+        <a href="index.html#methods" class="nav-link">Methods</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <span class="nav-divider"></span>
+        <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Risk</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">chrXatlas</a>
+          <span class="breadcrumb-sep">/</span>
+          <span id="panel-breadcrumb-name">Panel</span>
+        </div>
+        <h1 class="page-hero-title" id="panel-title">Loading...</h1>
+        <p class="page-hero-desc" id="panel-desc"></p>
+        <div class="page-hero-metrics">
+          <div class="page-metric">
+            <span class="page-metric-value" id="ph-traits">&mdash;</span>
+            <span class="page-metric-label">Traits</span>
+          </div>
+          <div class="page-metric">
+            <span class="page-metric-value" id="ph-loci">&mdash;</span>
+            <span class="page-metric-label">ChrX Loci</span>
+          </div>
+          <div class="page-metric">
+            <span class="page-metric-value" id="ph-supported">&mdash;</span>
+            <span class="page-metric-label">Supported</span>
+          </div>
+          <div class="page-metric">
+            <span class="page-metric-value" id="ph-rate">&mdash;</span>
+            <span class="page-metric-label">Support Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-content" style="padding-top:2rem">
+      <div class="container">
+        <div class="domain-filters" id="domain-filters"></div>
+        <div class="filter-bar">
+          <input type="text" class="search-input" id="table-search" placeholder="Search traits..." autocomplete="off">
+          <label class="filter-toggle">
+            <input type="checkbox" id="eqtl-toggle"> eQTL supported only
+          </label>
+          <span class="result-count" id="result-count"></span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table" id="traits-table">
+            <thead>
+              <tr>
+                <th data-sort="description">Trait <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="domain">Domain <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="x_evidence_score" class="sort-desc">Score <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="n_loci">Loci <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="eqtl_total_hit_count">eQTL <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="coverage_grade">Grade <span class="sort-icon">&udarr;</span></th>
+                <th>Top Genes</th>
+              </tr>
+            </thead>
+            <tbody id="traits-tbody">
+              <tr><td colspan="7" class="table-empty">Loading traits...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">chr<span class="logo-x">X</span>atlas</span>
+        <p class="footer-tagline">Chromosome X Evidence Atlas</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Atlas</h4>
+          <a href="index.html#panels">Panels</a>
+          <a href="index.html#results">Results</a>
+          <a href="index.html#discovery">Discovery Pool</a>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <a href="index.html#methods">Methods</a>
+          <a href="index.html#about">About</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Data sources: Pan-UK Biobank &middot; eQTL Catalogue &middot; Ensembl GRCh37</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/panel.js"></script>
+</body>
+</html>

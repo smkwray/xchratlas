@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__20485__both_sexes__nan__nan",
+    "query_id": "ever_contemplated_self_harm",
+    "slug": "ever-contemplated-self-harm",
+    "description": "Ever contemplated self-harm",
+    "domain": "self_harm_behaviours",
+    "x_evidence_score": 60.27,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "SERBP1P4",
+      "PABPC5",
+      "PABPC5-AS1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "20485",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "Online follow-up > Mental health > Self-harm behaviours",
+    "description_more": "Question asked: \"Have you contemplated harming yourself (for example by cutting, biting, hitting yourself or taking an overdose)?\"",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 107,
+    "selection_score": 251.3669837636048,
+    "lead_neglog10_pvalue": 7.575,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 136992
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__20485__both_sexes__nan__nan:nonPAR:90774138-90783807",
+      "x_region": "nonPAR",
+      "locus_start": 90774138,
+      "locus_end": 90783807,
+      "lead_pos": 90783807,
+      "lead_rsid": "rs774646299",
+      "lead_varid": "X:90783807_C_A",
+      "lead_neglog10_pvalue": 7.575,
+      "top_gene_id": "ENSG00000230275",
+      "top_gene_name": "SERBP1P4",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000230275",
+          "gene_name": "SERBP1P4",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 31628,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000174740",
+          "gene_name": "PABPC5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 90224,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000234161",
+          "gene_name": "PABPC5-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 93809,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

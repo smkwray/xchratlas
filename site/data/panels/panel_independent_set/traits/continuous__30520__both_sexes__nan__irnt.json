@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__30520__both_sexes__nan__irnt",
+    "query_id": "potassium_in_urine",
+    "slug": "potassium-in-urine",
+    "description": "Potassium in urine",
+    "domain": "urine_assays",
+    "x_evidence_score": 80.03,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 11,
+    "top_candidate_genes": [
+      "DOCK11",
+      "SLC25A5",
+      "RP3-404F18.5"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "30520",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": "irnt",
+    "category": "Biological samples > Assay results > Urine assays",
+    "description_more": "Measured by ISE (ion selective electrode) analysis on a Beckman Coulter AU5400.",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 56,
+    "selection_score": 256.19150745572966,
+    "lead_neglog10_pvalue": 8.334,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 416054
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__30520__both_sexes__nan__irnt:nonPAR:117664998-117674859",
+      "x_region": "nonPAR",
+      "locus_start": 117664998,
+      "locus_end": 117674859,
+      "lead_pos": 117674859,
+      "lead_rsid": "rs1937177",
+      "lead_varid": "X:117674859_A_G",
+      "lead_neglog10_pvalue": 8.334,
+      "top_gene_id": "ENSG00000147251",
+      "top_gene_name": "DOCK11",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 11,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000147251",
+          "gene_name": "DOCK11",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5810530185699463
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000005022",
+          "gene_name": "SLC25A5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 927504,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0185768008232116
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000237903",
+          "gene_name": "RP3-404F18.5",
+          "gene_biotype": "sense_intronic",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 882021,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0388580001890659
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000224281",
+          "gene_name": "SLC25A5-AS1",
+          "gene_biotype": "processed_transcript",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 925138,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.073091797530651
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000226661",
+          "gene_name": "RP5-1139I1.2",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 815405,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1212939992547035
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000175556",
+          "gene_name": "LONRF3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 433722,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3400030136108398
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000101856",
+          "gene_name": "PGRMC1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 695357,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.398402988910675
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000131725",
+          "gene_name": "WDR44",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 90935,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8134859800338745
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000077713",
+          "gene_name": "SLC25A43",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 858164,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8399950265884399
+        },
+        {
+          "candidate_rank": 10,
+          "gene_id": "ENSG00000131724",
+          "gene_name": "IL13RA1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 186676,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8772199749946594
+        },
+        {
+          "candidate_rank": 11,
+          "gene_id": "ENSG00000003096",
+          "gene_name": "KLHL13",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 423556,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8811330199241638
+        }
+      ]
+    }
+  ]
+}

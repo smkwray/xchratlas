@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__5096__both_sexes__nan__irnt",
+    "query_id": "3mm_weak_meridian_left",
+    "slug": "3mm-weak-meridian-left",
+    "description": "3mm weak meridian (left)",
+    "domain": "autorefraction",
+    "x_evidence_score": 81.54,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 15,
+    "top_candidate_genes": [
+      "MXRA5",
+      "CXorf28",
+      "ZBED1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "5096",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": "irnt",
+    "category": "UK Biobank Assessment Centre > Physical measures > Eye measures > Autorefraction",
+    "description_more": "This is the weak meridian of keratometry results taken at 3mm for the left eye",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 113,
+    "selection_score": 249.5265685615659,
+    "lead_neglog10_pvalue": 9.841,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 89671
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__5096__both_sexes__nan__irnt:nonPAR:3184647-3271849",
+      "x_region": "nonPAR",
+      "locus_start": 3184647,
+      "locus_end": 3271849,
+      "lead_pos": 3220671,
+      "lead_rsid": "rs1625354",
+      "lead_varid": "X:3220671_C_G",
+      "lead_neglog10_pvalue": 9.841,
+      "top_gene_id": "ENSG00000101825",
+      "top_gene_name": "MXRA5",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 15,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000101825",
+          "gene_name": "MXRA5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 5935,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1019240021705627
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000228459",
+          "gene_name": "CXorf28",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 17977,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000214717",
+          "gene_name": "ZBED1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 801663,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1425700038671493
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000124343",
+          "gene_name": "XG",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 486132,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2761439979076385
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000056998",
+          "gene_name": "GYG2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 419812,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3789570033550262
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000169084",
+          "gene_name": "DHRSX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 799825,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4128389954566955
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000230542",
+          "gene_name": "LINC00102",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 687283,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4214279949665069
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000002586",
+          "gene_name": "CD99",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 561321,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4525740146636963
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000183943",
+          "gene_name": "PRKX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 301740,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.673192024230957
+        },
+        {
+          "candidate_rank": 10,
+          "gene_id": "ENSG00000235483",
+          "gene_name": "GYG2-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 448870,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.7146270275115967
+        },
+        {
+          "candidate_rank": 11,
+          "gene_id": "ENSG00000236188",
+          "gene_name": "PRKX-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 356857,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8565530180931091
+        },
+        {
+          "candidate_rank": 12,
+          "gene_id": "ENSG00000223571",
+          "gene_name": "DHRSX-IT1",
+          "gene_biotype": "sense_intronic",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 966220,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.9223759770393372
+        },
+        {
+          "candidate_rank": 13,
+          "gene_id": "ENSG00000006756",
+          "gene_name": "ARSD",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 373279,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.9453229904174804
+        }
+      ]
+    }
+  ]
+}

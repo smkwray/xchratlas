@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="chrXatlas — The first systematic atlas of chromosome X genetic associations. Mapping signals, loci, and candidate genes across dozens of human traits.">
+  <title>chrXatlas — Chromosome X Evidence Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">chr<span class="logo-x">X</span>atlas</a>
+      <nav class="nav" id="nav">
+        <a href="#panels" class="nav-link">Panels</a>
+        <a href="#results" class="nav-link">Results</a>
+        <a href="#methods" class="nav-link">Methods</a>
+        <a href="#about" class="nav-link">About</a>
+        <span class="nav-divider"></span>
+        <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Risk</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">Chromosome X Evidence Atlas</div>
+        <h1 class="hero-title">Mapping the Signals<br>Most Studies Leave Behind</h1>
+        <p class="hero-subtitle">Chromosome X carries hundreds of genes that influence traits from blood chemistry to cognition. Most large-scale genetic studies exclude it entirely. chrXatlas maps where the signals are, which traits they touch, and which genes they implicate.</p>
+        <a href="#panels" class="hero-cta">Explore the Atlas <span class="cta-arrow">&darr;</span></a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M5 11l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </section>
+
+    <!-- Proof: Metrics -->
+    <section class="proof" id="proof">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric-card animate-on-scroll">
+            <div class="metric-value" id="metric-traits" data-count-to="0">&mdash;</div>
+            <div class="metric-label">Curated Traits</div>
+          </div>
+          <div class="metric-card animate-on-scroll">
+            <div class="metric-value" id="metric-loci" data-count-to="0">&mdash;</div>
+            <div class="metric-label">ChrX Loci Mapped</div>
+          </div>
+          <div class="metric-card animate-on-scroll">
+            <div class="metric-value" id="metric-support" data-count-to="0">&mdash;</div>
+            <div class="metric-label">eQTL Support Rate</div>
+          </div>
+          <div class="metric-card animate-on-scroll">
+            <div class="metric-value" id="metric-domains" data-count-to="0">&mdash;</div>
+            <div class="metric-label">Biological Domains</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search -->
+    <section class="search-section" id="search">
+      <div class="container">
+        <div class="search-container">
+          <input type="text" class="search-input" id="search-input" placeholder="Search traits across all panels..." autocomplete="off">
+          <div class="search-results" id="search-results"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Panels -->
+    <section class="panels-section" id="panels">
+      <div class="container">
+        <div class="section-header">
+          <h2>Curated Panels</h2>
+          <p class="section-subtitle">Three focused lenses on chromosome X signal. Each panel is curated for a specific research question, with ranked traits, mapped loci, and eQTL follow-up.</p>
+        </div>
+        <div class="panels-grid" id="panels-grid"></div>
+      </div>
+    </section>
+
+    <!-- Why Chromosome X -->
+    <section class="why-section" id="why">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Chromosome X</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card animate-on-scroll">
+            <h3>The Blind Spot</h3>
+            <p>Chromosome X is routinely dropped from genome-wide association studies. Different copy numbers in males (XY) and females (XX) create analytical complications that most pipelines simply bypass. The result: an entire chromosome &mdash; encoding ~800 protein-coding genes &mdash; remains systematically under-explored in the era of biobank-scale genetics.</p>
+          </div>
+          <div class="why-card animate-on-scroll">
+            <h3>What We Built</h3>
+            <p>chrXatlas is a ranked, evidence-scored catalog of chromosome X associations built from Pan-UK Biobank summary statistics. For each trait, we identify genome-wide significant loci on chrX, map candidate genes by proximity, and incorporate eQTL evidence to connect variants to gene expression changes in relevant tissues.</p>
+          </div>
+          <div class="why-card animate-on-scroll">
+            <h3>Why It Matters</h3>
+            <p>The X chromosome influences immune function, metabolism, brain development, and dozens of other processes. By making these associations visible and comparable across traits, chrXatlas provides a structured starting point for researchers who want to understand what chromosome X contributes &mdash; and what has been missed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section" id="results">
+      <div class="container">
+        <div class="section-header">
+          <h2>Atlas Results</h2>
+          <p class="section-subtitle">Signal composition, top-ranked traits, and panel comparisons from the current build.</p>
+        </div>
+
+        <div class="panel-comparison animate-on-scroll" id="panel-comparison">
+          <h3>Panel Comparison</h3>
+          <div class="comparison-grid" id="comparison-grid"></div>
+        </div>
+
+        <div class="domain-composition animate-on-scroll" id="domain-composition">
+          <h3>Domain Composition &mdash; Broad Atlas</h3>
+          <p class="domain-subtitle">Loci distribution across biological domains in the flagship panel.</p>
+          <div class="domain-bars" id="domain-bars"></div>
+        </div>
+
+        <div class="top-traits animate-on-scroll" id="top-traits-section">
+          <h3>Top-Ranked Traits</h3>
+          <p class="traits-subtitle">Highest evidence-scored traits from the Broad Atlas panel.</p>
+          <div class="traits-rail" id="traits-rail"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discovery Pool -->
+    <section class="discovery-section" id="discovery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Discovery Pool</h2>
+          <p class="section-subtitle">A broader reservoir of 150 traits from the Pan-UKB max independent set. Not curated to the same standard as the featured panels, but kept as a source for future exploration and panel building.</p>
+        </div>
+        <div class="discovery-card animate-on-scroll" id="discovery-card"></div>
+      </div>
+    </section>
+
+    <!-- Methods -->
+    <section class="methods-section" id="methods">
+      <div class="container">
+        <div class="section-header">
+          <h2>Reading the Atlas</h2>
+          <p class="section-subtitle">A plain-English guide to the key concepts behind chrXatlas results.</p>
+        </div>
+        <div class="methods-grid">
+          <div class="method-card animate-on-scroll">
+            <h3>What is a chrX signal?</h3>
+            <p>A "signal" in this atlas is a genome-wide significant association (p &lt; 5 &times; 10<sup>&minus;8</sup>) located on chromosome X. We scan Pan-UK Biobank summary statistics for each trait, identify significant variants on chrX, and merge nearby signals into distinct <strong>loci</strong> using distance-based clustering.</p>
+          </div>
+          <div class="method-card animate-on-scroll">
+            <h3>What does "supported" mean?</h3>
+            <p>A trait is <strong>supported</strong> when at least one of its chromosome X loci has evidence from expression quantitative trait locus (eQTL) data &mdash; meaning the lead variant is also associated with gene expression changes in relevant tissues. This is an independent line of evidence connecting the GWAS signal to a plausible biological mechanism.</p>
+          </div>
+          <div class="method-card animate-on-scroll">
+            <h3>Coverage grades</h3>
+            <p>Coverage grades reflect upstream <strong>GWAS data quality</strong>, not eQTL follow-up completeness. <strong>Grade A</strong> means the trait is in the Pan-UKB max independent set, passes QC in 2+ populations, and has a large high-quality cohort (&ge;50K). <strong>Grade B</strong> indicates partial coverage &mdash; in the independent set with &ge;10K, or multi-population QC. <strong>Grade U</strong> means the trait does not meet these thresholds.</p>
+          </div>
+          <div class="method-card animate-on-scroll">
+            <h3>What the atlas is <em>not</em></h3>
+            <p>This atlas does not measure "how much of a trait is caused by chromosome X." It does not perform sex-stratified analysis or model dosage compensation explicitly. It uses sex-combined GWAS summary statistics. The atlas identifies <em>where</em> on chromosome X we see associations and attempts to connect those signals to candidate genes through gene mapping and eQTL follow-up.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-card animate-on-scroll">
+          <h2>About chrXatlas</h2>
+          <p>Built from publicly available summary statistics from the Pan-UK Biobank project, with eQTL follow-up data from the eQTL Catalogue. Gene annotations use Ensembl GRCh37 coordinates.</p>
+          <p>This project is independent research. It is not affiliated with or endorsed by UK Biobank, the Pan-UKB team, or any of the data providers.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">chr<span class="logo-x">X</span>atlas</span>
+        <p class="footer-tagline">Chromosome X Evidence Atlas</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Atlas</h4>
+          <a href="#panels">Panels</a>
+          <a href="#results">Results</a>
+          <a href="#discovery">Discovery Pool</a>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <a href="#methods">Methods</a>
+          <a href="#about">About</a>
+          <a href="#why">Why ChrX</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="#">Data Contract</a>
+          <a href="#">Source</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Data sources: Pan-UK Biobank &middot; eQTL Catalogue &middot; Ensembl GRCh37</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

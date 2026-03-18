@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__1259__both_sexes__nan__nan",
+    "query_id": "smoking_smokers_in_household",
+    "slug": "smoking-smokers-in-household",
+    "description": "Smoking/smokers in household",
+    "domain": "smoking",
+    "x_evidence_score": 68.12,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "RP11-761E20.1",
+      "RN7SL712P"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "1259",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Smoking",
+    "description_more": "ACE touchscreen question \"Does anyone in your household smoke?\" ~F1259~ was collected from all participants except those who indicated they currently smoke tobacco on most or all days, as defined by their answers to ~F1239~",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 67,
+    "selection_score": 255.94519615412412,
+    "lead_neglog10_pvalue": 11.42,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 393114
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1259__both_sexes__nan__nan:nonPAR:115065765-115116728",
+      "x_region": "nonPAR",
+      "locus_start": 115065765,
+      "locus_end": 115116728,
+      "lead_pos": 115065765,
+      "lead_rsid": "rs782525090",
+      "lead_varid": "X:115065765_T_G",
+      "lead_neglog10_pvalue": 11.42,
+      "top_gene_id": "ENSG00000235244",
+      "top_gene_name": "RP11-761E20.1",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000235244",
+          "gene_name": "RP11-761E20.1",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000266828",
+          "gene_name": "RN7SL712P",
+          "gene_biotype": "misc_RNA",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 43036,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

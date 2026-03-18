@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panels": [
+    {
+      "panel_id": "panel_expanded",
+      "slug": "broad-atlas",
+      "title": "Broad Atlas",
+      "featured": true,
+      "description": "Curated all-purpose release with broad trait coverage and low zero-locus drift.",
+      "trait_count": 48,
+      "supported_trait_count": 47,
+      "zero_locus_trait_count": 0,
+      "locus_count": 751,
+      "files": {
+        "summary": "panels/panel_expanded/summary.json",
+        "traits": "panels/panel_expanded/traits.json",
+        "trait_details_dir": "panels/panel_expanded/traits"
+      }
+    },
+    {
+      "panel_id": "panel_mind_risk_core",
+      "slug": "mind-and-risk",
+      "title": "Mind And Risk",
+      "featured": true,
+      "description": "Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
+      "trait_count": 10,
+      "supported_trait_count": 9,
+      "zero_locus_trait_count": 0,
+      "locus_count": 26,
+      "files": {
+        "summary": "panels/panel_mind_risk_core/summary.json",
+        "traits": "panels/panel_mind_risk_core/traits.json",
+        "trait_details_dir": "panels/panel_mind_risk_core/traits"
+      }
+    },
+    {
+      "panel_id": "panel_blood_biochemistry_core",
+      "slug": "biochemistry-deep-dive",
+      "title": "Biochemistry Deep Dive",
+      "featured": true,
+      "description": "High-yield blood biochemistry panel carved out of the independent-set discovery pool.",
+      "trait_count": 21,
+      "supported_trait_count": 21,
+      "zero_locus_trait_count": 0,
+      "locus_count": 332,
+      "files": {
+        "summary": "panels/panel_blood_biochemistry_core/summary.json",
+        "traits": "panels/panel_blood_biochemistry_core/traits.json",
+        "trait_details_dir": "panels/panel_blood_biochemistry_core/traits"
+      }
+    },
+    {
+      "panel_id": "panel_independent_set",
+      "slug": "discovery-pool",
+      "title": "Discovery Pool",
+      "featured": false,
+      "description": "Full Pan-UKB max independent-set build kept as a broad curation source rather than a polished release tier.",
+      "trait_count": 150,
+      "supported_trait_count": 72,
+      "zero_locus_trait_count": 66,
+      "locus_count": 643,
+      "files": {
+        "summary": "panels/panel_independent_set/summary.json",
+        "traits": "panels/panel_independent_set/traits.json",
+        "trait_details_dir": "panels/panel_independent_set/traits"
+      }
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_mind_risk_core",
+    "slug": "mind-and-risk",
+    "title": "Mind And Risk",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "continuous__2050__both_sexes__nan__nan",
+    "query_id": "depressed_mood",
+    "slug": "depressed-mood",
+    "description": "Frequency of depressed mood in last 2 weeks",
+    "domain": "mental_health",
+    "x_evidence_score": 49.15,
+    "coverage_grade": "U",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 9,
+    "top_candidate_genes": [
+      "HS6ST2",
+      "HS6ST2-AS1",
+      "RAP2C-AS1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": 2050,
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Mental health",
+    "description_more": "ACE touchscreen question \"Over the past two weeks, how often have you felt down, depressed or hopeless?\" If the participant activated the Help button they were shown the message:     Answer this question thinking about the past 2 weeks. If you are unsure, please provide an estimate or select Do not know.      ",
+    "coding_description": null,
+    "num_pops_pass_qc": 0,
+    "in_max_independent_set": false,
+    "tier": "C",
+    "selection_rank": 1,
+    "selection_score": 192,
+    "lead_neglog10_pvalue": 7.455,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": null
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__2050__both_sexes__nan__nan:nonPAR:131940379-131940379",
+      "x_region": "nonPAR",
+      "locus_start": 131940379,
+      "locus_end": 131940379,
+      "lead_pos": 131940379,
+      "lead_rsid": "rs5977754",
+      "lead_varid": "X:131940379_T_A",
+      "lead_neglog10_pvalue": 7.455,
+      "top_gene_id": "ENSG00000171004",
+      "top_gene_name": "HS6ST2",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000041",
+      "eqtl_lookup_n_hits": 9,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000171004",
+          "gene_name": "HS6ST2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0111857997253537
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000235849",
+          "gene_name": "HS6ST2-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 136463,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0588078014552593
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000232160",
+          "gene_name": "RAP2C-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 373489,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0666052028536796
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000134602",
+          "gene_name": "MST4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 730408,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.127931997179985
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000123728",
+          "gene_name": "RAP2C",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 586908,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1302070021629333
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000213468",
+          "gene_name": "RP11-453F18__B.1",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 975708,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4520319998264313
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000076716",
+          "gene_name": "GPC4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 493752,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5237330198287964
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000076770",
+          "gene_name": "MBNL3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 316383,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6259329915046692
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000165694",
+          "gene_name": "FRMD7",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 678331,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8552629947662354
+        }
+      ]
+    }
+  ]
+}

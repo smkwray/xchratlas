@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__6154__both_sexes__3__nan",
+    "query_id": "medication_for_pain_relief_constipation_heartburn",
+    "slug": "medication-for-pain-relief-constipation-heartburn",
+    "description": "Medication for pain relief, constipation, heartburn",
+    "domain": "medication",
+    "x_evidence_score": 79.88,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 7,
+    "top_candidate_genes": [
+      "RP11-232D9.1",
+      "MBNL3",
+      "RNU6-1323P"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "trait_type": "categorical",
+    "phenocode": "6154",
+    "pheno_sex": "both_sexes",
+    "coding": 3,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Medication",
+    "description_more": "ACE touchscreen question \"Do you regularly take any of the following? (You can select more than one answer)\" The following checks were performed:  If code -7 was selected, then no additional choices were allowed.  If code -1 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.   If the participant activated the Help button they were shown the message:     Some over the counter medicines are known by other names.  Please enter the corresponding name if you take any of the following REGULARLY (that is, most days of the week for the last 4 weeks):  Aspirin: Alka Rapid Crystals, Alka-Seltzer XS, Anadin Extra, Anadin   Original, Askit powders, Aspro Clear, Codis 500, Disprin, Disprin Extra  Ibuprofen: Anadin Ultra, Anadin Ibuprofen, Cuprofen Plus, Nurofen,   Solpaflex, Ibuleve  Paracetamol: Anadin Extra, Hedex Extra, Panadol, Paracodol, Paramol,   Solpadeine, Syndol, Veganin, Feminax, Midrid, Migraleve  Codeine: Codis 500, Cuprofen Plus, Nurofen Plus, Panadol Ultra,   Paracodol, Paramol, Solpadeine Max, Sopadeine Plus, Solpafelx, Syndol,   Veganin, Feminax, Migraleve     ",
+    "coding_description": "Paracetamol",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 111,
+    "selection_score": 249.7258695888383,
+    "lead_neglog10_pvalue": 8.177,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 93882
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__6154__both_sexes__3__nan:nonPAR:131607761-131648964",
+      "x_region": "nonPAR",
+      "locus_start": 131607761,
+      "locus_end": 131648964,
+      "lead_pos": 131612237,
+      "lead_rsid": "X:131612237_CGTT_C",
+      "lead_varid": "X:131612237_CGTT_C",
+      "lead_neglog10_pvalue": 8.177,
+      "top_gene_id": "ENSG00000076770",
+      "top_gene_name": "MBNL3",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 7,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000076770",
+          "gene_name": "MBNL3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0768153965473175
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000123728",
+          "gene_name": "RAP2C",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 258766,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.008864720351994
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000076716",
+          "gene_name": "GPC4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 821894,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0755639001727104
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000232160",
+          "gene_name": "RAP2C-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 45347,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2397509962320327
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000165694",
+          "gene_name": "FRMD7",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 350189,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2672010064125061
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000134602",
+          "gene_name": "MST4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 402266,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3075250089168548
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000147255",
+          "gene_name": "IGSF1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 1078560,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.7004169821739197
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__6154__both_sexes__3__nan:nonPAR:115928316-115928316",
+      "x_region": "nonPAR",
+      "locus_start": 115928316,
+      "locus_end": 115928316,
+      "lead_pos": 115928316,
+      "lead_rsid": "X:115928316_CAT_C",
+      "lead_varid": "X:115928316_CAT_C",
+      "lead_neglog10_pvalue": 7.662,
+      "top_gene_id": "ENSG00000224217",
+      "top_gene_name": "RP11-232D9.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000224217",
+          "gene_name": "RP11-232D9.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 45471,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000206752",
+          "gene_name": "RNU6-1323P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 56491,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,962 @@
+[
+  {
+    "trait_id": "continuous__50__both_sexes__nan__irnt",
+    "query_id": "height",
+    "slug": "height",
+    "description": "Standing height",
+    "domain": "anthropometrics",
+    "x_evidence_score": 100,
+    "coverage_grade": "B",
+    "n_loci": 51,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 38,
+    "eqtl_total_hit_count": 385,
+    "top_candidate_genes": [
+      "GYG2",
+      "RP11-706O15.8",
+      "RP11-585K14.2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30770__both_sexes__nan__irnt",
+    "query_id": "igf_1",
+    "slug": "igf-1",
+    "description": "IGF-1",
+    "domain": "endocrine",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 36,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 28,
+    "eqtl_total_hit_count": 402,
+    "top_candidate_genes": [
+      "GS1-542M4.4",
+      "TBL1X",
+      "ARHGAP6"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__30080__both_sexes__nan__irnt",
+    "query_id": "plt",
+    "slug": "plt",
+    "description": "Platelet count",
+    "domain": "hematology",
+    "x_evidence_score": 100,
+    "coverage_grade": "B",
+    "n_loci": 31,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 21,
+    "eqtl_total_hit_count": 330,
+    "top_candidate_genes": [
+      "KAL1",
+      "TLR7",
+      "GEMIN8"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30720__both_sexes__nan__irnt",
+    "query_id": "cystatin_c",
+    "slug": "cystatin-c",
+    "description": "Cystatin C",
+    "domain": "kidney",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 29,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 21,
+    "eqtl_total_hit_count": 329,
+    "top_candidate_genes": [
+      "SNORA20",
+      "RP11-791M20.1",
+      "CDKL5"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__30010__both_sexes__nan__irnt",
+    "query_id": "rbc",
+    "slug": "rbc",
+    "description": "Red blood cell (erythrocyte) count",
+    "domain": "hematology",
+    "x_evidence_score": 100,
+    "coverage_grade": "B",
+    "n_loci": 26,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 20,
+    "eqtl_total_hit_count": 366,
+    "top_candidate_genes": [
+      "GS1-542M4.4",
+      "WWC3",
+      "Y_RNA"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30730__both_sexes__nan__irnt",
+    "query_id": "ggt",
+    "slug": "ggt",
+    "description": "Gamma glutamyltransferase",
+    "domain": "liver",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 24,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 17,
+    "eqtl_total_hit_count": 287,
+    "top_candidate_genes": [
+      "GS1-542M4.4",
+      "MID1",
+      "TMEM27"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30750__both_sexes__nan__irnt",
+    "query_id": "hba1c",
+    "slug": "hba1c",
+    "description": "Glycated haemoglobin (HbA1c)",
+    "domain": "glycemic",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 24,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 14,
+    "eqtl_total_hit_count": 208,
+    "top_candidate_genes": [
+      "TBL1X",
+      "GLRA2",
+      "ASB9"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30760__both_sexes__nan__irnt",
+    "query_id": "hdl",
+    "slug": "hdl",
+    "description": "HDL cholesterol",
+    "domain": "lipids",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 24,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 15,
+    "eqtl_total_hit_count": 150,
+    "top_candidate_genes": [
+      "ARSE",
+      "MOSPD2",
+      "RNU7-56P"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__30020__both_sexes__nan__irnt",
+    "query_id": "hb",
+    "slug": "hb",
+    "description": "Haemoglobin concentration",
+    "domain": "hematology",
+    "x_evidence_score": 100,
+    "coverage_grade": "B",
+    "n_loci": 23,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 17,
+    "eqtl_total_hit_count": 210,
+    "top_candidate_genes": [
+      "HDHD1",
+      "GS1-542M4.4",
+      "TBL1X"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30700__both_sexes__nan__irnt",
+    "query_id": "creatinine",
+    "slug": "creatinine",
+    "description": "Creatinine",
+    "domain": "kidney",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 22,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 17,
+    "eqtl_total_hit_count": 227,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "REPS2",
+      "CDKL5"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30670__both_sexes__nan__irnt",
+    "query_id": "urea",
+    "slug": "urea",
+    "description": "Urea",
+    "domain": "kidney",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 21,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 18,
+    "eqtl_total_hit_count": 248,
+    "top_candidate_genes": [
+      "PRKX",
+      "CDKL5",
+      "DMD"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30610__both_sexes__nan__irnt",
+    "query_id": "alp",
+    "slug": "alp",
+    "description": "Alkaline phosphatase",
+    "domain": "liver",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 21,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 18,
+    "eqtl_total_hit_count": 237,
+    "top_candidate_genes": [
+      "TMSB4X",
+      "PIR",
+      "SYAP1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30870__both_sexes__nan__irnt",
+    "query_id": "tg",
+    "slug": "tg",
+    "description": "Triglycerides",
+    "domain": "lipids",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 20,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 15,
+    "eqtl_total_hit_count": 221,
+    "top_candidate_genes": [
+      "GLRA2",
+      "ASB9",
+      "MBTPS2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30830__both_sexes__nan__irnt",
+    "query_id": "shbg",
+    "slug": "shbg",
+    "description": "SHBG",
+    "domain": "endocrine",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 18,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 14,
+    "eqtl_total_hit_count": 263,
+    "top_candidate_genes": [
+      "ARSE",
+      "TBL1X",
+      "MID1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__3148__both_sexes__nan__irnt",
+    "query_id": "heel_bmd",
+    "slug": "heel-bmd",
+    "description": "Heel bone mineral density (BMD)",
+    "domain": "bone_health",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 17,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 14,
+    "eqtl_total_hit_count": 183,
+    "top_candidate_genes": [
+      "GYG2",
+      "GS1-542M4.4",
+      "RN7SKP183"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__30120__both_sexes__nan__irnt",
+    "query_id": "lymphocyte",
+    "slug": "lymphocyte",
+    "description": "Lymphocyte count",
+    "domain": "hematology",
+    "x_evidence_score": 100,
+    "coverage_grade": "B",
+    "n_loci": 16,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 13,
+    "eqtl_total_hit_count": 214,
+    "top_candidate_genes": [
+      "RP11-558O12.1",
+      "GS1-542M4.4",
+      "TMSB4X"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30710__both_sexes__nan__irnt",
+    "query_id": "crp",
+    "slug": "crp",
+    "description": "C-reactive protein",
+    "domain": "inflammation",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 15,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 11,
+    "eqtl_total_hit_count": 224,
+    "top_candidate_genes": [
+      "RP13-926M18.1",
+      "TMSB4X",
+      "IL1RAPL1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30600__both_sexes__nan__irnt",
+    "query_id": "albumin",
+    "slug": "albumin",
+    "description": "Albumin",
+    "domain": "inflammation_nutrition",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 13,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 12,
+    "eqtl_total_hit_count": 181,
+    "top_candidate_genes": [
+      "ASB9",
+      "SH3KBP1",
+      "SRPX"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30630__both_sexes__nan__irnt",
+    "query_id": "apolipoprotein_a",
+    "slug": "apolipoprotein-a",
+    "description": "Apolipoprotein A",
+    "domain": "lipids",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 13,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 9,
+    "eqtl_total_hit_count": 168,
+    "top_candidate_genes": [
+      "MOSPD2",
+      "TXLNG",
+      "PRRG1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30620__both_sexes__nan__irnt",
+    "query_id": "alt",
+    "slug": "alt",
+    "description": "Alanine aminotransferase",
+    "domain": "liver",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 9,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 8,
+    "eqtl_total_hit_count": 199,
+    "top_candidate_genes": [
+      "SRPX",
+      "RNU6-394P",
+      "TSPAN6"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30640__both_sexes__nan__irnt",
+    "query_id": "apolipoprotein_b",
+    "slug": "apolipoprotein-b",
+    "description": "Apolipoprotein B",
+    "domain": "lipids",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 7,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 4,
+    "eqtl_total_hit_count": 95,
+    "top_candidate_genes": [
+      "ARSE",
+      "REPS2",
+      "RPS6KA3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30780__both_sexes__nan__irnt",
+    "query_id": "ldl",
+    "slug": "ldl",
+    "description": "LDL direct",
+    "domain": "lipids",
+    "x_evidence_score": 100,
+    "coverage_grade": "A",
+    "n_loci": 4,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 4,
+    "eqtl_total_hit_count": 55,
+    "top_candidate_genes": [
+      "ARSE",
+      "RPS6KA3",
+      "TSPAN6"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__21001__both_sexes__nan__irnt",
+    "query_id": "bmi",
+    "slug": "bmi",
+    "description": "Body mass index (BMI)",
+    "domain": "anthropometrics",
+    "x_evidence_score": 99,
+    "coverage_grade": "B",
+    "n_loci": 37,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 30,
+    "eqtl_total_hit_count": 306,
+    "top_candidate_genes": [
+      "STS",
+      "RNU6-133P",
+      "RP11-40F8.2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__23100__both_sexes__nan__irnt",
+    "query_id": "body_fat_mass",
+    "slug": "body-fat-mass",
+    "description": "Whole body fat mass",
+    "domain": "body_composition",
+    "x_evidence_score": 99,
+    "coverage_grade": "B",
+    "n_loci": 35,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 25,
+    "eqtl_total_hit_count": 302,
+    "top_candidate_genes": [
+      "STS",
+      "GS1-542M4.4",
+      "OFD1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__49__both_sexes__nan__irnt",
+    "query_id": "hip",
+    "slug": "hip",
+    "description": "Hip circumference",
+    "domain": "anthropometrics",
+    "x_evidence_score": 99,
+    "coverage_grade": "B",
+    "n_loci": 33,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 28,
+    "eqtl_total_hit_count": 326,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "ZFX",
+      "RN7SL91P"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__eGFR__both_sexes__nan__irnt",
+    "query_id": "egfr",
+    "slug": "egfr",
+    "description": "Estimated glomerular filtration rate, serum creatinine",
+    "domain": "kidney",
+    "x_evidence_score": 99,
+    "coverage_grade": "B",
+    "n_loci": 21,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 16,
+    "eqtl_total_hit_count": 241,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "REPS2",
+      "CDKL5"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__3062__both_sexes__nan__irnt",
+    "query_id": "fvc",
+    "slug": "fvc",
+    "description": "Forced vital capacity (FVC)",
+    "domain": "respiratory",
+    "x_evidence_score": 97.95,
+    "coverage_grade": "B",
+    "n_loci": 19,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 18,
+    "eqtl_total_hit_count": 285,
+    "top_candidate_genes": [
+      "SYAP1",
+      "MAP7D2",
+      "CXorf21"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__48__both_sexes__nan__irnt",
+    "query_id": "waist",
+    "slug": "waist",
+    "description": "Waist circumference",
+    "domain": "anthropometrics",
+    "x_evidence_score": 94.01,
+    "coverage_grade": "B",
+    "n_loci": 14,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 9,
+    "eqtl_total_hit_count": 66,
+    "top_candidate_genes": [
+      "SMPX",
+      "RP11-40F8.2",
+      "ZFX"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__4080__both_sexes__nan__irnt",
+    "query_id": "sbp",
+    "slug": "sbp",
+    "description": "Systolic blood pressure, automated reading",
+    "domain": "cardiometabolic",
+    "x_evidence_score": 89,
+    "coverage_grade": "B",
+    "n_loci": 8,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 8,
+    "eqtl_total_hit_count": 137,
+    "top_candidate_genes": [
+      "DGKK",
+      "PAGE2",
+      "UBQLN2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__3063__both_sexes__nan__irnt",
+    "query_id": "fev1",
+    "slug": "fev1",
+    "description": "Forced expiratory volume in 1-second (FEV1)",
+    "domain": "respiratory",
+    "x_evidence_score": 88.94,
+    "coverage_grade": "B",
+    "n_loci": 14,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 10,
+    "eqtl_total_hit_count": 129,
+    "top_candidate_genes": [
+      "WWC3",
+      "RBBP7",
+      "SRPX"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__46__both_sexes__nan__irnt",
+    "query_id": "grip_strength",
+    "slug": "grip-strength",
+    "description": "Hand grip strength (left)",
+    "domain": "musculoskeletal",
+    "x_evidence_score": 86.61,
+    "coverage_grade": "B",
+    "n_loci": 10,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 3,
+    "eqtl_total_hit_count": 45,
+    "top_candidate_genes": [
+      "RP13-643D4.1",
+      "SLC16A2",
+      "RP1-279N11.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__4079__both_sexes__nan__irnt",
+    "query_id": "dbp",
+    "slug": "dbp",
+    "description": "Diastolic blood pressure, automated reading",
+    "domain": "cardiometabolic",
+    "x_evidence_score": 85.08,
+    "coverage_grade": "B",
+    "n_loci": 5,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 5,
+    "eqtl_total_hit_count": 108,
+    "top_candidate_genes": [
+      "PQBP1",
+      "RN7SKP194",
+      "RN7SL266P"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30880__both_sexes__nan__irnt",
+    "query_id": "urate",
+    "slug": "urate",
+    "description": "Urate",
+    "domain": "kidney",
+    "x_evidence_score": 85,
+    "coverage_grade": "U",
+    "n_loci": 20,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 16,
+    "eqtl_total_hit_count": 282,
+    "top_candidate_genes": [
+      "TMEM47",
+      "RP4-551E13.2",
+      "RBM10"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30850__both_sexes__nan__irnt",
+    "query_id": "testosterone",
+    "slug": "testosterone",
+    "description": "Testosterone",
+    "domain": "endocrine",
+    "x_evidence_score": 85,
+    "coverage_grade": "U",
+    "n_loci": 11,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 9,
+    "eqtl_total_hit_count": 138,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "SH3KBP1",
+      "RP11-622K12.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__3581__both_sexes__nan__irnt",
+    "query_id": "menopause",
+    "slug": "menopause",
+    "description": "Age at menopause (last menstrual period)",
+    "domain": "reproductive",
+    "x_evidence_score": 84.74,
+    "coverage_grade": "U",
+    "n_loci": 5,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 4,
+    "eqtl_total_hit_count": 54,
+    "top_candidate_genes": [
+      "MBTPS2",
+      "GK",
+      "RP5-1172N10.2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__1239__both_sexes__nan__nan",
+    "query_id": "current_smoking",
+    "slug": "current-smoking",
+    "description": "Current tobacco smoking",
+    "domain": "substance_use",
+    "x_evidence_score": 83.93,
+    "coverage_grade": "A",
+    "n_loci": 3,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 2,
+    "eqtl_total_hit_count": 26,
+    "top_candidate_genes": [
+      "GK",
+      "PJA1",
+      "TDGF1P3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "phecode__250.2__both_sexes__nan__nan",
+    "query_id": "t2d",
+    "slug": "t2d",
+    "description": "Type 2 diabetes",
+    "domain": "disease",
+    "x_evidence_score": 83.02,
+    "coverage_grade": "B",
+    "n_loci": 3,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 3,
+    "eqtl_total_hit_count": 77,
+    "top_candidate_genes": [
+      "TBL1X",
+      "IL13RA1",
+      "DUSP9"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30890__both_sexes__nan__irnt",
+    "query_id": "vitamin_d",
+    "slug": "vitamin-d",
+    "description": "Vitamin D",
+    "domain": "micronutrients",
+    "x_evidence_score": 81.39,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 8,
+    "top_candidate_genes": [
+      "TPMTP3",
+      "RP11-234P3.4",
+      "IPO7P1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30840__both_sexes__nan__irnt",
+    "query_id": "bilirubin_total",
+    "slug": "bilirubin-total",
+    "description": "Total bilirubin",
+    "domain": "liver",
+    "x_evidence_score": 81,
+    "coverage_grade": "U",
+    "n_loci": 10,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 6,
+    "eqtl_total_hit_count": 108,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "RPL6P30",
+      "RP6-218J18.2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "biomarkers__30650__both_sexes__nan__irnt",
+    "query_id": "ast",
+    "slug": "ast",
+    "description": "Aspartate aminotransferase",
+    "domain": "liver",
+    "x_evidence_score": 77.6,
+    "coverage_grade": "U",
+    "n_loci": 8,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 3,
+    "eqtl_total_hit_count": 37,
+    "top_candidate_genes": [
+      "CLCN4",
+      "RPS6KA3",
+      "RP6-60B16.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "continuous__2714__both_sexes__nan__nan",
+    "query_id": "menarche",
+    "slug": "menarche",
+    "description": "Age when periods started (menarche)",
+    "domain": "reproductive",
+    "x_evidence_score": 74.22,
+    "coverage_grade": "U",
+    "n_loci": 14,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 12,
+    "eqtl_total_hit_count": 117,
+    "top_candidate_genes": [
+      "RP11-66N5.2",
+      "NR0B1",
+      "DGKK"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+  },
+  {
+    "trait_id": "biomarkers__30740__both_sexes__nan__irnt",
+    "query_id": "glucose",
+    "slug": "glucose",
+    "description": "Glucose",
+    "domain": "glycemic",
+    "x_evidence_score": 70.06,
+    "coverage_grade": "U",
+    "n_loci": 5,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 4,
+    "eqtl_total_hit_count": 72,
+    "top_candidate_genes": [
+      "TBL1X",
+      "MAP3K15",
+      "MED28P4"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "phecode__411.4__both_sexes__nan__nan",
+    "query_id": "coronary_atherosclerosis",
+    "slug": "coronary-atherosclerosis",
+    "description": "Coronary atherosclerosis",
+    "domain": "disease",
+    "x_evidence_score": 62.63,
+    "coverage_grade": "B",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 2,
+    "eqtl_total_hit_count": 28,
+    "top_candidate_genes": [
+      "RP11-441A11.1",
+      "FHL1",
+      "CHRDL1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__20127__both_sexes__nan__irnt",
+    "query_id": "neuroticism",
+    "slug": "neuroticism",
+    "description": "Neuroticism score",
+    "domain": "behavioral",
+    "x_evidence_score": 59.26,
+    "coverage_grade": "U",
+    "n_loci": 4,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 4,
+    "eqtl_total_hit_count": 34,
+    "top_candidate_genes": [
+      "AC078988.1",
+      "AL645819.1",
+      "HS6ST2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__1200__both_sexes__nan__nan",
+    "query_id": "insomnia",
+    "slug": "insomnia",
+    "description": "Sleeplessness / insomnia",
+    "domain": "neuropsychiatric",
+    "x_evidence_score": 55.28,
+    "coverage_grade": "U",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 2,
+    "top_candidate_genes": [
+      "RNU6-330P",
+      "TERF1P4",
+      "KIAA2022"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "phecode__244__both_sexes__nan__nan",
+    "query_id": "hypothyroidism",
+    "slug": "hypothyroidism",
+    "description": "Hypothyroidism",
+    "domain": "disease",
+    "x_evidence_score": 52.99,
+    "coverage_grade": "U",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 10,
+    "top_candidate_genes": [
+      "RPL7P54",
+      "LPAR4",
+      "P2RY10"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__2050__both_sexes__nan__nan",
+    "query_id": "depression",
+    "slug": "depression",
+    "description": "Frequency of depressed mood in last 2 weeks",
+    "domain": "neuropsychiatric",
+    "x_evidence_score": 49.15,
+    "coverage_grade": "U",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 9,
+    "top_candidate_genes": [
+      "HS6ST2",
+      "HS6ST2-AS1",
+      "RAP2C-AS1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null
+  },
+  {
+    "trait_id": "continuous__20016__both_sexes__nan__irnt",
+    "query_id": "fluid_intelligence",
+    "slug": "fluid-intelligence",
+    "description": "Fluid intelligence score",
+    "domain": "cognitive",
+    "x_evidence_score": 48.12,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "CYCSP43",
+      "AL158069.1",
+      "FAM155B"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+  }
+]

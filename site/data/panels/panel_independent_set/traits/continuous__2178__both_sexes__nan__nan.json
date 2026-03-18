@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__2178__both_sexes__nan__nan",
+    "query_id": "overall_health_rating",
+    "slug": "overall-health-rating",
+    "description": "Overall health rating",
+    "domain": "general_health",
+    "x_evidence_score": 88.42,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 5,
+    "top_candidate_genes": [
+      "CNKSR2",
+      "RP3-339A18.3",
+      "RARRES2P3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "trait_type": "continuous",
+    "phenocode": "2178",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > General health",
+    "description_more": "ACE touchscreen question \"In general how would you rate your overall health?\"",
+    "coding_description": null,
+    "num_pops_pass_qc": 3,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 11,
+    "selection_score": 356.3234794554367,
+    "lead_neglog10_pvalue": 12.72,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 428891
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__2178__both_sexes__nan__nan:nonPAR:53363906-53778610",
+      "x_region": "nonPAR",
+      "locus_start": 53363906,
+      "locus_end": 53778610,
+      "lead_pos": 53478449,
+      "lead_rsid": "X:53478449_CT_C",
+      "lead_varid": "X:53478449_CT_C",
+      "lead_neglog10_pvalue": 12.72,
+      "top_gene_id": "ENSG00000235416",
+      "top_gene_name": "RP3-339A18.3",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000235416",
+          "gene_name": "RP3-339A18.3",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 4771,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000199422",
+          "gene_name": "VTRNA3-1P",
+          "gene_biotype": "misc_RNA",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 10701,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000072506",
+          "gene_name": "HSD17B10",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 17129,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000233250",
+          "gene_name": "RP3-339A18.6",
+          "gene_biotype": "antisense",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 18470,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000158423",
+          "gene_name": "RIBC1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 20390,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__2178__both_sexes__nan__nan:nonPAR:21380266-21569920",
+      "x_region": "nonPAR",
+      "locus_start": 21380266,
+      "locus_end": 21569920,
+      "lead_pos": 21380266,
+      "lead_rsid": "rs1378559",
+      "lead_varid": "X:21380266_T_C",
+      "lead_neglog10_pvalue": 8.824,
+      "top_gene_id": "ENSG00000149970",
+      "top_gene_name": "CNKSR2",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 5,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000149970",
+          "gene_name": "CNKSR2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 12270,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4324289858341217
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000231913",
+          "gene_name": "RARRES2P3",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 59674,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000230797",
+          "gene_name": "YY2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 493839,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3374080061912536
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000012174",
+          "gene_name": "MBTPS2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 477488,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4420050084590912
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000091482",
+          "gene_name": "SMPX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 343824,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6767989993095398
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000102172",
+          "gene_name": "SMS",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 578425,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.9120519757270812
+        }
+      ]
+    }
+  ]
+}

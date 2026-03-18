@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_expanded",
+    "slug": "broad-atlas",
+    "title": "Broad Atlas",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "phecode__244__both_sexes__nan__nan",
+    "query_id": "hypothyroidism",
+    "slug": "hypothyroidism",
+    "description": "Hypothyroidism",
+    "domain": "disease",
+    "x_evidence_score": 52.99,
+    "coverage_grade": "U",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 10,
+    "top_candidate_genes": [
+      "RPL7P54",
+      "LPAR4",
+      "P2RY10"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "phecode",
+    "phenocode": "244",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "endocrine/metabolic",
+    "description_more": null,
+    "coding_description": null,
+    "num_pops_pass_qc": 0,
+    "in_max_independent_set": false,
+    "tier": "C",
+    "selection_rank": 1,
+    "selection_score": 136,
+    "lead_neglog10_pvalue": 11.29,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": null
+  },
+  "loci": [
+    {
+      "locus_id": "phecode__244__both_sexes__nan__nan:nonPAR:77895043-78535904",
+      "x_region": "nonPAR",
+      "locus_start": 77895043,
+      "locus_end": 78535904,
+      "lead_pos": 78105415,
+      "lead_rsid": "rs761735919",
+      "lead_varid": "X:78105415_T_TTG",
+      "lead_neglog10_pvalue": 11.29,
+      "top_gene_id": "ENSG00000227645",
+      "top_gene_name": "RPL7P54",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000041",
+      "eqtl_lookup_n_hits": 10,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000227645",
+          "gene_name": "RPL7P54",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 86019,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000147145",
+          "gene_name": "LPAR4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 92824,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5621039867401123
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000078589",
+          "gene_name": "P2RY10",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 95414,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000271433",
+          "gene_name": "PPATP2",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 150027,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000179300",
+          "gene_name": "ZCCHC5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 190590,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000173198",
+          "gene_name": "CYSLTR1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 522367,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1390649974346161
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000187325",
+          "gene_name": "TAF9B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 710212,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1837889999151229
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000102144",
+          "gene_name": "PGK1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 720622,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2045390009880066
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000131174",
+          "gene_name": "COX7B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 942545,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2321580052375793
+        },
+        {
+          "candidate_rank": 10,
+          "gene_id": "ENSG00000102158",
+          "gene_name": "MAGT1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 954325,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2484080046415329
+        },
+        {
+          "candidate_rank": 11,
+          "gene_id": "ENSG00000226784",
+          "gene_name": "PGAM4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 880280,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3141599893569946
+        },
+        {
+          "candidate_rank": 12,
+          "gene_id": "ENSG00000078596",
+          "gene_name": "ITM2A",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 510466,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4548430144786834
+        },
+        {
+          "candidate_rank": 13,
+          "gene_id": "ENSG00000147138",
+          "gene_name": "GPR174",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 321054,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.9011499881744384
+        },
+        {
+          "candidate_rank": 14,
+          "gene_id": "ENSG00000165240",
+          "gene_name": "ATP7A",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 799523,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.9761840105056764
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+albumin,biochemistry,1,Albumin,biomarkers,both_sexes,High-yield core protein marker from the independent-set build
+alanine_aminotransferase,biochemistry,2,Alanine aminotransferase,biomarkers,both_sexes,High-yield liver-adjacent biochemistry marker
+alkaline_phosphatase,biochemistry,3,Alkaline phosphatase,biomarkers,both_sexes,Strong chrX biochemistry signal
+apolipoprotein_a,lipoproteins,4,Apolipoprotein A,biomarkers,both_sexes,Supported lipid transport marker
+apolipoprotein_b,lipoproteins,5,Apolipoprotein B,biomarkers,both_sexes,Supported atherogenic lipid marker
+c_reactive_protein,inflammation,6,C-reactive protein,biomarkers,both_sexes,Inflammation marker with broad support
+calcium,mineral,7,Calcium,biomarkers,both_sexes,Supported mineral marker
+cholesterol,lipoproteins,8,Cholesterol,biomarkers,both_sexes,General lipid anchor
+creatinine,kidney,9,Creatinine,biomarkers,both_sexes,Renal biochemistry anchor
+cystatin_c,kidney,10,Cystatin C,biomarkers,both_sexes,Creatinine-independent renal marker
+gamma_glutamyltransferase,liver,11,Gamma glutamyltransferase,biomarkers,both_sexes,Strong liver enzyme signal
+glycated_haemoglobin_hba1c,glycemic,12,Glycated haemoglobin (HbA1c),biomarkers,both_sexes,Glycemic axis anchor
+hdl_cholesterol,lipoproteins,13,HDL cholesterol,biomarkers,both_sexes,Supported protective lipid marker
+igf_1,endocrine,14,IGF-1,biomarkers,both_sexes,Strong endocrine growth-axis marker
+ldl_direct,lipoproteins,15,LDL direct,biomarkers,both_sexes,Supported LDL anchor
+phosphate,mineral,16,Phosphate,biomarkers,both_sexes,Smaller but clean supported mineral signal
+shbg,endocrine,17,SHBG,biomarkers,both_sexes,Supported endocrine transport marker
+total_protein,biochemistry,18,Total protein,biomarkers,both_sexes,Supported circulating protein marker
+triglycerides,lipoproteins,19,Triglycerides,biomarkers,both_sexes,Strong lipid metabolism signal
+urea,kidney,20,Urea,biomarkers,both_sexes,Strong renal/metabolic marker
+vitamin_d,micronutrients,21,Vitamin D,biomarkers,both_sexes,Supported micronutrient anchor

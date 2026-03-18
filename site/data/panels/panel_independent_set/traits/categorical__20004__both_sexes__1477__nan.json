@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__20004__both_sexes__1477__nan",
+    "query_id": "operation_code",
+    "slug": "operation-code",
+    "description": "Operation code",
+    "domain": "operations",
+    "x_evidence_score": 72.59,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 6,
+    "top_candidate_genes": [
+      "RAP2C",
+      "RAP2C-AS1",
+      "RP1-305B16.3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "categorical",
+    "phenocode": "20004",
+    "pheno_sex": "both_sexes",
+    "coding": 1477,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Verbal interview > Operations",
+    "description_more": "Code for operation. If the participant was uncertain of the type of operation they had undergone, then they described it to the interviewer (a trained nurse) who attempted to place it within the coding tree. If the operation could not be located in the coding tree then the interviewer entered a free-text description of it. These free-text descriptions were subsequently examined by a doctor and, where possible, matched to entries in the coding tree. Free-text descriptions which could not be matched with very high probability have been marked as \"unclassifiable\".",
+    "coding_description": "caesarean section / caesarian section",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 131,
+    "selection_score": 243.2701135975241,
+    "lead_neglog10_pvalue": 10.89,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 21232
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__20004__both_sexes__1477__nan:nonPAR:131230744-131576714",
+      "x_region": "nonPAR",
+      "locus_start": 131230744,
+      "locus_end": 131576714,
+      "lead_pos": 131331592,
+      "lead_rsid": "rs5933120",
+      "lead_varid": "X:131331592_A_G",
+      "lead_neglog10_pvalue": 10.89,
+      "top_gene_id": "ENSG00000123728",
+      "top_gene_name": "RAP2C",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 6,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000123728",
+          "gene_name": "RAP2C",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 5461,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0146500999107956
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000232160",
+          "gene_name": "RAP2C-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 19583,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0440022982656955
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000228819",
+          "gene_name": "RP1-305B16.3",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 66212,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000165694",
+          "gene_name": "FRMD7",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 69544,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0044302102178335
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000076770",
+          "gene_name": "MBNL3",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 171753,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2992750108242035
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000147255",
+          "gene_name": "IGSF1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 797915,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5396209955215454
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000134602",
+          "gene_name": "MST4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 121621,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6653980016708374
+        }
+      ]
+    }
+  ]
+}

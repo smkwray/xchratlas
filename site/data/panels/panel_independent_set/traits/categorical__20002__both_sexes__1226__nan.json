@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__20002__both_sexes__1226__nan",
+    "query_id": "non_cancer_illness_code_self_reported",
+    "slug": "non-cancer-illness-code-self-reported",
+    "description": "Non-cancer illness code, self-reported",
+    "domain": "medical_conditions",
+    "x_evidence_score": 78.06,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 6,
+    "top_candidate_genes": [
+      "RP11-159L8.2",
+      "GPR174",
+      "RP11-180D15.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "categorical",
+    "phenocode": "20002",
+    "pheno_sex": "both_sexes",
+    "coding": 1226,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Verbal interview > Medical conditions",
+    "description_more": "Code for non-cancer illness. If the participant was uncertain of the type of illness they had had, then they described it to the interviewer (a trained nurse) who attempted to place it within the coding tree. If the illness could not be located in the coding tree then the interviewer entered a free-text description of it. These free-text descriptions were subsequently examined by a doctor and, where possible, matched to entries in the coding tree. Free-text descriptions which could not be matched with very high probability have been marked as \"unclassifiable\".   Note that myasthenia gravis appears twice (under codes 1260 and 1437). Please ensure you use both codes to capture all relevant diagnoses.",
+    "coding_description": "hypothyroidism/myxoedema",
+    "num_pops_pass_qc": 3,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 38,
+    "selection_score": 343.2719540450323,
+    "lead_neglog10_pvalue": 16.36,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 21241
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__20002__both_sexes__1226__nan:nonPAR:77853538-78542793",
+      "x_region": "nonPAR",
+      "locus_start": 77853538,
+      "locus_end": 78542793,
+      "lead_pos": 78470617,
+      "lead_rsid": "rs5912245",
+      "lead_varid": "X:78470617_C_T",
+      "lead_neglog10_pvalue": 16.36,
+      "top_gene_id": "ENSG00000271005",
+      "top_gene_name": "RP11-159L8.2",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 6,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000271005",
+          "gene_name": "RP11-159L8.2",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 37452,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000147138",
+          "gene_name": "GPR174",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 42891,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2438780069351196
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000232168",
+          "gene_name": "RP11-180D15.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 129272,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000078589",
+          "gene_name": "P2RY10",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 253166,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5660250186920166
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000227645",
+          "gene_name": "RPL7P54",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 451221,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000147145",
+          "gene_name": "LPAR4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 458026,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0011738700559362
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000078596",
+          "gene_name": "ITM2A",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 145264,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0119067002087831
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000173198",
+          "gene_name": "CYSLTR1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 887569,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1836050003767013
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000179300",
+          "gene_name": "ZCCHC5",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 555792,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.904833972454071
+        }
+      ]
+    }
+  ]
+}

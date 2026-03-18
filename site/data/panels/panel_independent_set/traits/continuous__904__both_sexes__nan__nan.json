@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__904__both_sexes__nan__nan",
+    "query_id": "number_of_days_week_of_vigorous_physical_activity_10_minutes",
+    "slug": "number-of-days-week-of-vigorous-physical-activity-10-minutes",
+    "description": "Number of days/week of vigorous physical activity 10+ minutes",
+    "domain": "physical_activity",
+    "x_evidence_score": 79.95,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 2,
+    "top_candidate_genes": [
+      "RPP40P1",
+      "POLA1",
+      "PCYT1B"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "904",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Physical activity",
+    "description_more": "ACE touchscreen question \"In a typical WEEK, how many days did you do 10 minutes or more of vigorous physical activity? (These are activities that make you sweat or breathe hard such as fast cycling, aerobics, heavy lifting)\" The following checks were performed:  If answer   If answer > 7 then rejected   If the participant activated the Help button they were shown the message:     Count the number of days in a week that you do vigorous physical activities for at least 10 minutes continuously at a time. Remember to include activities that you do for work, leisure, travel and around the house.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 66,
+    "selection_score": 256.0393750793096,
+    "lead_neglog10_pvalue": 8.25,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 401732
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__904__both_sexes__nan__nan:nonPAR:25534609-25612210",
+      "x_region": "nonPAR",
+      "locus_start": 25534609,
+      "locus_end": 25612210,
+      "lead_pos": 25574818,
+      "lead_rsid": "rs5943779",
+      "lead_varid": "X:25574818_C_T",
+      "lead_neglog10_pvalue": 8.25,
+      "top_gene_id": "ENSG00000229310",
+      "top_gene_name": "RPP40P1",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 2,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000229310",
+          "gene_name": "RPP40P1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 34652,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000101868",
+          "gene_name": "POLA1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 559715,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4338870048522949
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000102230",
+          "gene_name": "PCYT1B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 884024,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4355230033397674
+        }
+      ]
+    }
+  ]
+}

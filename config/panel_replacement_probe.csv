@@ -1,0 +1,9 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+coronary_atherosclerosis,disease,1,Coronary atherosclerosis,phecode,both_sexes,Probe replacement for myocardial infarction
+rheumatoid_arthritis,disease,2,Rheumatoid arthritis,phecode,both_sexes,Probe inflammatory disease anchor
+psoriasis,disease,3,Psoriasis,phecode,both_sexes,Probe dermatologic disease anchor
+sleep_duration,sleep,1,Sleep duration,continuous,both_sexes,Probe behavioral replacement for pulse rate
+current_smoking,substance_use,2,Current tobacco smoking,continuous,both_sexes,Probe exposure trait replacement for pulse rate
+bilirubin_total,liver,1,Total bilirubin,biomarkers,both_sexes,Probe biomarker replacement with likely chrX loci
+copd,respiratory,1,Doctor diagnosed COPD (chronic obstructive pulmonary disease),categorical,both_sexes,Probe respiratory disease replacement for asthma
+wheeze,respiratory,2,Wheeze or whistling in the chest in last year,categorical,both_sexes,Probe symptom-level respiratory replacement for asthma

@@ -1,0 +1,11 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+reaction_time,cognitive,1,Mean time to correctly identify matches,continuous,both_sexes,Best-performing direct cognitive anchor
+fluid_intelligence,cognitive,2,fluid intelligence score,continuous,both_sexes,Keep one direct reasoning trait even though current support is weak
+neuroticism,behavioral,1,neuroticism score,continuous,both_sexes,Aggregate affect trait with usable chrX support
+risk_taking,behavioral,2,Risk taking,categorical,both_sexes,Risk preference proxy
+mood_swings,behavioral,3,Mood swings,categorical,both_sexes,Mood instability proxy
+irritability,behavioral,4,Irritability,categorical,both_sexes,Aggression-adjacent proxy with usable signal
+depressed_mood,mental_health,1,Frequency of depressed mood in last 2 weeks,continuous,both_sexes,Mood symptom with prior support
+insomnia,sleep,1,Sleeplessness / insomnia,continuous,both_sexes,Behaviorally relevant sleep-disruption trait
+current_smoking,substance_use,1,Current tobacco smoking,continuous,both_sexes,Robust behavior/exposure trait
+alcohol_frequency,substance_use,2,Alcohol intake frequency,continuous,both_sexes,Best-performing alcohol behavior trait

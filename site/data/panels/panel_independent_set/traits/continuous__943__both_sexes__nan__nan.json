@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__943__both_sexes__nan__nan",
+    "query_id": "frequency_of_stair_climbing_in_last_4_weeks",
+    "slug": "frequency-of-stair-climbing-in-last-4-weeks",
+    "description": "Frequency of stair climbing in last 4 weeks",
+    "domain": "physical_activity",
+    "x_evidence_score": 83.65,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 2,
+    "top_candidate_genes": [
+      "SMPX",
+      "AC078988.1",
+      "DCAF8L1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "943",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Physical activity",
+    "description_more": "ACE touchscreen question \"At home, during the last 4 weeks, about how many times a DAY do you climb a flight of stairs? (approx 10 steps)\" If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.      ~F943~ was collected from all participants except those who indicated they were unable to walk, as defined by their answers to ~F864~",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 45,
+    "selection_score": 256.28292863705406,
+    "lead_neglog10_pvalue": 7.956,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 424905
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__943__both_sexes__nan__nan:nonPAR:28113558-28243405",
+      "x_region": "nonPAR",
+      "locus_start": 28113558,
+      "locus_end": 28243405,
+      "lead_pos": 28203374,
+      "lead_rsid": "rs771348235",
+      "lead_varid": "X:28203374_A_ATT",
+      "lead_neglog10_pvalue": 7.956,
+      "top_gene_id": "ENSG00000263509",
+      "top_gene_name": "AC078988.1",
+      "best_mapping_relation": "nearest_gene",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000559",
+      "eqtl_lookup_n_hits": 2,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000263509",
+          "gene_name": "AC078988.1",
+          "gene_biotype": "miRNA",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 191706,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000226372",
+          "gene_name": "DCAF8L1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 203808,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000224589",
+          "gene_name": "RP11-12D5.6",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 291198,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000233243",
+          "gene_name": "RP11-12D5.5",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 320908,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000228345",
+          "gene_name": "RP11-12D5.4",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearest_gene",
+          "distance_to_lead_bp": 329904,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000237994",
+          "gene_name": "RP1-146A15.1",
+          "gene_biotype": "sense_intronic",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 756793,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0132644996047019
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000169306",
+          "gene_name": "IL1RAPL1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 402142,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8851249814033508
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__943__both_sexes__nan__nan:nonPAR:21749680-21749680",
+      "x_region": "nonPAR",
+      "locus_start": 21749680,
+      "locus_end": 21749680,
+      "lead_pos": 21749680,
+      "lead_rsid": "rs748482098",
+      "lead_varid": "X:21749680_TTATGTGTA_T",
+      "lead_neglog10_pvalue": 7.495,
+      "top_gene_id": "ENSG00000091482",
+      "top_gene_name": "SMPX",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000091482",
+          "gene_name": "SMPX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

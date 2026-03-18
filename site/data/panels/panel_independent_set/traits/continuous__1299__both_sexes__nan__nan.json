@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__1299__both_sexes__nan__nan",
+    "query_id": "salad_raw_vegetable_intake",
+    "slug": "salad-raw-vegetable-intake",
+    "description": "Salad / raw vegetable intake",
+    "domain": "diet",
+    "x_evidence_score": 64.03,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "DACH2"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "1299",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
+    "description_more": "ACE touchscreen question \"On average how many heaped tablespoons of SALAD or RAW vegetables would you eat per DAY? (Include lettuce, tomato in sandwiches; put '0' if you do not eat any)\" The following checks were performed:  If answer > 50 then rejected   If the participant activated the Help button they were shown the message:     Please provide an average considering your intake over the last year. If you are unsure, please provide an estimate or select Do not know. If you have less than one tablespoon a day select Less than one.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 3,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 27,
+    "selection_score": 356.07302725362297,
+    "lead_neglog10_pvalue": 7.329,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 404857
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1299__both_sexes__nan__nan:nonPAR:85759138-85759138",
+      "x_region": "nonPAR",
+      "locus_start": 85759138,
+      "locus_end": 85759138,
+      "lead_pos": 85759138,
+      "lead_rsid": "rs756489029",
+      "lead_varid": "X:85759138_A_C",
+      "lead_neglog10_pvalue": 7.329,
+      "top_gene_id": "ENSG00000126733",
+      "top_gene_name": "DACH2",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000126733",
+          "gene_name": "DACH2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

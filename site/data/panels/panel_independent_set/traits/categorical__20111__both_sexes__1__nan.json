@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__20111__both_sexes__1__nan",
+    "query_id": "illnesses_of_siblings",
+    "slug": "illnesses-of-siblings",
+    "description": "Illnesses of siblings",
+    "domain": "family_history",
+    "x_evidence_score": 50.79,
+    "coverage_grade": "B",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "CTD-2194M22.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "categorical",
+    "phenocode": "20111",
+    "pheno_sex": "both_sexes",
+    "coding": 1,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Family history",
+    "description_more": "This field contains the combined results of 2 ACE touchscreen questions, both asked \"Have any of your brothers or sisters suffered from any of the following diseases? (You can select more than one answer)\" for different sets of illnesses. For convenience, the illnesses were arbitrarily divided into two sets:      Group 1 : Heart disease, Stroke, High blood pressure, Chronic bronchitis/emphysema, Alzheimer's disease/dementia, Diabetes.   Group 2 : Parkinson's disease, Severe Depression, Lung cancer, Bowel cancer, Prostate cancer, Breast cancer.     If any of codes -11, -13 or -17 were selected then no additional Group 1 choices were allowed. If any of codes -21, -23 or -27 were selected then no additional Group 2 choices were allowed.  If the participant activated the Help button they were shown the message:     Answer this question for blood relations only. Include any sisters or brothers who have died. If you are not sure if your sisters or brothers suffered from any of the listed illnesses please select Do not know. If more than one sister or brother has suffered from any of the listed illnesses, you only need to select the illness once.     The information was collected from participants who indicated they were not adopted as a child, as defined by their answers to ~F1767~ and that they had at least one natural brother or sister, as defined by their answers to ~F1873~ and ~F1883~.",
+    "coding_description": "Heart disease",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "C",
+    "selection_rank": 124,
+    "selection_score": 245.39928787891824,
+    "lead_neglog10_pvalue": 8.095,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 34667
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__20111__both_sexes__1__nan:nonPAR:87629165-87638502",
+      "x_region": "nonPAR",
+      "locus_start": 87629165,
+      "locus_end": 87638502,
+      "lead_pos": 87629630,
+      "lead_rsid": "rs138577896",
+      "lead_varid": "X:87629630_G_A",
+      "lead_neglog10_pvalue": 8.095,
+      "top_gene_id": "ENSG00000271693",
+      "top_gene_name": "CTD-2194M22.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000271693",
+          "gene_name": "CTD-2194M22.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 5170,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

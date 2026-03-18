@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__20116__both_sexes__1__nan",
+    "query_id": "smoking_status",
+    "slug": "smoking-status",
+    "description": "Smoking status",
+    "domain": "smoking",
+    "x_evidence_score": 83.76,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 2,
+    "eqtl_total_hit_count": 13,
+    "top_candidate_genes": [
+      "PJA1",
+      "DIAPH2-AS1",
+      "FAM155B"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "categorical",
+    "phenocode": "20116",
+    "pheno_sex": "both_sexes",
+    "coding": 1,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Smoking",
+    "description_more": "This field summarises the current/past smoking status of the participant.",
+    "coding_description": "Previous",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 99,
+    "selection_score": 251.74969331382533,
+    "lead_neglog10_pvalue": 8.066,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 149612
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__20116__both_sexes__1__nan:nonPAR:96774356-96786202",
+      "x_region": "nonPAR",
+      "locus_start": 96774356,
+      "locus_end": 96786202,
+      "lead_pos": 96774356,
+      "lead_rsid": "rs5967322",
+      "lead_varid": "X:96774356_T_A",
+      "lead_neglog10_pvalue": 8.066,
+      "top_gene_id": "ENSG00000236256",
+      "top_gene_name": "DIAPH2-AS1",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 3,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000236256",
+          "gene_name": "DIAPH2-AS1",
+          "gene_biotype": "antisense",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.3864929974079132
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000147202",
+          "gene_name": "DIAPH2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2179619967937469
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000204086",
+          "gene_name": "RPA4",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 633910,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.7828490138053894
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__20116__both_sexes__1__nan:nonPAR:68381264-68382836",
+      "x_region": "nonPAR",
+      "locus_start": 68381264,
+      "locus_end": 68382836,
+      "lead_pos": 68381264,
+      "lead_rsid": "rs11539157",
+      "lead_varid": "rs11539157",
+      "lead_neglog10_pvalue": 7.403,
+      "top_gene_id": "ENSG00000181191",
+      "top_gene_name": "PJA1",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": true,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 10,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000181191",
+          "gene_name": "PJA1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.034748300909996
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000130054",
+          "gene_name": "FAM155B",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 343820,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0575428009033203
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000090776",
+          "gene_name": "EFNB1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 319274,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.1987639963626861
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000089289",
+          "gene_name": "IGBP1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 972035,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.2957890033721924
+        },
+        {
+          "candidate_rank": 5,
+          "gene_id": "ENSG00000158813",
+          "gene_name": "EDA",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 454647,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.4424520134925842
+        },
+        {
+          "candidate_rank": 6,
+          "gene_id": "ENSG00000220925",
+          "gene_name": "IGBP1-AS2",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 987168,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5357440114021301
+        },
+        {
+          "candidate_rank": 7,
+          "gene_id": "ENSG00000130052",
+          "gene_name": "STARD8",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 435580,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.5633829832077026
+        },
+        {
+          "candidate_rank": 8,
+          "gene_id": "ENSG00000079482",
+          "gene_name": "OPHN1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 727509,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.784138023853302
+        },
+        {
+          "candidate_rank": 9,
+          "gene_id": "ENSG00000181704",
+          "gene_name": "YIPF6",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 624137,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8388500213623047
+        }
+      ]
+    }
+  ]
+}

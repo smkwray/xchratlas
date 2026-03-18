@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_mind_risk_core",
+    "slug": "mind-and-risk",
+    "title": "Mind And Risk",
+    "featured": true
+  },
+  "trait": {
+    "trait_id": "categorical__1940__both_sexes__1940__nan",
+    "query_id": "irritability",
+    "slug": "irritability",
+    "description": "Irritability",
+    "domain": "behavioral",
+    "x_evidence_score": 72.38,
+    "coverage_grade": "B",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 3,
+    "top_candidate_genes": [
+      "EDA",
+      "AL645819.1",
+      "TENM1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "trait_type": "categorical",
+    "phenocode": 1940,
+    "pheno_sex": "both_sexes",
+    "coding": 1940,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Mental health",
+    "description_more": "ACE touchscreen question \"Are you an irritable person?\" If the participant activated the Help button they were shown the message:     Work through these questions quickly and do not think about the exact meaning of the question     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": false,
+    "tier": "B",
+    "selection_rank": 1,
+    "selection_score": 153,
+    "lead_neglog10_pvalue": 8.685,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 114612
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__1940__both_sexes__1940__nan:nonPAR:124700568-124898447",
+      "x_region": "nonPAR",
+      "locus_start": 124700568,
+      "locus_end": 124898447,
+      "lead_pos": 124715629,
+      "lead_rsid": "rs4830065",
+      "lead_varid": "X:124715629_G_A",
+      "lead_neglog10_pvalue": 8.685,
+      "top_gene_id": "ENSG00000222518",
+      "top_gene_name": "AL645819.1",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_n_hits": 3,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000222518",
+          "gene_name": "AL645819.1",
+          "gene_biotype": "miRNA",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 81270,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000009694",
+          "gene_name": "TENM1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 617963,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.6730809807777405
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000198354",
+          "gene_name": "DCAF12L2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 582708,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.758292019367218
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000198889",
+          "gene_name": "DCAF12L1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 967740,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.8025360107421875
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__1940__both_sexes__1940__nan:nonPAR:69141751-69155614",
+      "x_region": "nonPAR",
+      "locus_start": 69141751,
+      "locus_end": 69155614,
+      "lead_pos": 69149556,
+      "lead_rsid": "rs373930590",
+      "lead_varid": "X:69149556_TTG_T",
+      "lead_neglog10_pvalue": 8.599,
+      "top_gene_id": "ENSG00000158813",
+      "top_gene_name": "EDA",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000158813",
+          "gene_name": "EDA",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

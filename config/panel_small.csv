@@ -1,0 +1,28 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+bmi,anthropometrics,1,body mass index,continuous,both_sexes,Core anthropometric trait
+height,anthropometrics,1,standing height,continuous,both_sexes,Core anthropometric trait
+waist,anthropometrics,2,waist circumference,continuous,both_sexes,Adiposity distribution
+hip,anthropometrics,3,hip circumference,continuous,both_sexes,Adiposity distribution
+sbp,cardiometabolic,1,systolic blood pressure,continuous,both_sexes,Cardiovascular trait
+dbp,cardiometabolic,2,diastolic blood pressure,continuous,both_sexes,Cardiovascular trait
+ldl,lipids,1,LDL direct,biomarkers,both_sexes,Lipid trait
+hdl,lipids,2,HDL cholesterol,biomarkers,both_sexes,Lipid trait
+tg,lipids,3,triglycerides,biomarkers,both_sexes,Lipid trait
+hba1c,glycemic,1,glycated haemoglobin,biomarkers,both_sexes,Glycemic trait
+glucose,glycemic,2,glucose,biomarkers,both_sexes,Glycemic trait
+t2d,disease,1,type 2 diabetes,phecode,both_sexes,Common disease anchor
+hb,hematology,1,Haemoglobin concentration,continuous,both_sexes,Hematologic trait
+rbc,hematology,2,red blood cell (erythrocyte) count,continuous,both_sexes,Hematologic trait
+plt,hematology,3,platelet count,biomarkers,both_sexes,Hematologic trait
+alt,liver,1,alanine aminotransferase,biomarkers,both_sexes,Liver biomarker
+alp,liver,2,alkaline phosphatase,biomarkers,both_sexes,Liver biomarker
+creatinine,kidney,1,creatinine,biomarkers,both_sexes,Kidney biomarker
+urate,kidney,2,urate,biomarkers,both_sexes,Metabolic / renal
+testosterone,endocrine,1,testosterone,biomarkers,both_sexes,Endocrine trait
+shbg,endocrine,2,sex hormone binding globulin,biomarkers,both_sexes,Endocrine trait
+insomnia,neuropsychiatric,1,Sleeplessness / insomnia,continuous,both_sexes,Neuropsychiatric proxy
+depression,neuropsychiatric,2,Frequency of depressed mood in last 2 weeks,continuous,both_sexes,Neuropsychiatric proxy
+neuroticism,behavioral,3,neuroticism score,continuous,both_sexes,Behavioral trait
+fluid_intelligence,cognitive,3,fluid intelligence score,continuous,both_sexes,Cognitive trait
+menarche,reproductive,4,Age when periods started (menarche),continuous,both_sexes,Sex-specific trait
+menopause,reproductive,5,age at menopause,continuous,females,Sex-specific trait

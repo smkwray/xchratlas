@@ -1,0 +1,18 @@
+query_id,domain,priority,query,preferred_trait_type,preferred_pheno_sex,notes
+fluid_intelligence,cognitive,1,fluid intelligence score,continuous,both_sexes,Core reasoning trait
+reaction_time,cognitive,1,Mean time to correctly identify matches,continuous,both_sexes,Processing speed trait
+prospective_memory,cognitive,2,Prospective memory result,continuous,both_sexes,Memory task summary
+numeric_memory,cognitive,2,Maximum digits remembered correctly,continuous,both_sexes,Numeric memory task
+neuroticism,behavioral,1,neuroticism score,continuous,both_sexes,Aggregate affect trait
+risk_taking,behavioral,2,Risk taking,categorical,both_sexes,Risk preference proxy
+mood_swings,behavioral,3,Mood swings,categorical,both_sexes,Mood instability proxy
+irritability,behavioral,4,Irritability,categorical,both_sexes,Aggression-adjacent proxy
+depressed_mood,mental_health,1,Frequency of depressed mood in last 2 weeks,continuous,both_sexes,Mood symptom
+trouble_relaxing,mental_health,2,Recent trouble relaxing,continuous,both_sexes,Anxiety symptom
+worry_cannot_stop,mental_health,3,Frequency of inability to stop worrying during worst period of anxiety,continuous,both_sexes,Worry severity
+anxious_month,mental_health,4,"Ever felt worried, tense, or anxious for most of a month or longer",categorical,both_sexes,Anxiety propensity
+insomnia,sleep,1,Sleeplessness / insomnia,continuous,both_sexes,Sleep disruption trait
+sleep_duration,sleep,2,Sleep duration,continuous,both_sexes,Core sleep trait
+current_smoking,substance_use,1,Current tobacco smoking,continuous,both_sexes,Behavioral exposure
+alcohol_frequency,substance_use,2,Alcohol intake frequency,continuous,both_sexes,Alcohol behavior
+heavy_drinking,substance_use,3,Frequency of consuming six or more units of alcohol,continuous,both_sexes,Binge-drinking proxy

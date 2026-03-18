@@ -1,0 +1,4 @@
+region,start,end,notes
+PAR1,60001,2699520,GRCh37 chrX pseudoautosomal region 1
+nonPAR,2699521,154931043,GRCh37 chrX non-pseudoautosomal region
+PAR2,154931044,155260560,GRCh37 chrX pseudoautosomal region 2

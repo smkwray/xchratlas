@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__1498__both_sexes__nan__nan",
+    "query_id": "coffee_intake",
+    "slug": "coffee-intake",
+    "description": "Coffee intake",
+    "domain": "diet",
+    "x_evidence_score": 60.1,
+    "coverage_grade": "A",
+    "n_loci": 1,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "CHRDL1",
+      "RP11-441A11.1"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+    "eqtl_lookup_note": null,
+    "trait_type": "continuous",
+    "phenocode": "1498",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
+    "description_more": "ACE touchscreen question \"How many cups of coffee do you drink each DAY? (Include decaffeinated coffee)\" The following checks were performed:  If answer   If answer > 99 then rejected  If answer > 10 then participant asked to confirm   If the participant activated the Help button they were shown the message:     Please provide an average considering your intake over the last year. If you are unsure, please provide an estimate or select Do not know.     ",
+    "coding_description": null,
+    "num_pops_pass_qc": 3,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 28,
+    "selection_score": 356.0176565709949,
+    "lead_neglog10_pvalue": 7.398,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 399728
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__1498__both_sexes__nan__nan:nonPAR:109914266-109914266",
+      "x_region": "nonPAR",
+      "locus_start": 109914266,
+      "locus_end": 109914266,
+      "lead_pos": 109914266,
+      "lead_rsid": "X:109914266_CT_C",
+      "lead_varid": "X:109914266_CT_C",
+      "lead_neglog10_pvalue": 7.398,
+      "top_gene_id": "ENSG00000101938",
+      "top_gene_name": "CHRDL1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000101938",
+          "gene_name": "CHRDL1",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 2818,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000228042",
+          "gene_name": "RP11-441A11.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 33366,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

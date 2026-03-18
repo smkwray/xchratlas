@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "continuous__20409__both_sexes__nan__nan",
+    "query_id": "frequency_of_feeling_guilt_or_remorse_after_drinking_alcohol_in_",
+    "slug": "frequency-of-feeling-guilt-or-remorse-after-drinking-alcohol-in",
+    "description": "Frequency of feeling guilt or remorse after drinking alcohol in last year",
+    "domain": "alcohol_use",
+    "x_evidence_score": 65.33,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 0,
+    "top_candidate_genes": [
+      "RP11-524P6.1",
+      "MCF2",
+      "ATP5G2P4"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+    "trait_type": "continuous",
+    "phenocode": "20409",
+    "pheno_sex": "both_sexes",
+    "coding": null,
+    "modifier": null,
+    "category": "Online follow-up > Mental health > Alcohol use",
+    "description_more": "Question asked: \"How often during the last year have you had a feeling of guilt or remorse after drinking?\"  Question was asked when the sum of the answer to ~F20403~ plus the answer to ~F20416~ was 3 or above. Participants responding \"prefer not to answer\" to one of these trigger questions were scored as 1 for that question.",
+    "coding_description": null,
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "B",
+    "selection_rank": 117,
+    "selection_score": 248.77244610156745,
+    "lead_neglog10_pvalue": 8.628,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 75377
+  },
+  "loci": [
+    {
+      "locus_id": "continuous__20409__both_sexes__nan__nan:nonPAR:138761655-138761655",
+      "x_region": "nonPAR",
+      "locus_start": 138761655,
+      "locus_end": 138761655,
+      "lead_pos": 138761655,
+      "lead_rsid": "rs766781799",
+      "lead_varid": "X:138761655_C_T",
+      "lead_neglog10_pvalue": 8.628,
+      "top_gene_id": "ENSG00000101977",
+      "top_gene_name": "MCF2",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000101977",
+          "gene_name": "MCF2",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "continuous__20409__both_sexes__nan__nan:nonPAR:41915840-41915840",
+      "x_region": "nonPAR",
+      "locus_start": 41915840,
+      "locus_end": 41915840,
+      "lead_pos": 41915840,
+      "lead_rsid": "X:41915840_C_T",
+      "lead_varid": "X:41915840_C_T",
+      "lead_neglog10_pvalue": 7.918,
+      "top_gene_id": "ENSG00000233103",
+      "top_gene_name": "RP11-524P6.1",
+      "best_mapping_relation": "nearby_window",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "no_hits",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000233103",
+          "gene_name": "RP11-524P6.1",
+          "gene_biotype": "lincRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 1751,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000228847",
+          "gene_name": "ATP5G2P4",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 42167,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000212560",
+          "gene_name": "RNU6-630P",
+          "gene_biotype": "snRNA",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 82838,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 4,
+          "gene_id": "ENSG00000228780",
+          "gene_name": "RP1-50A13.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "nearby_window",
+          "distance_to_lead_bp": 93924,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    }
+  ]
+}

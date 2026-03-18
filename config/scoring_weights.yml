@@ -1,0 +1,22 @@
+coverage:
+  independent_set: 12
+  multi_pop_qc: 8
+  large_hq_cohort: 10
+signal:
+  any_locus: 12
+  per_extra_locus: 4
+  loci_cap: 16
+  lead_signal_cap: 20
+mapping:
+  nearest_gene: 8
+  overlapping_gene: 12
+  eqtl_support: 15
+region:
+  nonpar_bonus: 10
+  par_only_bonus: 3
+penalties:
+  no_locus: -10
+tiers:
+  A: 75
+  B: 55
+  C: 35

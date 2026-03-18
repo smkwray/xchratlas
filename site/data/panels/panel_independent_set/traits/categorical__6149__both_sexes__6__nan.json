@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T22:04:45Z",
+  "panel": {
+    "panel_id": "panel_independent_set",
+    "slug": "discovery-pool",
+    "title": "Discovery Pool",
+    "featured": false
+  },
+  "trait": {
+    "trait_id": "categorical__6149__both_sexes__6__nan",
+    "query_id": "mouth_teeth_dental_problems",
+    "slug": "mouth-teeth-dental-problems",
+    "description": "Mouth/teeth dental problems",
+    "domain": "mouth",
+    "x_evidence_score": 85.27,
+    "coverage_grade": "A",
+    "n_loci": 2,
+    "eqtl_supported": true,
+    "eqtl_supported_locus_count": 1,
+    "eqtl_total_hit_count": 3,
+    "top_candidate_genes": [
+      "DMD",
+      "HDX",
+      "DMD-AS3"
+    ],
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "trait_type": "categorical",
+    "phenocode": "6149",
+    "pheno_sex": "both_sexes",
+    "coding": 6,
+    "modifier": null,
+    "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Mouth",
+    "description_more": "ACE touchscreen question \"Do you have any of the following? (You can select more than one answer)\" The following checks were performed:  If code -7 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.   If the participant activated the Help button they were shown the message:     Answer this question thinking about the past year.     ",
+    "coding_description": "Dentures",
+    "num_pops_pass_qc": 2,
+    "in_max_independent_set": true,
+    "tier": "A",
+    "selection_rank": 119,
+    "selection_score": 248.5947455009015,
+    "lead_neglog10_pvalue": 9.574,
+    "any_nonpar_locus": true,
+    "par_only_signal": false,
+    "n_cases_hq_cohort_both_sexes": 72355
+  },
+  "loci": [
+    {
+      "locus_id": "categorical__6149__both_sexes__6__nan:nonPAR:83500786-83914418",
+      "x_region": "nonPAR",
+      "locus_start": 83500786,
+      "locus_end": 83914418,
+      "lead_pos": 83507012,
+      "lead_rsid": "X:83507012_CAT_C",
+      "lead_varid": "X:83507012_CAT_C",
+      "lead_neglog10_pvalue": 9.574,
+      "top_gene_id": "ENSG00000165259",
+      "top_gene_name": "HDX",
+      "best_mapping_relation": "locus_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "skipped_no_rsid",
+      "eqtl_lookup_mode": "variant_recoder_rsid_api",
+      "eqtl_lookup_n_hits": 0,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000165259",
+          "gene_name": "HDX",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 65870,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000233484",
+          "gene_name": "RP11-74B21.1",
+          "gene_biotype": "pseudogene",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 151894,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 3,
+          "gene_id": "ENSG00000259640",
+          "gene_name": "RP6-33F8.1",
+          "gene_biotype": "sense_overlapping",
+          "mapping_relation": "locus_overlap",
+          "distance_to_lead_bp": 248021,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        }
+      ]
+    },
+    {
+      "locus_id": "categorical__6149__both_sexes__6__nan:nonPAR:32274276-32274276",
+      "x_region": "nonPAR",
+      "locus_start": 32274276,
+      "locus_end": 32274276,
+      "lead_pos": 32274276,
+      "lead_rsid": "rs5927065",
+      "lead_varid": "X:32274276_T_C",
+      "lead_neglog10_pvalue": 7.437,
+      "top_gene_id": "ENSG00000198947",
+      "top_gene_name": "DMD",
+      "best_mapping_relation": "lead_overlap",
+      "eqtl_supported": false,
+      "eqtl_lookup_status": "complete",
+      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000041",
+      "eqtl_lookup_n_hits": 3,
+      "candidate_genes": [
+        {
+          "candidate_rank": 1,
+          "gene_id": "ENSG00000198947",
+          "gene_name": "DMD",
+          "gene_biotype": "protein_coding",
+          "mapping_relation": "lead_overlap",
+          "distance_to_lead_bp": 0,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "best_eqtl_pvalue": null
+        },
+        {
+          "candidate_rank": 2,
+          "gene_id": "ENSG00000236828",
+          "gene_name": "DMD-AS3",
+          "gene_biotype": "antisense",
+          "mapping_relation": "eqtl_hit_gene",
+          "distance_to_lead_bp": 498781,
+          "eqtl_supported": true,
+          "eqtl_study_count": 1,
+          "best_eqtl_pvalue": 0.0738016963005065
+        }
+      ]
+    }
+  ]
+}
