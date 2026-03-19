@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -16,6 +16,9 @@
     "x_evidence_score": 64.41,
     "coverage_grade": "A",
     "n_loci": 1,
+    "eqtl_lookup_hit": false,
+    "eqtl_lookup_hit_locus_count": 0,
+    "eqtl_lookup_hit_count": 0,
     "eqtl_supported": false,
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 0,
@@ -55,7 +58,10 @@
       "top_gene_id": "ENSG00000130827",
       "top_gene_name": "PLXNA3",
       "best_mapping_relation": "locus_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "skipped_no_rsid",
       "eqtl_lookup_mode": "variant_recoder_rsid_api",
       "eqtl_lookup_n_hits": 0,
@@ -67,8 +73,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 2227,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]

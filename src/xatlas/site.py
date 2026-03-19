@@ -247,6 +247,7 @@ def load_panel_release(spec: PanelSpec) -> dict[str, object]:
     gene_candidates = pd.read_csv(spec.release_dir / "x_gene_candidates.tsv", sep="\t")
 
     trait_scores = trait_scores.copy()
+    trait_scores["eqtl_lookup_hit_bool"] = trait_scores.get("eqtl_lookup_hit", False).map(_truthy)
     trait_scores["eqtl_supported_bool"] = trait_scores["eqtl_supported"].map(_truthy)
     trait_scores["n_loci"] = pd.to_numeric(trait_scores.get("n_loci"), errors="coerce").fillna(0).astype(int)
     trait_scores["eqtl_total_hit_count"] = pd.to_numeric(trait_scores.get("eqtl_total_hit_count"), errors="coerce").fillna(0).astype(int)
@@ -254,12 +255,13 @@ def load_panel_release(spec: PanelSpec) -> dict[str, object]:
 
     top_traits = (
         trait_scores[
-            ["query_id", "description", "domain", "n_loci", "eqtl_supported_bool", "eqtl_total_hit_count", "x_evidence_score"]
+            ["query_id", "description", "domain", "n_loci", "eqtl_lookup_hit_bool", "eqtl_supported_bool", "eqtl_total_hit_count", "x_evidence_score"]
         ]
         .sort_values(["x_evidence_score", "n_loci", "eqtl_total_hit_count"], ascending=[False, False, False])
         .head(20)
         .copy()
     )
+    top_traits["eqtl_lookup_hit_bool"] = top_traits["eqtl_lookup_hit_bool"].map(lambda value: "yes" if value else "no")
     top_traits["eqtl_supported_bool"] = top_traits["eqtl_supported_bool"].map(lambda value: "yes" if value else "no")
     top_traits["x_evidence_score"] = top_traits["x_evidence_score"].map(lambda value: f"{value:.2f}")
 
@@ -275,6 +277,7 @@ def load_panel_release(spec: PanelSpec) -> dict[str, object]:
         trait_scores.groupby("domain", dropna=False)
         .agg(
             n_traits=("query_id", "count"),
+            lookup_hit_traits=("eqtl_lookup_hit_bool", "sum"),
             supported_traits=("eqtl_supported_bool", "sum"),
             total_loci=("n_loci", "sum"),
         )
@@ -291,6 +294,7 @@ def load_panel_release(spec: PanelSpec) -> dict[str, object]:
         "domains": domains,
         "metrics": {
             "n_traits": len(trait_scores),
+            "n_lookup_hit_traits": int(trait_scores["eqtl_lookup_hit_bool"].sum()),
             "n_supported_traits": int(trait_scores["eqtl_supported_bool"].sum()),
             "n_zero_loci_traits": int((trait_scores["n_loci"] == 0).sum()),
             "n_loci": len(loci),
@@ -312,6 +316,8 @@ def _panel_summary_cards(panels: list[dict[str, object]], site_outdir: Path) -> 
                     '<div class="card">',
                     f"<h3>{escape(spec.title)}</h3>",
                     f"<p class=\"muted\">{escape(spec.blurb)}</p>",
+                    f"<div class=\"metric\">{_fmt_int(metrics['n_lookup_hit_traits'])}/{_fmt_int(metrics['n_traits'])}</div>",
+                    '<div class="metric-label">eQTL lookup-hit traits</div>',
                     f"<div class=\"metric\">{_fmt_int(metrics['n_supported_traits'])}/{_fmt_int(metrics['n_traits'])}</div>",
                     '<div class="metric-label">eQTL-supported traits</div>',
                     '<div class="grid">',
@@ -339,12 +345,13 @@ def _panel_comparison_table(panels: list[dict[str, object]]) -> str:
                 "panel": spec.title,
                 "focus": spec.blurb,
                 "traits": _fmt_int(metrics["n_traits"]),
+                "lookup_hit": f'{_fmt_int(metrics["n_lookup_hit_traits"])}/{_fmt_int(metrics["n_traits"])}',
                 "supported": f'{_fmt_int(metrics["n_supported_traits"])}/{_fmt_int(metrics["n_traits"])}',
                 "loci": _fmt_int(metrics["n_loci"]),
                 "zero_loci": _fmt_int(metrics["n_zero_loci_traits"]),
             }
         )
-    return _render_table(pd.DataFrame(rows), [("panel", "Panel"), ("focus", "Focus"), ("traits", "Traits"), ("supported", "eQTL-supported"), ("loci", "Loci"), ("zero_loci", "Zero-locus")])
+    return _render_table(pd.DataFrame(rows), [("panel", "Panel"), ("focus", "Focus"), ("traits", "Traits"), ("lookup_hit", "eQTL lookup-hit"), ("supported", "eQTL-supported"), ("loci", "Loci"), ("zero_loci", "Zero-locus")])
 
 
 def _render_discovery_block(panels: list[dict[str, object]]) -> str:
@@ -362,7 +369,7 @@ def _render_discovery_block(panels: list[dict[str, object]]) -> str:
                     '<div class="card">',
                     f"<h3>{escape(spec.title)}</h3>",
                     f"<p class=\"muted\">{escape(spec.blurb)}</p>",
-                    f"<p><span class=\"warn\">{_fmt_int(metrics['n_zero_loci_traits'])}</span> zero-locus traits and <span class=\"warn\">{_fmt_int(metrics['n_traits'] - metrics['n_supported_traits'])}</span> traits without eQTL support. Use this page as a scouting surface, not as the main story.</p>",
+                    f"<p><span class=\"warn\">{_fmt_int(metrics['n_zero_loci_traits'])}</span> zero-locus traits and <span class=\"warn\">{_fmt_int(metrics['n_traits'] - metrics['n_supported_traits'])}</span> traits without strict eQTL support. Use this page as a scouting surface, not as the main story.</p>",
                     f'<p><a href="{escape(spec.slug)}.html">Open the discovery page</a></p>',
                     "</div>",
                 ]
@@ -390,10 +397,10 @@ def _render_panel_page(panel: dict[str, object], panel_specs: list[PanelSpec], s
             _render_nav(panel_specs, current=spec.slug),
             "</section>",
             '<section class="grid">',
+            f'<div class="card"><div class="metric">{_fmt_int(metrics["n_lookup_hit_traits"])}/{_fmt_int(metrics["n_traits"])}</div><div class="metric-label">eQTL lookup-hit traits</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_supported_traits"])}/{_fmt_int(metrics["n_traits"])}</div><div class="metric-label">eQTL-supported traits</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_loci"])}</div><div class="metric-label">chrX loci</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_zero_loci_traits"])}</div><div class="metric-label">Zero-locus traits</div></div>',
-            f'<div class="card"><div class="metric">{_fmt_int(metrics["n_gene_rows"])}</div><div class="metric-label">Locus-gene rows</div></div>',
             "</section>",
             '<section class="two-up">',
             '<div class="card">',
@@ -413,16 +420,17 @@ def _render_panel_page(panel: dict[str, object], panel_specs: list[PanelSpec], s
                     ("description", "Description"),
                     ("domain", "Domain"),
                     ("n_loci", "Loci"),
+                    ("eqtl_lookup_hit_bool", "eQTL lookup-hit"),
                     ("eqtl_supported_bool", "eQTL-supported"),
                     ("eqtl_total_hit_count", "eQTL Hits"),
                     ("x_evidence_score", "Score"),
                 ],
             ),
             "<h2>Domain Summary</h2>",
-            _render_table(panel["domains"], [("domain", "Domain"), ("n_traits", "Traits"), ("supported_traits", "eQTL-supported"), ("total_loci", "Loci")]),
+            _render_table(panel["domains"], [("domain", "Domain"), ("n_traits", "Traits"), ("lookup_hit_traits", "eQTL lookup-hit"), ("supported_traits", "eQTL-supported"), ("total_loci", "Loci")]),
             "<h2>Unsupported Or Weak Traits</h2>",
             _render_table(panel["unsupported"], [("query_id", "Trait"), ("description", "Description"), ("domain", "Domain"), ("n_loci", "Loci"), ("x_evidence_score", "Score")]),
-            '<div class="footer">Generated from release tables. eQTL support means the trait has at least one chrX locus with candidate-gene follow-up supported by the current rsID-based eQTL path.</div>',
+            '<div class="footer">Generated from release tables. eQTL lookup-hit means returned associations were observed in the prioritized lookup path; eQTL-supported means a candidate gene met the strict support rule in the current build.</div>',
             "</div></body></html>",
         ]
     )
@@ -443,11 +451,11 @@ def _render_methods_page(panel_specs: list[PanelSpec]) -> str:
             "</section>",
             '<section class="two-up">',
             '<div class="card"><h2>Signal finding</h2><p>For each public trait, the pipeline uses Pan-UKB summary statistics and scans only chromosome X. Strongly associated variants are kept, nearby hits are merged into one locus, and the lead variant from each locus is recorded.</p></div>',
-            '<div class="card"><h2>Gene follow-up</h2><p>Each locus is mapped to nearby genes in GRCh37 coordinates. eQTL support is added through rsID-first lookups into the eQTL Catalogue, with GRCh37 Ensembl variant recoder rescue for some missing rsIDs.</p></div>',
+            '<div class="card"><h2>Gene follow-up</h2><p>Each locus is mapped to nearby genes in GRCh37 coordinates. eQTL follow-up is added through rsID-first lookups into the eQTL Catalogue, with GRCh37 Ensembl variant recoder rescue for some missing rsIDs.</p></div>',
             "</section>",
             '<section class="two-up">',
             '<div class="card"><h2>Robustness checks</h2><p>The build uses a strict genome-wide significance threshold, keeps PAR and nonPAR regions separate, infers the p-value schema from the actual Pan-UKB file, and avoids unsafe direct GRCh37-to-GRCh38 region lookups by default.</p></div>',
-            '<div class="card"><h2>How to read eQTL support</h2><p>An eQTL-supported trait is not a claim that chromosome X causes the whole trait. It means the current data found at least one convincing chrX region and could connect that region to plausible gene evidence through the prioritized eQTL datasets used in the build.</p></div>',
+            '<div class="card"><h2>How to read eQTL labels</h2><p>An eQTL lookup-hit means returned associations were observed in the prioritized datasets. eQTL-supported is narrower: at least one candidate gene passed the strict support rule in the current build. Neither label is a causal claim.</p></div>',
             "</section>",
             '<div class="footer">The curated panels are intended for presentation. The broad independent-set panel is best treated as a discovery pool for further curation.</div>',
             "</div></body></html>",
@@ -479,7 +487,7 @@ def build_site(panel_specs: list[PanelSpec], outdir: str | Path) -> Path:
             _render_discovery_block(panels),
             '<section class="two-up">',
             '<div class="card"><h2>What counts as a chrX signal?</h2><p>A chrX signal is a spot on chromosome X where the public genetics data shows a strong statistical link to a trait. Nearby hits are grouped into one locus so a single region is not counted over and over.</p></div>',
-            '<div class="card"><h2>What counts as eQTL support?</h2><p>eQTL support means the pipeline could not only find the locus but also connect it to candidate genes using the prioritized rsID-based eQTL follow-up path. It is a shortlist for interpretation, not proof of direct causation.</p></div>',
+            '<div class="card"><h2>How to read eQTL evidence</h2><p>eQTL lookup-hit means the rsID-based follow-up returned associations in the prioritized datasets. eQTL-supported is stricter and only counts candidate-gene evidence that passes the current support rule. Both are discovery signals, not proof of direct causation.</p></div>',
             "</section>",
             '<div class="footer">Static HTML generated from release tables. Open the panel pages above for top traits, domain summaries, and direct links to the TSV outputs.</div>',
             "</div></body></html>",

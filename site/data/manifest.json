@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panels": [
     {
       "panel_id": "panel_expanded",
@@ -9,7 +9,8 @@
       "featured": true,
       "description": "Curated all-purpose panel with broad trait coverage and low zero-locus drift.",
       "trait_count": 48,
-      "supported_trait_count": 47,
+      "lookup_hit_trait_count": 47,
+      "supported_trait_count": 40,
       "zero_locus_trait_count": 0,
       "locus_count": 751,
       "files": {
@@ -25,7 +26,8 @@
       "featured": true,
       "description": "Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
       "trait_count": 10,
-      "supported_trait_count": 9,
+      "lookup_hit_trait_count": 9,
+      "supported_trait_count": 4,
       "zero_locus_trait_count": 0,
       "locus_count": 26,
       "files": {
@@ -41,7 +43,8 @@
       "featured": true,
       "description": "High-yield blood biochemistry panel carved out of the independent-set discovery pool.",
       "trait_count": 21,
-      "supported_trait_count": 21,
+      "lookup_hit_trait_count": 21,
+      "supported_trait_count": 18,
       "zero_locus_trait_count": 0,
       "locus_count": 332,
       "files": {
@@ -57,7 +60,8 @@
       "featured": false,
       "description": "Full Pan-UKB max independent-set build kept as a broad curation source rather than a featured panel.",
       "trait_count": 150,
-      "supported_trait_count": 72,
+      "lookup_hit_trait_count": 72,
+      "supported_trait_count": 34,
       "zero_locus_trait_count": 66,
       "locus_count": 643,
       "files": {

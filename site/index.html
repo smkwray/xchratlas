@@ -6,8 +6,9 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="chrXatlas — A chromosome X evidence atlas built from public Pan-UK Biobank summary statistics, with locus mapping, candidate genes, and targeted eQTL follow-up.">
+  <meta name="description" content="chrXatlas — A chromosome X discovery atlas built from public Pan-UK Biobank summary statistics, with locus mapping, candidate genes, and targeted eQTL follow-up.">
   <title>chrXatlas — Chromosome X Evidence Atlas</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -47,7 +48,7 @@
       <div class="container hero-content">
         <div class="hero-badge">Chromosome X Evidence Atlas</div>
         <h1 class="hero-title">Mapping the Signals<br>Most Studies Leave Behind</h1>
-        <p class="hero-subtitle">Chromosome X carries hundreds of genes that influence traits from blood chemistry to cognition. Many GWAS summary-stat resources still under-analyze or omit it. chrXatlas maps where the signals are, which traits they touch, and which genes they implicate.</p>
+        <p class="hero-subtitle">Chromosome X carries hundreds of genes that influence traits from blood chemistry to cognition. Many GWAS summary-stat resources still under-analyze or omit it. chrXatlas maps where the signals are, which traits they touch, and which genes are nearby or show follow-up eQTL evidence.</p>
         <a href="#panels" class="hero-cta">Explore the Atlas <span class="cta-arrow">&darr;</span></a>
       </div>
       <div class="hero-scroll-hint">
@@ -96,7 +97,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Curated Panels</h2>
-          <p class="section-subtitle">Three focused lenses on chromosome X signal. Each panel is curated for a specific research question, with ranked traits, mapped loci, and eQTL follow-up.</p>
+          <p class="section-subtitle">Three focused lenses on chromosome X signal. Each panel is curated for a specific research question, with ranked traits, mapped loci, and eQTL follow-up reported as lookup-hits or stricter support.</p>
         </div>
         <div class="panels-grid" id="panels-grid"></div>
       </div>
@@ -115,7 +116,7 @@
           </div>
           <div class="why-card animate-on-scroll">
             <h3>What We Built</h3>
-            <p>chrXatlas is a ranked, evidence-scored catalog of chromosome X associations built from Pan-UK Biobank summary statistics. For each trait, we identify genome-wide significant loci on chrX, map candidate genes by proximity, and add targeted follow-up from prioritized eQTL datasets.</p>
+            <p>chrXatlas is a ranked, evidence-scored discovery atlas of chromosome X associations built from Pan-UK Biobank summary statistics. For each trait, we identify genome-wide significant loci on chrX, map candidate genes by proximity, and add targeted follow-up from prioritized eQTL datasets.</p>
           </div>
           <div class="why-card animate-on-scroll">
             <h3>Why It Matters</h3>
@@ -157,7 +158,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Discovery Pool</h2>
-          <p class="section-subtitle">A broader reservoir of 150 traits from the Pan-UKB max independent set. Not curated to the same standard as the featured panels, but kept as a source for future exploration and panel building.</p>
+          <p class="section-subtitle">A broader reservoir of 150 traits from the Pan-UKB max independent set. Not curated to the same standard as the featured panels, but kept as a source for future exploration and panel building. Expand the drawers below to inspect the full tested set and the traits without strict current eQTL support.</p>
         </div>
         <div class="discovery-card animate-on-scroll" id="discovery-card"></div>
       </div>
@@ -176,8 +177,8 @@
             <p>A "signal" in this atlas is a genome-wide significant association (p &lt; 5 &times; 10<sup>&minus;8</sup>) located on chromosome X. We scan Pan-UK Biobank summary statistics for each trait, identify significant variants on chrX, and merge nearby signals into distinct <strong>loci</strong> using distance-based clustering.</p>
           </div>
           <div class="method-card animate-on-scroll">
-            <h3>What does "eQTL-supported" mean?</h3>
-            <p>A trait is <strong>eQTL-supported</strong> when at least one of its chromosome X loci has rsID-based evidence from the prioritized eQTL datasets used in the current pipeline. This is an additional line of evidence connecting the GWAS signal to a plausible biological mechanism; it is not a tissue-relevance model.</p>
+            <h3>What do the eQTL labels mean?</h3>
+            <p>An <strong>eQTL lookup-hit</strong> means the rsID-based follow-up returned associations in the prioritized datasets. <strong>eQTL-supported</strong> is narrower: at least one candidate gene at a chrX locus passed the current strict support rule after aggregation across the queried datasets. Neither label is a tissue-relevance model or a causal claim.</p>
           </div>
           <div class="method-card animate-on-scroll">
             <h3>Coverage grades</h3>
@@ -185,7 +186,7 @@
           </div>
           <div class="method-card animate-on-scroll">
             <h3>What the atlas is <em>not</em></h3>
-            <p>This atlas does not measure "how much of a trait is caused by chromosome X." It does not perform sex-stratified analysis or model dosage compensation explicitly. It uses sex-combined GWAS summary statistics. The atlas identifies <em>where</em> on chromosome X we see associations and attempts to connect those signals to candidate genes through gene mapping and eQTL follow-up.</p>
+            <p>This atlas does not measure "how much of a trait is caused by chromosome X." It does not perform sex-stratified analysis or model dosage compensation explicitly. It uses sex-combined GWAS summary statistics. The atlas identifies <em>where</em> on chromosome X we see associations and adds rule-based gene mapping plus targeted eQTL follow-up.</p>
           </div>
         </div>
       </div>

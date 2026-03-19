@@ -12,6 +12,22 @@ function fmtDomain(d) { return d.replace(/_/g, ' ').replace(/\b\w/g, function (c
 function fmtPval(v) { if (!v || v === null) return '\u2014'; if (v < 0.001) return v.toExponential(1); return v.toFixed(3); }
 function fmtPos(s, e) { return 'X:' + fmt(s) + '\u2013' + fmt(e); }
 function getParam(k) { return new URLSearchParams(location.search).get(k); }
+function eqtlStatusMeta(item) {
+  if (item.eqtl_supported) {
+    return { key: 'supported', supportClass: 'support-yes', badgeClass: 'eqtl-yes', label: 'eQTL-supported', icon: '\u2713' };
+  }
+  if (item.eqtl_lookup_hit) {
+    return { key: 'lookup', supportClass: 'support-mid', badgeClass: 'eqtl-mid', label: 'eQTL lookup-hit only', icon: '\u2022' };
+  }
+  return { key: 'none', supportClass: 'support-no', badgeClass: 'eqtl-no', label: 'No eQTL lookup-hit', icon: '\u2717' };
+}
+function pickSupportedGene(locus) {
+  return (locus.candidate_genes || []).find(function (g) { return g.eqtl_supported && g.eqtl_gene_role !== 'followup'; });
+}
+function pickLookupGene(locus) {
+  return (locus.candidate_genes || []).find(function (g) { return g.eqtl_lookup_hit && g.eqtl_gene_role !== 'followup'; }) ||
+    (locus.candidate_genes || []).find(function (g) { return g.eqtl_lookup_hit; });
+}
 
 /* ── Hero ──────────────────────────────────── */
 function renderHero(data) {
@@ -69,6 +85,7 @@ function renderLoci(data) {
   }
   el.innerHTML = data.loci.map(function (locus, i) {
     var genes = locus.candidate_genes || [];
+    var status = eqtlStatusMeta(locus);
     return '<details class="locus-card"' + (i < 3 ? ' open' : '') + '>' +
       '<summary class="locus-summary">' +
         '<div class="locus-summary-main">' +
@@ -79,9 +96,7 @@ function renderLoci(data) {
         '<div class="locus-summary-stats">' +
           '<span class="locus-pval">p: 10<sup>\u2212' + locus.lead_neglog10_pvalue.toFixed(1) + '</sup></span>' +
           '<span class="locus-top-gene">' + locus.top_gene_name + '</span>' +
-          (locus.eqtl_supported
-            ? '<span class="locus-eqtl-badge eqtl-yes">eQTL-supported</span>'
-            : '<span class="locus-eqtl-badge eqtl-no">no eQTL</span>') +
+          '<span class="locus-eqtl-badge ' + status.badgeClass + '">' + status.label + '</span>' +
           '<span class="locus-gene-count">' + genes.length + ' gene' + (genes.length !== 1 ? 's' : '') + '</span>' +
         '</div>' +
       '</summary>' +
@@ -94,17 +109,25 @@ function renderLoci(data) {
 
 function geneTable(genes) {
   return '<table class="candidate-table"><thead><tr>' +
-    '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Relation</th><th>Distance</th><th>eQTL</th><th>Studies</th><th>Best p</th>' +
+    '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Role</th><th>Relation</th><th>Distance</th><th>Lookup</th><th>Support</th><th>Studies</th><th>Datasets</th><th>Best p</th>' +
     '</tr></thead><tbody>' +
     genes.map(function (g) {
+      var role = g.eqtl_gene_role === 'followup' ? 'Follow-up' : 'Candidate';
+      var lookup = g.eqtl_lookup_hit ? (g.eqtl_lookup_hit_count + ' hit' + (g.eqtl_lookup_hit_count === 1 ? '' : 's')) : '\u2014';
+      var support = g.eqtl_supported
+        ? '<span class="eqtl-yes-sm">Yes</span>'
+        : (g.eqtl_lookup_hit ? '<span class="eqtl-mid-sm">Lookup-hit</span>' : '\u2014');
       return '<tr class="' + (g.eqtl_supported ? 'gene-supported' : '') + '">' +
         '<td class="num-cell">' + g.candidate_rank + '</td>' +
         '<td><span class="gene-name">' + g.gene_name + '</span></td>' +
         '<td><span class="biotype-badge">' + g.gene_biotype.replace(/_/g, ' ') + '</span></td>' +
+        '<td><span class="gene-role-badge gene-role-' + (g.eqtl_gene_role === 'followup' ? 'followup' : 'candidate') + '">' + role + '</span></td>' +
         '<td>' + g.mapping_relation.replace(/_/g, ' ') + '</td>' +
         '<td class="num-cell">' + fmt(g.distance_to_lead_bp) + ' bp</td>' +
-        '<td>' + (g.eqtl_supported ? '<span class="eqtl-yes-sm">Yes</span>' : '\u2014') + '</td>' +
+        '<td class="num-cell">' + lookup + '</td>' +
+        '<td>' + support + '</td>' +
         '<td class="num-cell">' + g.eqtl_study_count + '</td>' +
+        '<td class="num-cell">' + g.eqtl_dataset_count + '</td>' +
         '<td class="num-cell">' + fmtPval(g.best_eqtl_pvalue) + '</td></tr>';
     }).join('') + '</tbody></table>';
 }
@@ -120,19 +143,18 @@ function renderSupport(data) {
   var el = document.getElementById('support-card');
   if (!el) return;
   var t = data.trait, loci = data.loci || [];
-  var supported = t.eqtl_supported;
+  var status = eqtlStatusMeta(t);
   var supLoci = loci.filter(function (l) { return l.eqtl_supported; });
+  var hitLoci = loci.filter(function (l) { return l.eqtl_lookup_hit; });
 
-  var statusClass = supported ? 'support-yes' : 'support-no';
-  var statusLabel = supported ? 'eQTL-supported' : 'Not eQTL-supported';
-  var statusIcon = supported ? '\u2713' : '\u2717';
-
-  var html = '<div class="support-card ' + statusClass + '">' +
+  var html = '<div class="support-card ' + status.supportClass + '">' +
     '<div class="support-header">' +
-      '<span class="support-status-badge ' + statusClass + '">' + statusIcon + ' ' + statusLabel + '</span>' +
-      '<h3>' + (supported
+      '<span class="support-status-badge ' + status.supportClass + '">' + status.icon + ' ' + status.label + '</span>' +
+      '<h3>' + (status.key === 'supported'
         ? 'Why this trait is marked eQTL-supported'
-        : 'Why this trait is not marked eQTL-supported') + '</h3>' +
+        : (status.key === 'lookup'
+          ? 'Why this trait is lookup-hit only'
+          : 'Why this trait has no eQTL lookup-hit')) + '</h3>' +
     '</div>' +
     '<div class="support-body">' +
       '<div class="support-facts">' +
@@ -141,7 +163,11 @@ function renderSupport(data) {
           '<span class="support-fact-value">' + t.eqtl_supported_locus_count + ' of ' + t.n_loci + '</span>' +
         '</div>' +
         '<div class="support-fact">' +
-          '<span class="support-fact-label">Total eQTL hits</span>' +
+          '<span class="support-fact-label">Lookup-hit loci</span>' +
+          '<span class="support-fact-value">' + t.eqtl_lookup_hit_locus_count + ' of ' + t.n_loci + '</span>' +
+        '</div>' +
+        '<div class="support-fact">' +
+          '<span class="support-fact-label">Total lookup hits</span>' +
           '<span class="support-fact-value">' + fmt(t.eqtl_total_hit_count) + '</span>' +
         '</div>' +
         '<div class="support-fact">' +
@@ -154,12 +180,12 @@ function renderSupport(data) {
     html += '<div class="support-loci">' +
       '<h4>Supporting ' + (supLoci.length === 1 ? 'locus' : 'loci') + '</h4>' +
       supLoci.map(function (l) {
-        var topGene = (l.candidate_genes || []).find(function (g) { return g.eqtl_supported; });
+        var supportedGene = pickSupportedGene(l);
         return '<div class="support-locus-row">' +
           '<span class="locus-region region-' + l.x_region.toLowerCase() + '">' + l.x_region + '</span>' +
           '<span class="support-locus-range">chrX ' + fmtMb(l.locus_start) + '\u2013' + fmtMb(l.locus_end) + '</span>' +
           '<span class="support-locus-detail">' +
-            '<strong>Top gene:</strong> ' + l.top_gene_name +
+            '<strong>Positional top gene:</strong> ' + l.top_gene_name +
           '</span>' +
           '<span class="support-locus-detail">' +
             '<strong>Lead variant:</strong> ' + (l.lead_rsid || l.lead_varid) +
@@ -170,19 +196,37 @@ function renderSupport(data) {
           '<span class="support-locus-detail">' +
             '<strong>eQTL hits:</strong> ' + l.eqtl_lookup_n_hits +
           '</span>' +
-          (topGene ? '<span class="support-locus-detail"><strong>eQTL gene:</strong> <span class="gene-name">' + topGene.gene_name + '</span> (' + topGene.gene_biotype.replace(/_/g, ' ') + ', ' + topGene.eqtl_study_count + ' ' + (topGene.eqtl_study_count === 1 ? 'study' : 'studies') + ')</span>' : '') +
+          (supportedGene ? '<span class="support-locus-detail"><strong>Supported gene:</strong> <span class="gene-name">' + supportedGene.gene_name + '</span> (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';
+  } else if (hitLoci.length > 0) {
+    html += '<div class="support-loci">' +
+      '<h4>Lookup-hit loci</h4>' +
+      hitLoci.map(function (l) {
+        var lookupGene = pickLookupGene(l);
+        return '<div class="support-locus-row">' +
+          '<span class="locus-region region-' + l.x_region.toLowerCase() + '">' + l.x_region + '</span>' +
+          '<span class="support-locus-range">chrX ' + fmtMb(l.locus_start) + '\u2013' + fmtMb(l.locus_end) + '</span>' +
+          '<span class="support-locus-detail"><strong>Positional top gene:</strong> ' + l.top_gene_name + '</span>' +
+          '<span class="support-locus-detail"><strong>Lead variant:</strong> ' + (l.lead_rsid || l.lead_varid) + '</span>' +
+          '<span class="support-locus-detail"><strong>Lookup:</strong> ' + (l.eqtl_lookup_status || 'unknown') + '</span>' +
+          '<span class="support-locus-detail"><strong>eQTL hits:</strong> ' + l.eqtl_lookup_n_hits + '</span>' +
+          (lookupGene ? '<span class="support-locus-detail"><strong>Lookup gene:</strong> <span class="gene-name">' + lookupGene.gene_name + '</span> (best p ' + fmtPval(lookupGene.best_eqtl_pvalue) + ')</span>' : '') +
+        '</div>';
+      }).join('') +
+    '</div>' +
+    '<p class="support-none-detail">This trait had eQTL lookup-hit associations, but none met the strict candidate-gene support rule (best eQTL p \u2264 1e-5).' +
+    (t.eqtl_lookup_note ? ' ' + t.eqtl_lookup_note : '') + '</p>';
   } else {
     html += '<div class="support-loci">' +
-      '<p class="support-none-detail">No chromosome X loci had eQTL-supported candidate-gene evidence in the current build.' +
+      '<p class="support-none-detail">No chromosome X loci returned eQTL lookup-hit evidence in the current build.' +
       (t.eqtl_lookup_note ? ' ' + t.eqtl_lookup_note : '') + '</p>' +
     '</div>';
   }
 
   html += '<div class="support-rule">' +
-      '<strong>Rule:</strong> trait-level eQTL support means at least one chrX locus had eQTL-supported candidate-gene evidence.' +
+      '<strong>Rule:</strong> eQTL lookup-hit means returned associations were observed in prioritized datasets. eQTL-supported is stricter and requires at least one candidate gene with best eQTL p &le; 1e-5 in the aggregated build.' +
     '</div>' +
   '</div></div>';
 

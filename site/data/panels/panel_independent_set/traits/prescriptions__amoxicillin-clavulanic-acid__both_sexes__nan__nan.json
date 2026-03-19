@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -13,19 +13,20 @@
     "slug": "nan",
     "description": null,
     "domain": "prescriptions",
-    "x_evidence_score": 69.36,
+    "x_evidence_score": 54.36,
     "coverage_grade": "B",
     "n_loci": 1,
-    "eqtl_supported": true,
-    "eqtl_supported_locus_count": 1,
-    "eqtl_total_hit_count": 6,
+    "eqtl_lookup_hit": true,
+    "eqtl_lookup_hit_locus_count": 1,
+    "eqtl_lookup_hit_count": 10,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
+    "eqtl_total_hit_count": 10,
     "top_candidate_genes": [
-      "TBL1X",
-      "GPR143",
-      "KAL1"
+      "TBL1X"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-    "eqtl_lookup_note": null,
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+    "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
     "trait_type": "prescriptions",
     "phenocode": "amoxicillin/clavulanic acid",
     "pheno_sex": "both_sexes",
@@ -36,7 +37,7 @@
     "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
-    "tier": "B",
+    "tier": "C",
     "selection_rank": 126,
     "selection_score": 244.44388346279447,
     "lead_neglog10_pvalue": 7.659,
@@ -57,10 +58,13 @@
       "top_gene_id": "ENSG00000101849",
       "top_gene_name": "TBL1X",
       "best_mapping_relation": "lead_overlap",
-      "eqtl_supported": true,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_gene_count": 6,
+      "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "complete",
-      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
-      "eqtl_lookup_n_hits": 6,
+      "eqtl_lookup_mode": "rsid_api_aggregate",
+      "eqtl_lookup_n_hits": 10,
       "candidate_genes": [
         {
           "candidate_rank": 1,
@@ -69,8 +73,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 2,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 2,
           "best_eqtl_pvalue": 0.4398449957370758
         },
         {
@@ -80,8 +88,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 84032,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.0903215035796165
         },
         {
@@ -91,9 +103,13 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 909127,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
-          "best_eqtl_pvalue": 0.3053900003433227
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 2,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 2,
+          "best_eqtl_pvalue": 0.1906789988279342
         },
         {
           "candidate_rank": 4,
@@ -102,9 +118,13 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 515670,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
-          "best_eqtl_pvalue": 0.8221750259399414
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 2,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 2,
+          "best_eqtl_pvalue": 0.2247470021247863
         },
         {
           "candidate_rank": 5,
@@ -113,9 +133,13 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 374248,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
-          "best_eqtl_pvalue": 0.935674011707306
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 2,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 2,
+          "best_eqtl_pvalue": 0.6982529759407043
         },
         {
           "candidate_rank": 6,
@@ -124,8 +148,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 145142,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.9492279887199402
         }
       ]

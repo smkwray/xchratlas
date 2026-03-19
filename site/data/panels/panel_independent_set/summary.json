@@ -1,14 +1,15 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
     "title": "Discovery Pool",
     "featured": false,
-    "description": "Full Pan-UKB max independent-set build kept as a broad curation source rather than a polished release tier.",
+    "description": "Full Pan-UKB max independent-set build kept as a broad curation source rather than a featured panel.",
     "trait_count": 150,
-    "supported_trait_count": 72,
+    "lookup_hit_trait_count": 72,
+    "supported_trait_count": 34,
     "zero_locus_trait_count": 66,
     "locus_count": 643,
     "files": {
@@ -19,7 +20,8 @@
   },
   "metrics": {
     "trait_count": 150,
-    "supported_trait_count": 72,
+    "lookup_hit_trait_count": 72,
+    "supported_trait_count": 34,
     "zero_locus_trait_count": 66,
     "locus_count": 643
   },
@@ -27,209 +29,143 @@
     {
       "domain": "blood_biochemistry",
       "trait_count": 21,
-      "supported_trait_count": 21,
+      "lookup_hit_trait_count": 21,
+      "supported_trait_count": 18,
       "zero_locus_trait_count": 0,
       "locus_count": 332
     },
     {
       "domain": "blood_count",
       "trait_count": 7,
+      "lookup_hit_trait_count": 7,
       "supported_trait_count": 7,
       "zero_locus_trait_count": 0,
       "locus_count": 109
     },
     {
+      "domain": "continuous",
+      "trait_count": 3,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 2,
+      "zero_locus_trait_count": 1,
+      "locus_count": 18
+    },
+    {
+      "domain": "early_life_factors",
+      "trait_count": 5,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 3,
+      "locus_count": 33
+    },
+    {
+      "domain": "bone_densitometry_of_heel",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 0,
+      "locus_count": 19
+    },
+    {
       "domain": "sun_exposure",
       "trait_count": 6,
-      "supported_trait_count": 5,
+      "lookup_hit_trait_count": 5,
+      "supported_trait_count": 1,
       "zero_locus_trait_count": 0,
       "locus_count": 17
     },
     {
+      "domain": "sleep",
+      "trait_count": 3,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 0,
+      "locus_count": 16
+    },
+    {
+      "domain": "operations",
+      "trait_count": 5,
+      "lookup_hit_trait_count": 3,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 2,
+      "locus_count": 5
+    },
+    {
+      "domain": "diet",
+      "trait_count": 14,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 10,
+      "locus_count": 4
+    },
+    {
+      "domain": "household",
+      "trait_count": 3,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 1,
+      "zero_locus_trait_count": 2,
+      "locus_count": 3
+    },
+    {
+      "domain": "pairs_matching",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 0,
+      "locus_count": 25
+    },
+    {
       "domain": "smoking",
       "trait_count": 4,
-      "supported_trait_count": 3,
+      "lookup_hit_trait_count": 3,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
       "locus_count": 16
     },
     {
       "domain": "physical_activity",
       "trait_count": 8,
-      "supported_trait_count": 3,
+      "lookup_hit_trait_count": 3,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 5,
       "locus_count": 6
     },
     {
-      "domain": "operations",
-      "trait_count": 5,
-      "supported_trait_count": 3,
-      "zero_locus_trait_count": 2,
-      "locus_count": 5
-    },
-    {
-      "domain": "early_life_factors",
-      "trait_count": 5,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 3,
-      "locus_count": 33
-    },
-    {
-      "domain": "pairs_matching",
-      "trait_count": 2,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 0,
-      "locus_count": 25
-    },
-    {
-      "domain": "bone_densitometry_of_heel",
-      "trait_count": 2,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 0,
-      "locus_count": 19
-    },
-    {
-      "domain": "continuous",
-      "trait_count": 3,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 1,
-      "locus_count": 18
-    },
-    {
-      "domain": "sleep",
-      "trait_count": 3,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 0,
-      "locus_count": 16
-    },
-    {
-      "domain": "diet",
-      "trait_count": 14,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 10,
-      "locus_count": 4
-    },
-    {
-      "domain": "prescriptions",
-      "trait_count": 4,
-      "supported_trait_count": 2,
-      "zero_locus_trait_count": 2,
-      "locus_count": 2
-    },
-    {
       "domain": "electronic_device_use",
       "trait_count": 4,
-      "supported_trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 3,
       "locus_count": 5
     },
     {
       "domain": "eyesight",
       "trait_count": 2,
-      "supported_trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 3
     },
     {
       "domain": "hearing",
       "trait_count": 1,
-      "supported_trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
-      "locus_count": 3
-    },
-    {
-      "domain": "household",
-      "trait_count": 3,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 2,
       "locus_count": 3
     },
     {
       "domain": "mouth",
       "trait_count": 2,
-      "supported_trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
       "locus_count": 3
     },
     {
-      "domain": "employment",
-      "trait_count": 2,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 1,
-      "locus_count": 2
-    },
-    {
-      "domain": "family_history",
-      "trait_count": 5,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 3,
-      "locus_count": 2
-    },
-    {
-      "domain": "general_health",
-      "trait_count": 1,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 0,
-      "locus_count": 2
-    },
-    {
-      "domain": "intraocular_pressure",
-      "trait_count": 1,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 0,
-      "locus_count": 2
-    },
-    {
-      "domain": "medication",
-      "trait_count": 2,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 1,
-      "locus_count": 2
-    },
-    {
-      "domain": "mental_health",
-      "trait_count": 2,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 1,
-      "locus_count": 2
-    },
-    {
-      "domain": "autorefraction",
-      "trait_count": 2,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 1,
-      "locus_count": 1
-    },
-    {
-      "domain": "education",
-      "trait_count": 3,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 2,
-      "locus_count": 1
-    },
-    {
-      "domain": "medical_conditions",
-      "trait_count": 3,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 2,
-      "locus_count": 1
-    },
-    {
-      "domain": "medications",
-      "trait_count": 4,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 3,
-      "locus_count": 1
-    },
-    {
-      "domain": "urine_assays",
-      "trait_count": 1,
-      "supported_trait_count": 1,
-      "zero_locus_trait_count": 0,
-      "locus_count": 1
-    },
-    {
       "domain": "alcohol_use",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
       "locus_count": 2
@@ -237,20 +173,111 @@
     {
       "domain": "depression",
       "trait_count": 2,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 2
     },
     {
+      "domain": "employment",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 1,
+      "locus_count": 2
+    },
+    {
+      "domain": "family_history",
+      "trait_count": 5,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 3,
+      "locus_count": 2
+    },
+    {
+      "domain": "general_health",
+      "trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 0,
+      "locus_count": 2
+    },
+    {
+      "domain": "intraocular_pressure",
+      "trait_count": 1,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 0,
+      "locus_count": 2
+    },
+    {
+      "domain": "medication",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 1,
+      "locus_count": 2
+    },
+    {
+      "domain": "mental_health",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 1,
+      "locus_count": 2
+    },
+    {
+      "domain": "prescriptions",
+      "trait_count": 4,
+      "lookup_hit_trait_count": 2,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 2,
+      "locus_count": 2
+    },
+    {
       "domain": "anxiety",
       "trait_count": 2,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 1
     },
     {
+      "domain": "autorefraction",
+      "trait_count": 2,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 1,
+      "locus_count": 1
+    },
+    {
+      "domain": "education",
+      "trait_count": 3,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 2,
+      "locus_count": 1
+    },
+    {
+      "domain": "medical_conditions",
+      "trait_count": 3,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 2,
+      "locus_count": 1
+    },
+    {
+      "domain": "medications",
+      "trait_count": 4,
+      "lookup_hit_trait_count": 1,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 3,
+      "locus_count": 1
+    },
+    {
       "domain": "self_harm_behaviours",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
       "locus_count": 1
@@ -258,6 +285,15 @@
     {
       "domain": "traumatic_events",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
+      "supported_trait_count": 0,
+      "zero_locus_trait_count": 0,
+      "locus_count": 1
+    },
+    {
+      "domain": "urine_assays",
+      "trait_count": 1,
+      "lookup_hit_trait_count": 1,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 0,
       "locus_count": 1
@@ -265,6 +301,7 @@
     {
       "domain": "alcohol",
       "trait_count": 2,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 2,
       "locus_count": 0
@@ -272,6 +309,7 @@
     {
       "domain": "arterial_stiffness",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -279,6 +317,7 @@
     {
       "domain": "chest_pain",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -286,6 +325,7 @@
     {
       "domain": "fluid_intelligence_reasoning",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -293,6 +333,7 @@
     {
       "domain": "icd10",
       "trait_count": 3,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 3,
       "locus_count": 0
@@ -300,6 +341,7 @@
     {
       "domain": "pain",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -307,6 +349,7 @@
     {
       "domain": "phecode",
       "trait_count": 10,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 10,
       "locus_count": 0
@@ -314,6 +357,7 @@
     {
       "domain": "prospective_memory",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -321,6 +365,7 @@
     {
       "domain": "social_support",
       "trait_count": 1,
+      "lookup_hit_trait_count": 0,
       "supported_trait_count": 0,
       "zero_locus_trait_count": 1,
       "locus_count": 0
@@ -336,9 +381,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 43,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 28,
+      "eqtl_lookup_hit_count": 1477,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 28,
-      "eqtl_total_hit_count": 421,
+      "eqtl_supported_locus_count": 4,
+      "eqtl_total_hit_count": 1477,
       "top_candidate_genes": [
         "RP11-706O15.8",
         "MTND6P12",
@@ -356,9 +404,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 36,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 28,
+      "eqtl_lookup_hit_count": 1317,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 28,
-      "eqtl_total_hit_count": 402,
+      "eqtl_supported_locus_count": 7,
+      "eqtl_total_hit_count": 1317,
       "top_candidate_genes": [
         "GS1-542M4.4",
         "TBL1X",
@@ -376,9 +427,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 29,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 21,
+      "eqtl_lookup_hit_count": 1094,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 21,
-      "eqtl_total_hit_count": 329,
+      "eqtl_supported_locus_count": 2,
+      "eqtl_total_hit_count": 1094,
       "top_candidate_genes": [
         "SNORA20",
         "RP11-791M20.1",
@@ -396,9 +450,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 26,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 25,
+      "eqtl_lookup_hit_count": 1090,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 25,
-      "eqtl_total_hit_count": 367,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 1090,
       "top_candidate_genes": [
         "ARSE",
         "SHROOM2",
@@ -416,9 +473,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 24,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 17,
+      "eqtl_lookup_hit_count": 1011,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 17,
-      "eqtl_total_hit_count": 287,
+      "eqtl_supported_locus_count": 6,
+      "eqtl_total_hit_count": 1011,
       "top_candidate_genes": [
         "GS1-542M4.4",
         "MID1",
@@ -436,9 +496,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 24,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 14,
+      "eqtl_lookup_hit_count": 807,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 14,
-      "eqtl_total_hit_count": 208,
+      "eqtl_supported_locus_count": 1,
+      "eqtl_total_hit_count": 807,
       "top_candidate_genes": [
         "TBL1X",
         "GLRA2",
@@ -456,9 +519,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 24,
-      "eqtl_supported": true,
-      "eqtl_supported_locus_count": 15,
-      "eqtl_total_hit_count": 150,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 15,
+      "eqtl_lookup_hit_count": 520,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 520,
       "top_candidate_genes": [
         "ARSE",
         "MOSPD2",
@@ -466,26 +532,6 @@
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
       "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
-    },
-    {
-      "trait_id": "continuous__398__both_sexes__nan__nan",
-      "query_id": "number_of_correct_matches_in_round",
-      "slug": "number-of-correct-matches-in-round",
-      "description": "Number of correct matches in round",
-      "domain": "pairs_matching",
-      "x_evidence_score": 100,
-      "coverage_grade": "A",
-      "n_loci": 23,
-      "eqtl_supported": true,
-      "eqtl_supported_locus_count": 2,
-      "eqtl_total_hit_count": 11,
-      "top_candidate_genes": [
-        "ARHGAP6",
-        "RNU6-133P",
-        "SMPX"
-      ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
     },
     {
       "trait_id": "biomarkers__30700__both_sexes__nan__irnt",
@@ -496,9 +542,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 22,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 17,
+      "eqtl_lookup_hit_count": 794,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 17,
-      "eqtl_total_hit_count": 227,
+      "eqtl_supported_locus_count": 1,
+      "eqtl_total_hit_count": 794,
       "top_candidate_genes": [
         "RP11-66N5.2",
         "REPS2",
@@ -516,9 +565,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 21,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 18,
+      "eqtl_lookup_hit_count": 716,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 18,
-      "eqtl_total_hit_count": 248,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 716,
       "top_candidate_genes": [
         "PRKX",
         "CDKL5",
@@ -536,9 +588,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 21,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 18,
+      "eqtl_lookup_hit_count": 701,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 18,
-      "eqtl_total_hit_count": 237,
+      "eqtl_supported_locus_count": 4,
+      "eqtl_total_hit_count": 701,
       "top_candidate_genes": [
         "TMSB4X",
         "PIR",
@@ -556,9 +611,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 20,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 15,
+      "eqtl_lookup_hit_count": 873,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 15,
-      "eqtl_total_hit_count": 221,
+      "eqtl_supported_locus_count": 4,
+      "eqtl_total_hit_count": 873,
       "top_candidate_genes": [
         "GLRA2",
         "ASB9",
@@ -576,9 +634,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 18,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 14,
+      "eqtl_lookup_hit_count": 861,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 14,
-      "eqtl_total_hit_count": 263,
+      "eqtl_supported_locus_count": 4,
+      "eqtl_total_hit_count": 861,
       "top_candidate_genes": [
         "ARSE",
         "TBL1X",
@@ -596,9 +657,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 17,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 13,
+      "eqtl_lookup_hit_count": 665,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 13,
-      "eqtl_total_hit_count": 206,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 665,
       "top_candidate_genes": [
         "GPR143",
         "SLC38A5",
@@ -616,9 +680,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 17,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 14,
+      "eqtl_lookup_hit_count": 509,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 14,
-      "eqtl_total_hit_count": 183,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 509,
       "top_candidate_genes": [
         "GYG2",
         "GS1-542M4.4",
@@ -636,9 +703,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 15,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 11,
+      "eqtl_lookup_hit_count": 830,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 11,
-      "eqtl_total_hit_count": 224,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 830,
       "top_candidate_genes": [
         "RP13-926M18.1",
         "TMSB4X",
@@ -656,9 +726,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 15,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 12,
+      "eqtl_lookup_hit_count": 390,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 12,
-      "eqtl_total_hit_count": 155,
+      "eqtl_supported_locus_count": 2,
+      "eqtl_total_hit_count": 390,
       "top_candidate_genes": [
         "RP11-1L9.1",
         "SNORA68",
@@ -676,9 +749,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 13,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 12,
+      "eqtl_lookup_hit_count": 487,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 12,
-      "eqtl_total_hit_count": 181,
+      "eqtl_supported_locus_count": 2,
+      "eqtl_total_hit_count": 487,
       "top_candidate_genes": [
         "ASB9",
         "SH3KBP1",
@@ -696,9 +772,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 13,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 9,
+      "eqtl_lookup_hit_count": 467,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 9,
-      "eqtl_total_hit_count": 168,
+      "eqtl_supported_locus_count": 1,
+      "eqtl_total_hit_count": 467,
       "top_candidate_genes": [
         "MOSPD2",
         "TXLNG",
@@ -716,9 +795,12 @@
       "x_evidence_score": 100,
       "coverage_grade": "A",
       "n_loci": 13,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 7,
+      "eqtl_lookup_hit_count": 183,
       "eqtl_supported": true,
-      "eqtl_supported_locus_count": 7,
-      "eqtl_total_hit_count": 61,
+      "eqtl_supported_locus_count": 1,
+      "eqtl_total_hit_count": 183,
       "top_candidate_genes": [
         "RPS6KA3",
         "GATA1",
@@ -726,9 +808,55 @@
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
       "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
+    {
+      "trait_id": "biomarkers__30860__both_sexes__nan__irnt",
+      "query_id": "total_protein",
+      "slug": "total-protein",
+      "description": "Total protein",
+      "domain": "blood_biochemistry",
+      "x_evidence_score": 100,
+      "coverage_grade": "A",
+      "n_loci": 12,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 8,
+      "eqtl_lookup_hit_count": 652,
+      "eqtl_supported": true,
+      "eqtl_supported_locus_count": 3,
+      "eqtl_total_hit_count": 652,
+      "top_candidate_genes": [
+        "ARHGAP6",
+        "RP11-1L9.1",
+        "GEMIN8"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
     }
   ],
   "unsupported_traits": [
+    {
+      "trait_id": "biomarkers__30760__both_sexes__nan__irnt",
+      "query_id": "hdl_cholesterol",
+      "slug": "hdl-cholesterol",
+      "description": "HDL cholesterol",
+      "domain": "blood_biochemistry",
+      "x_evidence_score": 100,
+      "coverage_grade": "A",
+      "n_loci": 24,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 15,
+      "eqtl_lookup_hit_count": 520,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 520,
+      "top_candidate_genes": [
+        "ARSE",
+        "MOSPD2",
+        "RNU7-56P"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
     {
       "trait_id": "continuous__2277__both_sexes__nan__nan",
       "query_id": "frequency_of_solarium_sunlamp_use",
@@ -738,6 +866,9 @@
       "x_evidence_score": 91.07,
       "coverage_grade": "A",
       "n_loci": 8,
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_locus_count": 0,
+      "eqtl_lookup_hit_count": 0,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
       "eqtl_total_hit_count": 0,
@@ -750,339 +881,416 @@
       "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
     },
     {
-      "trait_id": "continuous__1259__both_sexes__nan__nan",
-      "query_id": "smoking_smokers_in_household",
-      "slug": "smoking-smokers-in-household",
-      "description": "Smoking/smokers in household",
+      "trait_id": "biomarkers__30810__both_sexes__nan__irnt",
+      "query_id": "phosphate",
+      "slug": "phosphate",
+      "description": "Phosphate",
+      "domain": "blood_biochemistry",
+      "x_evidence_score": 88,
+      "coverage_grade": "A",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 1,
+      "eqtl_lookup_hit_count": 20,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 20,
+      "top_candidate_genes": [
+        "RP11-66N5.2",
+        "PHEX",
+        "RN7SL266P"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
+    {
+      "trait_id": "continuous__1757__both_sexes__nan__nan",
+      "query_id": "facial_ageing",
+      "slug": "facial-ageing",
+      "description": "Facial ageing",
+      "domain": "sun_exposure",
+      "x_evidence_score": 88,
+      "coverage_grade": "A",
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 65,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 65,
+      "top_candidate_genes": [
+        "SYTL5",
+        "RP6-22P16.1",
+        "TM4SF2"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+    },
+    {
+      "trait_id": "continuous__1249__both_sexes__nan__nan",
+      "query_id": "past_tobacco_smoking",
+      "slug": "past-tobacco-smoking",
+      "description": "Past tobacco smoking",
       "domain": "smoking",
-      "x_evidence_score": 68.12,
+      "x_evidence_score": 87.77,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 10,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 9,
+      "eqtl_lookup_hit_count": 231,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 231,
       "top_candidate_genes": [
-        "RP11-761E20.1",
-        "RN7SL712P"
+        "RP11-40F8.2",
+        "RP11-40F8.2",
+        "GS1-383H3.6"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
     },
     {
-      "trait_id": "continuous__20409__both_sexes__nan__nan",
-      "query_id": "frequency_of_feeling_guilt_or_remorse_after_drinking_alcohol_in_",
-      "slug": "frequency-of-feeling-guilt-or-remorse-after-drinking-alcohol-in",
-      "description": "Frequency of feeling guilt or remorse after drinking alcohol in last year",
-      "domain": "alcohol_use",
-      "x_evidence_score": 65.33,
+      "trait_id": "continuous__20022__both_sexes__nan__irnt",
+      "query_id": "birth_weight",
+      "slug": "birth-weight",
+      "description": "Birth weight",
+      "domain": "early_life_factors",
+      "x_evidence_score": 86.42,
+      "coverage_grade": "A",
+      "n_loci": 7,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 3,
+      "eqtl_lookup_hit_count": 118,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 118,
+      "top_candidate_genes": [
+        "SHROOM4",
+        "PJA1",
+        "RP1-279N11.1"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
+    {
+      "trait_id": "continuous__398__both_sexes__nan__nan",
+      "query_id": "number_of_correct_matches_in_round",
+      "slug": "number-of-correct-matches-in-round",
+      "description": "Number of correct matches in round",
+      "domain": "pairs_matching",
+      "x_evidence_score": 86.09,
+      "coverage_grade": "A",
+      "n_loci": 23,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 11,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 11,
+      "top_candidate_genes": [
+        "ARHGAP6",
+        "RNU6-133P",
+        "SMPX"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+    },
+    {
+      "trait_id": "continuous__2237__both_sexes__nan__nan",
+      "query_id": "plays_computer_games",
+      "slug": "plays-computer-games",
+      "description": "Plays computer games",
+      "domain": "electronic_device_use",
+      "x_evidence_score": 82.06,
+      "coverage_grade": "A",
+      "n_loci": 5,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 4,
+      "eqtl_lookup_hit_count": 109,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 109,
+      "top_candidate_genes": [
+        "RP11-40F8.2",
+        "RP11-40F8.2",
+        "RPL7P58"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+    },
+    {
+      "trait_id": "continuous__5257__both_sexes__nan__irnt",
+      "query_id": "corneal_resistance_factor_right",
+      "slug": "corneal-resistance-factor-right",
+      "description": "Corneal resistance factor (right)",
+      "domain": "intraocular_pressure",
+      "x_evidence_score": 79.53,
       "coverage_grade": "A",
       "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 243,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 243,
       "top_candidate_genes": [
-        "RP11-524P6.1",
-        "MCF2",
-        "ATP5G2P4"
+        "DRP2",
+        "BGN",
+        "TAF7L"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     },
     {
-      "trait_id": "continuous__20508__both_sexes__nan__nan",
-      "query_id": "recent_trouble_concentrating_on_things",
-      "slug": "recent-trouble-concentrating-on-things",
-      "description": "Recent trouble concentrating on things",
-      "domain": "depression",
-      "x_evidence_score": 65.29,
+      "trait_id": "continuous__4125__both_sexes__nan__irnt",
+      "query_id": "heel_bone_mineral_density_bmd_t_score_automated_right",
+      "slug": "heel-bone-mineral-density-bmd-t-score-automated-right",
+      "description": "Heel bone mineral density (BMD) T-score, automated (right)",
+      "domain": "bone_densitometry_of_heel",
+      "x_evidence_score": 78.7,
       "coverage_grade": "A",
       "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 34,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 34,
       "top_candidate_genes": [
-        "RNU6-114P",
-        "RP11-747I9.1",
-        "PRKX"
+        "NDP",
+        "RP11-622K12.1",
+        "NDP-AS1"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     },
     {
-      "trait_id": "continuous__20515__both_sexes__nan__nan",
-      "query_id": "recent_trouble_relaxing",
-      "slug": "recent-trouble-relaxing",
-      "description": "Recent trouble relaxing",
-      "domain": "anxiety",
-      "x_evidence_score": 64.64,
+      "trait_id": "continuous__2217__both_sexes__nan__irnt",
+      "query_id": "age_started_wearing_glasses_or_contact_lenses",
+      "slug": "age-started-wearing-glasses-or-contact-lenses",
+      "description": "Age started wearing glasses or contact lenses",
+      "domain": "eyesight",
+      "x_evidence_score": 76.62,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 3,
+      "eqtl_lookup_hit_count": 144,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 144,
       "top_candidate_genes": [
-        "DMD"
-      ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
-    },
-    {
-      "trait_id": "continuous__1160__both_sexes__nan__nan",
-      "query_id": "sleep_duration",
-      "slug": "sleep-duration",
-      "description": "Sleep duration",
-      "domain": "sleep",
-      "x_evidence_score": 64.41,
-      "coverage_grade": "A",
-      "n_loci": 1,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [
-        "PLXNA3"
+        "SLC7A3",
+        "XIAP",
+        "AL135784.1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
       "eqtl_lookup_note": null
     },
     {
-      "trait_id": "categorical__6149__both_sexes__3__nan",
+      "trait_id": "categorical__1210__both_sexes__1210__nan",
+      "query_id": "snoring",
+      "slug": "snoring",
+      "description": "Snoring",
+      "domain": "sleep",
+      "x_evidence_score": 74.02,
+      "coverage_grade": "A",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 197,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 197,
+      "top_candidate_genes": [
+        "IGSF1",
+        "RBMX",
+        "FUNDC2"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
+    {
+      "trait_id": "continuous__2178__both_sexes__nan__nan",
+      "query_id": "overall_health_rating",
+      "slug": "overall-health-rating",
+      "description": "Overall health rating",
+      "domain": "general_health",
+      "x_evidence_score": 73.42,
+      "coverage_grade": "A",
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 1,
+      "eqtl_lookup_hit_count": 28,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 28,
+      "top_candidate_genes": [
+        "CNKSR2",
+        "RP3-339A18.3",
+        "RARRES2P3"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
+    },
+    {
+      "trait_id": "continuous__924__both_sexes__nan__nan",
+      "query_id": "usual_walking_pace",
+      "slug": "usual-walking-pace",
+      "description": "Usual walking pace",
+      "domain": "physical_activity",
+      "x_evidence_score": 72.57,
+      "coverage_grade": "A",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 32,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 32,
+      "top_candidate_genes": [
+        "RP6-29D12.3",
+        "TDGF1P3",
+        "RP11-434J24.2"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+    },
+    {
+      "trait_id": "continuous__2267__both_sexes__nan__nan",
+      "query_id": "use_of_sun_uv_protection",
+      "slug": "use-of-sun-uv-protection",
+      "description": "Use of sun/uv protection",
+      "domain": "sun_exposure",
+      "x_evidence_score": 70.69,
+      "coverage_grade": "A",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 3,
+      "eqtl_lookup_hit_count": 138,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 138,
+      "top_candidate_genes": [
+        "SMEK3P",
+        "RNU6-394P",
+        "RP1-232L22__B.1"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": null
+    },
+    {
+      "trait_id": "categorical__6149__both_sexes__6__nan",
       "query_id": "mouth_teeth_dental_problems",
       "slug": "mouth-teeth-dental-problems",
       "description": "Mouth/teeth dental problems",
       "domain": "mouth",
-      "x_evidence_score": 64.2,
+      "x_evidence_score": 70.27,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 1,
+      "eqtl_lookup_hit_count": 4,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 4,
       "top_candidate_genes": [
-        "DMD"
+        "DMD",
+        "HDX",
+        "RP11-74B21.1"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
     },
     {
-      "trait_id": "continuous__1299__both_sexes__nan__nan",
-      "query_id": "salad_raw_vegetable_intake",
-      "slug": "salad-raw-vegetable-intake",
-      "description": "Salad / raw vegetable intake",
-      "domain": "diet",
-      "x_evidence_score": 64.03,
+      "trait_id": "continuous__400__both_sexes__nan__irnt",
+      "query_id": "time_to_complete_round",
+      "slug": "time-to-complete-round",
+      "description": "Time to complete round",
+      "domain": "pairs_matching",
+      "x_evidence_score": 69.14,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 42,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 42,
       "top_candidate_genes": [
-        "DACH2"
+        "RP11-40F8.2",
+        "RNU6-985P",
+        "RNU6-266P"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     },
     {
-      "trait_id": "continuous__20498__both_sexes__nan__nan",
-      "query_id": "felt_very_upset_when_reminded_of_stressful_experience_in_past_mo",
-      "slug": "felt-very-upset-when-reminded-of-stressful-experience-in-past-mo",
-      "description": "Felt very upset when reminded of stressful experience in past month",
-      "domain": "traumatic_events",
-      "x_evidence_score": 60.45,
+      "trait_id": "categorical__1747__both_sexes__4__nan",
+      "query_id": "hair_colour_natural_before_greying",
+      "slug": "hair-colour-natural-before-greying",
+      "description": "Hair colour (natural, before greying)",
+      "domain": "sun_exposure",
+      "x_evidence_score": 69.13,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 1,
+      "eqtl_lookup_hit_count": 77,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 77,
       "top_candidate_genes": [
-        "RP11-298C3.2",
-        "RP11-86A5.1",
-        "RPP40P1"
+        "TMEM255A",
+        "FGF13"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     },
     {
-      "trait_id": "continuous__20485__both_sexes__nan__nan",
-      "query_id": "ever_contemplated_self_harm",
-      "slug": "ever-contemplated-self-harm",
-      "description": "Ever contemplated self-harm",
-      "domain": "self_harm_behaviours",
-      "x_evidence_score": 60.27,
+      "trait_id": "categorical__2040__both_sexes__2040__nan",
+      "query_id": "risk_taking",
+      "slug": "risk-taking",
+      "description": "Risk taking",
+      "domain": "mental_health",
+      "x_evidence_score": 69.04,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 2,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 1,
+      "eqtl_lookup_hit_count": 56,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 56,
       "top_candidate_genes": [
-        "SERBP1P4",
-        "PABPC5",
-        "PABPC5-AS1"
+        "EDA",
+        "RP11-308D16.4",
+        "U3"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
     },
     {
-      "trait_id": "continuous__1498__both_sexes__nan__nan",
-      "query_id": "coffee_intake",
-      "slug": "coffee-intake",
-      "description": "Coffee intake",
-      "domain": "diet",
-      "x_evidence_score": 60.1,
+      "trait_id": "continuous__1239__both_sexes__nan__nan",
+      "query_id": "current_tobacco_smoking",
+      "slug": "current-tobacco-smoking",
+      "description": "Current tobacco smoking",
+      "domain": "smoking",
+      "x_evidence_score": 68.93,
       "coverage_grade": "A",
-      "n_loci": 1,
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 61,
       "eqtl_supported": false,
       "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
+      "eqtl_total_hit_count": 61,
       "top_candidate_genes": [
-        "CHRDL1",
-        "RP11-441A11.1"
+        "GK",
+        "PJA1",
+        "TDGF1P3"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__20111__both_sexes__1__nan",
-      "query_id": "illnesses_of_siblings",
-      "slug": "illnesses-of-siblings",
-      "description": "Illnesses of siblings",
-      "domain": "family_history",
-      "x_evidence_score": 50.79,
-      "coverage_grade": "B",
-      "n_loci": 1,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [
-        "CTD-2194M22.1"
-      ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
-    },
-    {
-      "trait_id": "continuous__5116__both_sexes__nan__irnt",
-      "query_id": "3mm_cylindrical_power_right",
-      "slug": "3mm-cylindrical-power-right",
-      "description": "3mm cylindrical power (right)",
-      "domain": "autorefraction",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__20117__both_sexes__2__nan",
-      "query_id": "alcohol_drinker_status",
-      "slug": "alcohol-drinker-status",
-      "description": "Alcohol drinker status",
-      "domain": "alcohol",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "continuous__1588__both_sexes__nan__nan",
-      "query_id": "average_weekly_beer_plus_cider_intake",
-      "slug": "average-weekly-beer-plus-cider-intake",
-      "description": "Average weekly beer plus cider intake",
-      "domain": "alcohol",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__3571__both_sexes__3571__nan",
-      "query_id": "back_pain_for_3_months",
-      "slug": "back-pain-for-3-months",
-      "description": "Back pain for 3+ months",
-      "domain": "pain",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__120__both_sexes__1__nan",
-      "query_id": "birth_weight_known",
-      "slug": "birth-weight-known",
-      "description": "Birth weight known",
-      "domain": "early_life_factors",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__1677__both_sexes__1677__nan",
-      "query_id": "breastfed_as_a_baby",
-      "slug": "breastfed-as-a-baby",
-      "description": "Breastfed as a baby",
-      "domain": "early_life_factors",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "categorical__1468__both_sexes__4__nan",
-      "query_id": "cereal_type",
-      "slug": "cereal-type",
-      "description": "Cereal type",
-      "domain": "diet",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
-    },
-    {
-      "trait_id": "continuous__1408__both_sexes__nan__nan",
-      "query_id": "cheese_intake",
-      "slug": "cheese-intake",
-      "description": "Cheese intake",
-      "domain": "diet",
-      "x_evidence_score": 20,
-      "coverage_grade": "A",
-      "n_loci": 0,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 0,
-      "top_candidate_genes": [],
-      "confidence_notes": "No genome-wide significant chrX loci in current build. GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
       "eqtl_lookup_note": null
     }
   ]

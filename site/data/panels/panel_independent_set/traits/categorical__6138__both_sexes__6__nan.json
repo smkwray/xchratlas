@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -16,6 +16,9 @@
     "x_evidence_score": 20,
     "coverage_grade": "A",
     "n_loci": 0,
+    "eqtl_lookup_hit": false,
+    "eqtl_lookup_hit_locus_count": 0,
+    "eqtl_lookup_hit_count": 0,
     "eqtl_supported": false,
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 0,

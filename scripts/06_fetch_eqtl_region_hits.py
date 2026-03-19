@@ -177,15 +177,21 @@ def lookup_eqtl_by_rsid(
     api_base_url: str,
     timeout_seconds: float,
     study_specs: list[dict[str, str]],
+    pvalue_threshold: float | None,
 ) -> tuple[pd.DataFrame, str, str, str]:
     failures: list[str] = []
-    saw_explicit_no_hits = False
+    all_hits: list[pd.DataFrame] = []
+    completed_datasets = 0
+    no_hit_datasets = 0
 
     for spec in study_specs:
         dataset_id = str(spec.get("dataset_id", "") or "").strip()
         if not dataset_id:
             continue
+        dataset_failed = True
         params = {"rsid": rsid, "size": 1000}
+        if pvalue_threshold is not None:
+            params["p_upper"] = pvalue_threshold
         for api_version in ("v3", "v2"):
             outcome, hits, detail = try_api_request(
                 session,
@@ -196,18 +202,44 @@ def lookup_eqtl_by_rsid(
             )
             mode = f"rsid_api_dataset:{api_version}:{dataset_id}"
             if outcome == "hits":
-                return hits.drop_duplicates(), "complete", mode, detail
-            if outcome == "no_hits":
-                saw_explicit_no_hits = True
-                failures.append(f"{mode}: {detail or 'no hits'}")
+                dataset_failed = False
+                completed_datasets += 1
+                tagged_hits = hits.drop_duplicates().copy()
+                tagged_hits["eqtl_dataset_id"] = dataset_id
+                tagged_hits["eqtl_api_version"] = api_version
+                all_hits.append(tagged_hits)
                 break
-            if detail.startswith("HTTP 404:"):
-                failures.append(f"{mode}: {detail}")
-                continue
+            if outcome == "no_hits":
+                dataset_failed = False
+                completed_datasets += 1
+                no_hit_datasets += 1
+                break
             failures.append(f"{mode}: {detail}")
+            if detail.startswith("HTTP 404:"):
+                continue
+            break
+        if dataset_failed:
+            continue
 
-    if saw_explicit_no_hits:
-        return pd.DataFrame(), "no_hits", "rsid_api", "No associations returned for the requested rsID."
+    if all_hits:
+        merged = pd.concat(all_hits, ignore_index=True).drop_duplicates()
+        status = "complete" if not failures else "partial_complete"
+        detail = (
+            f"Aggregated {len(merged):,} associations across {int(merged['eqtl_dataset_id'].nunique())} dataset(s)"
+        )
+        if no_hit_datasets:
+            detail += f"; {no_hit_datasets} dataset(s) returned no hits"
+        if failures:
+            detail += f"; {len(failures)} dataset/version attempt(s) failed"
+        return merged, status, "rsid_api_aggregate", compact_detail(detail)
+
+    if completed_datasets:
+        status = "no_hits" if not failures else "partial_complete"
+        detail = f"No associations returned across {completed_datasets} completed dataset lookup(s)."
+        if failures:
+            detail += f" {len(failures)} dataset/version attempt(s) failed."
+        return pd.DataFrame(), status, "rsid_api_aggregate", compact_detail(detail)
+
     raise RuntimeError(compact_detail("; ".join(failures) or "No successful rsID lookup attempt."))
 
 
@@ -218,15 +250,21 @@ def lookup_eqtl_by_variant(
     api_base_url: str,
     timeout_seconds: float,
     study_specs: list[dict[str, str]],
+    pvalue_threshold: float | None,
 ) -> tuple[pd.DataFrame, str, str, str]:
     failures: list[str] = []
-    saw_explicit_no_hits = False
+    all_hits: list[pd.DataFrame] = []
+    completed_datasets = 0
+    no_hit_datasets = 0
 
     for spec in study_specs:
         dataset_id = str(spec.get("dataset_id", "") or "").strip()
         if not dataset_id:
             continue
+        dataset_failed = True
         params = {"variant": variant, "size": 1000}
+        if pvalue_threshold is not None:
+            params["p_upper"] = pvalue_threshold
         for api_version in ("v3", "v2"):
             outcome, hits, detail = try_api_request(
                 session,
@@ -237,18 +275,44 @@ def lookup_eqtl_by_variant(
             )
             mode = f"variant_api_dataset:{api_version}:{dataset_id}"
             if outcome == "hits":
-                return hits.drop_duplicates(), "complete", mode, detail
-            if outcome == "no_hits":
-                saw_explicit_no_hits = True
-                failures.append(f"{mode}: {detail or 'no hits'}")
+                dataset_failed = False
+                completed_datasets += 1
+                tagged_hits = hits.drop_duplicates().copy()
+                tagged_hits["eqtl_dataset_id"] = dataset_id
+                tagged_hits["eqtl_api_version"] = api_version
+                all_hits.append(tagged_hits)
                 break
-            if detail.startswith("HTTP 404:"):
-                failures.append(f"{mode}: {detail}")
-                continue
+            if outcome == "no_hits":
+                dataset_failed = False
+                completed_datasets += 1
+                no_hit_datasets += 1
+                break
             failures.append(f"{mode}: {detail}")
+            if detail.startswith("HTTP 404:"):
+                continue
+            break
+        if dataset_failed:
+            continue
 
-    if saw_explicit_no_hits:
-        return pd.DataFrame(), "no_hits", "variant_api", "No associations returned for the requested variant."
+    if all_hits:
+        merged = pd.concat(all_hits, ignore_index=True).drop_duplicates()
+        status = "complete" if not failures else "partial_complete"
+        detail = (
+            f"Aggregated {len(merged):,} associations across {int(merged['eqtl_dataset_id'].nunique())} dataset(s)"
+        )
+        if no_hit_datasets:
+            detail += f"; {no_hit_datasets} dataset(s) returned no hits"
+        if failures:
+            detail += f"; {len(failures)} dataset/version attempt(s) failed"
+        return merged, status, "variant_api_aggregate", compact_detail(detail)
+
+    if completed_datasets:
+        status = "no_hits" if not failures else "partial_complete"
+        detail = f"No associations returned across {completed_datasets} completed dataset lookup(s)."
+        if failures:
+            detail += f" {len(failures)} dataset/version attempt(s) failed."
+        return pd.DataFrame(), status, "variant_api_aggregate", compact_detail(detail)
+
     raise RuntimeError(compact_detail("; ".join(failures) or "No successful variant lookup attempt."))
 
 
@@ -408,6 +472,12 @@ def main() -> None:
     )
     parser.add_argument("--window-bp", type=int, default=1_000_000)
     parser.add_argument("--max-studies-per-locus", type=int, default=5)
+    parser.add_argument(
+        "--eqtl-pvalue-threshold",
+        type=float,
+        default=1e-5,
+        help="Conservative raw p-value cutoff applied to API queries when per-dataset FDR calls are unavailable.",
+    )
     parser.add_argument("--sleep-seconds", type=float, default=2.0)
     parser.add_argument("--out", default=str(INTERIM_DIR / "eqtl_hits.tsv.gz"))
     parser.add_argument("--summary-out", default=str(INTERIM_DIR / "eqtl_lookup_summary.tsv"))
@@ -496,6 +566,7 @@ def main() -> None:
                         api_base_url=args.api_base_url.rstrip("/"),
                         timeout_seconds=args.request_timeout_seconds,
                         study_specs=study_specs,
+                        pvalue_threshold=args.eqtl_pvalue_threshold,
                     )
                     if recovered_via_variant_recoder:
                         query_mode = f"variant_recoder+{query_mode}"
@@ -529,6 +600,7 @@ def main() -> None:
                         api_base_url=args.api_base_url.rstrip("/"),
                         timeout_seconds=args.request_timeout_seconds,
                         study_specs=study_specs,
+                        pvalue_threshold=args.eqtl_pvalue_threshold,
                     )
                     status = build_locus_query_status(
                         locus_id=locus_id,

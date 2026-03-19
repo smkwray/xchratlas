@@ -11,7 +11,7 @@ import pandas as pd
 
 from .io import coerce_bool, ensure_dir
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -135,25 +135,54 @@ def _float_column(series: pd.Series) -> pd.Series:
     return pd.to_numeric(series, errors="coerce")
 
 
+def _series_for_frame(df: pd.DataFrame, column: str, default: Any) -> pd.Series:
+    if column in df.columns:
+        return df[column]
+    return pd.Series([default] * len(df), index=df.index)
+
+
 def load_panel_release(spec: PanelBundleSpec) -> PanelRelease:
     trait_scores = pd.read_csv(spec.release_dir / "trait_scores.tsv", sep="\t").copy()
     loci = pd.read_csv(spec.release_dir / "x_loci.tsv", sep="\t").copy()
     gene_candidates = pd.read_csv(spec.release_dir / "x_gene_candidates.tsv", sep="\t").copy()
 
-    trait_scores["eqtl_supported_bool"] = _bool_column(trait_scores["eqtl_supported"])
+    trait_lookup_source = _series_for_frame(trait_scores, "eqtl_lookup_hit", False)
+    trait_scores["eqtl_lookup_hit_bool"] = _bool_column(trait_lookup_source)
+    trait_scores["eqtl_supported_bool"] = _bool_column(_series_for_frame(trait_scores, "eqtl_supported", False))
     trait_scores["n_loci"] = _int_column(trait_scores["n_loci"])
-    trait_scores["eqtl_supported_locus_count"] = _int_column(trait_scores.get("eqtl_supported_locus_count", 0))
-    trait_scores["eqtl_total_hit_count"] = _int_column(trait_scores.get("eqtl_total_hit_count", 0))
-    trait_scores["x_evidence_score"] = _float_column(trait_scores.get("x_evidence_score", 0)).fillna(0.0)
-    trait_scores["slug"] = trait_scores.get("query_id", trait_scores.get("description")).map(slugify)
+    trait_scores["eqtl_lookup_hit_locus_count"] = _int_column(_series_for_frame(trait_scores, "eqtl_lookup_hit_locus_count", 0))
+    trait_scores["eqtl_lookup_hit_count"] = _int_column(
+        _series_for_frame(
+            trait_scores,
+            "eqtl_lookup_hit_count",
+            _series_for_frame(trait_scores, "eqtl_total_hit_count", 0),
+        )
+    )
+    trait_scores["eqtl_supported_locus_count"] = _int_column(_series_for_frame(trait_scores, "eqtl_supported_locus_count", 0))
+    trait_scores["eqtl_total_hit_count"] = _int_column(_series_for_frame(trait_scores, "eqtl_total_hit_count", 0))
+    trait_scores["x_evidence_score"] = _float_column(_series_for_frame(trait_scores, "x_evidence_score", 0)).fillna(0.0)
+    trait_scores["slug"] = _series_for_frame(
+        trait_scores,
+        "query_id",
+        _series_for_frame(trait_scores, "description", ""),
+    ).map(slugify)
 
-    loci["eqtl_supported_bool"] = _bool_column(loci.get("eqtl_supported", False))
-    loci["lead_neglog10_pvalue"] = _float_column(loci.get("lead_neglog10_pvalue"))
-    loci["eqtl_lookup_n_hits"] = _int_column(loci.get("eqtl_lookup_n_hits", 0))
+    loci_lookup_source = _series_for_frame(loci, "eqtl_lookup_hit", False)
+    loci["eqtl_lookup_hit_bool"] = _bool_column(loci_lookup_source)
+    loci["eqtl_supported_bool"] = _bool_column(_series_for_frame(loci, "eqtl_supported", False))
+    loci["lead_neglog10_pvalue"] = _float_column(_series_for_frame(loci, "lead_neglog10_pvalue", 0))
+    loci["eqtl_lookup_hit_gene_count"] = _int_column(_series_for_frame(loci, "eqtl_lookup_hit_gene_count", 0))
+    loci["eqtl_supported_gene_count"] = _int_column(_series_for_frame(loci, "eqtl_supported_gene_count", 0))
+    loci["eqtl_lookup_n_hits"] = _int_column(_series_for_frame(loci, "eqtl_lookup_n_hits", 0))
 
-    gene_candidates["eqtl_supported_bool"] = _bool_column(gene_candidates.get("eqtl_supported", False))
-    gene_candidates["candidate_rank"] = _int_column(gene_candidates.get("candidate_rank", 0))
-    gene_candidates["distance_to_lead_bp"] = _int_column(gene_candidates.get("distance_to_lead_bp", 0))
+    gene_lookup_source = _series_for_frame(gene_candidates, "eqtl_lookup_hit", False)
+    gene_candidates["eqtl_lookup_hit_bool"] = _bool_column(gene_lookup_source)
+    gene_candidates["eqtl_supported_bool"] = _bool_column(_series_for_frame(gene_candidates, "eqtl_supported", False))
+    gene_candidates["candidate_rank"] = _int_column(_series_for_frame(gene_candidates, "candidate_rank", 0))
+    gene_candidates["distance_to_lead_bp"] = _int_column(_series_for_frame(gene_candidates, "distance_to_lead_bp", 0))
+    gene_candidates["eqtl_lookup_hit_count"] = _int_column(_series_for_frame(gene_candidates, "eqtl_lookup_hit_count", 0))
+    gene_candidates["eqtl_dataset_count"] = _int_column(_series_for_frame(gene_candidates, "eqtl_dataset_count", 0))
+    gene_candidates["eqtl_gene_role"] = _series_for_frame(gene_candidates, "eqtl_gene_role", "candidate").fillna("candidate")
 
     return PanelRelease(spec=spec, trait_scores=trait_scores, loci=loci, gene_candidates=gene_candidates)
 
@@ -176,6 +205,9 @@ def _compact_trait_payload(row: pd.Series) -> dict[str, Any]:
         "x_evidence_score": row.get("x_evidence_score"),
         "coverage_grade": row.get("coverage_grade"),
         "n_loci": row.get("n_loci"),
+        "eqtl_lookup_hit": bool(row.get("eqtl_lookup_hit_bool", False)),
+        "eqtl_lookup_hit_locus_count": row.get("eqtl_lookup_hit_locus_count", 0),
+        "eqtl_lookup_hit_count": row.get("eqtl_lookup_hit_count", row.get("eqtl_total_hit_count", 0)),
         "eqtl_supported": bool(row.get("eqtl_supported_bool", False)),
         "eqtl_supported_locus_count": row.get("eqtl_supported_locus_count", 0),
         "eqtl_total_hit_count": row.get("eqtl_total_hit_count", 0),
@@ -198,6 +230,7 @@ def _domain_summary(panel: PanelRelease) -> list[dict[str, Any]]:
             {
                 "domain": domain,
                 "trait_count": int(len(group)),
+                "lookup_hit_trait_count": int(group["eqtl_lookup_hit_bool"].sum()),
                 "supported_trait_count": int(group["eqtl_supported_bool"].sum()),
                 "zero_locus_trait_count": int(group["n_loci"].eq(0).sum()),
                 "locus_count": int(group["n_loci"].sum()),
@@ -210,6 +243,7 @@ def _domain_summary(panel: PanelRelease) -> list[dict[str, Any]]:
 def panel_metrics(panel: PanelRelease) -> dict[str, Any]:
     return {
         "trait_count": int(len(panel.trait_scores)),
+        "lookup_hit_trait_count": int(panel.trait_scores["eqtl_lookup_hit_bool"].sum()),
         "supported_trait_count": int(panel.trait_scores["eqtl_supported_bool"].sum()),
         "zero_locus_trait_count": int(panel.trait_scores["n_loci"].eq(0).sum()),
         "locus_count": int(len(panel.loci)),
@@ -282,8 +316,12 @@ def _candidate_gene_payload(row: pd.Series) -> dict[str, Any]:
         "gene_biotype": row.get("gene_biotype"),
         "mapping_relation": row.get("mapping_relation"),
         "distance_to_lead_bp": row.get("distance_to_lead_bp"),
+        "eqtl_gene_role": row.get("eqtl_gene_role"),
+        "eqtl_lookup_hit": bool(row.get("eqtl_lookup_hit_bool", False)),
+        "eqtl_lookup_hit_count": row.get("eqtl_lookup_hit_count"),
         "eqtl_supported": bool(row.get("eqtl_supported_bool", False)),
         "eqtl_study_count": row.get("eqtl_study_count"),
+        "eqtl_dataset_count": row.get("eqtl_dataset_count"),
         "best_eqtl_pvalue": row.get("best_eqtl_pvalue"),
     }
 
@@ -319,7 +357,10 @@ def build_trait_detail_payload(
                 "top_gene_id": locus_row.get("top_gene_id"),
                 "top_gene_name": locus_row.get("top_gene_name"),
                 "best_mapping_relation": locus_row.get("best_mapping_relation"),
+                "eqtl_lookup_hit": bool(locus_row.get("eqtl_lookup_hit_bool", False)),
+                "eqtl_lookup_hit_gene_count": locus_row.get("eqtl_lookup_hit_gene_count"),
                 "eqtl_supported": bool(locus_row.get("eqtl_supported_bool", False)),
+                "eqtl_supported_gene_count": locus_row.get("eqtl_supported_gene_count"),
                 "eqtl_lookup_status": locus_row.get("eqtl_lookup_status"),
                 "eqtl_lookup_mode": locus_row.get("eqtl_lookup_mode"),
                 "eqtl_lookup_n_hits": locus_row.get("eqtl_lookup_n_hits"),

@@ -77,7 +77,11 @@ def append_missing_eqtl_hit_genes(
         return base_subset
 
     existing = set(base_subset["gene_id_clean"].dropna().astype(str))
-    missing_gene_ids = [gene_id for gene_id in eqtl_support if gene_id and gene_id not in existing]
+    missing_gene_ids = [
+        gene_id
+        for gene_id, info in eqtl_support.items()
+        if gene_id and info.get("eqtl_lookup_hit", False) and gene_id not in existing
+    ]
     if not missing_gene_ids:
         return base_subset
 
@@ -94,11 +98,20 @@ def append_missing_eqtl_hit_genes(
         locus_end=locus_end,
         flank_bp=flank_bp,
     )
+    extras["eqtl_gene_role"] = "followup"
+    extras["eqtl_supported_sort"] = extras["gene_id_clean"].map(
+        lambda gene_id: bool(eqtl_support.get(gene_id, {}).get("eqtl_supported", False))
+    )
     extras["best_eqtl_pvalue"] = extras["gene_id_clean"].map(
         lambda gene_id: eqtl_support.get(gene_id, {}).get("best_eqtl_pvalue", pd.NA)
     )
-    extras = extras.sort_values(["best_eqtl_pvalue", "distance_to_lead_bp", "gene_biotype", "gene_name"], na_position="last")
+    extras = extras.sort_values(
+        ["eqtl_supported_sort", "best_eqtl_pvalue", "distance_to_lead_bp", "gene_biotype", "gene_name"],
+        ascending=[False, True, True, True, True],
+        na_position="last",
+    )
     extras = extras.drop_duplicates(subset=["gene_id_clean"], keep="first")
+    extras = extras.drop(columns=["eqtl_supported_sort"], errors="ignore")
     return pd.concat([base_subset, extras], ignore_index=True)
 
 
@@ -108,6 +121,12 @@ def main() -> None:
     parser.add_argument("--genes", default=str(INTERIM_DIR / "ensembl_x_genes.tsv"))
     parser.add_argument("--eqtl", default=str(INTERIM_DIR / "eqtl_hits.tsv.gz"))
     parser.add_argument("--eqtl-lookup-summary", default=str(INTERIM_DIR / "eqtl_lookup_summary.tsv"))
+    parser.add_argument(
+        "--eqtl-pvalue-threshold",
+        type=float,
+        default=1e-5,
+        help="Conservative raw p-value cutoff for treating eQTL rows as support when only raw API p-values are available.",
+    )
     parser.add_argument("--flank-bp", type=int, default=100_000)
     parser.add_argument("--out-candidates", default=str(PROCESSED_DIR / "x_gene_candidates.tsv.gz"))
     parser.add_argument("--out-summary", default=str(PROCESSED_DIR / "x_locus_gene_summary.tsv"))
@@ -179,9 +198,19 @@ def main() -> None:
                 for gene_id, block in locus_eqtl.groupby("gene_id_clean"):
                     pcol = "pvalue" if "pvalue" in block.columns else None
                     best_p = pd.to_numeric(block[pcol], errors="coerce").min() if pcol else pd.NA
+                    supported_mask = pd.Series([False] * len(block), index=block.index)
+                    if pcol:
+                        supported_mask = pd.to_numeric(block[pcol], errors="coerce").le(args.eqtl_pvalue_threshold).fillna(False)
+                    dataset_cols = [col for col in ("eqtl_dataset_id", "dataset_id", "eqtl_query_mode") if col in block.columns]
+                    dataset_count = 0
+                    if dataset_cols:
+                        dataset_count = int(block[dataset_cols[0]].dropna().astype(str).nunique())
                     eqtl_support[gene_id] = {
-                        "eqtl_supported": True,
-                        "eqtl_study_count": int(block["study_id"].nunique()) if "study_id" in block.columns else pd.NA,
+                        "eqtl_lookup_hit": bool(len(block)),
+                        "eqtl_lookup_hit_count": int(len(block)),
+                        "eqtl_supported": bool(supported_mask.any()),
+                        "eqtl_study_count": int(block.loc[supported_mask, "study_id"].nunique()) if "study_id" in block.columns else 0,
+                        "eqtl_dataset_count": dataset_count,
                         "best_eqtl_pvalue": best_p,
                     }
 
@@ -206,6 +235,7 @@ def main() -> None:
 
         subset = subset.sort_values(["distance_to_lead_bp", "gene_biotype", "gene_name"])
         base_subset = subset.head(5).copy()
+        base_subset["eqtl_gene_role"] = "candidate"
         candidate_subset = append_missing_eqtl_hit_genes(
             base_subset,
             genes=genes,
@@ -228,8 +258,12 @@ def main() -> None:
                     "gene_biotype": gene.get("gene_biotype"),
                     "mapping_relation": gene["mapping_relation"],
                     "distance_to_lead_bp": int(gene["distance_to_lead_bp"]),
+                    "eqtl_gene_role": gene.get("eqtl_gene_role", "candidate"),
+                    "eqtl_lookup_hit": bool(info.get("eqtl_lookup_hit", False)),
+                    "eqtl_lookup_hit_count": int(info.get("eqtl_lookup_hit_count", 0) or 0),
                     "eqtl_supported": bool(info.get("eqtl_supported", False)),
                     "eqtl_study_count": info.get("eqtl_study_count", 0),
+                    "eqtl_dataset_count": int(info.get("eqtl_dataset_count", 0) or 0),
                     "best_eqtl_pvalue": info.get("best_eqtl_pvalue", pd.NA),
                     **lookup_info,
                 }
@@ -238,7 +272,46 @@ def main() -> None:
     gene_candidates = pd.DataFrame(rows)
     write_tsv(gene_candidates, args.out_candidates)
 
-    top_by_locus = gene_candidates.sort_values(["locus_id", "candidate_rank"]).groupby("locus_id", as_index=False).first()
+    candidate_rows = (
+        gene_candidates.loc[gene_candidates["eqtl_gene_role"].astype(str).str.lower().ne("followup")].copy()
+        if not gene_candidates.empty and "eqtl_gene_role" in gene_candidates.columns
+        else gene_candidates.copy()
+    )
+    top_by_locus = candidate_rows.sort_values(["locus_id", "candidate_rank"]).groupby("locus_id", as_index=False).first()
+
+    locus_rows = []
+    for locus_id, group in gene_candidates.groupby("locus_id", sort=False):
+        candidate_group = (
+            group.loc[group["eqtl_gene_role"].astype(str).str.lower().ne("followup")].copy()
+            if "eqtl_gene_role" in group.columns
+            else group.copy()
+        )
+        lookup_mask = group["eqtl_lookup_hit"].fillna(False).astype(bool) if "eqtl_lookup_hit" in group.columns else pd.Series([False] * len(group), index=group.index)
+        candidate_lookup_mask = (
+            candidate_group["eqtl_lookup_hit"].fillna(False).astype(bool)
+            if "eqtl_lookup_hit" in candidate_group.columns
+            else pd.Series([False] * len(candidate_group), index=candidate_group.index)
+        )
+        supported_mask = (
+            candidate_group["eqtl_supported"].fillna(False).astype(bool)
+            if "eqtl_supported" in candidate_group.columns
+            else pd.Series([False] * len(candidate_group), index=candidate_group.index)
+        )
+        locus_rows.append(
+            {
+                "locus_id": locus_id,
+                "eqtl_lookup_hit": bool(lookup_mask.any()),
+                "eqtl_lookup_hit_gene_count": int(group.loc[lookup_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in group.columns else 0,
+                "eqtl_supported": bool(supported_mask.any()),
+                "eqtl_supported_gene_count": int(candidate_group.loc[supported_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in candidate_group.columns else 0,
+                "eqtl_study_count": int(pd.to_numeric(candidate_group.loc[supported_mask, "eqtl_study_count"], errors="coerce").fillna(0).max()) if supported_mask.any() else 0,
+                "best_eqtl_pvalue": pd.to_numeric(candidate_group.loc[candidate_lookup_mask, "best_eqtl_pvalue"], errors="coerce").min() if candidate_lookup_mask.any() else pd.NA,
+                "eqtl_lookup_status": group["eqtl_lookup_status"].iloc[0] if "eqtl_lookup_status" in group.columns else pd.NA,
+                "eqtl_lookup_mode": group["eqtl_lookup_mode"].iloc[0] if "eqtl_lookup_mode" in group.columns else pd.NA,
+                "eqtl_lookup_n_hits": pd.to_numeric(group["eqtl_lookup_n_hits"], errors="coerce").iloc[0] if "eqtl_lookup_n_hits" in group.columns else pd.NA,
+            }
+        )
+    locus_eqtl = pd.DataFrame(locus_rows)
     summary = top_by_locus.rename(
         columns={
             "mapping_relation": "best_mapping_relation",
@@ -246,6 +319,24 @@ def main() -> None:
             "gene_id": "top_gene_id",
         }
     )
+    summary = summary.drop(
+        columns=[
+            col
+            for col in [
+                "eqtl_supported",
+                "eqtl_lookup_hit",
+                "eqtl_lookup_hit_count",
+                "eqtl_study_count",
+                "eqtl_dataset_count",
+                "best_eqtl_pvalue",
+                "eqtl_gene_role",
+                "eqtl_lookup_status",
+                "eqtl_lookup_mode",
+                "eqtl_lookup_n_hits",
+            ]
+            if col in summary.columns
+        ]
+    ).merge(locus_eqtl, on="locus_id", how="left")
     write_tsv(summary, args.out_summary)
     print(f"[done] wrote {len(gene_candidates):,} locus-gene rows")
 

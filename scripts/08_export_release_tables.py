@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from xatlas.io import write_tsv
+from xatlas.io import coerce_bool, write_tsv
 from xatlas.scoring import LOOKUP_COMPLETE_STATUSES, compute_trait_score, load_weights, summarize_eqtl_lookup_note
 from xatlas.settings import INTERIM_DIR, PROCESSED_DIR, RELEASE_DIR
 
@@ -29,21 +29,37 @@ def build_trait_gene_rollup(gene_candidates: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
 
     ranked = gene_candidates.sort_values(["trait_id", "candidate_rank"]).copy()
+    lookup_source = ranked["eqtl_lookup_hit"] if "eqtl_lookup_hit" in ranked.columns else pd.Series([False] * len(ranked), index=ranked.index)
+    supported_source = ranked["eqtl_supported"] if "eqtl_supported" in ranked.columns else pd.Series([False] * len(ranked), index=ranked.index)
+    ranked["eqtl_lookup_hit_bool"] = lookup_source.map(lambda value: coerce_bool(value) is True)
+    ranked["eqtl_supported_bool"] = supported_source.map(lambda value: coerce_bool(value) is True)
+    if "eqtl_gene_role" in ranked.columns:
+        ranked["eqtl_gene_role"] = ranked["eqtl_gene_role"].fillna("candidate").astype(str)
+    else:
+        ranked["eqtl_gene_role"] = "candidate"
     top_gene_rows = []
     for trait_id, group in ranked.groupby("trait_id", sort=False):
-        top_row = group.iloc[0]
+        candidate_group = group.loc[group["eqtl_gene_role"].str.lower().ne("followup")].copy()
+        top_group = candidate_group if not candidate_group.empty else group
+        top_row = top_group.iloc[0]
         lookup_note = summarize_eqtl_lookup_note(group)
         locus_rows = group.sort_values(["locus_id", "candidate_rank"]).drop_duplicates(subset=["locus_id"], keep="first")
         completed_mask = locus_rows["eqtl_lookup_status"].astype(str).str.lower().isin(LOOKUP_COMPLETE_STATUSES)
+        supported_gene_mask = candidate_group["eqtl_supported_bool"] if not candidate_group.empty else pd.Series(dtype=bool)
+        lookup_hit_gene_mask = group["eqtl_lookup_hit_bool"]
 
         row = {
             "trait_id": trait_id,
-            "top_candidate_genes": ",".join(pd.Series(group["gene_name"]).dropna().astype(str).head(3)),
-            "eqtl_supported": bool(pd.Series(group["eqtl_supported"]).fillna(False).astype(bool).any()),
+            "top_candidate_genes": ",".join(pd.Series(top_group["gene_name"]).dropna().astype(str).head(3)),
+            "eqtl_lookup_hit": bool(lookup_hit_gene_mask.any()),
+            "eqtl_lookup_hit_gene_count": int(group.loc[lookup_hit_gene_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in group.columns else 0,
+            "eqtl_lookup_hit_locus_count": int(group.loc[lookup_hit_gene_mask, "locus_id"].nunique()),
+            "eqtl_lookup_hit_count": int(pd.to_numeric(locus_rows["eqtl_lookup_n_hits"], errors="coerce").fillna(0).sum()),
+            "eqtl_supported": bool(supported_gene_mask.any()),
             "best_mapping_relation": top_row.get("mapping_relation"),
-            "eqtl_supported_gene_count": int(group["eqtl_supported"].fillna(False).astype(bool).sum()),
+            "eqtl_supported_gene_count": int(candidate_group.loc[supported_gene_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in candidate_group.columns else 0,
             "eqtl_supported_locus_count": int(
-                group.loc[group["eqtl_supported"].fillna(False).astype(bool), "locus_id"].nunique()
+                candidate_group.loc[supported_gene_mask, "locus_id"].nunique()
             ),
             "eqtl_lookup_complete_locus_count": int(completed_mask.sum()),
             "eqtl_lookup_no_hit_locus_count": _status_count(locus_rows, "no_hits"),
@@ -70,7 +86,10 @@ def build_release_loci(loci: pd.DataFrame, gene_summary: pd.DataFrame) -> pd.Dat
         "top_gene_id",
         "top_gene_name",
         "best_mapping_relation",
+        "eqtl_lookup_hit",
+        "eqtl_lookup_hit_gene_count",
         "eqtl_supported",
+        "eqtl_supported_gene_count",
         "eqtl_study_count",
         "best_eqtl_pvalue",
         "eqtl_lookup_status",

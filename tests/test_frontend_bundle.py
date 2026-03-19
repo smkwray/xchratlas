@@ -38,6 +38,9 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "x_evidence_score": 90.0,
                 "coverage_grade": "A",
                 "n_loci": 2,
+                "eqtl_lookup_hit": "True",
+                "eqtl_lookup_hit_locus_count": 1,
+                "eqtl_lookup_hit_count": 7,
                 "eqtl_supported": "True",
                 "eqtl_supported_locus_count": 1,
                 "eqtl_total_hit_count": 7,
@@ -70,6 +73,9 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "x_evidence_score": 55.0,
                 "coverage_grade": "B",
                 "n_loci": 0,
+                "eqtl_lookup_hit": "False",
+                "eqtl_lookup_hit_locus_count": 0,
+                "eqtl_lookup_hit_count": 0,
                 "eqtl_supported": "False",
                 "eqtl_supported_locus_count": 0,
                 "eqtl_total_hit_count": 0,
@@ -109,7 +115,10 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "top_gene_id": "ENSG2",
                 "top_gene_name": "GENE2",
                 "best_mapping_relation": "nearby_window",
+                "eqtl_lookup_hit": False,
+                "eqtl_lookup_hit_gene_count": 0,
                 "eqtl_supported": False,
+                "eqtl_supported_gene_count": 0,
                 "eqtl_lookup_status": "no_hits",
                 "eqtl_lookup_mode": "rsid_api",
                 "eqtl_lookup_n_hits": 0,
@@ -127,7 +136,10 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "top_gene_id": "ENSG1",
                 "top_gene_name": "GENE1",
                 "best_mapping_relation": "lead_overlap",
+                "eqtl_lookup_hit": True,
+                "eqtl_lookup_hit_gene_count": 2,
                 "eqtl_supported": True,
+                "eqtl_supported_gene_count": 1,
                 "eqtl_lookup_status": "complete",
                 "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
                 "eqtl_lookup_n_hits": 3,
@@ -143,8 +155,12 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "gene_biotype": "protein_coding",
                 "mapping_relation": "lead_overlap",
                 "distance_to_lead_bp": 0,
+                "eqtl_gene_role": "candidate",
+                "eqtl_lookup_hit": True,
+                "eqtl_lookup_hit_count": 2,
                 "eqtl_supported": True,
                 "eqtl_study_count": 2,
+                "eqtl_dataset_count": 1,
                 "best_eqtl_pvalue": 1e-8,
             },
             {
@@ -156,8 +172,12 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "gene_biotype": "lncRNA",
                 "mapping_relation": "nearby_window",
                 "distance_to_lead_bp": 250,
+                "eqtl_gene_role": "followup",
+                "eqtl_lookup_hit": True,
+                "eqtl_lookup_hit_count": 1,
                 "eqtl_supported": False,
                 "eqtl_study_count": 0,
+                "eqtl_dataset_count": 1,
                 "best_eqtl_pvalue": None,
             },
             {
@@ -169,8 +189,12 @@ def _fixture_release(tmp_path: Path, name: str, *, featured: bool = True) -> Pan
                 "gene_biotype": "protein_coding",
                 "mapping_relation": "nearby_window",
                 "distance_to_lead_bp": 40,
+                "eqtl_gene_role": "candidate",
+                "eqtl_lookup_hit": False,
+                "eqtl_lookup_hit_count": 0,
                 "eqtl_supported": False,
                 "eqtl_study_count": 0,
+                "eqtl_dataset_count": 0,
                 "best_eqtl_pvalue": None,
             },
         ],
@@ -195,6 +219,7 @@ def test_traits_payload_normalizes_values_and_sorts_stably(tmp_path: Path) -> No
     traits_payload = build_traits_payload(panel)
 
     assert traits_payload[0]["trait_id"] == "trait_a"
+    assert traits_payload[0]["eqtl_lookup_hit"] is True
     assert traits_payload[0]["eqtl_supported"] is True
     assert traits_payload[0]["top_candidate_genes"] == ["GENE1", "GENE2"]
     assert traits_payload[1]["eqtl_supported"] is False
@@ -207,6 +232,7 @@ def test_trait_detail_nests_loci_and_candidate_genes(tmp_path: Path) -> None:
     assert payload["trait"]["trait_id"] == "trait_a"
     assert [row["locus_id"] for row in payload["loci"]] == ["locus_1", "locus_2"]
     assert payload["loci"][0]["candidate_genes"][0]["gene_id"] == "ENSG1"
+    assert payload["loci"][0]["candidate_genes"][1]["eqtl_gene_role"] == "followup"
     assert payload["loci"][0]["candidate_genes"][1]["best_eqtl_pvalue"] is None
 
 
@@ -214,6 +240,7 @@ def test_panel_summary_reports_metrics_and_domain_summary(tmp_path: Path) -> Non
     panel = load_panel_release(_fixture_release(tmp_path, "summary_panel"))
     payload = build_panel_summary_payload(panel, generated_at="2026-03-18T00:00:00Z")
 
+    assert payload["metrics"]["lookup_hit_trait_count"] == 1
     assert payload["metrics"]["supported_trait_count"] == 1
     assert payload["metrics"]["zero_locus_trait_count"] == 1
     assert payload["domain_summary"][0]["trait_count"] == 1

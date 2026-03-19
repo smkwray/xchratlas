@@ -26,10 +26,21 @@ function fetchJSON(path) {
 function fmt(n) { return Number(n).toLocaleString(); }
 
 function fmtDomain(d) {
+  if (d === null || d === undefined || d === '') return 'Unlabeled';
   return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
 }
 
+function safeText(value, fallback) {
+  if (value === null || value === undefined || value === '') return fallback || '';
+  return String(value);
+}
+
 function pct(n, d) { return d ? Math.round((n / d) * 100) : 0; }
+function eqtlStatusMeta(item) {
+  if (item.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
+  if (item.eqtl_lookup_hit) return { cls: 'is-lookup-hit', label: 'Lookup-hit only' };
+  return { cls: 'is-unsupported', label: 'No lookup-hit' };
+}
 
 function formatBuildDate(iso) {
   if (!iso) return null;
@@ -282,7 +293,44 @@ function compRow(label, width, value) {
 }
 
 /* ── Render: Discovery Pool ──────────────────── */
-function renderDiscoveryPool(manifest, summary) {
+function discoveryTraitRow(pool, trait) {
+  var href = 'trait.html?panel=' + pool.panel_id + '&trait=' + encodeURIComponent(trait.trait_id);
+  var status = eqtlStatusMeta(trait);
+  var topGenes = (trait.top_candidate_genes || []).slice(0, 3);
+
+  return '<a class="discovery-trait-row" href="' + href + '">' +
+    '<div class="discovery-trait-main">' +
+      '<span class="discovery-trait-name">' + trait.description + '</span>' +
+      '<div class="discovery-trait-meta">' +
+        '<span class="discovery-trait-domain">' + fmtDomain(trait.domain) + '</span>' +
+        '<span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
+        '<span class="discovery-trait-fact">score ' + trait.x_evidence_score.toFixed(0) + '</span>' +
+        '<span class="discovery-trait-fact">' + trait.n_loci + ' loci</span>' +
+        '<span class="discovery-trait-fact">' + trait.eqtl_total_hit_count + ' eQTL hits</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="discovery-trait-side">' +
+      (topGenes.length
+        ? '<span class="discovery-trait-genes">' + topGenes.join(', ') + '</span>'
+        : '<span class="discovery-trait-genes discovery-trait-genes-empty">No highlighted genes</span>') +
+    '</div>' +
+  '</a>';
+}
+
+function discoveryDrawer(title, count, rows, subtitle, open) {
+  return '<details class="discovery-drawer"' + (open ? ' open' : '') + '>' +
+    '<summary class="discovery-drawer-summary">' +
+      '<div>' +
+        '<span class="discovery-drawer-title">' + title + '</span>' +
+        '<span class="discovery-drawer-subtitle">' + subtitle + '</span>' +
+      '</div>' +
+      '<span class="discovery-drawer-count">' + fmt(count) + '</span>' +
+    '</summary>' +
+    '<div class="discovery-drawer-body">' + rows.join('') + '</div>' +
+  '</details>';
+}
+
+function renderDiscoveryPool(manifest, summary, traits) {
   var card = document.getElementById('discovery-card');
   if (!card) return;
   var pool = manifest.panels.find(function (p) { return !p.featured; });
@@ -292,10 +340,17 @@ function renderDiscoveryPool(manifest, summary) {
     .filter(function (d) { return d.locus_count > 0; })
     .sort(function (a, b) { return b.locus_count - a.locus_count; })
     .slice(0, 8);
+  var allTraits = (traits || []).slice().sort(function (a, b) {
+    return b.x_evidence_score - a.x_evidence_score ||
+      b.n_loci - a.n_loci ||
+      safeText(a.description).localeCompare(safeText(b.description));
+  });
+  var unsupportedTraits = allTraits.filter(function (t) { return !t.eqtl_supported; });
 
   card.innerHTML =
     '<div class="discovery-stats">' +
       dStat(pool.trait_count, 'traits scanned') +
+      dStat(pool.lookup_hit_trait_count, 'eQTL lookup-hit') +
       dStat(pool.supported_trait_count, 'eQTL-supported') +
       dStat(fmt(pool.locus_count), 'loci') +
       dStat(pool.zero_locus_trait_count, 'zero-locus') +
@@ -310,6 +365,22 @@ function renderDiscoveryPool(manifest, summary) {
           '</div>';
         }).join('') +
       '</div>' +
+    '</div>' +
+    '<div class="discovery-traits">' +
+      discoveryDrawer(
+        'Traits without strict eQTL support',
+        unsupportedTraits.length,
+        unsupportedTraits.map(function (trait) { return discoveryTraitRow(pool, trait); }),
+        'Includes zero-locus traits plus lookup-hit-only traits that did not meet the strict support rule.',
+        true
+      ) +
+      discoveryDrawer(
+        'All tested discovery traits',
+        allTraits.length,
+        allTraits.map(function (trait) { return discoveryTraitRow(pool, trait); }),
+        'Full Pan-UKB max independent-set discovery pool used for curation.',
+        false
+      ) +
     '</div>' +
     '<p class="discovery-note">The discovery pool is a broad curation reservoir, not a featured panel. ' +
     'Traits with zero genome-wide significant chrX loci are retained for completeness but represent the ' +
@@ -364,11 +435,20 @@ function init() {
     renderPanelComparison(manifest);
 
     var summaries = {};
+    var panelTraits = {};
     var promises = manifest.panels.map(function (panel) {
       return fetchJSON(panel.files.summary).then(function (summary) {
         summaries[panel.panel_id] = summary;
       });
     });
+    var discoveryPanel = manifest.panels.find(function (panel) { return !panel.featured; });
+    if (discoveryPanel) {
+      promises.push(
+        fetchJSON(discoveryPanel.files.traits).then(function (traits) {
+          panelTraits[discoveryPanel.panel_id] = traits;
+        })
+      );
+    }
 
     return Promise.all(promises).then(function () {
       var domainCount = countUniqueDomains(summaries, manifest.panels);
@@ -387,7 +467,7 @@ function init() {
       }
 
       if (summaries.panel_independent_set) {
-        renderDiscoveryPool(manifest, summaries.panel_independent_set);
+        renderDiscoveryPool(manifest, summaries.panel_independent_set, panelTraits.panel_independent_set || []);
       }
 
       initScrollAnimations();

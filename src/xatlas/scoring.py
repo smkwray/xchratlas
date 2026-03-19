@@ -60,6 +60,8 @@ def eqtl_lookup_note(row: pd.Series | dict[str, Any]) -> str:
     if status in LOOKUP_COMPLETE_STATUSES:
         if pd.notna(n_hits) and float(n_hits) == 0.0:
             return "eQTL follow-up: no support observed in lookup summary."
+        if pd.notna(n_hits) and float(n_hits) > 0.0 and coerce_bool(row.get("eqtl_supported")) is False:
+            return "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
         if pd.notna(n_hits):
             return ""
         return "eQTL follow-up: not safely assessed / lookup incomplete."
@@ -114,6 +116,8 @@ def summarize_eqtl_lookup_note(rows: pd.DataFrame) -> str:
         return "eQTL follow-up: not safely assessed / lookup incomplete."
     if saw_complete_lookup and all_zero_hits:
         return "eQTL follow-up: no support observed in lookup summary."
+    if saw_complete_lookup and not all_zero_hits and not rows.get("eqtl_supported", pd.Series(dtype=bool)).map(coerce_bool).fillna(False).any():
+        return "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     return ""
 
 

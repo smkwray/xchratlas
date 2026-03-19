@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -13,19 +13,22 @@
     "slug": "frequency-of-stair-climbing-in-last-4-weeks",
     "description": "Frequency of stair climbing in last 4 weeks",
     "domain": "physical_activity",
-    "x_evidence_score": 83.65,
+    "x_evidence_score": 68.65,
     "coverage_grade": "A",
     "n_loci": 2,
-    "eqtl_supported": true,
-    "eqtl_supported_locus_count": 1,
+    "eqtl_lookup_hit": true,
+    "eqtl_lookup_hit_locus_count": 1,
+    "eqtl_lookup_hit_count": 2,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 2,
     "top_candidate_genes": [
       "SMPX",
       "AC078988.1",
       "DCAF8L1"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-    "eqtl_lookup_note": null,
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+    "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
     "trait_type": "continuous",
     "phenocode": "943",
     "pheno_sex": "both_sexes",
@@ -36,7 +39,7 @@
     "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
-    "tier": "A",
+    "tier": "B",
     "selection_rank": 45,
     "selection_score": 256.28292863705406,
     "lead_neglog10_pvalue": 7.956,
@@ -57,9 +60,12 @@
       "top_gene_id": "ENSG00000263509",
       "top_gene_name": "AC078988.1",
       "best_mapping_relation": "nearest_gene",
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_gene_count": 2,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "complete",
-      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000559",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 2,
       "candidate_genes": [
         {
@@ -69,8 +75,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 191706,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -80,8 +90,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 203808,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -91,8 +105,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 291198,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -102,8 +120,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 320908,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -113,8 +135,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 329904,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -124,8 +150,12 @@
           "gene_biotype": "sense_intronic",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 756793,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.0132644996047019
         },
         {
@@ -135,8 +165,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 402142,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.8851249814033508
         }
       ]
@@ -153,9 +187,12 @@
       "top_gene_id": "ENSG00000091482",
       "top_gene_name": "SMPX",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -165,8 +202,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]

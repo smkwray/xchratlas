@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-03-18T22:04:45Z",
+  "schema_version": 2,
+  "generated_at": "2026-03-19T12:51:34Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -13,19 +13,22 @@
     "slug": "number-of-correct-matches-in-round",
     "description": "Number of correct matches in round",
     "domain": "pairs_matching",
-    "x_evidence_score": 100,
+    "x_evidence_score": 86.09,
     "coverage_grade": "A",
     "n_loci": 23,
-    "eqtl_supported": true,
-    "eqtl_supported_locus_count": 2,
+    "eqtl_lookup_hit": true,
+    "eqtl_lookup_hit_locus_count": 2,
+    "eqtl_lookup_hit_count": 11,
+    "eqtl_supported": false,
+    "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 11,
     "top_candidate_genes": [
       "ARHGAP6",
       "RNU6-133P",
       "SMPX"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-    "eqtl_lookup_note": null,
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+    "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
     "trait_type": "continuous",
     "phenocode": "398",
     "pheno_sex": "both_sexes",
@@ -57,9 +60,12 @@
       "top_gene_id": "ENSG00000129675",
       "top_gene_name": "ARHGEF6",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -69,8 +75,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -80,8 +90,12 @@
           "gene_biotype": "snRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 45393,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -91,8 +105,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 59680,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -102,8 +120,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 62458,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -113,8 +135,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 78617,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -131,9 +157,12 @@
       "top_gene_id": "ENSG00000215054",
       "top_gene_name": "HNRNPCP10",
       "best_mapping_relation": "nearest_gene",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -143,8 +172,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 224218,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -154,8 +187,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 305262,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -165,8 +202,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 305875,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -176,8 +217,12 @@
           "gene_biotype": "misc_RNA",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 440548,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -187,8 +232,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 560022,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -205,9 +254,12 @@
       "top_gene_id": "ENSG00000196406",
       "top_gene_name": "SPANXD",
       "best_mapping_relation": "locus_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -217,8 +269,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 59203,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -228,8 +284,12 @@
           "gene_biotype": "processed_transcript",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 108042,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -239,8 +299,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 131236,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -250,8 +314,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 167200,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -261,8 +329,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 172966,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -279,9 +351,12 @@
       "top_gene_id": "ENSG00000120280",
       "top_gene_name": "CXorf21",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -291,8 +366,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -309,9 +388,12 @@
       "top_gene_id": "ENSG00000241743",
       "top_gene_name": "RP5-964N17.1",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -321,8 +403,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -339,9 +425,12 @@
       "top_gene_id": "ENSG00000233067",
       "top_gene_name": "RP11-40F8.2",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -351,8 +440,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -369,9 +462,12 @@
       "top_gene_id": "ENSG00000198947",
       "top_gene_name": "DMD",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -381,8 +477,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -399,9 +499,12 @@
       "top_gene_id": "ENSG00000198354",
       "top_gene_name": "DCAF12L2",
       "best_mapping_relation": "nearby_window",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -411,8 +514,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 73210,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -429,9 +536,12 @@
       "top_gene_id": "ENSG00000101972",
       "top_gene_name": "STAG2",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -441,8 +551,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -459,9 +573,12 @@
       "top_gene_id": "ENSG00000242021",
       "top_gene_name": "RP11-268G12.3",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -471,8 +588,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -489,9 +610,12 @@
       "top_gene_id": "ENSG00000207873",
       "top_gene_name": "MIR513A1",
       "best_mapping_relation": "locus_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -501,8 +625,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 8035,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -512,8 +640,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 20398,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -523,8 +655,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 25292,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -534,8 +670,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 25556,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -545,8 +685,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 31485,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -563,9 +707,12 @@
       "top_gene_id": "ENSG00000122121",
       "top_gene_name": "XPNPEP2",
       "best_mapping_relation": "locus_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -575,8 +722,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 16570,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -593,9 +744,12 @@
       "top_gene_id": "ENSG00000047648",
       "top_gene_name": "ARHGAP6",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -605,8 +759,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -623,9 +781,12 @@
       "top_gene_id": "ENSG00000214111",
       "top_gene_name": "RP1-258N20.3",
       "best_mapping_relation": "nearby_window",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -635,8 +796,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 367,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -646,8 +811,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 13230,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -657,8 +826,12 @@
           "gene_biotype": "misc_RNA",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 31473,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -668,8 +841,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 32192,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -686,9 +863,12 @@
       "top_gene_id": "ENSG00000091482",
       "top_gene_name": "SMPX",
       "best_mapping_relation": "nearby_window",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -698,8 +878,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 4697,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -709,8 +893,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 42945,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -720,8 +908,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 46580,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -738,9 +930,12 @@
       "top_gene_id": "ENSG00000203930",
       "top_gene_name": "LINC00632",
       "best_mapping_relation": "lead_overlap",
-      "eqtl_supported": true,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_gene_count": 3,
+      "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "complete",
-      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 3,
       "candidate_genes": [
         {
@@ -750,8 +945,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.3311870098114013
         },
         {
@@ -761,8 +960,12 @@
           "gene_biotype": "antisense",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 77033,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -772,8 +975,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 259678,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -783,8 +990,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 293464,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -794,8 +1005,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 360548,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -805,8 +1020,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 819468,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.8110529780387878
         },
         {
@@ -816,8 +1035,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 423031,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.8524770140647888
         }
       ]
@@ -834,9 +1057,12 @@
       "top_gene_id": "ENSG00000206716",
       "top_gene_name": "RNU6-133P",
       "best_mapping_relation": "nearby_window",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -846,8 +1072,12 @@
           "gene_biotype": "snRNA",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 35400,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -864,9 +1094,12 @@
       "top_gene_id": "ENSG00000217835",
       "top_gene_name": "RP6-159A1.2",
       "best_mapping_relation": "nearby_window",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "variant_recoder+rsid_api",
+      "eqtl_lookup_mode": "variant_recoder+rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -876,8 +1109,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 6669,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -887,8 +1124,12 @@
           "gene_biotype": "antisense",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 35886,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -898,8 +1139,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 55005,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -909,8 +1154,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 57873,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -920,8 +1169,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 91722,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -938,9 +1191,12 @@
       "top_gene_id": "ENSG00000165675",
       "top_gene_name": "ENOX2",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -950,8 +1206,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -968,9 +1228,12 @@
       "top_gene_id": "ENSG00000229347",
       "top_gene_name": "RP11-504E21.1",
       "best_mapping_relation": "nearest_gene",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -980,8 +1243,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 211083,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -991,8 +1258,12 @@
           "gene_biotype": "miRNA",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 214599,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1002,8 +1273,12 @@
           "gene_biotype": "snRNA",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 323116,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1013,8 +1288,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 326140,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1024,8 +1303,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearest_gene",
           "distance_to_lead_bp": 355073,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -1042,9 +1325,12 @@
       "top_gene_id": "ENSG00000185010",
       "top_gene_name": "F8",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -1054,8 +1340,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1065,8 +1355,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 79388,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1076,8 +1370,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 115030,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1087,8 +1385,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 115030,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1098,8 +1400,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 124828,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -1116,9 +1422,12 @@
       "top_gene_id": "ENSG00000258545",
       "top_gene_name": "RP4-755D9.1",
       "best_mapping_relation": "lead_overlap",
+      "eqtl_lookup_hit": false,
+      "eqtl_lookup_hit_gene_count": 0,
       "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "no_hits",
-      "eqtl_lookup_mode": "rsid_api",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 0,
       "candidate_genes": [
         {
@@ -1128,8 +1437,12 @@
           "gene_biotype": "antisense",
           "mapping_relation": "lead_overlap",
           "distance_to_lead_bp": 0,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1139,8 +1452,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "locus_overlap",
           "distance_to_lead_bp": 7543,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
       ]
@@ -1157,9 +1474,12 @@
       "top_gene_id": "ENSG00000130032",
       "top_gene_name": "PRRG3",
       "best_mapping_relation": "nearby_window",
-      "eqtl_supported": true,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_gene_count": 8,
+      "eqtl_supported": false,
+      "eqtl_supported_gene_count": 0,
       "eqtl_lookup_status": "complete",
-      "eqtl_lookup_mode": "rsid_api_dataset:v3:QTD000116",
+      "eqtl_lookup_mode": "rsid_api_aggregate",
       "eqtl_lookup_n_hits": 8,
       "candidate_genes": [
         {
@@ -1169,8 +1489,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 508,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.1948329955339431
         },
         {
@@ -1180,8 +1504,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 17877,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1191,8 +1519,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 21419,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.0432814992964267
         },
         {
@@ -1202,8 +1534,12 @@
           "gene_biotype": "pseudogene",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 23420,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1213,8 +1549,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "nearby_window",
           "distance_to_lead_bp": 43835,
+          "eqtl_gene_role": "candidate",
+          "eqtl_lookup_hit": false,
+          "eqtl_lookup_hit_count": 0,
           "eqtl_supported": false,
           "eqtl_study_count": 0,
+          "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         },
         {
@@ -1224,8 +1564,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 196262,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.0214556995779275
         },
         {
@@ -1235,8 +1579,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 795799,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.060887299478054
         },
         {
@@ -1246,8 +1594,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 703840,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.4253599941730499
         },
         {
@@ -1257,8 +1609,12 @@
           "gene_biotype": "lincRNA",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 511761,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.572318971157074
         },
         {
@@ -1268,8 +1624,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 258508,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.6569219827651978
         },
         {
@@ -1279,8 +1639,12 @@
           "gene_biotype": "protein_coding",
           "mapping_relation": "eqtl_hit_gene",
           "distance_to_lead_bp": 285252,
-          "eqtl_supported": true,
-          "eqtl_study_count": 1,
+          "eqtl_gene_role": "followup",
+          "eqtl_lookup_hit": true,
+          "eqtl_lookup_hit_count": 1,
+          "eqtl_supported": false,
+          "eqtl_study_count": 0,
+          "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.7995629906654358
         }
       ]

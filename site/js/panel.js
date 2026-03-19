@@ -12,8 +12,20 @@ function fetchJSON(p) {
   });
 }
 function fmt(n) { return Number(n).toLocaleString(); }
-function fmtDomain(d) { return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }); }
+function fmtDomain(d) {
+  if (d === null || d === undefined || d === '') return 'Unlabeled';
+  return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+}
+function safeText(v, fallback) {
+  if (v === null || v === undefined || v === '') return fallback || '';
+  return String(v);
+}
 function pct(n, d) { return d ? Math.round(n / d * 100) : 0; }
+function eqtlStatusMeta(trait) {
+  if (trait.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
+  if (trait.eqtl_lookup_hit) return { cls: 'is-lookup-hit', label: 'Lookup-hit only' };
+  return { cls: 'is-unsupported', label: 'No lookup-hit' };
+}
 
 var S = {
   panelId: null, panel: null, summary: null,
@@ -33,8 +45,8 @@ function renderHero() {
   document.getElementById('panel-breadcrumb-name').textContent = p.title;
   document.getElementById('ph-traits').textContent = p.trait_count;
   document.getElementById('ph-loci').textContent = fmt(p.locus_count);
+  document.getElementById('ph-lookup').textContent = p.lookup_hit_trait_count;
   document.getElementById('ph-supported').textContent = p.supported_trait_count;
-  document.getElementById('ph-rate').textContent = pct(p.supported_trait_count, p.trait_count) + '%';
 }
 
 /* ── Domain Filter Chips ───────────────────── */
@@ -72,9 +84,9 @@ function applyFilters() {
   var q = S.searchTerm.toLowerCase();
   S.filtered = S.traits.filter(function (t) {
     if (q && !(
-      t.description.toLowerCase().includes(q) ||
-      t.domain.toLowerCase().includes(q) ||
-      t.query_id.toLowerCase().includes(q) ||
+      safeText(t.description).toLowerCase().includes(q) ||
+      safeText(t.domain).toLowerCase().includes(q) ||
+      safeText(t.query_id).toLowerCase().includes(q) ||
       (t.top_candidate_genes || []).some(function (g) { return g.toLowerCase().includes(q); })
     )) return false;
     if (S.domains.size > 0 && !S.domains.has(t.domain)) return false;
@@ -91,7 +103,7 @@ function sortTraits() {
   var k = S.sortKey, d = S.sortDir === 'asc' ? 1 : -1;
   S.filtered.sort(function (a, b) {
     var av = a[k], bv = b[k];
-    if (typeof av === 'string') return d * av.localeCompare(bv);
+    if (typeof av === 'string' || typeof bv === 'string') return d * safeText(av).localeCompare(safeText(bv));
     return d * ((av || 0) - (bv || 0));
   });
 }
@@ -106,12 +118,13 @@ function renderTable() {
   }
   tbody.innerHTML = S.filtered.map(function (t) {
     var sw = Math.min(t.x_evidence_score, 100);
+    var status = eqtlStatusMeta(t);
     return '<tr class="trait-row" onclick="location.href=\'trait.html?panel=' + S.panelId + '&trait=' + encodeURIComponent(t.trait_id) + '\'">' +
       '<td class="trait-name-cell"><span class="trait-table-name">' + t.description + '</span></td>' +
       '<td><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
       '<td class="score-cell"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
       '<td class="num-cell">' + t.n_loci + '</td>' +
-      '<td class="num-cell">' + fmt(t.eqtl_total_hit_count) + '</td>' +
+      '<td><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span><div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' hits</div></td>' +
       '<td><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
       '<td class="genes-cell">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
         return '<span class="gene-tag">' + g + '</span>';

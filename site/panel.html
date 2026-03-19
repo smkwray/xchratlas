@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
   <meta name="description" content="chrXatlas panel detail — curated chromosome X evidence panel.">
   <title>Panel — chrXatlas</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -58,12 +59,12 @@
             <span class="page-metric-label">ChrX Loci</span>
           </div>
           <div class="page-metric">
-            <span class="page-metric-value" id="ph-supported">&mdash;</span>
-            <span class="page-metric-label">eQTL-supported</span>
+            <span class="page-metric-value" id="ph-lookup">&mdash;</span>
+            <span class="page-metric-label">eQTL Lookup-Hit</span>
           </div>
           <div class="page-metric">
-            <span class="page-metric-value" id="ph-rate">&mdash;</span>
-            <span class="page-metric-label">eQTL Support Rate</span>
+            <span class="page-metric-value" id="ph-supported">&mdash;</span>
+            <span class="page-metric-label">eQTL-Supported</span>
           </div>
         </div>
       </div>
@@ -75,7 +76,7 @@
         <div class="filter-bar">
           <input type="text" class="search-input" id="table-search" placeholder="Search traits..." autocomplete="off">
           <label class="filter-toggle">
-            <input type="checkbox" id="eqtl-toggle"> eQTL-supported only
+            <input type="checkbox" id="eqtl-toggle"> Strict eQTL-supported only
           </label>
           <span class="result-count" id="result-count"></span>
         </div>
@@ -87,7 +88,7 @@
                 <th data-sort="domain">Domain <span class="sort-icon">&udarr;</span></th>
                 <th data-sort="x_evidence_score" class="sort-desc">Score <span class="sort-icon">&udarr;</span></th>
                 <th data-sort="n_loci">Loci <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="eqtl_total_hit_count">eQTL <span class="sort-icon">&udarr;</span></th>
+                <th data-sort="eqtl_total_hit_count">eQTL Status <span class="sort-icon">&udarr;</span></th>
                 <th data-sort="coverage_grade">Grade <span class="sort-icon">&udarr;</span></th>
                 <th>Top Genes</th>
               </tr>

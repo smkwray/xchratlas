@@ -35,6 +35,7 @@ def test_load_panel_release_summarizes_counts(tmp_path: Path) -> None:
                 "description": "Trait A",
                 "domain": "alpha",
                 "n_loci": 3,
+                "eqtl_lookup_hit": "True",
                 "eqtl_supported": "True",
                 "eqtl_total_hit_count": 10,
                 "x_evidence_score": 100.0,
@@ -44,6 +45,7 @@ def test_load_panel_release_summarizes_counts(tmp_path: Path) -> None:
                 "description": "Trait B",
                 "domain": "alpha",
                 "n_loci": 0,
+                "eqtl_lookup_hit": "False",
                 "eqtl_supported": "False",
                 "eqtl_total_hit_count": 0,
                 "x_evidence_score": 20.0,
@@ -53,6 +55,7 @@ def test_load_panel_release_summarizes_counts(tmp_path: Path) -> None:
     panel = load_panel_release(PanelSpec("alpha", "Alpha", "Alpha panel", release_dir))
 
     assert panel["metrics"]["n_traits"] == 2
+    assert panel["metrics"]["n_lookup_hit_traits"] == 1
     assert panel["metrics"]["n_supported_traits"] == 1
     assert panel["metrics"]["n_zero_loci_traits"] == 1
     assert panel["metrics"]["n_loci"] == 3
@@ -69,6 +72,7 @@ def test_build_site_writes_expected_pages(tmp_path: Path) -> None:
                 "description": "Trait A",
                 "domain": "alpha",
                 "n_loci": 2,
+                "eqtl_lookup_hit": "True",
                 "eqtl_supported": "True",
                 "eqtl_total_hit_count": 7,
                 "x_evidence_score": 88.0,
@@ -83,6 +87,7 @@ def test_build_site_writes_expected_pages(tmp_path: Path) -> None:
                 "description": "Trait B",
                 "domain": "beta",
                 "n_loci": 1,
+                "eqtl_lookup_hit": "False",
                 "eqtl_supported": "False",
                 "eqtl_total_hit_count": 0,
                 "x_evidence_score": 42.0,

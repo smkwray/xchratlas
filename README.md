@@ -10,23 +10,24 @@ chrXatlas is a chromosome X evidence atlas built from publicly available Pan-UK 
 
 ---
 
-## Current build (2026-03-18)
+## Current build (2026-03-19)
 
 | Metric | Value |
 |--------|-------|
 | Curated panels | 3 (Broad Atlas, Mind & Risk, Biochemistry Deep Dive) |
 | Curated traits | 79 across panels |
 | Chromosome X loci mapped | 1,109 |
-| eQTL support rate | 97% of curated traits |
+| eQTL lookup-hit coverage | 77 of 79 curated traits |
+| Strict eQTL-supported traits | 62 of 79 curated traits |
 | Biological domains | 26 unique |
 | Discovery pool | 150 traits, 643 loci |
 
 ### Curated panels
 
-- **Broad Atlas** — 48 traits, 751 loci, 98% eQTL-supported. The featured all-purpose panel with broad trait coverage across 21 biological domains.
-- **Mind & Risk** — 10 traits, 26 loci, 90% eQTL-supported. Focused behavior and cognition panel: risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, depression, fluid intelligence.
-- **Biochemistry Deep Dive** — 21 traits, 332 loci, 100% eQTL-supported. High-yield blood biochemistry panel covering lipoproteins, kidney markers, endocrine biomarkers, minerals, and liver enzymes.
-- **Discovery Pool** — 150 traits, 643 loci, 48% eQTL-supported. The discovery pool is built from the full Pan-UKB max independent set filtered to `num_pops_pass_qc >= 2`, so the broad build starts from non-redundant traits with at least minimal multi-population QC rather than the noisiest single-population results. It is kept as a curation reservoir, not a featured panel.
+- **Broad Atlas** — 48 traits, 751 loci, 47 lookup-hit and 40 strictly eQTL-supported. The featured all-purpose panel with broad trait coverage across 21 biological domains.
+- **Mind & Risk** — 10 traits, 26 loci, 9 lookup-hit and 4 strictly eQTL-supported. Focused behavior and cognition panel: risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, depression, fluid intelligence.
+- **Biochemistry Deep Dive** — 21 traits, 332 loci, 21 lookup-hit and 18 strictly eQTL-supported. High-yield blood biochemistry panel covering lipoproteins, kidney markers, endocrine biomarkers, minerals, and liver enzymes.
+- **Discovery Pool** — 150 traits, 643 loci, 72 lookup-hit and 34 strictly eQTL-supported. The discovery pool is built from the full Pan-UKB max independent set filtered to `num_pops_pass_qc >= 2`, so the broad build starts from non-redundant traits with at least minimal multi-population QC rather than the noisiest single-population results. It is kept as a curation reservoir, not a featured panel.
 
 ---
 
@@ -125,13 +126,13 @@ eQTL evidence is incorporated through targeted queries against the **eQTL Catalo
 3. **Stop if no rsID** — if no rsID can be recovered, mark the locus as not safely assessed (coordinate-based region queries are provisional and explicitly flagged)
 
 For each locus, the pipeline records:
-- Whether the locus has eQTL support
-- Which studies provided evidence
-- Best eQTL p-value
-- Supporting gene IDs
+- Whether the lookup returned any eQTL associations (`eQTL lookup-hit`)
+- Whether any positional candidate gene passes the strict support rule (`eQTL-supported`)
+- Which studies and datasets contributed evidence
+- Best observed eQTL p-value
 - Lookup mode used (`rsid`, `variant_recoder+rsid`, or `region_provisional`)
 
-A locus is **eQTL-supported** when its rsID-based lookup against prioritized eQTL Catalogue datasets returns at least one significant association between the lead variant and gene expression. A trait is **eQTL-supported** when at least one of its chrX loci has eQTL-supported candidate-gene evidence.
+A locus is **eQTL lookup-hit** when its rsID-based follow-up against prioritized eQTL Catalogue datasets returns one or more associations. A locus is **eQTL-supported** only when at least one pre-defined candidate gene at that locus has aggregated eQTL evidence with `best_eqtl_pvalue <= 1e-5` in the current build. A trait is **eQTL-supported** when at least one of its chrX loci has eQTL-supported candidate-gene evidence.
 
 Note: the current pipeline does not perform chrX LD modeling, colocalization analysis, or trait-specific tissue relevance matching. Study selection uses a prioritized dataset list (see `config/eqtl_priority_studies.csv`), not a tissue-relevance model. LD-aware colocalization and tissue-specific weighting are future work.
 
@@ -165,7 +166,7 @@ Each trait receives a **coverage grade** reflecting the quality and completeness
 - **Grade C** — high-quality cohort of at least 1,000
 - **Grade U** — does not meet the above thresholds; coverage is uncertain
 
-The coverage grade reflects **GWAS data quality**, not eQTL follow-up completeness. A trait can have Grade A coverage (strong upstream GWAS) but no eQTL support (no functional follow-up hits).
+The coverage grade reflects **GWAS data quality**, not eQTL follow-up completeness. A trait can have Grade A coverage (strong upstream GWAS) but no strict eQTL support.
 
 ### Gene annotation
 
@@ -192,8 +193,8 @@ The interactive frontend lives in `site/` and reads the JSON data bundle from `s
 ### Pages
 
 - **Homepage** (`index.html`) — Hero, metrics, curated panel cards, domain composition, top traits rail, panel comparison, discovery pool, methods explainer, search
-- **Panel detail** (`panel.html?id=...`) — Full trait table with column sorting, domain filter chips, text search, eQTL-only toggle
-- **Trait detail** (`trait.html?panel=...&trait=...`) — Evidence score, eQTL support explanation card, trait metadata grid, expandable locus cards with candidate gene tables, notes
+- **Panel detail** (`panel.html?id=...`) — Full trait table with column sorting, domain filter chips, text search, eQTL-supported-only toggle
+- **Trait detail** (`trait.html?panel=...&trait=...`) — Evidence score, eQTL lookup-hit versus support explanation card, trait metadata grid, expandable locus cards with candidate gene tables, notes
 
 ### Features
 

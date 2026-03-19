@@ -44,3 +44,21 @@ def test_summarize_eqtl_lookup_note_keeps_complete_no_support_message():
         ]
     )
     assert summarize_eqtl_lookup_note(rows) == "eQTL follow-up: no support observed in lookup summary."
+
+
+def test_summarize_eqtl_lookup_note_reports_lookup_hit_only_state():
+    rows = pd.DataFrame(
+        [
+            {
+                "locus_id": "locus1",
+                "eqtl_lookup_status": "complete",
+                "eqtl_lookup_mode": "rsid_api_aggregate",
+                "eqtl_lookup_n_hits": 5,
+                "eqtl_supported": False,
+            }
+        ]
+    )
+    assert (
+        summarize_eqtl_lookup_note(rows)
+        == "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+    )
