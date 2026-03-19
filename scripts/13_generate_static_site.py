@@ -31,8 +31,8 @@ def main() -> None:
             release_dir=Path(args.expanded_release_dir),
         ),
         PanelSpec(
-            slug="mind-and-risk",
-            title="Mind And Risk",
+            slug="mind-and-behavior",
+            title="Mind and Behavior",
             blurb="Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
             release_dir=Path(args.mind_release_dir),
         ),

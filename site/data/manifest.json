@@ -21,8 +21,8 @@
     },
     {
       "panel_id": "panel_mind_risk_core",
-      "slug": "mind-and-risk",
-      "title": "Mind And Risk",
+      "slug": "mind-and-behavior",
+      "title": "Mind and Behavior",
       "featured": true,
       "description": "Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
       "trait_count": 10,

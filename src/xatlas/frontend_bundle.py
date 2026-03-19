@@ -45,8 +45,8 @@ def default_panel_specs(release_root: str | Path) -> list[PanelBundleSpec]:
         ),
         PanelBundleSpec(
             panel_id="panel_mind_risk_core",
-            slug="mind-and-risk",
-            title="Mind And Risk",
+            slug="mind-and-behavior",
+            title="Mind and Behavior",
             description="Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
             release_dir=release_root / "panel_mind_risk_core",
             featured=True,
