@@ -31,6 +31,15 @@ function fmtDomain(d) {
 
 function pct(n, d) { return d ? Math.round((n / d) * 100) : 0; }
 
+function formatBuildDate(iso) {
+  if (!iso) return null;
+  var date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.getUTCFullYear() + '-' +
+    String(date.getUTCMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getUTCDate()).padStart(2, '0');
+}
+
 function el(tag, cls, html) {
   var e = document.createElement(tag);
   if (cls) e.className = cls;
@@ -104,6 +113,12 @@ function renderHeroMetrics(manifest) {
   setMetric('metric-traits', totalTraits, '');
   setMetric('metric-loci', totalLoci, '');
   setMetric('metric-support', supportRate, '%');
+
+  var buildNote = document.getElementById('metric-build-note');
+  if (buildNote) {
+    var buildDate = formatBuildDate(manifest.generated_at);
+    buildNote.textContent = buildDate ? 'Current data build: ' + buildDate : 'Current data build unavailable';
+  }
 }
 
 /* ── Render: Panel Cards ─────────────────────── */
@@ -127,7 +142,7 @@ function renderPanelCards(manifest) {
         '<div class="panel-card-stats">' +
           '<div class="panel-stat"><span class="panel-stat-value">' + panel.trait_count + '</span><span class="panel-stat-label">traits</span></div>' +
           '<div class="panel-stat"><span class="panel-stat-value">' + fmt(panel.locus_count) + '</span><span class="panel-stat-label">loci</span></div>' +
-          '<div class="panel-stat"><span class="panel-stat-value">' + supportRate + '%</span><span class="panel-stat-label">supported</span></div>' +
+          '<div class="panel-stat"><span class="panel-stat-value">' + supportRate + '%</span><span class="panel-stat-label">eQTL-supported</span></div>' +
         '</div>' +
         '<div class="panel-card-domains" id="domains-' + panel.panel_id + '"></div>' +
         '<div class="panel-card-top-traits" id="top-traits-' + panel.panel_id + '"></div>' +
@@ -252,7 +267,7 @@ function renderPanelComparison(manifest) {
       '<div class="comparison-bars">' +
         compRow('Traits', traitW, panel.trait_count) +
         compRow('Loci', lociW, fmt(panel.locus_count)) +
-        compRow('Support', supportRate, supportRate + '%') +
+        compRow('eQTL support', supportRate, supportRate + '%') +
       '</div>';
     grid.appendChild(item);
   });
@@ -281,7 +296,7 @@ function renderDiscoveryPool(manifest, summary) {
   card.innerHTML =
     '<div class="discovery-stats">' +
       dStat(pool.trait_count, 'traits scanned') +
-      dStat(pool.supported_trait_count, 'supported') +
+      dStat(pool.supported_trait_count, 'eQTL-supported') +
       dStat(fmt(pool.locus_count), 'loci') +
       dStat(pool.zero_locus_trait_count, 'zero-locus') +
     '</div>' +
@@ -296,7 +311,7 @@ function renderDiscoveryPool(manifest, summary) {
         }).join('') +
       '</div>' +
     '</div>' +
-    '<p class="discovery-note">The discovery pool is a broad curation reservoir, not a polished release. ' +
+    '<p class="discovery-note">The discovery pool is a broad curation reservoir, not a featured panel. ' +
     'Traits with zero genome-wide significant chrX loci are retained for completeness but represent the ' +
     'absence of detectable signal in the current build.</p>';
 }

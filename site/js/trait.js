@@ -80,7 +80,7 @@ function renderLoci(data) {
           '<span class="locus-pval">p: 10<sup>\u2212' + locus.lead_neglog10_pvalue.toFixed(1) + '</sup></span>' +
           '<span class="locus-top-gene">' + locus.top_gene_name + '</span>' +
           (locus.eqtl_supported
-            ? '<span class="locus-eqtl-badge eqtl-yes">eQTL supported</span>'
+            ? '<span class="locus-eqtl-badge eqtl-yes">eQTL-supported</span>'
             : '<span class="locus-eqtl-badge eqtl-no">no eQTL</span>') +
           '<span class="locus-gene-count">' + genes.length + ' gene' + (genes.length !== 1 ? 's' : '') + '</span>' +
         '</div>' +
@@ -124,20 +124,20 @@ function renderSupport(data) {
   var supLoci = loci.filter(function (l) { return l.eqtl_supported; });
 
   var statusClass = supported ? 'support-yes' : 'support-no';
-  var statusLabel = supported ? 'Supported' : 'Not supported';
+  var statusLabel = supported ? 'eQTL-supported' : 'Not eQTL-supported';
   var statusIcon = supported ? '\u2713' : '\u2717';
 
   var html = '<div class="support-card ' + statusClass + '">' +
     '<div class="support-header">' +
       '<span class="support-status-badge ' + statusClass + '">' + statusIcon + ' ' + statusLabel + '</span>' +
       '<h3>' + (supported
-        ? 'Why this trait is marked supported'
-        : 'Why this trait is not marked supported') + '</h3>' +
+        ? 'Why this trait is marked eQTL-supported'
+        : 'Why this trait is not marked eQTL-supported') + '</h3>' +
     '</div>' +
     '<div class="support-body">' +
       '<div class="support-facts">' +
         '<div class="support-fact">' +
-          '<span class="support-fact-label">Supported loci</span>' +
+          '<span class="support-fact-label">eQTL-supported loci</span>' +
           '<span class="support-fact-value">' + t.eqtl_supported_locus_count + ' of ' + t.n_loci + '</span>' +
         '</div>' +
         '<div class="support-fact">' +
@@ -182,7 +182,7 @@ function renderSupport(data) {
   }
 
   html += '<div class="support-rule">' +
-      '<strong>Rule:</strong> trait-level support means at least one chrX locus had eQTL-supported candidate-gene evidence.' +
+      '<strong>Rule:</strong> trait-level eQTL support means at least one chrX locus had eQTL-supported candidate-gene evidence.' +
     '</div>' +
   '</div></div>';
 

@@ -27,7 +27,7 @@ def main() -> None:
         PanelSpec(
             slug="broad-atlas",
             title="Broad Atlas",
-            blurb="Curated all-purpose release with broad trait coverage and low zero-locus drift.",
+            blurb="Curated all-purpose panel with broad trait coverage and low zero-locus drift.",
             release_dir=Path(args.expanded_release_dir),
         ),
         PanelSpec(
@@ -45,7 +45,7 @@ def main() -> None:
         PanelSpec(
             slug="discovery-pool",
             title="Discovery Pool",
-            blurb="Full Pan-UKB max independent-set build kept as a broad curation source rather than a polished release tier.",
+            blurb="Full Pan-UKB max independent-set build kept as a broad curation source rather than a featured panel.",
             release_dir=Path(args.independent_release_dir),
             featured=False,
         ),

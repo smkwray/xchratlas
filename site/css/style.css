@@ -345,6 +345,12 @@ sup { font-size: 0.7em; }
   letter-spacing: 0.08em;
   color: var(--text-secondary);
 }
+.proof-note {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
 
 /* ── Panel Cards ───────────────────────────── */
 .panels-grid {

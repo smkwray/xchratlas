@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "chrXatlas"
 version = "0.1.0"
-description = "Starter scaffold for a chromosome X evidence atlas built from public data"
+description = "Chromosome X evidence atlas built from public Pan-UK Biobank summary statistics with locus mapping and targeted eQTL follow-up"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

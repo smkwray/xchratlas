@@ -1,16 +1,16 @@
 # chrXatlas
 
-**The first systematic evidence atlas of chromosome X genetic associations in human traits.**
+**A systematic, evidence-scored atlas of chromosome X genetic associations in human traits.**
 
-Most large-scale genetic studies drop chromosome X entirely. The analytical complications — different copy numbers in males and females, dosage compensation uncertainty, non-standard LD structure — mean that an entire chromosome encoding ~800 protein-coding genes is routinely excluded from the era of biobank-scale genomics.
+Chromosome X remains under-analyzed or omitted in many GWAS summary-stat resources. The analytical complications — different copy numbers in males and females, dosage compensation uncertainty, non-standard LD structure — mean that an entire chromosome encoding ~800 protein-coding genes is still handled inconsistently in the era of biobank-scale genomics.
 
-chrXatlas changes that. It is a ranked, evidence-scored catalog of chromosome X associations built from publicly available summary statistics across dozens of human traits. For each trait, the atlas identifies genome-wide significant loci on chrX, maps candidate genes, and incorporates eQTL follow-up to connect genetic signals to plausible biology.
+chrXatlas is a chromosome X evidence atlas built from publicly available Pan-UK Biobank summary statistics. It ranks human traits by the strength and quality of their chrX associations, groups significant variants into loci, maps candidate genes, and adds targeted eQTL follow-up. It is a transparent discovery resource, not a sex-stratified, LD-aware, or causal model of chromosome X biology.
 
 **[Browse the atlas](https://smkwray.github.io/xchratlas/)**
 
 ---
 
-## Current build
+## Current build (2026-03-18)
 
 | Metric | Value |
 |--------|-------|
@@ -23,16 +23,16 @@ chrXatlas changes that. It is a ranked, evidence-scored catalog of chromosome X 
 
 ### Curated panels
 
-- **Broad Atlas** — 48 traits, 751 loci, 98% eQTL-supported. The flagship all-purpose release with broad trait coverage across 21 biological domains.
-- **Mind & Risk** — 10 traits, 26 loci, 90% supported. Focused behavior and cognition panel: risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, depression, fluid intelligence.
-- **Biochemistry Deep Dive** — 21 traits, 332 loci, 100% supported. High-yield blood biochemistry panel covering lipoproteins, kidney markers, endocrine biomarkers, minerals, and liver enzymes.
-- **Discovery Pool** — 150 traits, 643 loci, 48% supported. The discovery pool is built from the full Pan-UKB max independent set filtered to `num_pops_pass_qc >= 2`, so the broad build starts from non-redundant traits with at least minimal multi-population QC rather than the noisiest single-population results. It is kept as a curation reservoir, not a polished release tier.
+- **Broad Atlas** — 48 traits, 751 loci, 98% eQTL-supported. The featured all-purpose panel with broad trait coverage across 21 biological domains.
+- **Mind & Risk** — 10 traits, 26 loci, 90% eQTL-supported. Focused behavior and cognition panel: risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, depression, fluid intelligence.
+- **Biochemistry Deep Dive** — 21 traits, 332 loci, 100% eQTL-supported. High-yield blood biochemistry panel covering lipoproteins, kidney markers, endocrine biomarkers, minerals, and liver enzymes.
+- **Discovery Pool** — 150 traits, 643 loci, 48% eQTL-supported. The discovery pool is built from the full Pan-UKB max independent set filtered to `num_pops_pass_qc >= 2`, so the broad build starts from non-redundant traits with at least minimal multi-population QC rather than the noisiest single-population results. It is kept as a curation reservoir, not a featured panel.
 
 ---
 
 ## Why this project exists
 
-Chromosome X is the blind spot of modern human genetics. It carries genes that influence immune function, metabolism, brain development, blood chemistry, and dozens of other processes. But because males carry one copy (XY) and females carry two (XX), the standard analytical pipelines used in genome-wide association studies either drop chrX entirely or handle it with untested assumptions.
+Chromosome X is a persistent blind spot of modern human genetics. It carries genes that influence immune function, metabolism, brain development, blood chemistry, and dozens of other processes. But because males carry one copy (XY) and females carry two (XX), many GWAS pipelines and downstream summary-stat resources still omit chrX or handle it with untested assumptions.
 
 The result is a systematic gap: thousands of GWAS have been published, but chromosome X associations remain poorly cataloged, rarely compared across traits, and difficult to find in existing resources.
 
@@ -131,7 +131,7 @@ For each locus, the pipeline records:
 - Supporting gene IDs
 - Lookup mode used (`rsid`, `variant_recoder+rsid`, or `region_provisional`)
 
-A locus is **eQTL-supported** when its rsID-based lookup against prioritized eQTL Catalogue datasets returns at least one significant association between the lead variant and gene expression. A trait is **supported** when at least one of its chrX loci has eQTL-supported candidate-gene evidence.
+A locus is **eQTL-supported** when its rsID-based lookup against prioritized eQTL Catalogue datasets returns at least one significant association between the lead variant and gene expression. A trait is **eQTL-supported** when at least one of its chrX loci has eQTL-supported candidate-gene evidence.
 
 Note: the current pipeline does not perform chrX LD modeling, colocalization analysis, or trait-specific tissue relevance matching. Study selection uses a prioritized dataset list (see `config/eqtl_priority_studies.csv`), not a tissue-relevance model. LD-aware colocalization and tissue-specific weighting are future work.
 
@@ -331,8 +331,10 @@ chrXatlas/
 
 ---
 
-## License and attribution
+## Disclaimer and attribution
 
 This project is independent research. It is not affiliated with or endorsed by UK Biobank, the Pan-UKB team, the eQTL Catalogue, or any of the data providers.
+
+No software license file is included in this repository yet, so reuse terms are not currently specified.
 
 Data sources: Pan-UK Biobank, eQTL Catalogue, Ensembl GRCh37.

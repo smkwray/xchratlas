@@ -313,7 +313,7 @@ def _panel_summary_cards(panels: list[dict[str, object]], site_outdir: Path) -> 
                     f"<h3>{escape(spec.title)}</h3>",
                     f"<p class=\"muted\">{escape(spec.blurb)}</p>",
                     f"<div class=\"metric\">{_fmt_int(metrics['n_supported_traits'])}/{_fmt_int(metrics['n_traits'])}</div>",
-                    '<div class="metric-label">Traits with chrX gene support</div>',
+                    '<div class="metric-label">eQTL-supported traits</div>',
                     '<div class="grid">',
                     f'<div><div class="metric">{_fmt_int(metrics["n_loci"])}</div><div class="metric-label">chrX loci</div></div>',
                     f'<div><div class="metric">{_fmt_int(metrics["n_zero_loci_traits"])}</div><div class="metric-label">Zero-locus traits</div></div>',
@@ -344,7 +344,7 @@ def _panel_comparison_table(panels: list[dict[str, object]]) -> str:
                 "zero_loci": _fmt_int(metrics["n_zero_loci_traits"]),
             }
         )
-    return _render_table(pd.DataFrame(rows), [("panel", "Panel"), ("focus", "Focus"), ("traits", "Traits"), ("supported", "Supported"), ("loci", "Loci"), ("zero_loci", "Zero-locus")])
+    return _render_table(pd.DataFrame(rows), [("panel", "Panel"), ("focus", "Focus"), ("traits", "Traits"), ("supported", "eQTL-supported"), ("loci", "Loci"), ("zero_loci", "Zero-locus")])
 
 
 def _render_discovery_block(panels: list[dict[str, object]]) -> str:
@@ -362,7 +362,7 @@ def _render_discovery_block(panels: list[dict[str, object]]) -> str:
                     '<div class="card">',
                     f"<h3>{escape(spec.title)}</h3>",
                     f"<p class=\"muted\">{escape(spec.blurb)}</p>",
-                    f"<p><span class=\"warn\">{_fmt_int(metrics['n_zero_loci_traits'])}</span> zero-locus traits and <span class=\"warn\">{_fmt_int(metrics['n_traits'] - metrics['n_supported_traits'])}</span> unsupported traits. Use this page as a scouting surface, not as the main story.</p>",
+                    f"<p><span class=\"warn\">{_fmt_int(metrics['n_zero_loci_traits'])}</span> zero-locus traits and <span class=\"warn\">{_fmt_int(metrics['n_traits'] - metrics['n_supported_traits'])}</span> traits without eQTL support. Use this page as a scouting surface, not as the main story.</p>",
                     f'<p><a href="{escape(spec.slug)}.html">Open the discovery page</a></p>',
                     "</div>",
                 ]
@@ -390,7 +390,7 @@ def _render_panel_page(panel: dict[str, object], panel_specs: list[PanelSpec], s
             _render_nav(panel_specs, current=spec.slug),
             "</section>",
             '<section class="grid">',
-            f'<div class="card"><div class="metric">{_fmt_int(metrics["n_supported_traits"])}/{_fmt_int(metrics["n_traits"])}</div><div class="metric-label">Traits with chrX gene support</div></div>',
+            f'<div class="card"><div class="metric">{_fmt_int(metrics["n_supported_traits"])}/{_fmt_int(metrics["n_traits"])}</div><div class="metric-label">eQTL-supported traits</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_loci"])}</div><div class="metric-label">chrX loci</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_zero_loci_traits"])}</div><div class="metric-label">Zero-locus traits</div></div>',
             f'<div class="card"><div class="metric">{_fmt_int(metrics["n_gene_rows"])}</div><div class="metric-label">Locus-gene rows</div></div>',
@@ -413,16 +413,16 @@ def _render_panel_page(panel: dict[str, object], panel_specs: list[PanelSpec], s
                     ("description", "Description"),
                     ("domain", "Domain"),
                     ("n_loci", "Loci"),
-                    ("eqtl_supported_bool", "Supported"),
+                    ("eqtl_supported_bool", "eQTL-supported"),
                     ("eqtl_total_hit_count", "eQTL Hits"),
                     ("x_evidence_score", "Score"),
                 ],
             ),
             "<h2>Domain Summary</h2>",
-            _render_table(panel["domains"], [("domain", "Domain"), ("n_traits", "Traits"), ("supported_traits", "Supported"), ("total_loci", "Loci")]),
+            _render_table(panel["domains"], [("domain", "Domain"), ("n_traits", "Traits"), ("supported_traits", "eQTL-supported"), ("total_loci", "Loci")]),
             "<h2>Unsupported Or Weak Traits</h2>",
             _render_table(panel["unsupported"], [("query_id", "Trait"), ("description", "Description"), ("domain", "Domain"), ("n_loci", "Loci"), ("x_evidence_score", "Score")]),
-            '<div class="footer">Generated from release tables. Support means the trait has at least one chrX locus with candidate-gene follow-up supported by the current build-safe eQTL path.</div>',
+            '<div class="footer">Generated from release tables. eQTL support means the trait has at least one chrX locus with candidate-gene follow-up supported by the current rsID-based eQTL path.</div>',
             "</div></body></html>",
         ]
     )
@@ -447,7 +447,7 @@ def _render_methods_page(panel_specs: list[PanelSpec]) -> str:
             "</section>",
             '<section class="two-up">',
             '<div class="card"><h2>Robustness checks</h2><p>The build uses a strict genome-wide significance threshold, keeps PAR and nonPAR regions separate, infers the p-value schema from the actual Pan-UKB file, and avoids unsafe direct GRCh37-to-GRCh38 region lookups by default.</p></div>',
-            '<div class="card"><h2>How to read support</h2><p>A supported trait is not a claim that chromosome X causes the whole trait. It means the current data found at least one convincing chrX region and could connect that region to plausible gene evidence.</p></div>',
+            '<div class="card"><h2>How to read eQTL support</h2><p>An eQTL-supported trait is not a claim that chromosome X causes the whole trait. It means the current data found at least one convincing chrX region and could connect that region to plausible gene evidence through the prioritized eQTL datasets used in the build.</p></div>',
             "</section>",
             '<div class="footer">The curated panels are intended for presentation. The broad independent-set panel is best treated as a discovery pool for further curation.</div>',
             "</div></body></html>",
@@ -470,7 +470,7 @@ def build_site(panel_specs: list[PanelSpec], outdir: str | Path) -> Path:
             '<section class="hero">',
             '<div class="eyebrow">chrXatlas</div>',
             "<h1>Chromosome X signals, made legible.</h1>",
-            '<p class="lead">This first presentation layer turns the release tables into a simple, browsable summary. The curated panels are the main story; the broad independent-set build is included as a discovery pool, not as the cleanest public-facing tier.</p>',
+            '<p class="lead">This presentation layer turns the release tables into a simple, browsable summary. The curated panels are the main story; the broad independent-set build is included as a discovery pool, not as the cleanest public-facing tier.</p>',
             _render_nav(panel_specs, current="index"),
             "</section>",
             _panel_summary_cards(panels, site_outdir),
@@ -479,7 +479,7 @@ def build_site(panel_specs: list[PanelSpec], outdir: str | Path) -> Path:
             _render_discovery_block(panels),
             '<section class="two-up">',
             '<div class="card"><h2>What counts as a chrX signal?</h2><p>A chrX signal is a spot on chromosome X where the public genetics data shows a strong statistical link to a trait. Nearby hits are grouped into one locus so a single region is not counted over and over.</p></div>',
-            '<div class="card"><h2>What counts as support?</h2><p>Support means the pipeline could not only find the locus but also connect it to candidate genes, often with outside gene-activity evidence. It is a shortlist for interpretation, not proof of direct causation.</p></div>',
+            '<div class="card"><h2>What counts as eQTL support?</h2><p>eQTL support means the pipeline could not only find the locus but also connect it to candidate genes using the prioritized rsID-based eQTL follow-up path. It is a shortlist for interpretation, not proof of direct causation.</p></div>',
             "</section>",
             '<div class="footer">Static HTML generated from release tables. Open the panel pages above for top traits, domain summaries, and direct links to the TSV outputs.</div>',
             "</div></body></html>",

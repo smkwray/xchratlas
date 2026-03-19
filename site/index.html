@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="chrXatlas — The first systematic atlas of chromosome X genetic associations. Mapping signals, loci, and candidate genes across dozens of human traits.">
+  <meta name="description" content="chrXatlas — A chromosome X evidence atlas built from public Pan-UK Biobank summary statistics, with locus mapping, candidate genes, and targeted eQTL follow-up.">
   <title>chrXatlas — Chromosome X Evidence Atlas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
       <div class="container hero-content">
         <div class="hero-badge">Chromosome X Evidence Atlas</div>
         <h1 class="hero-title">Mapping the Signals<br>Most Studies Leave Behind</h1>
-        <p class="hero-subtitle">Chromosome X carries hundreds of genes that influence traits from blood chemistry to cognition. Most large-scale genetic studies exclude it entirely. chrXatlas maps where the signals are, which traits they touch, and which genes they implicate.</p>
+        <p class="hero-subtitle">Chromosome X carries hundreds of genes that influence traits from blood chemistry to cognition. Many GWAS summary-stat resources still under-analyze or omit it. chrXatlas maps where the signals are, which traits they touch, and which genes they implicate.</p>
         <a href="#panels" class="hero-cta">Explore the Atlas <span class="cta-arrow">&darr;</span></a>
       </div>
       <div class="hero-scroll-hint">
@@ -77,6 +77,7 @@
             <div class="metric-label">Biological Domains</div>
           </div>
         </div>
+        <p class="proof-note" id="metric-build-note">Current data build: &mdash;</p>
       </div>
     </section>
 
@@ -114,7 +115,7 @@
           </div>
           <div class="why-card animate-on-scroll">
             <h3>What We Built</h3>
-            <p>chrXatlas is a ranked, evidence-scored catalog of chromosome X associations built from Pan-UK Biobank summary statistics. For each trait, we identify genome-wide significant loci on chrX, map candidate genes by proximity, and incorporate eQTL evidence to connect variants to gene expression changes in relevant tissues.</p>
+            <p>chrXatlas is a ranked, evidence-scored catalog of chromosome X associations built from Pan-UK Biobank summary statistics. For each trait, we identify genome-wide significant loci on chrX, map candidate genes by proximity, and add targeted follow-up from prioritized eQTL datasets.</p>
           </div>
           <div class="why-card animate-on-scroll">
             <h3>Why It Matters</h3>
@@ -139,7 +140,7 @@
 
         <div class="domain-composition animate-on-scroll" id="domain-composition">
           <h3>Domain Composition &mdash; Broad Atlas</h3>
-          <p class="domain-subtitle">Loci distribution across biological domains in the flagship panel.</p>
+          <p class="domain-subtitle">Loci distribution across biological domains in the featured all-purpose panel.</p>
           <div class="domain-bars" id="domain-bars"></div>
         </div>
 
@@ -175,8 +176,8 @@
             <p>A "signal" in this atlas is a genome-wide significant association (p &lt; 5 &times; 10<sup>&minus;8</sup>) located on chromosome X. We scan Pan-UK Biobank summary statistics for each trait, identify significant variants on chrX, and merge nearby signals into distinct <strong>loci</strong> using distance-based clustering.</p>
           </div>
           <div class="method-card animate-on-scroll">
-            <h3>What does "supported" mean?</h3>
-            <p>A trait is <strong>supported</strong> when at least one of its chromosome X loci has evidence from expression quantitative trait locus (eQTL) data &mdash; meaning the lead variant is also associated with gene expression changes in relevant tissues. This is an independent line of evidence connecting the GWAS signal to a plausible biological mechanism.</p>
+            <h3>What does "eQTL-supported" mean?</h3>
+            <p>A trait is <strong>eQTL-supported</strong> when at least one of its chromosome X loci has rsID-based evidence from the prioritized eQTL datasets used in the current pipeline. This is an additional line of evidence connecting the GWAS signal to a plausible biological mechanism; it is not a tissue-relevance model.</p>
           </div>
           <div class="method-card animate-on-scroll">
             <h3>Coverage grades</h3>
@@ -225,8 +226,9 @@
         </div>
         <div class="footer-col">
           <h4>Project</h4>
-          <a href="#">Data Contract</a>
-          <a href="#">Source</a>
+          <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
+          <a href="#methods">Methods</a>
+          <a href="https://github.com/smkwray/xchratlas">Source code</a>
         </div>
       </div>
       <div class="footer-bottom">
