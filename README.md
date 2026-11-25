@@ -99,6 +99,10 @@ Each release directory holds `trait_scores.tsv`, `x_loci.tsv` and `x_gene_candid
 - eQTL datasets come from a fixed priority list, not a model of which tissues matter for each trait, and loci whose lead variant has no recoverable rsID are marked as not safely assessed.
 - 22 of 48 Broad Atlas traits and 19 of 21 Biochemistry Deep Dive traits reach the 100-point score cap, so the score does not order the strongest traits.
 
-## Disclaimer and license
+## Disclaimer
 
-This is independent research, not affiliated with or endorsed by UK Biobank, the Pan-UKB team, the eQTL Catalogue or any other data provider. No software license file is included yet, so reuse terms are not specified.
+This is independent research, not affiliated with or endorsed by UK Biobank, the Pan-UKB team, the eQTL Catalogue or any other data provider.
+
+## License
+
+MIT. See [LICENSE](LICENSE). Source data remain under their providers' terms.
