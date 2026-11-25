@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
 </head>
@@ -44,17 +44,20 @@
     <section class="hero" id="hero">
       <div class="container hero-content">
         <div class="chrx-ideogram" aria-hidden="true">
-          <span class="ideogram-seg ideogram-par"></span>
-          <span class="ideogram-seg ideogram-p"></span>
-          <span class="ideogram-cen"></span>
-          <span class="ideogram-seg ideogram-q1"></span>
-          <span class="ideogram-seg ideogram-q2"></span>
-          <span class="ideogram-seg ideogram-q3"></span>
-          <span class="ideogram-seg ideogram-par"></span>
+          <span class="arm" style="flex-grow:581"><i class="par" style="flex-grow:27"></i><i class="g0" style="flex-grow:16"></i><i class="g2" style="flex-grow:17"></i><i class="g0" style="flex-grow:35"></i><i class="g2" style="flex-grow:76"></i><i class="g0" style="flex-grow:22"></i><i class="g2" style="flex-grow:26"></i><i class="g0" style="flex-grow:30"></i><i class="g4" style="flex-grow:44"></i><i class="g0" style="flex-grow:22"></i><i class="g4" style="flex-grow:61"></i><i class="g0" style="flex-grow:48"></i><i class="g3" style="flex-grow:40"></i><i class="g0" style="flex-grow:34"></i><i class="g1" style="flex-grow:50"></i><i class="g0" style="flex-grow:33"></i></span>
+          <i class="cen" style="flex-grow:49"></i>
+          <span class="arm" style="flex-grow:922.7"><i class="g0" style="flex-grow:16"></i><i class="g2" style="flex-grow:32"></i><i class="g0" style="flex-grow:40"></i><i class="g2" style="flex-grow:21"></i><i class="g0" style="flex-grow:21"></i><i class="g4" style="flex-grow:84"></i><i class="g0" style="flex-grow:18"></i><i class="g4" style="flex-grow:56"></i><i class="g0" style="flex-grow:17"></i><i class="g3" style="flex-grow:48"></i><i class="g0" style="flex-grow:43"></i><i class="g2" style="flex-grow:11"></i><i class="g0" style="flex-grow:50"></i><i class="g3" style="flex-grow:78"></i><i class="g0" style="flex-grow:44"></i><i class="g4" style="flex-grow:78"></i><i class="g0" style="flex-grow:17"></i><i class="g1" style="flex-grow:32"></i><i class="g0" style="flex-grow:44"></i><i class="g3" style="flex-grow:23"></i><i class="g0" style="flex-grow:18"></i><i class="g4" style="flex-grow:50"></i><i class="g0" style="flex-grow:78.3"></i><i class="par" style="flex-grow:3.4"></i></span>
         </div>
         <h1 class="hero-title">Chromosome X Associations<br>Most Studies Leave Out</h1>
         <p class="hero-subtitle">Chromosome X carries hundreds of genes, and variants along it are associated with traits from blood chemistry to cognition. Many large genetic studies still leave chromosome X out. <span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span> maps where those associations fall, which traits carry them, and which nearby genes have supporting gene-expression evidence.</p>
-        <a href="#panels" class="hero-cta">Browse panels <span class="cta-arrow" aria-hidden="true">&darr;</span></a>
+        <div class="hero-actions">
+          <a href="#panels" class="hero-cta">Browse panels <span class="cta-arrow" aria-hidden="true">&darr;</span></a>
+          <div class="search-container" id="search">
+            <label class="sr-only" for="search-input">Search traits</label>
+            <input type="text" class="search-input" id="search-input" placeholder="Traits, categories, or candidate genes" autocomplete="off">
+            <div class="search-results" id="search-results"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -100,17 +103,6 @@
             <h3>Why It Matters</h3>
             <p>Chromosome X associations appear across blood chemistry, body measurements, metabolism, inflammation, and behavior. Putting them in one atlas lets you compare signal patterns across trait categories, inspect the candidate genes at each region, or look up a specific gene to see which traits share nearby associations.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Search -->
-    <section class="search-section" id="search">
-      <div class="container">
-        <div class="search-container">
-          <label class="sr-only" for="search-input">Search traits</label>
-          <input type="text" class="search-input" id="search-input" placeholder="Traits, categories, or candidate genes" autocomplete="off">
-          <div class="search-results" id="search-results"></div>
         </div>
       </div>
     </section>

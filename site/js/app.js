@@ -163,7 +163,6 @@ function renderPanelCards(manifest) {
     card.setAttribute('data-panel-id', panel.panel_id);
 
     card.innerHTML =
-      '<div class="panel-card-accent"></div>' +
       '<div class="panel-card-body">' +
         '<h3 class="panel-card-title">' + panel.title + '</h3>' +
         '<p class="panel-card-desc">' + panel.description + '</p>' +
