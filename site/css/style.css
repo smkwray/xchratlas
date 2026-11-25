@@ -717,6 +717,7 @@ sup, sub { font-size: 0.72em; line-height: 0; }
 }
 .discovery-stat { text-align: center; }
 .discovery-stat-value {
+  display: block;
   font-family: var(--font-mono);
   font-size: 1.8rem;
   font-weight: 800;
