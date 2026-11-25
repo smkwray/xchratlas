@@ -549,3 +549,38 @@ function initSearch() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+function initIdeogram() {
+  var ideo = document.querySelector('.chrx-ideogram');
+  if (!ideo) return;
+  var tip = ideo.querySelector('.ideo-tip');
+  var current = null;
+  function show(band) {
+    if (band === current) return;
+    if (current) current.classList.remove('is-hover');
+    current = band;
+    band.classList.add('is-hover');
+    tip.textContent = band.getAttribute('data-band') + ' \u00b7 ' + band.getAttribute('data-range');
+    var box = ideo.getBoundingClientRect();
+    var b = band.getBoundingClientRect();
+    var half = tip.offsetWidth / 2;
+    var x = Math.max(half, Math.min(box.width - half, b.left + b.width / 2 - box.left));
+    tip.style.left = x + 'px';
+    ideo.classList.add('is-active');
+  }
+  function hide() {
+    if (current) current.classList.remove('is-hover');
+    current = null;
+    ideo.classList.remove('is-active');
+  }
+  function pick(e) {
+    var band = e.target.closest ? e.target.closest('i[data-band]') : null;
+    if (band) show(band);
+  }
+  ideo.addEventListener('pointermove', pick);
+  ideo.addEventListener('pointerdown', pick);
+  ideo.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hide(); });
+  document.addEventListener('pointerdown', function (e) { if (!ideo.contains(e.target)) hide(); });
+}
+
+document.addEventListener('DOMContentLoaded', initIdeogram);

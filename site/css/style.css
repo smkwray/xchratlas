@@ -431,6 +431,38 @@ sup, sub { font-size: 0.72em; line-height: 0; }
   clip-path: polygon(0 0, 50% 38%, 100% 0, 100% 100%, 50% 62%, 0 100%);
 }
 
+/* One left-to-right sweep on load, and band names on hover or tap. */
+.chrx-ideogram { position: relative; }
+.chrx-ideogram::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: var(--bg);
+  transform-origin: right center;
+  animation: ideo-sweep 1100ms cubic-bezier(0.22, 0.7, 0.2, 1) 150ms both;
+  pointer-events: none;
+}
+@keyframes ideo-sweep { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.chrx-ideogram i { transition: opacity 160ms ease; cursor: default; }
+.chrx-ideogram.is-active i { opacity: 0.45; }
+.chrx-ideogram.is-active i.is-hover { opacity: 1; }
+.chrx-ideogram .ideo-tip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  flex: none;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+.chrx-ideogram.is-active .ideo-tip { opacity: 1; }
+
 .hero-title {
   font-size: clamp(2.25rem, 5.4vw, 4.25rem);
   font-weight: 600;
