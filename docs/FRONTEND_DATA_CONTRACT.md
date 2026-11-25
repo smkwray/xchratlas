@@ -10,7 +10,7 @@ The bundle is additive. Existing release TSV files remain canonical for scientif
 
 Default output root:
 
-`../data/release/frontend/`
+`data/release/frontend/`
 
 Layout:
 
@@ -74,6 +74,7 @@ Compact list for grid/table UIs. Each row includes:
 - `coverage_grade`
 - `n_loci`
 - `eqtl_lookup_hit`
+- `eqtl_lookup_complete_locus_count`, `eqtl_lookup_no_hit_locus_count`, `eqtl_lookup_skipped_no_rsid_locus_count`, `eqtl_lookup_incomplete_locus_count`
 - `eqtl_lookup_hit_locus_count`
 - `eqtl_lookup_hit_count`
 - `eqtl_supported`
@@ -90,6 +91,8 @@ Compact list for grid/table UIs. Each row includes:
 - each locus includes:
   - `locus_id`, `x_region`, `locus_start`, `locus_end`
   - `lead_pos`, `lead_rsid`, `lead_varid`, `lead_neglog10_pvalue`
+  - `lead_selection = clipped_unresolved` and `lead_neglog10_is_lower_bound = true` identify representatives selected after clipping
+  - `eqtl_query_rsid` when retained
   - `top_gene_id`, `top_gene_name`, `best_mapping_relation`
   - `eqtl_lookup_hit`, `eqtl_lookup_hit_gene_count`
   - `eqtl_supported`, `eqtl_supported_gene_count`
@@ -100,6 +103,10 @@ Compact list for grid/table UIs. Each row includes:
   - `mapping_relation`, `distance_to_lead_bp`, `eqtl_gene_role`
   - `eqtl_lookup_hit`, `eqtl_lookup_hit_count`
   - `eqtl_supported`, `eqtl_study_count`, `eqtl_dataset_count`, `best_eqtl_pvalue`
+
+## Gene index
+
+Script 15 writes `site/data/gene_index.json`. Versionless Ensembl IDs are the keys. Each entry contains `gene_name`, `biotype`, distinct-trait counts and `hits` keyed by panel, trait and locus. The nominal threshold count includes follow-up genes. The candidate threshold count uses positional genes only.
 
 ## Evidence semantics
 
@@ -116,5 +123,5 @@ Compact list for grid/table UIs. Each row includes:
 - `top_candidate_genes` is always an array (split from comma-delimited TSV field).
 - Sorting:
   - traits: `x_evidence_score desc`, `n_loci desc`, `eqtl_total_hit_count desc`, then stable string tie-breakers
-  - loci in trait detail: `lead_neglog10_pvalue desc`, `n_sig_variants desc`, then genomic start
+  - loci in trait detail: `lead_neglog10_pvalue desc`, then genomic start
   - candidate genes per locus: `candidate_rank asc`, then lexical tie-breakers

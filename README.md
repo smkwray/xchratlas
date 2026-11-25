@@ -18,7 +18,7 @@ The build of 19 March 2026 has three curated panels and a discovery pool.
 | Curated panels | 79 | 1,109 | 77 | 62 |
 | Discovery Pool | 150 | 643 | 72 | 34 |
 
-The curated panels span 26 biological domains, 21 of them in the Broad Atlas. Mind & Behavior covers risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, depression and fluid intelligence; the Biochemistry Deep Dive covers lipoproteins, kidney markers, endocrine biomarkers, minerals and liver enzymes. The Discovery Pool, a source for curation, holds the Pan-UKB max independent set of traits that pass quality control (QC) in at least two populations. In the Broad Atlas, standing height has the most chromosome X loci (51), followed by body mass index (37), insulin-like growth factor 1 (36) and whole body fat mass (35).
+The curated panels span 26 biological domains, 21 of them in the Broad Atlas. Mind & Behavior covers risk-taking, smoking, alcohol, mood, irritability, reaction time, neuroticism, insomnia, frequency of depressed mood in the past two weeks and fluid intelligence; the Biochemistry Deep Dive covers lipoproteins, kidney markers, endocrine biomarkers, minerals and liver enzymes. The Discovery Pool, a source for curation, holds the Pan-UKB max independent set of traits that pass quality control (QC) in at least two populations. In the Broad Atlas, standing height has the most chromosome X loci (51), followed by body mass index (37), insulin-like growth factor 1 (36) and whole body fat mass (35).
 
 ## Method
 
@@ -49,40 +49,36 @@ The X-evidence score adds the points below (weights in `config/scoring_weights.y
 
 The pipeline never stores full summary-statistic files; it keeps a reduced set of columns for chromosome X rows.
 
-## Reproduce
-
-Requires Python 3.10 or later and network access to Pan-UKB, Ensembl and the eQTL Catalogue.
+## Preview the saved site
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-
-python scripts/00_fetch_panukb_manifests.py
-python scripts/01_select_seed_traits.py --panel config/panel_expanded.csv
-python scripts/02_extract_panukb_x.py
-python scripts/03_build_x_gene_catalog.py
-python scripts/04_prepare_eqtl_index.py
-python scripts/05_call_x_loci.py
-python scripts/06_fetch_eqtl_region_hits.py
-python scripts/07_map_loci_to_genes.py
-python scripts/08_export_release_tables.py
-pytest
+python3 -m http.server --directory site 8891
 ```
 
-Pipeline data go to `data/`. These commands build one panel from its trait list in `config/`; script `10` prepares the Discovery Pool trait list, and scripts `11` and `12` shard a large panel and merge the results. `scripts/14_export_frontend_bundle.py` reads one release directory per panel (by default `data/release/<panel_id>/`) and writes the site's JSON bundle to `data/release/frontend/`. To update and preview the site:
+## Pipeline provenance
+
+Scripts 00–07 used Pan-UKB summary statistics, Ensembl GRCh37 annotations and the historical [eQTL Catalogue REST API](https://www.ebi.ac.uk/eqtl/Data_access/), now unavailable.
+
+From compatible cached inputs for each panel, using its own processed tables:
 
 ```bash
+panel_id=panel_expanded  # Set to the panel represented by the cached inputs.
+python scripts/08_export_release_tables.py --outdir "data/release/${panel_id}"
+```
+
+With release tables for all four panels (`panel_expanded`, `panel_mind_risk_core`, `panel_blood_biochemistry_core`, `panel_independent_set`):
+
+```bash
+python scripts/14_export_frontend_bundle.py
 cp -R data/release/frontend/. site/data/
-python3 -m http.server -d site 8891
+python scripts/15_build_gene_index.py
 ```
 
 ## Project structure
 
 ```
 src/xatlas/     Python package: loci, regions, gene mapping, eQTL lookups, scoring, bundle export
-scripts/        Numbered pipeline scripts (00–14)
+scripts/        Numbered pipeline scripts (00–15)
 config/         Panel trait lists, scoring weights, region boundaries, eQTL dataset priorities
 site/           Interactive atlas (HTML, CSS, JavaScript) and its JSON data
 docs/           Frontend data contract
@@ -97,7 +93,7 @@ Each release directory holds `trait_scores.tsv`, `x_loci.tsv` and `x_gene_candid
 - Loci come from distance-based merging, not linkage-disequilibrium-aware fine-mapping, and there is no colocalization analysis.
 - Dosage compensation and X inactivation are not modeled; pseudoautosomal-only signals should be read with care.
 - eQTL datasets come from a fixed priority list, not a model of which tissues matter for each trait, and loci whose lead variant has no recoverable rsID are marked as not safely assessed.
-- 22 of 48 Broad Atlas traits and 19 of 21 Biochemistry Deep Dive traits reach the 100-point score cap, so the score does not order the strongest traits.
+- 26 of 48 Broad Atlas traits and 19 of 21 Biochemistry Deep Dive traits reach the 100-point score cap, so the score does not order the strongest traits.
 
 ## Disclaimer
 
