@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 4,
     "eqtl_total_hit_count": 861,
     "top_candidate_genes": [
-      "ARSE",
-      "TBL1X",
-      "MID1"
+      "MID1",
+      "RP11-441A11.1",
+      "THOC2"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "biomarkers",
     "phenocode": "30830",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 300,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 371293
+    "n_cases_hq_cohort_both_sexes": 371293,
+    "eqtl_lookup_complete_locus_count": 16,
+    "eqtl_lookup_no_hit_locus_count": 2,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 2,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 371293,
+    "lead_neglog10_is_lower_bound": true
   },
   "loci": [
     {
@@ -143,7 +149,9 @@
           "eqtl_dataset_count": 0,
           "best_eqtl_pvalue": null
         }
-      ]
+      ],
+      "lead_selection": "clipped_unresolved",
+      "lead_neglog10_is_lower_bound": true
     },
     {
       "locus_id": "biomarkers__30830__both_sexes__nan__irnt:nonPAR:9366937-9623839",

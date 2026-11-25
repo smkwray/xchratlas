@@ -14,7 +14,7 @@
     "description": "Use of sun/uv protection",
     "coding_description": null,
     "domain": "sun_exposure",
-    "x_evidence_score": 70.69,
+    "x_evidence_score": 74.69,
     "coverage_grade": "A",
     "n_loci": 3,
     "eqtl_lookup_hit": true,
@@ -24,9 +24,9 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 138,
     "top_candidate_genes": [
+      "RP1-232L22__B.1",
       "SMEK3P",
-      "RNU6-394P",
-      "RP1-232L22__B.1"
+      "RNU6-394P"
     ],
     "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": null,
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 9.989,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 425297
+    "n_cases_hq_cohort_both_sexes": 425297,
+    "eqtl_lookup_complete_locus_count": 3,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 425297,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

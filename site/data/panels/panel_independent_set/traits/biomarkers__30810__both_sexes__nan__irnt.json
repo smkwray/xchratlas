@@ -14,7 +14,7 @@
     "description": "Phosphate",
     "coding_description": null,
     "domain": "blood_biochemistry",
-    "x_evidence_score": 88,
+    "x_evidence_score": 92,
     "coverage_grade": "A",
     "n_loci": 3,
     "eqtl_lookup_hit": true,
@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 20,
     "top_candidate_genes": [
-      "RP11-66N5.2",
+      "RN7SL266P",
       "PHEX",
-      "RN7SL266P"
+      "RP11-66N5.2"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "biomarkers",
     "phenocode": "30810",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 137.8,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 374169
+    "n_cases_hq_cohort_both_sexes": 374169,
+    "eqtl_lookup_complete_locus_count": 2,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 374169,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

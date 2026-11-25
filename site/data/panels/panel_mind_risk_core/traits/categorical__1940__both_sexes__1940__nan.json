@@ -24,10 +24,10 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 7,
     "top_candidate_genes": [
-      "EDA",
-      "AL645819.1"
+      "AL645819.1",
+      "EDA"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
     "trait_type": "categorical",
     "phenocode": 1940,
@@ -44,7 +44,13 @@
     "lead_neglog10_pvalue": 8.685,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 114612
+    "n_cases_hq_cohort_both_sexes": 114612,
+    "eqtl_lookup_complete_locus_count": 2,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 114612,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

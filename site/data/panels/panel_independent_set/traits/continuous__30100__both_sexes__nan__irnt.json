@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 4,
     "eqtl_total_hit_count": 1477,
     "top_candidate_genes": [
-      "RP11-706O15.8",
-      "MTND6P12",
-      "TBL1X"
+      "PRPS1",
+      "ACSL4",
+      "ARHGAP6"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "continuous",
     "phenocode": "30100",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 300,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 422800
+    "n_cases_hq_cohort_both_sexes": 422800,
+    "eqtl_lookup_complete_locus_count": 42,
+    "eqtl_lookup_no_hit_locus_count": 14,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 422800,
+    "lead_neglog10_is_lower_bound": true
   },
   "loci": [
     {
@@ -278,7 +284,9 @@
           "eqtl_dataset_count": 1,
           "best_eqtl_pvalue": 0.9350889921188354
         }
-      ]
+      ],
+      "lead_selection": "clipped_unresolved",
+      "lead_neglog10_is_lower_bound": true
     },
     {
       "locus_id": "continuous__30100__both_sexes__nan__irnt:nonPAR:54464099-58565217",
@@ -495,7 +503,9 @@
           "eqtl_dataset_count": 4,
           "best_eqtl_pvalue": 0.4334219992160797
         }
-      ]
+      ],
+      "lead_selection": "clipped_unresolved",
+      "lead_neglog10_is_lower_bound": true
     },
     {
       "locus_id": "continuous__30100__both_sexes__nan__irnt:nonPAR:61721804-67999410",

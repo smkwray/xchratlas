@@ -14,7 +14,7 @@
     "description": "Frequency of feeling guilt or remorse after drinking alcohol in last year",
     "coding_description": null,
     "domain": "alcohol_use",
-    "x_evidence_score": 65.33,
+    "x_evidence_score": 69.33,
     "coverage_grade": "A",
     "n_loci": 2,
     "eqtl_lookup_hit": false,
@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 0,
     "top_candidate_genes": [
-      "RP11-524P6.1",
       "MCF2",
+      "RP11-524P6.1",
       "ATP5G2P4"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
     "trait_type": "continuous",
     "phenocode": "20409",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 8.628,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 75377
+    "n_cases_hq_cohort_both_sexes": 75377,
+    "eqtl_lookup_complete_locus_count": 2,
+    "eqtl_lookup_no_hit_locus_count": 2,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 75377,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

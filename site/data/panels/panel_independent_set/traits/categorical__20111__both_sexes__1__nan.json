@@ -26,7 +26,7 @@
     "top_candidate_genes": [
       "CTD-2194M22.1"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
     "trait_type": "categorical",
     "phenocode": "20111",
@@ -43,7 +43,13 @@
     "lead_neglog10_pvalue": 8.095,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 34667
+    "n_cases_hq_cohort_both_sexes": 34667,
+    "eqtl_lookup_complete_locus_count": 1,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 34667,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

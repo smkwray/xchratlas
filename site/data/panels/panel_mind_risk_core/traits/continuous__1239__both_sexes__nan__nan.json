@@ -14,7 +14,7 @@
     "description": "Current tobacco smoking",
     "coding_description": null,
     "domain": "substance_use",
-    "x_evidence_score": 68.93,
+    "x_evidence_score": 72.93,
     "coverage_grade": "A",
     "n_loci": 3,
     "eqtl_lookup_hit": true,
@@ -24,9 +24,9 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 61,
     "top_candidate_genes": [
+      "TDGF1P3",
       "GK",
-      "PJA1",
-      "TDGF1P3"
+      "PJA1"
     ],
     "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": null,
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 8.229,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 436935
+    "n_cases_hq_cohort_both_sexes": 436935,
+    "eqtl_lookup_complete_locus_count": 3,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 436935,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

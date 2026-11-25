@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 1,
     "eqtl_total_hit_count": 411,
     "top_candidate_genes": [
-      "RPP40P1",
-      "IL1RAPL1",
-      "PCNAP3"
+      "NXF2B",
+      "TSC22D3",
+      "TMEM164"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "continuous",
     "phenocode": "1180",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 23.45,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 384266
+    "n_cases_hq_cohort_both_sexes": 384266,
+    "eqtl_lookup_complete_locus_count": 11,
+    "eqtl_lookup_no_hit_locus_count": 2,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 384266,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

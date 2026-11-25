@@ -28,7 +28,7 @@
       "RP3-339A18.3",
       "RARRES2P3"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "continuous",
     "phenocode": "2178",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 12.72,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 428891
+    "n_cases_hq_cohort_both_sexes": 428891,
+    "eqtl_lookup_complete_locus_count": 1,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 428891,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

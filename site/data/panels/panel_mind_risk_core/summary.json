@@ -6,7 +6,7 @@
     "slug": "mind-and-behavior",
     "title": "Mind and Behavior",
     "featured": true,
-    "description": "Focused behavior and cognition companion panel built around the strongest mind-adjacent chrX traits.",
+    "description": "Behavior and cognition",
     "trait_count": 10,
     "lookup_hit_trait_count": 9,
     "supported_trait_count": 4,
@@ -69,6 +69,37 @@
   ],
   "top_traits": [
     {
+      "trait_id": "categorical__1920__both_sexes__1920__nan",
+      "query_id": "mood_swings",
+      "slug": "mood-swings",
+      "description": "Mood swings",
+      "coding_description": null,
+      "domain": "behavioral",
+      "x_evidence_score": 78.51,
+      "coverage_grade": "B",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 3,
+      "eqtl_lookup_hit_count": 98,
+      "eqtl_supported": true,
+      "eqtl_supported_locus_count": 1,
+      "eqtl_total_hit_count": 98,
+      "top_candidate_genes": [
+        "AL645819.1",
+        "HS6ST2",
+        "HPRT1"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 3,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "A",
+      "effective_hq_case_count": 190611,
+      "lead_neglog10_is_lower_bound": false
+    },
+    {
       "trait_id": "continuous__1558__both_sexes__nan__nan",
       "query_id": "alcohol_frequency",
       "slug": "alcohol-frequency",
@@ -85,36 +116,50 @@
       "eqtl_supported_locus_count": 1,
       "eqtl_total_hit_count": 137,
       "top_candidate_genes": [
-        "RP11-1M18.1",
+        "TMEM164",
         "POLA1",
         "RP11-622K12.1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 6,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "A",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     },
     {
-      "trait_id": "categorical__1920__both_sexes__1920__nan",
-      "query_id": "mood_swings",
-      "slug": "mood-swings",
-      "description": "Mood swings",
+      "trait_id": "continuous__1239__both_sexes__nan__nan",
+      "query_id": "current_smoking",
+      "slug": "current-smoking",
+      "description": "Current tobacco smoking",
       "coding_description": null,
-      "domain": "behavioral",
-      "x_evidence_score": 74.51,
-      "coverage_grade": "B",
+      "domain": "substance_use",
+      "x_evidence_score": 72.93,
+      "coverage_grade": "A",
       "n_loci": 3,
       "eqtl_lookup_hit": true,
-      "eqtl_lookup_hit_locus_count": 3,
-      "eqtl_lookup_hit_count": 98,
-      "eqtl_supported": true,
-      "eqtl_supported_locus_count": 1,
-      "eqtl_total_hit_count": 98,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 61,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 61,
       "top_candidate_genes": [
-        "AL645819.1",
-        "HS6ST2",
-        "HPRT1"
+        "TDGF1P3",
+        "GK",
+        "PJA1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 3,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 436935,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__20023__both_sexes__nan__irnt",
@@ -133,12 +178,19 @@
       "eqtl_supported_locus_count": 1,
       "eqtl_total_hit_count": 274,
       "top_candidate_genes": [
-        "RP11-716A19.3",
         "TAZ",
-        "Y_RNA"
+        "RP11-716A19.3",
+        "BX936347.1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 2,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 425767,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "categorical__2040__both_sexes__2040__nan",
@@ -157,36 +209,19 @@
       "eqtl_supported_locus_count": 0,
       "eqtl_total_hit_count": 56,
       "top_candidate_genes": [
-        "EDA",
         "RP11-308D16.4",
-        "U3"
-      ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
-      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
-    },
-    {
-      "trait_id": "continuous__1239__both_sexes__nan__nan",
-      "query_id": "current_smoking",
-      "slug": "current-smoking",
-      "description": "Current tobacco smoking",
-      "coding_description": null,
-      "domain": "substance_use",
-      "x_evidence_score": 68.93,
-      "coverage_grade": "A",
-      "n_loci": 3,
-      "eqtl_lookup_hit": true,
-      "eqtl_lookup_hit_locus_count": 2,
-      "eqtl_lookup_hit_count": 61,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 61,
-      "top_candidate_genes": [
-        "GK",
-        "PJA1",
-        "TDGF1P3"
+        "EDA",
+        "RP11-308D16.1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 107867,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__20127__both_sexes__nan__irnt",
@@ -195,7 +230,7 @@
       "description": "Neuroticism score",
       "coding_description": null,
       "domain": "behavioral",
-      "x_evidence_score": 59.26,
+      "x_evidence_score": 63.26,
       "coverage_grade": "U",
       "n_loci": 4,
       "eqtl_lookup_hit": true,
@@ -205,12 +240,19 @@
       "eqtl_supported_locus_count": 1,
       "eqtl_total_hit_count": 117,
       "top_candidate_genes": [
-        "AC078988.1",
         "AL645819.1",
-        "HS6ST2"
+        "HS6ST2",
+        "HPRT1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 4,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "categorical__1940__both_sexes__1940__nan",
@@ -229,11 +271,18 @@
       "eqtl_supported_locus_count": 0,
       "eqtl_total_hit_count": 7,
       "top_candidate_genes": [
-        "EDA",
-        "AL645819.1"
+        "AL645819.1",
+        "EDA"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 2,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 114612,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__20016__both_sexes__nan__irnt",
@@ -256,8 +305,15 @@
         "AL158069.1",
         "FAM155B"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "C",
+      "effective_hq_case_count": 139298,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__1200__both_sexes__nan__nan",
@@ -280,8 +336,15 @@
         "TERF1P4",
         "KIAA2022"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 2,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "C",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__2050__both_sexes__nan__nan",
@@ -302,11 +365,49 @@
       "top_candidate_genes": [
         "HS6ST2"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "D",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     }
   ],
   "unsupported_traits": [
+    {
+      "trait_id": "continuous__1239__both_sexes__nan__nan",
+      "query_id": "current_smoking",
+      "slug": "current-smoking",
+      "description": "Current tobacco smoking",
+      "coding_description": null,
+      "domain": "substance_use",
+      "x_evidence_score": 72.93,
+      "coverage_grade": "A",
+      "n_loci": 3,
+      "eqtl_lookup_hit": true,
+      "eqtl_lookup_hit_locus_count": 2,
+      "eqtl_lookup_hit_count": 61,
+      "eqtl_supported": false,
+      "eqtl_supported_locus_count": 0,
+      "eqtl_total_hit_count": 61,
+      "top_candidate_genes": [
+        "TDGF1P3",
+        "GK",
+        "PJA1"
+      ],
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": null,
+      "eqtl_lookup_complete_locus_count": 3,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 436935,
+      "lead_neglog10_is_lower_bound": false
+    },
     {
       "trait_id": "categorical__2040__both_sexes__2040__nan",
       "query_id": "risk_taking",
@@ -324,36 +425,19 @@
       "eqtl_supported_locus_count": 0,
       "eqtl_total_hit_count": 56,
       "top_candidate_genes": [
-        "EDA",
         "RP11-308D16.4",
-        "U3"
-      ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
-      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID."
-    },
-    {
-      "trait_id": "continuous__1239__both_sexes__nan__nan",
-      "query_id": "current_smoking",
-      "slug": "current-smoking",
-      "description": "Current tobacco smoking",
-      "coding_description": null,
-      "domain": "substance_use",
-      "x_evidence_score": 68.93,
-      "coverage_grade": "A",
-      "n_loci": 3,
-      "eqtl_lookup_hit": true,
-      "eqtl_lookup_hit_locus_count": 2,
-      "eqtl_lookup_hit_count": 61,
-      "eqtl_supported": false,
-      "eqtl_supported_locus_count": 0,
-      "eqtl_total_hit_count": 61,
-      "top_candidate_genes": [
-        "GK",
-        "PJA1",
-        "TDGF1P3"
+        "EDA",
+        "RP11-308D16.1"
       ],
       "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
-      "eqtl_lookup_note": null
+      "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 107867,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "categorical__1940__both_sexes__1940__nan",
@@ -372,11 +456,18 @@
       "eqtl_supported_locus_count": 0,
       "eqtl_total_hit_count": 7,
       "top_candidate_genes": [
-        "EDA",
-        "AL645819.1"
+        "AL645819.1",
+        "EDA"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 2,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "B",
+      "effective_hq_case_count": 114612,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__20016__both_sexes__nan__irnt",
@@ -399,8 +490,15 @@
         "AL158069.1",
         "FAM155B"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up: no support observed in lookup summary.",
-      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up: no support observed in lookup summary.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "C",
+      "effective_hq_case_count": 139298,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__1200__both_sexes__nan__nan",
@@ -423,8 +521,15 @@
         "TERF1P4",
         "KIAA2022"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 2,
+      "eqtl_lookup_no_hit_locus_count": 1,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "C",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     },
     {
       "trait_id": "continuous__2050__both_sexes__nan__nan",
@@ -445,8 +550,15 @@
       "top_candidate_genes": [
         "HS6ST2"
       ],
-      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
-      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
+      "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
+      "eqtl_lookup_note": "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule.",
+      "eqtl_lookup_complete_locus_count": 1,
+      "eqtl_lookup_no_hit_locus_count": 0,
+      "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+      "eqtl_lookup_incomplete_locus_count": 0,
+      "tier": "D",
+      "effective_hq_case_count": null,
+      "lead_neglog10_is_lower_bound": false
     }
   ]
 }

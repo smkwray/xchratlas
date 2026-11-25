@@ -24,9 +24,9 @@
     "eqtl_supported_locus_count": 2,
     "eqtl_total_hit_count": 475,
     "top_candidate_genes": [
-      "DGKK",
-      "PAGE2",
-      "UBQLN2"
+      "FHL1",
+      "RAC1P4",
+      "PLXNA3"
     ],
     "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": null,
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 13.3,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 407904
+    "n_cases_hq_cohort_both_sexes": 407904,
+    "eqtl_lookup_complete_locus_count": 8,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 407904,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

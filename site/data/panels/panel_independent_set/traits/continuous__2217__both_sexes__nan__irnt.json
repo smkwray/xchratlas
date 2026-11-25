@@ -24,9 +24,9 @@
     "eqtl_supported_locus_count": 0,
     "eqtl_total_hit_count": 144,
     "top_candidate_genes": [
-      "SLC7A3",
       "XIAP",
-      "AL135784.1"
+      "AL135784.1",
+      "SLC7A3"
     ],
     "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": null,
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 11.92,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 370763
+    "n_cases_hq_cohort_both_sexes": 370763,
+    "eqtl_lookup_complete_locus_count": 3,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 370763,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

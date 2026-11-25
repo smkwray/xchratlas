@@ -14,7 +14,7 @@
     "description": "Age when periods started (menarche)",
     "coding_description": null,
     "domain": "reproductive",
-    "x_evidence_score": 74.22,
+    "x_evidence_score": 78.22,
     "coverage_grade": "U",
     "n_loci": 14,
     "eqtl_lookup_hit": true,
@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 2,
     "eqtl_total_hit_count": 490,
     "top_candidate_genes": [
-      "RP11-66N5.2",
-      "NR0B1",
-      "DGKK"
+      "TCEAL2",
+      "TMEM164",
+      "IGSF1"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "continuous",
     "phenocode": "2714",
@@ -39,13 +39,19 @@
     "description_more": "ACE touchscreen question \"How old were you when your periods started?\" The following checks were performed:  If answer   If answer > Participants age then rejected  If answer > 25 then rejected  If answer   If answer > 20 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.     ",
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
-    "tier": "B",
+    "tier": "A",
     "selection_rank": 1,
     "selection_score": 168,
     "lead_neglog10_pvalue": 20.52,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": null
+    "n_cases_hq_cohort_both_sexes": null,
+    "eqtl_lookup_complete_locus_count": 13,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 1,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": null,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

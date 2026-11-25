@@ -24,7 +24,7 @@
     "eqtl_supported_locus_count": 1,
     "eqtl_total_hit_count": 163,
     "top_candidate_genes": [
-      "TBL1X",
+      "U40455.1",
       "MAP3K15",
       "MED28P4"
     ],
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 12.36,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": null
+    "n_cases_hq_cohort_both_sexes": null,
+    "eqtl_lookup_complete_locus_count": 5,
+    "eqtl_lookup_no_hit_locus_count": 1,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": null,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

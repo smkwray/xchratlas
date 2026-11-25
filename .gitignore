@@ -10,7 +10,7 @@ dist/
 build/
 
 # Data (large pipeline data, not tracked)
-data/
+/data/
 
 # site/data/ is tracked (small JSON bundle for GitHub Pages)
 
@@ -36,13 +36,15 @@ do/
 CODEX_HANDOFF.md
 CLAUDE.md
 .claude/
+.codex/
+.cursor/
 *.plan
 *.plan.md
 *handoff*
 *todo*
 uv.lock
 *.tbi
-docs/
+notes/private-docs/
 
 .private-denylist
 .playwright-cli/

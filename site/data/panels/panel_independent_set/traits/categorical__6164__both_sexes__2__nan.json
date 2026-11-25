@@ -41,7 +41,13 @@
     "lead_neglog10_pvalue": null,
     "any_nonpar_locus": false,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 205199
+    "n_cases_hq_cohort_both_sexes": 205199,
+    "eqtl_lookup_complete_locus_count": 0,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 205199,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": []
 }

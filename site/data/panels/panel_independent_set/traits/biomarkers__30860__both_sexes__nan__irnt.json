@@ -26,9 +26,9 @@
     "top_candidate_genes": [
       "ARHGAP6",
       "RP11-1L9.1",
-      "GEMIN8"
+      "RBMX"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "biomarkers",
     "phenocode": "30860",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 22.34,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 374454
+    "n_cases_hq_cohort_both_sexes": 374454,
+    "eqtl_lookup_complete_locus_count": 10,
+    "eqtl_lookup_no_hit_locus_count": 2,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 2,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 374454,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

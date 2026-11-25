@@ -14,7 +14,7 @@
     "description": "Whole body fat mass",
     "coding_description": null,
     "domain": "body_composition",
-    "x_evidence_score": 99,
+    "x_evidence_score": 100,
     "coverage_grade": "B",
     "n_loci": 35,
     "eqtl_lookup_hit": true,
@@ -24,11 +24,11 @@
     "eqtl_supported_locus_count": 2,
     "eqtl_total_hit_count": 1166,
     "top_candidate_genes": [
-      "STS",
-      "GS1-542M4.4",
-      "OFD1"
+      "TMEM35",
+      "RP1-232L22__A.1",
+      "NXF4"
     ],
-    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit. eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
+    "confidence_notes": "GWAS is sex-combined; dosage-compensation assumptions are not explicit.",
     "eqtl_lookup_note": "eQTL follow-up completed for rsID-addressable loci; some loci lacked a usable rsID.",
     "trait_type": "continuous",
     "phenocode": "23100",
@@ -45,7 +45,13 @@
     "lead_neglog10_pvalue": 40.74,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 431792
+    "n_cases_hq_cohort_both_sexes": 431792,
+    "eqtl_lookup_complete_locus_count": 32,
+    "eqtl_lookup_no_hit_locus_count": 7,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 3,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 431792,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {

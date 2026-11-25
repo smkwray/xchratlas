@@ -14,7 +14,7 @@
     "description": "Mood swings",
     "coding_description": null,
     "domain": "behavioral",
-    "x_evidence_score": 74.51,
+    "x_evidence_score": 78.51,
     "coverage_grade": "B",
     "n_loci": 3,
     "eqtl_lookup_hit": true,
@@ -39,13 +39,19 @@
     "description_more": "ACE touchscreen question \"Does your mood often go up and down?\" If the participant activated the Help button they were shown the message:     Work through these questions quickly and do not think about the exact meaning of the question     ",
     "num_pops_pass_qc": 3,
     "in_max_independent_set": false,
-    "tier": "B",
+    "tier": "A",
     "selection_rank": 1,
     "selection_score": 162,
     "lead_neglog10_pvalue": 10.81,
     "any_nonpar_locus": true,
     "par_only_signal": false,
-    "n_cases_hq_cohort_both_sexes": 190611
+    "n_cases_hq_cohort_both_sexes": 190611,
+    "eqtl_lookup_complete_locus_count": 3,
+    "eqtl_lookup_no_hit_locus_count": 0,
+    "eqtl_lookup_skipped_no_rsid_locus_count": 0,
+    "eqtl_lookup_incomplete_locus_count": 0,
+    "effective_hq_case_count": 190611,
+    "lead_neglog10_is_lower_bound": false
   },
   "loci": [
     {
