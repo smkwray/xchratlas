@@ -22,17 +22,18 @@
       <a href="index.html" class="logo">chr<span class="logo-x">X</span>atlas</a>
       <nav class="nav" id="nav">
         <a href="index.html#panels" class="nav-link">Panels</a>
-        <a href="gene.html" class="nav-link nav-link-active">Gene Search</a>
+        <a href="gene.html" aria-current="page" class="nav-link">Gene Search</a>
+        <a href="index.html#results" class="nav-link">Results</a>
         <a href="index.html#methods" class="nav-link">Methods</a>
         <a href="index.html#about" class="nav-link">About</a>
         <span class="nav-divider"></span>
         <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
-        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Behavior</a>
-        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind and Behavior</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry Deep Dive</a>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
-        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -48,7 +49,6 @@
           <span>Gene Search</span>
         </div>
         <h1 class="page-hero-title">Gene Search</h1>
-        <p class="page-hero-desc">Search chromosome X genes by name to see which traits have eQTL evidence at nearby loci.</p>
         <div class="page-hero-metrics">
           <div class="page-metric">
             <span class="page-metric-value" id="gm-total">&mdash;</span>
@@ -60,7 +60,7 @@
           </div>
           <div class="page-metric">
             <span class="page-metric-value" id="gm-supported">&mdash;</span>
-            <span class="page-metric-label">Strict eQTL-supported</span>
+            <span class="page-metric-label">With eQTL p ≤ 10⁻⁵</span>
           </div>
         </div>
       </div>
@@ -69,13 +69,15 @@
     <section class="gene-search-section" style="padding-top:2rem">
       <div class="container">
         <div class="filter-bar">
-          <input type="text" class="search-input gene-search-input" id="gene-search" placeholder="Type a gene name... e.g. EDA, POLA1, AR" autocomplete="off" autofocus>
+          <label class="sr-only" for="gene-search">Search genes</label>
+          <input type="text" class="search-input gene-search-input" id="gene-search" placeholder="Gene symbol or Ensembl ID" autocomplete="off">
           <label class="filter-toggle">
             <input type="checkbox" id="eqtl-only-toggle"> eQTL hits only
           </label>
-          <span class="result-count" id="gene-result-count"></span>
+          <span class="result-count" id="gene-result-count" role="status"></span>
         </div>
-        <div id="gene-results"></div>
+        <!-- // copy: phase 2 -->
+        <div id="gene-results"><p role="status">Loading gene index…</p></div>
       </div>
     </section>
   </main>

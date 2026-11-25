@@ -13,28 +13,29 @@ function fmtDomain(d) {
   return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
 }
 function fmtPval(p) {
-  if (p === null || p === undefined) return '\u2014';
-  if (p < 1e-100) return '<1e-100';
-  return p.toExponential(2);
+  // copy: phase 2
+  if (!Number.isFinite(p)) return '—';
+  return p === 0 ? '0 (reported; precision limit)' : p.toExponential(2);
 }
 
 /* ── State ───────────────────────────────────── */
 var geneIndex = {};
-var geneNames = [];
+var geneIds = [];
 var eqtlOnly = false;
 
 /* ── Init ────────────────────────────────────── */
 function init() {
   fetchJSON('gene_index.json').then(function (data) {
     geneIndex = data;
-    geneNames = Object.keys(data);
+    geneIds = Object.keys(data);
 
-    var total = geneNames.length;
+    eqtlOnly = document.getElementById("eqtl-only-toggle").checked;
+    var total = geneIds.length;
     var withHit = 0, withSupport = 0;
-    geneNames.forEach(function (name) {
+    geneIds.forEach(function (name) {
       var g = data[name];
-      if (g.hits.some(function (h) { return h.eqtl_lookup_hit; })) withHit++;
-      if (g.hits.some(function (h) { return h.eqtl_supported; })) withSupport++;
+      if (g.returned_trait_count) withHit++;
+      if (g.threshold_trait_count) withSupport++;
     });
 
     document.getElementById('gm-total').textContent = fmt(total);
@@ -53,14 +54,14 @@ function init() {
     // Show initial state or pre-fill from URL
     var params = new URLSearchParams(location.search);
     var preGene = params.get('gene');
-    if (preGene) {
+    if (preGene && !input.value) {
       input.value = preGene;
     }
     doSearch(input.value);
   }).catch(function (err) {
     console.error('Gene index load failed:', err);
     document.getElementById('gene-results').innerHTML =
-      '<div class="gene-empty">Failed to load gene index. Ensure gene_index.json exists in data/.</div>';
+      '<div class="gene-empty">Gene search unavailable.</div>';
   });
 }
 
@@ -71,28 +72,25 @@ function doSearch(query) {
   var q = query.trim().toLowerCase();
 
   if (q.length < 1) {
-    container.innerHTML = '<div class="gene-empty">Start typing to search ' + fmt(geneNames.length) + ' chromosome X genes.</div>';
+    container.innerHTML = '<div class="gene-empty">Start typing to search ' + fmt(geneIds.length) + ' chromosome X genes.</div>';
     counter.textContent = '';
     return;
   }
 
-  var matches = geneNames.filter(function (name) {
-    if (eqtlOnly && !geneIndex[name].hits.some(function (h) { return h.eqtl_lookup_hit; })) return false;
-    return name.toLowerCase().includes(q);
-  });
-
-  // Sort: exact matches first, then prefix, then contains
-  matches.sort(function (a, b) {
-    var al = a.toLowerCase(), bl = b.toLowerCase();
-    var aExact = al === q, bExact = bl === q;
-    if (aExact !== bExact) return aExact ? -1 : 1;
-    var aPrefix = al.indexOf(q) === 0, bPrefix = bl.indexOf(q) === 0;
-    if (aPrefix !== bPrefix) return aPrefix ? -1 : 1;
-    // Then by supported hit count
-    var aSupp = geneIndex[a].hits.filter(function (h) { return h.eqtl_supported; }).length;
-    var bSupp = geneIndex[b].hits.filter(function (h) { return h.eqtl_supported; }).length;
-    if (aSupp !== bSupp) return bSupp - aSupp;
-    return a.localeCompare(b);
+  function matchRank(id) {
+    var keys = [id.toLowerCase(), geneIndex[id].gene_name.toLowerCase()];
+    if (keys.includes(q)) return 0;
+    if (keys.some(function (key) { return key.startsWith(q); })) return 1;
+    return 2;
+  }
+  var matches = geneIds.filter(function (id) {
+    var gene = geneIndex[id];
+    return (!eqtlOnly || gene.returned_trait_count) &&
+      (id.toLowerCase().includes(q) || gene.gene_name.toLowerCase().includes(q));
+  }).sort(function (a, b) {
+    return matchRank(a) - matchRank(b) ||
+      geneIndex[b].threshold_trait_count - geneIndex[a].threshold_trait_count ||
+      geneIndex[a].gene_name.localeCompare(geneIndex[b].gene_name) || a.localeCompare(b);
   });
 
   var capped = matches.slice(0, 50);
@@ -121,15 +119,7 @@ function highlightName(name, query) {
 }
 
 /* ── Render Gene Card ────────────────────────── */
-function renderGeneCard(name, query) {
-  var gene = geneIndex[name];
-  var hits = gene.hits;
-  var hitCount = hits.filter(function (h) { return h.eqtl_lookup_hit; }).length;
-  var supportCount = hits.filter(function (h) { return h.eqtl_supported; }).length;
-  var biotype = gene.biotype || 'unknown';
-  var biotypeCls = biotype === 'protein_coding' ? 'biotype-protein' : 'biotype-other';
-
-  // Group hits by trait (across panels)
+function groupAppearances(hits) {
   var traitGroups = {};
   hits.forEach(function (h) {
     var key = h.trait_id + '|' + h.panel_id;
@@ -167,15 +157,17 @@ function renderGeneCard(name, query) {
     return a.trait_desc.localeCompare(b.trait_desc);
   });
 
-  var statusCls, statusLabel;
-  if (supportCount > 0) {
-    statusCls = 'is-supported'; statusLabel = supportCount + ' trait' + (supportCount > 1 ? 's' : '') + ' eQTL-supported';
-  } else if (hitCount > 0) {
-    statusCls = 'is-lookup-hit'; statusLabel = hitCount + ' trait' + (hitCount > 1 ? 's' : '') + ' with lookup hits';
-  } else {
-    statusCls = 'is-unsupported'; statusLabel = 'No eQTL hits';
-  }
+  return groups;
+}
 
+function renderGeneCard(id, query) {
+  var gene = geneIndex[id], hits = gene.hits;
+  var groups = groupAppearances(hits);
+  var biotype = gene.biotype || 'unknown';
+  var biotypeCls = biotype === 'protein_coding' ? 'biotype-protein' : 'biotype-other';
+  // copy: phase 2
+  var threshold = gene.threshold_trait_count + (gene.threshold_trait_count === 1 ? ' trait' : ' traits') + ' with eQTL p ≤ 10⁻⁵';
+  var returned = gene.returned_trait_count + (gene.returned_trait_count === 1 ? ' trait' : ' traits') + ' with returned records';
   var showCount = 5;
   var visible = groups.slice(0, showCount);
   var overflow = groups.length > showCount ? groups.length - showCount : 0;
@@ -183,16 +175,17 @@ function renderGeneCard(name, query) {
   return '<div class="gene-card">' +
     '<div class="gene-card-header">' +
       '<div class="gene-card-title-row">' +
-        '<span class="gene-card-name">' + highlightName(name, query) + '</span>' +
+        '<span class="gene-card-name">' + highlightName(gene.gene_name, query) + '</span>' +
         '<span class="biotype-badge ' + biotypeCls + '">' + biotype.replace(/_/g, ' ') + '</span>' +
         (gene.gene_id ? '<span class="gene-card-id">' + gene.gene_id + '</span>' : '') +
       '</div>' +
       '<div class="gene-card-summary">' +
-        '<span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span>' +
+        '<span class="gene-card-fact">' + threshold + '</span>' +
+        '<span class="gene-card-fact">' + returned + '</span>' +
         '<span class="gene-card-fact">' + hits.length + ' trait\u2013locus appearance' + (hits.length > 1 ? 's' : '') + '</span>' +
       '</div>' +
     '</div>' +
-    '<div class="gene-card-traits">' +
+    '<div class="gene-card-traits" tabindex="0" role="region" aria-label="Gene traits">' +
       '<table class="gene-trait-table">' +
         '<thead><tr>' +
           '<th>Trait</th>' +
@@ -204,8 +197,8 @@ function renderGeneCard(name, query) {
         '</tr></thead>' +
         '<tbody>' +
           visible.map(function (g) { return traitRow(g); }).join('') +
-          (overflow > 0 ? '<tr class="gene-overflow-row" data-gene="' + escHtml(name) + '"><td colspan="6" class="gene-overflow-cell">' +
-            '<button class="gene-show-more" onclick="expandGene(this, \'' + escHtml(name).replace(/'/g, '\\\'') + '\')">Show ' + overflow + ' more trait' + (overflow > 1 ? 's' : '') + '</button>' +
+          (overflow > 0 ? '<tr class="gene-overflow-row" data-gene="' + escHtml(id) + '"><td colspan="6" class="gene-overflow-cell">' +
+            '<button class="gene-show-more" onclick="expandGene(this, \'' + escHtml(id).replace(/'/g, '\\\'') + '\')">Show ' + overflow + ' more panel entr' + (overflow > 1 ? 'ies' : 'y') + '</button>' +
           '</td></tr>' : '') +
         '</tbody>' +
       '</table>' +
@@ -215,17 +208,27 @@ function renderGeneCard(name, query) {
 
 function traitRow(g) {
   var statusCls, statusLabel;
-  if (g.best_supported) { statusCls = 'is-supported'; statusLabel = 'Supported'; }
-  else if (g.best_hit) { statusCls = 'is-lookup-hit'; statusLabel = 'Lookup-hit'; }
-  else { statusCls = 'is-unsupported'; statusLabel = 'None'; }
+  // copy: phase 2
+  if (g.best_supported) {
+    statusCls = 'is-supported';
+    var role = g.loci.some(function (h) { return h.eqtl_supported && h.eqtl_gene_role !== 'followup'; })
+      ? 'Candidate' : 'Follow-up';
+    statusLabel = role + ' · eQTL p ≤ 10⁻⁵';
+  }
+  else if (g.best_hit) { statusCls = 'is-lookup-hit'; statusLabel = 'Returned records'; }
+  else { statusCls = 'is-unsupported'; statusLabel = g.loci.every(function (h) { return h.eqtl_lookup_status === 'skipped_no_rsid'; }) ? 'Not assessed' : 'No returned records'; }
 
+  var roles = new Set(g.loci.map(function (h) {
+    return h.eqtl_gene_role === 'followup' ? 'Follow-up' : 'Candidate';
+  }));
   var href = 'trait.html?panel=' + g.panel_id + '&trait=' + encodeURIComponent(g.trait_id);
 
-  return '<tr class="gene-trait-row" onclick="location.href=\'' + href + '\'">' +
-    '<td class="gene-trait-name">' + escHtml(g.trait_desc) + '</td>' +
+  return '<tr class="gene-trait-row">' +
+    '<td class="gene-trait-name"><a href="' + href + '">' + escHtml(g.trait_desc) + '</a></td>' +
     '<td class="gene-trait-panel">' + escHtml(g.panel_title) + '</td>' +
     '<td><span class="domain-badge">' + fmtDomain(g.domain) + '</span></td>' +
-    '<td><span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span></td>' +
+    '<td><span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span>' +
+      (!g.best_supported ? '<div>' + Array.from(roles).join(' / ') + '</div>' : '') + '</td>' +
     '<td class="num-cell">' + fmtPval(g.best_pval) + '</td>' +
     '<td class="num-cell">' + g.loci.length + '</td>' +
   '</tr>';
@@ -235,33 +238,7 @@ function traitRow(g) {
 function expandGene(btn, geneName) {
   var gene = geneIndex[geneName];
   if (!gene) return;
-  var traitGroups = {};
-  gene.hits.forEach(function (h) {
-    var key = h.trait_id + '|' + h.panel_id;
-    if (!traitGroups[key]) {
-      traitGroups[key] = {
-        trait_id: h.trait_id, trait_desc: h.trait_desc,
-        panel_id: h.panel_id, panel_title: h.panel_title,
-        domain: h.domain, best_supported: false, best_hit: false, best_pval: null, loci: [],
-      };
-    }
-    var g = traitGroups[key];
-    if (h.eqtl_supported) g.best_supported = true;
-    if (h.eqtl_lookup_hit) g.best_hit = true;
-    if (h.best_eqtl_pvalue !== null && (g.best_pval === null || h.best_eqtl_pvalue < g.best_pval)) g.best_pval = h.best_eqtl_pvalue;
-    g.loci.push(h);
-  });
-  var groups = Object.keys(traitGroups).map(function (k) { return traitGroups[k]; });
-  groups.sort(function (a, b) {
-    if (a.best_supported !== b.best_supported) return a.best_supported ? -1 : 1;
-    if (a.best_hit !== b.best_hit) return a.best_hit ? -1 : 1;
-    if (a.best_pval !== b.best_pval) {
-      if (a.best_pval === null) return 1;
-      if (b.best_pval === null) return -1;
-      return a.best_pval - b.best_pval;
-    }
-    return a.trait_desc.localeCompare(b.trait_desc);
-  });
+  var groups = groupAppearances(gene.hits);
   var extra = groups.slice(5);
   var overflowRow = btn.closest('tr');
   overflowRow.outerHTML = extra.map(function (g) { return traitRow(g); }).join('');

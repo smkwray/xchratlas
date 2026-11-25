@@ -43,5 +43,28 @@
     if (!saved()) apply(e.matches ? 'dark' : 'light');
   });
 
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.getElementById('hamburger');
+    var nav = document.getElementById('nav');
+    function menu(open) {
+      nav.classList.toggle('open', open);
+      button.setAttribute('aria-expanded', String(open));
+    }
+    button.addEventListener('click', function () {
+      var open = button.getAttribute('aria-expanded') !== 'true';
+      menu(open);
+      if (open) nav.querySelector('a').focus();
+    });
+    nav.addEventListener('click', function (event) {
+      if (event.target.closest('a')) menu(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        menu(false);
+        button.focus();
+      }
+    });
+  });
+
   window.toggleTheme = toggle;
 })();

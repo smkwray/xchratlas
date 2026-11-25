@@ -23,16 +23,17 @@
       <nav class="nav" id="nav">
         <a href="index.html#panels" class="nav-link">Panels</a>
         <a href="gene.html" class="nav-link">Gene Search</a>
+        <a href="index.html#results" class="nav-link">Results</a>
         <a href="index.html#methods" class="nav-link">Methods</a>
         <a href="index.html#about" class="nav-link">About</a>
         <span class="nav-divider"></span>
         <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
-        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Behavior</a>
-        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind and Behavior</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry Deep Dive</a>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
-        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -74,23 +75,24 @@
       <div class="container">
         <div class="domain-filters" id="domain-filters"></div>
         <div class="filter-bar">
+          <label class="sr-only" for="table-search">Filter this panel</label>
           <input type="text" class="search-input" id="table-search" placeholder="Search traits..." autocomplete="off">
           <label class="filter-toggle">
-            <input type="checkbox" id="eqtl-toggle"> Strict eQTL-supported only
+            <input type="checkbox" id="eqtl-toggle"> Candidate eQTL support only
           </label>
           <span class="result-count" id="result-count"></span>
         </div>
-        <div class="data-table-wrap">
+        <div class="data-table-wrap" tabindex="0" role="region" aria-label="Panel traits">
           <table class="data-table" id="traits-table">
             <thead>
               <tr>
-                <th data-sort="description">Trait <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="domain">Domain <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="x_evidence_score" class="sort-desc">Score <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="n_loci">Loci <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="eqtl_total_hit_count">eQTL Status <span class="sort-icon">&udarr;</span></th>
-                <th data-sort="coverage_grade">Grade <span class="sort-icon">&udarr;</span></th>
-                <th>Top Genes</th>
+                <th data-sort="description"><button type="button">Trait <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th data-sort="domain"><button type="button">Domain <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th data-sort="x_evidence_score" class="sort-desc" aria-sort="descending"><button type="button">Score <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th data-sort="n_loci"><button type="button">Loci <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th data-sort="eqtl_status"><button type="button">eQTL Status <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th data-sort="coverage_grade"><button type="button">GWAS grade <span class="sort-icon" aria-hidden="true">&udarr;</span></button></th>
+                <th>Positional genes</th>
               </tr>
             </thead>
             <tbody id="traits-tbody">
@@ -116,14 +118,14 @@
           <a href="index.html#discovery">Discovery Pool</a>
         </div>
         <div class="footer-col">
-          <h4>Learn</h4>
+          <h4>Explore</h4>
+          <a href="gene.html">Gene Search</a>
           <a href="index.html#methods">Methods</a>
           <a href="index.html#about">About</a>
         </div>
         <div class="footer-col">
           <h4>Project</h4>
           <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
-          <a href="index.html#methods">Methods</a>
           <a href="https://github.com/smkwray/xchratlas">Source code</a>
         </div>
       </div>
@@ -133,6 +135,7 @@
     </div>
   </footer>
 
+  <script src="js/listing.js"></script>
   <script src="js/panel.js"></script>
 </body>
 </html>

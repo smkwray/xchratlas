@@ -26,12 +26,6 @@ function displayTraitName(trait) {
   return safeText(trait.description, safeText(trait.query_id, safeText(trait.trait_id, 'Unlabeled trait')));
 }
 function pct(n, d) { return d ? Math.round(n / d * 100) : 0; }
-function eqtlStatusMeta(trait) {
-  if (trait.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
-  if (trait.eqtl_lookup_hit) return { cls: 'is-lookup-hit', label: 'Lookup-hit only' };
-  return { cls: 'is-unsupported', label: 'No lookup-hit' };
-}
-
 var S = {
   panelId: null, panel: null, summary: null,
   traits: [], filtered: [],
@@ -109,6 +103,7 @@ function sortTraits() {
   var k = S.sortKey, d = S.sortDir === 'asc' ? 1 : -1;
   S.filtered.sort(function (a, b) {
     if (k === 'description') return d * displayTraitName(a).localeCompare(displayTraitName(b));
+    if (k === 'eqtl_status') return d * (listingStatus(a).rank - listingStatus(b).rank);
     var av = a[k], bv = b[k];
     if (typeof av === 'string' || typeof bv === 'string') return d * safeText(av).localeCompare(safeText(bv));
     return d * ((av || 0) - (bv || 0));
@@ -125,9 +120,10 @@ function renderTable() {
   }
   tbody.innerHTML = S.filtered.map(function (t) {
     var sw = Math.min(t.x_evidence_score, 100);
-    var status = eqtlStatusMeta(t);
-    return '<tr class="trait-row" onclick="location.href=\'trait.html?panel=' + S.panelId + '&trait=' + encodeURIComponent(t.trait_id) + '\'">' +
-      '<td class="trait-name-cell"><span class="trait-table-name">' + displayTraitName(t) + '</span></td>' +
+    var status = listingStatus(t);
+    var href = 'trait.html?panel=' + encodeURIComponent(S.panelId) + '&trait=' + encodeURIComponent(t.trait_id);
+    return '<tr class="trait-row">' +
+      '<td class="trait-name-cell"><a class="trait-table-name" href="' + href + '">' + displayTraitName(t) + '</a></td>' +
       '<td><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
       '<td class="score-cell"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
       '<td class="num-cell">' + t.n_loci + '</td>' +
@@ -142,21 +138,30 @@ function renderTable() {
 /* ── Sort Headers ──────────────────────────── */
 function initSort() {
   document.querySelectorAll('.data-table th[data-sort]').forEach(function (th) {
-    th.addEventListener('click', function () {
-      var k = this.dataset.sort;
+    th.querySelector('button').addEventListener('click', function () {
+      var k = th.dataset.sort;
       if (S.sortKey === k) S.sortDir = S.sortDir === 'asc' ? 'desc' : 'asc';
       else { S.sortKey = k; S.sortDir = (k === 'description' || k === 'domain') ? 'asc' : 'desc'; }
-      document.querySelectorAll('.data-table th[data-sort]').forEach(function (h) { h.classList.remove('sort-asc', 'sort-desc'); });
-      this.classList.add('sort-' + S.sortDir);
+      document.querySelectorAll('.data-table th[data-sort]').forEach(function (h) {
+        h.classList.remove('sort-asc', 'sort-desc');
+        h.removeAttribute('aria-sort');
+      });
+      th.setAttribute('aria-sort', S.sortDir === 'asc' ? 'ascending' : 'descending');
+      th.classList.add('sort-' + S.sortDir);
       applyFilters();
     });
   });
 }
 
 /* ── Init ──────────────────────────────────── */
+function panelError(message) {
+  document.getElementById('panel-title').textContent = message;
+  document.getElementById('traits-tbody').innerHTML = '<tr><td colspan="7">Traits unavailable</td></tr>';
+}
+
 function init() {
   S.panelId = getParam('id');
-  if (!S.panelId) { document.getElementById('panel-title').textContent = 'Panel not specified'; return; }
+  if (!S.panelId) { panelError('Panel not specified'); return; }
 
   fetchJSON('manifest.json').then(function (m) {
     S.panel = m.panels.find(function (p) { return p.panel_id === S.panelId; });
@@ -180,7 +185,7 @@ function init() {
     if (et) et.addEventListener('change', function () { S.eqtlOnly = this.checked; applyFilters(); });
   }).catch(function (e) {
     console.error(e);
-    document.getElementById('panel-title').textContent = 'Error: ' + e.message;
+    panelError('Panel unavailable');
   });
 }
 

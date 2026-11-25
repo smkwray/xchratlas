@@ -29,12 +29,12 @@
         <a href="#about" class="nav-link">About</a>
         <span class="nav-divider"></span>
         <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
-        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Behavior</a>
-        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind and Behavior</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry Deep Dive</a>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
-        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -64,19 +64,19 @@
         <div class="metrics-grid">
           <div class="metric-card animate-on-scroll">
             <div class="metric-value" id="metric-traits" data-count-to="0">&mdash;</div>
-            <div class="metric-label">Curated Traits</div>
+            <div class="metric-label">Curated panel entries</div>
           </div>
           <div class="metric-card animate-on-scroll">
             <div class="metric-value" id="metric-loci" data-count-to="0">&mdash;</div>
-            <div class="metric-label">ChrX Loci Mapped</div>
+            <div class="metric-label">Trait–locus entries</div>
           </div>
           <div class="metric-card animate-on-scroll">
             <div class="metric-value" id="metric-support" data-count-to="0">&mdash;</div>
-            <div class="metric-label">eQTL Support Rate</div>
+            <div class="metric-label">Entries with eQTL support</div>
           </div>
           <div class="metric-card animate-on-scroll">
             <div class="metric-value" id="metric-domains" data-count-to="0">&mdash;</div>
-            <div class="metric-label">Biological Domains</div>
+            <div class="metric-label">Trait categories</div>
           </div>
         </div>
         <p class="proof-note" id="metric-build-note">Current data build: &mdash;</p>
@@ -87,6 +87,7 @@
     <section class="search-section" id="search">
       <div class="container">
         <div class="search-container">
+          <label class="sr-only" for="search-input">Search traits</label>
           <input type="text" class="search-input" id="search-input" placeholder="Search traits across all panels..." autocomplete="off">
           <div class="search-results" id="search-results"></div>
         </div>
@@ -149,7 +150,7 @@
         <div class="top-traits animate-on-scroll" id="top-traits-section">
           <h3>Top-Ranked Traits</h3>
           <p class="traits-subtitle">Highest evidence-scored traits from the Broad Atlas panel.</p>
-          <div class="traits-rail" id="traits-rail"></div>
+          <div class="traits-rail" tabindex="0" role="region" aria-label="Top-ranked traits" id="traits-rail"></div>
         </div>
       </div>
     </section>
@@ -159,7 +160,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Discovery Pool</h2>
-          <p class="section-subtitle">A broader reservoir of 150 traits from the Pan-UKB max independent set. Not curated to the same standard as the featured panels, but kept as a source for future exploration and panel building. Expand the drawers below to inspect the full tested set and the traits without strict current eQTL support.</p>
+          <p class="section-subtitle">A broader reservoir of traits from the Pan-UKB max independent set. Not curated to the same standard as the featured panels, but kept as a source for future exploration and panel building. Expand the drawers below to inspect the full tested set and the traits without strict current eQTL support.</p>
         </div>
         <div class="discovery-card animate-on-scroll" id="discovery-card"></div>
       </div>
@@ -183,7 +184,7 @@
           </div>
           <div class="method-card animate-on-scroll">
             <h3>Coverage grades</h3>
-            <p>Coverage grades reflect upstream <strong>GWAS data quality</strong>, not eQTL follow-up completeness. <strong>Grade A</strong> means the trait is in the Pan-UKB max independent set, passes QC in 2+ populations, and has a large high-quality cohort (&ge;50K). <strong>Grade B</strong> indicates partial coverage &mdash; in the independent set with &ge;10K, or multi-population QC. <strong>Grade U</strong> means the trait does not meet these thresholds.</p>
+            <p>Coverage grades reflect upstream <strong>GWAS data quality</strong>, not eQTL follow-up completeness. <strong>Grade A</strong> means the trait is in the Pan-UKB max independent set, passes QC in 2+ populations, and has a large high-quality cohort (&ge;50K). <strong>Grade B</strong> indicates partial coverage &mdash; in the independent set with &ge;10K, or multi-population QC. <!-- // copy: phase 2 --> <strong>Grade C</strong>: HQ count ≥1,000. <strong>Grade U</strong> means the trait does not meet these thresholds.</p>
           </div>
           <div class="method-card animate-on-scroll">
             <h3>What the atlas is <em>not</em></h3>
@@ -216,20 +217,19 @@
       <div class="footer-nav">
         <div class="footer-col">
           <h4>Atlas</h4>
-          <a href="#panels">Panels</a>
-          <a href="#results">Results</a>
-          <a href="#discovery">Discovery Pool</a>
+          <a href="index.html#panels">Panels</a>
+          <a href="index.html#results">Results</a>
+          <a href="index.html#discovery">Discovery Pool</a>
         </div>
         <div class="footer-col">
-          <h4>Learn</h4>
-          <a href="#methods">Methods</a>
-          <a href="#about">About</a>
-          <a href="#why">Why ChrX</a>
+          <h4>Explore</h4>
+          <a href="gene.html">Gene Search</a>
+          <a href="index.html#methods">Methods</a>
+          <a href="index.html#about">About</a>
         </div>
         <div class="footer-col">
           <h4>Project</h4>
           <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
-          <a href="#methods">Methods</a>
           <a href="https://github.com/smkwray/xchratlas">Source code</a>
         </div>
       </div>
@@ -239,6 +239,7 @@
     </div>
   </footer>
 
+  <script src="js/listing.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

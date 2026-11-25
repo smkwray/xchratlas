@@ -9,7 +9,11 @@ function fetchJSON(p) {
 }
 function fmt(n) { return Number(n).toLocaleString(); }
 function fmtDomain(d) { return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }); }
-function fmtPval(v) { if (!v || v === null) return '\u2014'; if (v < 0.001) return v.toExponential(1); return v.toFixed(3); }
+function fmtPval(p) {
+  // copy: phase 2
+  if (!Number.isFinite(p)) return '—';
+  return p === 0 ? '0 (reported; precision limit)' : p.toExponential(2);
+}
 function fmtPos(s, e) { return 'X:' + fmt(s) + '\u2013' + fmt(e); }
 function getParam(k) { return new URLSearchParams(location.search).get(k); }
 function safeText(v, fallback) {
@@ -23,12 +27,22 @@ function displayTraitName(trait) {
 }
 function eqtlStatusMeta(item) {
   if (item.eqtl_supported) {
-    return { key: 'supported', supportClass: 'support-yes', badgeClass: 'eqtl-yes', label: 'eQTL-supported', icon: '\u2713' };
+    return { key: 'supported', supportClass: 'support-yes', badgeClass: 'eqtl-yes', label: 'Candidate support', icon: '\u2713' };
   }
   if (item.eqtl_lookup_hit) {
-    return { key: 'lookup', supportClass: 'support-mid', badgeClass: 'eqtl-mid', label: 'eQTL lookup-hit only', icon: '\u2022' };
+    return { key: 'lookup', supportClass: 'support-mid', badgeClass: 'eqtl-mid', label: 'Returned records', icon: '\u2022' };
   }
-  return { key: 'none', supportClass: 'support-no', badgeClass: 'eqtl-no', label: 'No eQTL lookup-hit', icon: '\u2717' };
+  // copy: phase 2
+  var label;
+  if (item.n_loci === 0) label = 'No significant locus';
+  else if (item.n_loci !== undefined) {
+    var complete = item.eqtl_lookup_complete_locus_count;
+    label = !complete ? 'Not assessed' : complete < item.n_loci ? 'Partly assessed' : 'Completed with no records';
+  } else {
+    label = ['complete', 'completed', 'done', 'found', 'ok', 'success', 'succeeded', 'not_found', 'no_hits', 'empty']
+      .includes(item.eqtl_lookup_status) ? 'Completed with no records' : 'Not assessed';
+  }
+  return { key: 'none', supportClass: 'support-no', badgeClass: 'eqtl-no', label: label, icon: '\u2717' };
 }
 function pickSupportedGene(locus) {
   return (locus.candidate_genes || []).find(function (g) { return g.eqtl_supported && g.eqtl_gene_role !== 'followup'; });
@@ -57,7 +71,9 @@ function renderHero(data) {
   document.getElementById('ts-loci').textContent = t.n_loci;
   document.getElementById('ts-eqtl-loci').textContent = t.eqtl_supported_locus_count;
   document.getElementById('ts-eqtl-hits').textContent = fmt(t.eqtl_total_hit_count);
-  document.getElementById('ts-pval').textContent = t.lead_neglog10_pvalue.toFixed(1);
+  // copy: phase 2
+  document.getElementById('ts-pval').textContent = Number.isFinite(t.lead_neglog10_pvalue)
+    ? (t.lead_neglog10_is_lower_bound ? '≥' : '') + t.lead_neglog10_pvalue.toFixed(1) : '—';
 }
 
 /* ── Metadata ──────────────────────────────── */
@@ -72,7 +88,7 @@ function renderMeta(data) {
     ['Phenocode', t.phenocode || '\u2014'],
     ['Trait type', t.trait_type || '\u2014'],
     ['Modifier', t.modifier || 'none'],
-    ['Sample size', (sampleSize === null || sampleSize === undefined || sampleSize === '') ? '\u2014' : fmt(sampleSize)],
+    [(['continuous', 'biomarkers'].includes(t.trait_type) ? 'HQ measured participants' : 'HQ cases'), (sampleSize === null || sampleSize === undefined || sampleSize === '') ? '\u2014' : fmt(sampleSize)],
     ['Populations passing QC', t.num_pops_pass_qc || '\u2014'],
     ['Tier', t.tier || '\u2014'],
     ['Selection rank', t.selection_rank || '\u2014'],
@@ -98,7 +114,8 @@ function renderLoci(data) {
   if (!el || !data.loci) return;
   document.getElementById('loci-heading').textContent = 'Chromosome X Loci (' + data.loci.length + ')';
   if (data.loci.length === 0) {
-    el.innerHTML = '<p class="table-empty">No genome-wide significant loci on chromosome X for this trait.</p>';
+    // copy: phase 2
+    el.innerHTML = '<p class="table-empty">No significant chromosome X loci.</p>';
     return;
   }
   el.innerHTML = data.loci.map(function (locus, i) {
@@ -112,13 +129,17 @@ function renderLoci(data) {
           '<span class="locus-lead-variant">' + (locus.lead_rsid || locus.lead_varid) + '</span>' +
         '</div>' +
         '<div class="locus-summary-stats">' +
-          '<span class="locus-pval">p: 10<sup>\u2212' + locus.lead_neglog10_pvalue.toFixed(1) + '</sup></span>' +
+          '<span class="locus-pval">−log₁₀(p) ' + (locus.lead_neglog10_is_lower_bound ? '≥ ' : '') + locus.lead_neglog10_pvalue.toFixed(1) + '</span>' +
           '<span class="locus-top-gene">' + locus.top_gene_name + '</span>' +
           '<span class="locus-eqtl-badge ' + status.badgeClass + '">' + status.label + '</span>' +
           '<span class="locus-gene-count">' + genes.length + ' gene' + (genes.length !== 1 ? 's' : '') + '</span>' +
         '</div>' +
       '</summary>' +
-      '<div class="locus-body">' +
+      '<div class="locus-body" tabindex="0" role="region" aria-label="Locus details">' +
+        // copy: phase 2
+        (locus.lead_selection === 'clipped_unresolved' ? '<p>Representative after p-value clipping</p>' : '') +
+        (locus.eqtl_query_rsid ? '<p>Lookup rsID: ' + locus.eqtl_query_rsid + '</p>' :
+          (String(locus.eqtl_lookup_mode).startsWith('variant_recoder+') ? '<p>Recovered rsID unavailable</p>' : '')) +
         (genes.length > 0 ? geneTable(genes) : '<p style="color:var(--text-tertiary);font-size:0.88rem">No candidate genes mapped.</p>') +
       '</div>' +
     '</details>';
@@ -127,7 +148,7 @@ function renderLoci(data) {
 
 function geneTable(genes) {
   return '<table class="candidate-table"><thead><tr>' +
-    '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Role</th><th>Relation</th><th>Distance</th><th>Lookup</th><th>Support</th><th>Studies</th><th>Datasets</th><th>Best p</th>' +
+    '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Role</th><th>Relation</th><th>Distance</th><th>Lookup</th><th>p ≤ 10⁻⁵</th><th>Studies</th><th>Datasets</th><th>Best p</th>' +
     '</tr></thead><tbody>' +
     genes.map(function (g) {
       var role = g.eqtl_gene_role === 'followup' ? 'Follow-up' : 'Candidate';
@@ -168,31 +189,15 @@ function renderSupport(data) {
   var html = '<div class="support-card ' + status.supportClass + '">' +
     '<div class="support-header">' +
       '<span class="support-status-badge ' + status.supportClass + '">' + status.icon + ' ' + status.label + '</span>' +
-      '<h3>' + (status.key === 'supported'
-        ? 'Why this trait is marked eQTL-supported'
-        : (status.key === 'lookup'
-          ? 'Why this trait is lookup-hit only'
-          : 'Why this trait has no eQTL lookup-hit')) + '</h3>' +
-    '</div>' +
-    '<div class="support-body">' +
-      '<div class="support-facts">' +
-        '<div class="support-fact">' +
-          '<span class="support-fact-label">eQTL-supported loci</span>' +
-          '<span class="support-fact-value">' + t.eqtl_supported_locus_count + ' of ' + t.n_loci + '</span>' +
-        '</div>' +
-        '<div class="support-fact">' +
-          '<span class="support-fact-label">Lookup-hit loci</span>' +
-          '<span class="support-fact-value">' + t.eqtl_lookup_hit_locus_count + ' of ' + t.n_loci + '</span>' +
-        '</div>' +
-        '<div class="support-fact">' +
-          '<span class="support-fact-label">Total lookup hits</span>' +
-          '<span class="support-fact-value">' + fmt(t.eqtl_total_hit_count) + '</span>' +
-        '</div>' +
-        '<div class="support-fact">' +
-          '<span class="support-fact-label">Coverage grade</span>' +
-          '<span class="support-fact-value"><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></span>' +
-        '</div>' +
-      '</div>';
+      '<h3>eQTL assessment</h3>' +
+    '</div><div class="support-body">';
+  // copy: phase 2
+  if (t.n_loci) {
+    var complete = t.eqtl_lookup_complete_locus_count;
+    var partial = complete > 0 && complete < t.n_loci;
+    html += '<p>' + (partial && status.label !== 'Partly assessed' ? 'Partly assessed · ' : '') +
+      complete + ' of ' + t.n_loci + ' loci assessed</p>';
+  }
 
   if (supLoci.length > 0) {
     html += '<div class="support-loci">' +
@@ -206,7 +211,7 @@ function renderSupport(data) {
             '<strong>Positional top gene:</strong> ' + l.top_gene_name +
           '</span>' +
           '<span class="support-locus-detail">' +
-            '<strong>Lead variant:</strong> ' + (l.lead_rsid || l.lead_varid) +
+            '<strong>' + (l.lead_selection === 'clipped_unresolved' ? 'Representative' : 'Lead variant') + ':</strong> ' + (l.lead_rsid || l.lead_varid) +
           '</span>' +
           '<span class="support-locus-detail">' +
             '<strong>Lookup:</strong> ' + (l.eqtl_lookup_status || 'unknown') +
@@ -214,7 +219,7 @@ function renderSupport(data) {
           '<span class="support-locus-detail">' +
             '<strong>eQTL hits:</strong> ' + l.eqtl_lookup_n_hits +
           '</span>' +
-          (supportedGene ? '<span class="support-locus-detail"><strong>Supported gene:</strong> <span class="gene-name">' + supportedGene.gene_name + '</span> (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
+          (supportedGene ? '<span class="support-locus-detail"><strong>Supporting candidate:</strong> <span class="gene-name">' + supportedGene.gene_name + '</span> (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';
@@ -233,20 +238,9 @@ function renderSupport(data) {
           (lookupGene ? '<span class="support-locus-detail"><strong>Lookup gene:</strong> <span class="gene-name">' + lookupGene.gene_name + '</span> (best p ' + fmtPval(lookupGene.best_eqtl_pvalue) + ')</span>' : '') +
         '</div>';
       }).join('') +
-    '</div>' +
-    '<p class="support-none-detail">This trait had eQTL lookup-hit associations, but none met the strict candidate-gene support rule (best eQTL p \u2264 1e-5).' +
-    (t.eqtl_lookup_note ? ' ' + t.eqtl_lookup_note : '') + '</p>';
-  } else {
-    html += '<div class="support-loci">' +
-      '<p class="support-none-detail">No chromosome X loci returned eQTL lookup-hit evidence in the current build.' +
-      (t.eqtl_lookup_note ? ' ' + t.eqtl_lookup_note : '') + '</p>' +
     '</div>';
   }
-
-  html += '<div class="support-rule">' +
-      '<strong>Rule:</strong> eQTL lookup-hit means returned associations were observed in prioritized datasets. eQTL-supported is stricter and requires at least one candidate gene with best eQTL p &le; 1e-5 in the aggregated build.' +
-    '</div>' +
-  '</div></div>';
+  html += '</div></div>';
 
   el.innerHTML = html;
 }
@@ -258,7 +252,7 @@ function renderNotes(data) {
   var notes = [];
   if (t.confidence_notes) notes.push(t.confidence_notes);
   if (t.description_more) notes.push('<strong>Measurement:</strong> ' + t.description_more);
-  if (t.eqtl_lookup_note) notes.push('<strong>eQTL lookup:</strong> ' + t.eqtl_lookup_note);
+  document.getElementById('trait-notes-section').hidden = notes.length === 0;
   el.innerHTML = notes.map(function (n) { return '<p>' + n + '</p>'; }).join('');
 }
 

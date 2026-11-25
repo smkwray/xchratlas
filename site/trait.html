@@ -23,16 +23,17 @@
       <nav class="nav" id="nav">
         <a href="index.html#panels" class="nav-link">Panels</a>
         <a href="gene.html" class="nav-link">Gene Search</a>
+        <a href="index.html#results" class="nav-link">Results</a>
         <a href="index.html#methods" class="nav-link">Methods</a>
         <a href="index.html#about" class="nav-link">About</a>
         <span class="nav-divider"></span>
         <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
-        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Behavior</a>
-        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind and Behavior</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry Deep Dive</a>
       </nav>
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
-        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -68,15 +69,15 @@
           </div>
           <div class="trait-stat">
             <span class="trait-stat-value" id="ts-eqtl-loci">&mdash;</span>
-            <span class="trait-stat-label">Strict eQTL-supported loci</span>
+            <span class="trait-stat-label">Candidate-supported loci</span>
           </div>
           <div class="trait-stat">
             <span class="trait-stat-value" id="ts-eqtl-hits">&mdash;</span>
-            <span class="trait-stat-label">eQTL Lookup Hits</span>
+            <span class="trait-stat-label">Returned eQTL records</span>
           </div>
           <div class="trait-stat">
             <span class="trait-stat-value" id="ts-pval">&mdash;</span>
-            <span class="trait-stat-label">Lead &minus;log<sub>10</sub>(p)</span>
+            <span class="trait-stat-label">Maximum &minus;log<sub>10</sub>(p)</span>
           </div>
         </div>
       </div>
@@ -102,7 +103,7 @@
       </div>
     </section>
 
-    <section class="notes-section">
+    <section class="notes-section" id="trait-notes-section">
       <div class="container">
         <div class="notes-card">
           <h3>Notes &amp; Caveats</h3>
@@ -123,16 +124,17 @@
           <h4>Atlas</h4>
           <a href="index.html#panels">Panels</a>
           <a href="index.html#results">Results</a>
+          <a href="index.html#discovery">Discovery Pool</a>
         </div>
         <div class="footer-col">
-          <h4>Learn</h4>
+          <h4>Explore</h4>
+          <a href="gene.html">Gene Search</a>
           <a href="index.html#methods">Methods</a>
           <a href="index.html#about">About</a>
         </div>
         <div class="footer-col">
           <h4>Project</h4>
           <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
-          <a href="index.html#methods">Methods</a>
           <a href="https://github.com/smkwray/xchratlas">Source code</a>
         </div>
       </div>

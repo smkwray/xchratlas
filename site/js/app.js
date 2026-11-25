@@ -42,11 +42,7 @@ function displayTraitName(trait) {
 }
 
 function pct(n, d) { return d ? Math.round((n / d) * 100) : 0; }
-function eqtlStatusMeta(item) {
-  if (item.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
-  if (item.eqtl_lookup_hit) return { cls: 'is-lookup-hit', label: 'Lookup-hit only' };
-  return { cls: 'is-unsupported', label: 'No lookup-hit' };
-}
+
 
 function formatBuildDate(iso) {
   if (!iso) return null;
@@ -194,7 +190,7 @@ function updatePanelDetails(summaries) {
         '<div class="panel-top-traits-label">Top traits</div>' +
         top3.map(function (t) {
           return '<div class="panel-trait-row">' +
-            '<span class="panel-trait-name">' + displayTraitName(t) + '</span>' +
+            '<a class="panel-trait-name" href="trait.html?panel=' + panelId + '&trait=' + encodeURIComponent(t.trait_id) + '">' + displayTraitName(t) + '</a>' +
             '<span class="panel-trait-loci">' + t.n_loci + ' loci</span>' +
           '</div>';
         }).join('');
@@ -241,7 +237,7 @@ function renderTopTraits(summary) {
         '<span class="trait-domain-badge">' + fmtDomain(t.domain) + '</span>' +
         '<span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span>' +
       '</div>' +
-      '<h4 class="trait-name">' + displayTraitName(t) + '</h4>' +
+      '<h4 class="trait-name"><a href="trait.html?panel=' + summary.panel.panel_id + '&trait=' + encodeURIComponent(t.trait_id) + '">' + displayTraitName(t) + '</a></h4>' +
       '<div class="trait-score">' +
         '<div class="trait-score-bar"><div class="trait-score-fill" style="width:' + scoreWidth + '%"></div></div>' +
         '<span class="trait-score-value">' + t.x_evidence_score.toFixed(0) + '</span>' +
@@ -301,7 +297,7 @@ function compRow(label, width, value) {
 /* ── Render: Discovery Pool ──────────────────── */
 function discoveryTraitRow(pool, trait) {
   var href = 'trait.html?panel=' + pool.panel_id + '&trait=' + encodeURIComponent(trait.trait_id);
-  var status = eqtlStatusMeta(trait);
+  var status = listingStatus(trait);
   var topGenes = (trait.top_candidate_genes || []).slice(0, 3);
 
   return '<a class="discovery-trait-row" href="' + href + '">' +
@@ -426,8 +422,6 @@ function initSmoothScroll() {
         var offset = h ? h.offsetHeight + 20 : 20;
         var top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: top, behavior: 'smooth' });
-        var nav = document.getElementById('nav');
-        if (nav) nav.classList.remove('open');
       }
     });
   });
@@ -494,9 +488,11 @@ function init() {
 var searchIndex = [];
 
 function loadSearchIndex(manifest) {
+  var curatedIds = new Set();
   var promises = manifest.panels.map(function (panel) {
     return fetchJSON(panel.files.traits).then(function (traits) {
       traits.forEach(function (t) {
+        if (panel.featured) curatedIds.add(t.trait_id);
         searchIndex.push({
           trait_id: t.trait_id, description: t.description,
           coding_description: t.coding_description,
@@ -508,7 +504,11 @@ function loadSearchIndex(manifest) {
       });
     });
   });
-  return Promise.all(promises).then(initSearch);
+  return Promise.all(promises).then(function () {
+    // copy: phase 2
+    document.getElementById('metric-build-note').textContent += ' · ' + curatedIds.size + ' distinct curated traits';
+    initSearch();
+  });
 }
 
 function initSearch() {
