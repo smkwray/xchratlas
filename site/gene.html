@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="chrXatlas gene search — find chromosome X eQTL evidence by gene name.">
+  <meta name="description" content="Search chromosome X genes listed in chrXatlas by symbol or Ensembl ID to view associated traits, loci, and eQTL lookups.">
   <title>Gene Search — chrXatlas</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,11 @@
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="index.html" class="logo">chr<span class="logo-x">X</span>atlas</a>
-      <nav class="nav" id="nav">
-        <a href="index.html#panels" class="nav-link">Panels</a>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="index.html" class="nav-link">Home</a>
         <a href="gene.html" aria-current="page" class="nav-link">Gene Search</a>
-        <a href="index.html#results" class="nav-link">Results</a>
         <a href="index.html#methods" class="nav-link">Methods</a>
-        <a href="index.html#about" class="nav-link">About</a>
-        <span class="nav-divider"></span>
+        <span class="nav-divider" aria-hidden="true"></span>
         <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
         <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind and Behavior</a>
         <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry Deep Dive</a>
@@ -56,28 +54,27 @@
           </div>
           <div class="page-metric">
             <span class="page-metric-value" id="gm-eqtl">&mdash;</span>
-            <span class="page-metric-label">With eQTL hits</span>
+            <span class="page-metric-label">With eQTL records</span>
           </div>
           <div class="page-metric">
             <span class="page-metric-value" id="gm-supported">&mdash;</span>
-            <span class="page-metric-label">With eQTL p ≤ 10⁻⁵</span>
+            <span class="page-metric-label">With eQTL p &le; 10<sup>&minus;5</sup></span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="gene-search-section" style="padding-top:2rem">
+    <section class="gene-search-section">
       <div class="container">
         <div class="filter-bar">
           <label class="sr-only" for="gene-search">Search genes</label>
           <input type="text" class="search-input gene-search-input" id="gene-search" placeholder="Gene symbol or Ensembl ID" autocomplete="off">
           <label class="filter-toggle">
-            <input type="checkbox" id="eqtl-only-toggle"> eQTL hits only
+            <input type="checkbox" id="eqtl-only-toggle"> With eQTL records only
           </label>
           <span class="result-count" id="gene-result-count" role="status"></span>
         </div>
-        <!-- // copy: phase 2 -->
-        <div id="gene-results"><p role="status">Loading gene index…</p></div>
+        <div id="gene-results"><p class="gene-empty" role="status">Loading gene index&hellip;</p></div>
       </div>
     </section>
   </main>
@@ -86,29 +83,30 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <span class="logo">chr<span class="logo-x">X</span>atlas</span>
-        <p class="footer-tagline">Chromosome X Evidence Atlas</p>
+        <p class="footer-tagline">Chromosome X associations from Pan-UK Biobank</p>
       </div>
       <div class="footer-nav">
         <div class="footer-col">
-          <h4>Atlas</h4>
-          <a href="index.html#panels">Panels</a>
-          <a href="index.html#results">Results</a>
+          <h4>Panels</h4>
+          <a href="panel.html?id=panel_expanded">Broad Atlas</a>
+          <a href="panel.html?id=panel_mind_risk_core">Mind and Behavior</a>
+          <a href="panel.html?id=panel_blood_biochemistry_core">Biochemistry Deep Dive</a>
           <a href="index.html#discovery">Discovery Pool</a>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Reference</h4>
+          <a href="index.html">Home</a>
           <a href="gene.html">Gene Search</a>
           <a href="index.html#methods">Methods</a>
-          <a href="index.html#about">About</a>
         </div>
         <div class="footer-col">
           <h4>Project</h4>
-          <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
+          <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data contract</a>
           <a href="https://github.com/smkwray/xchratlas">Source code</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Data sources: Pan-UK Biobank &middot; eQTL Catalogue &middot; Ensembl GRCh37</p>
+        <p>Sources: Pan-UK Biobank (GRCh37) &middot; Ensembl GRCh37 &middot; eQTL Catalogue &middot; Independent research, unaffiliated with data providers.</p>
       </div>
     </div>
   </footer>

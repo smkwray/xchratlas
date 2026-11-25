@@ -46,6 +46,8 @@ function renderHero() {
   document.getElementById('ph-loci').textContent = fmt(p.locus_count);
   document.getElementById('ph-lookup').textContent = p.lookup_hit_trait_count;
   document.getElementById('ph-supported').textContent = p.supported_trait_count;
+  var activeBtn = document.querySelector('.nav-panel-btn[href="panel.html?id=' + p.panel_id + '"]');
+  if (activeBtn) activeBtn.setAttribute('aria-current', 'page');
 }
 
 /* ── Domain Filter Chips ───────────────────── */
@@ -127,7 +129,8 @@ function renderTable() {
       '<td><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
       '<td class="score-cell"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
       '<td class="num-cell">' + t.n_loci + '</td>' +
-      '<td><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span><div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' hits</div></td>' +
+      '<td><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
+        (t.eqtl_total_hit_count > 0 ? '<div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' ' + (t.eqtl_total_hit_count === 1 ? 'record' : 'records') + '</div>' : '') + '</td>' +
       '<td><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
       '<td class="genes-cell">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
         return '<span class="gene-tag">' + g + '</span>';
@@ -156,12 +159,13 @@ function initSort() {
 /* ── Init ──────────────────────────────────── */
 function panelError(message) {
   document.getElementById('panel-title').textContent = message;
-  document.getElementById('traits-tbody').innerHTML = '<tr><td colspan="7">Traits unavailable</td></tr>';
+  document.getElementById('traits-tbody').innerHTML =
+    '<tr><td colspan="7" class="table-empty">Could not load panel data. <a href="index.html">Return to home</a>.</td></tr>';
 }
 
 function init() {
   S.panelId = getParam('id');
-  if (!S.panelId) { panelError('Panel not specified'); return; }
+  if (!S.panelId) { panelError('No panel selected'); return; }
 
   fetchJSON('manifest.json').then(function (m) {
     S.panel = m.panels.find(function (p) { return p.panel_id === S.panelId; });
@@ -185,7 +189,7 @@ function init() {
     if (et) et.addEventListener('change', function () { S.eqtlOnly = this.checked; applyFilters(); });
   }).catch(function (e) {
     console.error(e);
-    panelError('Panel unavailable');
+    panelError('Could not load panel');
   });
 }
 

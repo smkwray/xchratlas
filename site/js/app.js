@@ -79,6 +79,21 @@ function animateValue(element, target, duration, suffix) {
 
 /* ── Scroll Observer ─────────────────────────── */
 function initScrollAnimations() {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    document.querySelectorAll('.animate-on-scroll').forEach(function (node) {
+      node.classList.add('is-visible');
+      var counter = node.querySelector('[data-count-to]');
+      if (counter && !counter.dataset.counted) {
+        var target = parseInt(counter.dataset.countTo, 10);
+        var suffix = counter.dataset.countSuffix || '';
+        counter.textContent = fmt(target) + suffix;
+        counter.dataset.counted = 'true';
+      }
+    });
+    return;
+  }
+
   var staggerIndex = 0;
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -130,7 +145,7 @@ function renderHeroMetrics(manifest) {
   var buildNote = document.getElementById('metric-build-note');
   if (buildNote) {
     var buildDate = formatBuildDate(manifest.generated_at);
-    buildNote.textContent = buildDate ? 'Current data build: ' + buildDate : 'Current data build unavailable';
+    buildNote.textContent = buildDate ? 'Exported ' + buildDate : 'Export date unavailable';
   }
 }
 
@@ -159,7 +174,7 @@ function renderPanelCards(manifest) {
         '</div>' +
         '<div class="panel-card-domains" id="domains-' + panel.panel_id + '"></div>' +
         '<div class="panel-card-top-traits" id="top-traits-' + panel.panel_id + '"></div>' +
-        '<a href="panel.html?id=' + panel.panel_id + '" class="panel-card-cta">Explore panel &rarr;</a>' +
+        '<a href="panel.html?id=' + panel.panel_id + '" class="panel-card-cta">View panel &rarr;</a>' +
       '</div>';
 
     grid.appendChild(card);
@@ -191,7 +206,7 @@ function updatePanelDetails(summaries) {
         top3.map(function (t) {
           return '<div class="panel-trait-row">' +
             '<a class="panel-trait-name" href="trait.html?panel=' + panelId + '&trait=' + encodeURIComponent(t.trait_id) + '">' + displayTraitName(t) + '</a>' +
-            '<span class="panel-trait-loci">' + t.n_loci + ' loci</span>' +
+            '<span class="panel-trait-loci">' + t.n_loci + ' ' + (t.n_loci === 1 ? 'locus' : 'loci') + '</span>' +
           '</div>';
         }).join('');
     }
@@ -219,7 +234,7 @@ function renderDomainBars(summary) {
           '<span class="domain-bar-value">' + d.locus_count + '</span>' +
         '</div>' +
       '</div>' +
-      '<span class="domain-trait-count">' + d.trait_count + ' trait' + (d.trait_count > 1 ? 's' : '') + '</span>';
+      '<span class="domain-trait-count">' + d.trait_count + ' ' + (d.trait_count === 1 ? 'trait' : 'traits') + '</span>';
     container.appendChild(bar);
   });
 }
@@ -244,7 +259,7 @@ function renderTopTraits(summary) {
       '</div>' +
       '<div class="trait-meta">' +
         '<div class="trait-meta-item"><span class="trait-meta-label">Loci</span><span class="trait-meta-value">' + t.n_loci + '</span></div>' +
-        '<div class="trait-meta-item"><span class="trait-meta-label">eQTL hits</span><span class="trait-meta-value">' + fmt(t.eqtl_total_hit_count) + '</span></div>' +
+        '<div class="trait-meta-item"><span class="trait-meta-label">eQTL records</span><span class="trait-meta-value">' + fmt(t.eqtl_total_hit_count) + '</span></div>' +
       '</div>' +
       '<div class="trait-genes">' +
         t.top_candidate_genes.slice(0, 3).map(function (g) {
@@ -275,12 +290,12 @@ function renderPanelComparison(manifest) {
     item.innerHTML =
       '<div class="comparison-header">' +
         '<span class="comparison-title">' + panel.title + '</span>' +
-        (panel.featured ? '<span class="comparison-badge">Featured</span>' : '') +
+        (panel.featured ? '<span class="comparison-badge">Curated</span>' : '') +
       '</div>' +
       '<div class="comparison-bars">' +
         compRow('Traits', traitW, panel.trait_count) +
         compRow('Loci', lociW, fmt(panel.locus_count)) +
-        compRow('eQTL support', supportRate, supportRate + '%') +
+        compRow('eQTL-supported', supportRate, supportRate + '%') +
       '</div>';
     grid.appendChild(item);
   });
@@ -307,14 +322,14 @@ function discoveryTraitRow(pool, trait) {
         '<span class="discovery-trait-domain">' + fmtDomain(trait.domain) + '</span>' +
         '<span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
         '<span class="discovery-trait-fact">score ' + trait.x_evidence_score.toFixed(0) + '</span>' +
-        '<span class="discovery-trait-fact">' + trait.n_loci + ' loci</span>' +
-        '<span class="discovery-trait-fact">' + trait.eqtl_total_hit_count + ' eQTL hits</span>' +
+        '<span class="discovery-trait-fact">' + trait.n_loci + ' ' + (trait.n_loci === 1 ? 'locus' : 'loci') + '</span>' +
+        '<span class="discovery-trait-fact">' + fmt(trait.eqtl_total_hit_count) + ' eQTL ' + (trait.eqtl_total_hit_count === 1 ? 'record' : 'records') + '</span>' +
       '</div>' +
     '</div>' +
     '<div class="discovery-trait-side">' +
       (topGenes.length
         ? '<span class="discovery-trait-genes">' + topGenes.join(', ') + '</span>'
-        : '<span class="discovery-trait-genes discovery-trait-genes-empty">No highlighted genes</span>') +
+        : '<span class="discovery-trait-genes discovery-trait-genes-empty">No candidate genes</span>') +
     '</div>' +
   '</a>';
 }
@@ -351,42 +366,39 @@ function renderDiscoveryPool(manifest, summary, traits) {
 
   card.innerHTML =
     '<div class="discovery-stats">' +
-      dStat(pool.trait_count, 'traits scanned') +
-      dStat(pool.lookup_hit_trait_count, 'eQTL lookup-hit') +
+      dStat(pool.trait_count, 'traits') +
+      dStat(pool.lookup_hit_trait_count, 'with eQTL records') +
       dStat(pool.supported_trait_count, 'eQTL-supported') +
-      dStat(fmt(pool.locus_count), 'loci') +
-      dStat(pool.zero_locus_trait_count, 'zero-locus') +
+      dStat(fmt(pool.locus_count), 'trait\u2013locus entries') +
+      dStat(pool.zero_locus_trait_count, 'zero-locus traits') +
     '</div>' +
     '<div class="discovery-domains">' +
-      '<h4>Top domains by locus count</h4>' +
+      '<h4>Top categories by locus count</h4>' +
       '<div class="discovery-domain-list">' +
         topDomains.map(function (d) {
           return '<div class="discovery-domain-row">' +
             '<span class="discovery-domain-name">' + fmtDomain(d.domain) + '</span>' +
-            '<span class="discovery-domain-value">' + d.locus_count + ' loci &middot; ' + d.trait_count + ' traits</span>' +
+            '<span class="discovery-domain-value">' + d.locus_count + ' ' + (d.locus_count === 1 ? 'locus' : 'loci') + ' &middot; ' + d.trait_count + ' ' + (d.trait_count === 1 ? 'trait' : 'traits') + '</span>' +
           '</div>';
         }).join('') +
       '</div>' +
     '</div>' +
     '<div class="discovery-traits">' +
       discoveryDrawer(
-        'Traits without strict eQTL support',
+        'Traits without eQTL support',
         unsupportedTraits.length,
         unsupportedTraits.map(function (trait) { return discoveryTraitRow(pool, trait); }),
-        'Includes zero-locus traits plus lookup-hit-only traits that did not meet the strict support rule.',
+        'Zero-locus traits, unassessed traits, and traits with no positional candidate meeting p \u2264 10\u207b\u2075.',
         false
       ) +
       discoveryDrawer(
-        'All tested discovery traits',
+        'All Discovery Pool traits',
         allTraits.length,
         allTraits.map(function (trait) { return discoveryTraitRow(pool, trait); }),
-        'Full Pan-UKB max independent-set discovery pool used for curation.',
+        'Ordered by score, then locus count.',
         false
       ) +
-    '</div>' +
-    '<p class="discovery-note">The discovery pool is a broad curation reservoir, not a featured panel. ' +
-    'Traits with zero genome-wide significant chrX loci are retained for completeness but represent the ' +
-    'absence of detectable signal in the current build.</p>';
+    '</div>';
 }
 
 function dStat(val, label) {
@@ -411,6 +423,7 @@ function countUniqueDomains(summaries, panels) {
 
 /* ── Smooth Scroll ───────────────────────────── */
 function initSmoothScroll() {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var href = link.getAttribute('href');
@@ -421,7 +434,7 @@ function initSmoothScroll() {
         var h = document.querySelector('.header');
         var offset = h ? h.offsetHeight + 20 : 20;
         var top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
+        window.scrollTo({ top: top, behavior: reducedMotion ? 'auto' : 'smooth' });
       }
     });
   });
@@ -478,8 +491,7 @@ function init() {
     console.error('chrXatlas init failed:', err);
     var sub = document.querySelector('.hero-subtitle');
     if (sub) {
-      sub.innerHTML += '<br><small style="color:#ef4444">Data loading error: ' + err.message +
-        '. Ensure the data files are in site/data/.</small>';
+      sub.innerHTML += '<br><small class="load-error">Could not load atlas data. Try refreshing the page.</small>';
     }
   });
 }
@@ -505,8 +517,10 @@ function loadSearchIndex(manifest) {
     });
   });
   return Promise.all(promises).then(function () {
-    // copy: phase 2
-    document.getElementById('metric-build-note').textContent += ' · ' + curatedIds.size + ' distinct curated traits';
+    var buildNote = document.getElementById('metric-build-note');
+    if (buildNote) {
+      buildNote.textContent += ' \u00b7 ' + curatedIds.size + ' distinct traits across curated panels';
+    }
     initSearch();
   });
 }
@@ -529,7 +543,7 @@ function initSearch() {
     }).slice(0, 12);
 
     if (matches.length === 0) {
-      results.innerHTML = '<div class="search-empty">No traits found</div>';
+      results.innerHTML = '<div class="search-empty">No matching traits</div>';
       results.style.display = 'block'; return;
     }
     results.innerHTML = matches.map(function (t) {

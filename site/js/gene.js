@@ -13,9 +13,10 @@ function fmtDomain(d) {
   return d.replace(/_/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
 }
 function fmtPval(p) {
-  // copy: phase 2
-  if (!Number.isFinite(p)) return '—';
-  return p === 0 ? '0 (reported; precision limit)' : p.toExponential(2);
+  if (!Number.isFinite(p)) return '\u2014';
+  return p === 0
+    ? '<abbr class="pval-bound" title="Reported as 0 at the precision limit">0 (reported)</abbr>'
+    : p.toExponential(2);
 }
 
 /* ── State ───────────────────────────────────── */
@@ -29,7 +30,7 @@ function init() {
     geneIndex = data;
     geneIds = Object.keys(data);
 
-    eqtlOnly = document.getElementById("eqtl-only-toggle").checked;
+    eqtlOnly = document.getElementById('eqtl-only-toggle').checked;
     var total = geneIds.length;
     var withHit = 0, withSupport = 0;
     geneIds.forEach(function (name) {
@@ -61,7 +62,7 @@ function init() {
   }).catch(function (err) {
     console.error('Gene index load failed:', err);
     document.getElementById('gene-results').innerHTML =
-      '<div class="gene-empty">Gene search unavailable.</div>';
+      '<div class="gene-empty">Could not load gene search. <a href="index.html">Return to home</a>.</div>';
   });
 }
 
@@ -72,7 +73,7 @@ function doSearch(query) {
   var q = query.trim().toLowerCase();
 
   if (q.length < 1) {
-    container.innerHTML = '<div class="gene-empty">Start typing to search ' + fmt(geneIds.length) + ' chromosome X genes.</div>';
+    container.innerHTML = '<div class="gene-empty">Search ' + fmt(geneIds.length) + ' indexed chromosome X genes by symbol or Ensembl ID.</div>';
     counter.textContent = '';
     return;
   }
@@ -98,8 +99,8 @@ function doSearch(query) {
     (matches.length > 50 ? ' (showing first 50)' : '');
 
   if (matches.length === 0) {
-    container.innerHTML = '<div class="gene-empty">No genes match \u201c' + escHtml(query.trim()) + '\u201d' +
-      (eqtlOnly ? ' with eQTL hits' : '') + '.</div>';
+    container.innerHTML = '<div class="gene-empty">No indexed genes match \u201c' + escHtml(query.trim()) + '\u201d' +
+      (eqtlOnly ? ' with eQTL records' : '') + '.</div>';
     return;
   }
 
@@ -165,9 +166,8 @@ function renderGeneCard(id, query) {
   var groups = groupAppearances(hits);
   var biotype = gene.biotype || 'unknown';
   var biotypeCls = biotype === 'protein_coding' ? 'biotype-protein' : 'biotype-other';
-  // copy: phase 2
-  var threshold = gene.threshold_trait_count + (gene.threshold_trait_count === 1 ? ' trait' : ' traits') + ' with eQTL p ≤ 10⁻⁵';
-  var returned = gene.returned_trait_count + (gene.returned_trait_count === 1 ? ' trait' : ' traits') + ' with returned records';
+  var threshold = gene.threshold_trait_count + ' ' + (gene.threshold_trait_count === 1 ? 'trait' : 'traits') + ' \u00b7 p \u2264 10\u207b\u2075';
+  var returned = gene.returned_trait_count + ' ' + (gene.returned_trait_count === 1 ? 'trait' : 'traits') + ' \u00b7 eQTL records';
   var showCount = 5;
   var visible = groups.slice(0, showCount);
   var overflow = groups.length > showCount ? groups.length - showCount : 0;
@@ -182,7 +182,7 @@ function renderGeneCard(id, query) {
       '<div class="gene-card-summary">' +
         '<span class="gene-card-fact">' + threshold + '</span>' +
         '<span class="gene-card-fact">' + returned + '</span>' +
-        '<span class="gene-card-fact">' + hits.length + ' trait\u2013locus appearance' + (hits.length > 1 ? 's' : '') + '</span>' +
+        '<span class="gene-card-fact">' + hits.length + ' panel\u2013trait\u2013locus ' + (hits.length === 1 ? 'entry' : 'entries') + '</span>' +
       '</div>' +
     '</div>' +
     '<div class="gene-card-traits" tabindex="0" role="region" aria-label="Gene traits">' +
@@ -190,15 +190,15 @@ function renderGeneCard(id, query) {
         '<thead><tr>' +
           '<th>Trait</th>' +
           '<th>Panel</th>' +
-          '<th>Domain</th>' +
-          '<th>eQTL Status</th>' +
-          '<th>Best p-value</th>' +
+          '<th>Category</th>' +
+          '<th>eQTL</th>' +
+          '<th>Best eQTL p</th>' +
           '<th>Loci</th>' +
         '</tr></thead>' +
         '<tbody>' +
           visible.map(function (g) { return traitRow(g); }).join('') +
           (overflow > 0 ? '<tr class="gene-overflow-row" data-gene="' + escHtml(id) + '"><td colspan="6" class="gene-overflow-cell">' +
-            '<button class="gene-show-more" onclick="expandGene(this, \'' + escHtml(id).replace(/'/g, '\\\'') + '\')">Show ' + overflow + ' more panel entr' + (overflow > 1 ? 'ies' : 'y') + '</button>' +
+            '<button class="gene-show-more" onclick="expandGene(this, \'' + escHtml(id).replace(/'/g, '\\\'') + '\')">Show ' + overflow + ' more panel ' + (overflow === 1 ? 'entry' : 'entries') + '</button>' +
           '</td></tr>' : '') +
         '</tbody>' +
       '</table>' +
@@ -208,15 +208,19 @@ function renderGeneCard(id, query) {
 
 function traitRow(g) {
   var statusCls, statusLabel;
-  // copy: phase 2
   if (g.best_supported) {
     statusCls = 'is-supported';
     var role = g.loci.some(function (h) { return h.eqtl_supported && h.eqtl_gene_role !== 'followup'; })
       ? 'Candidate' : 'Follow-up';
-    statusLabel = role + ' · eQTL p ≤ 10⁻⁵';
+    statusLabel = role + ' \u00b7 p \u2264 10\u207b\u2075';
+  } else if (g.best_hit) {
+    statusCls = 'is-lookup-hit';
+    statusLabel = 'Returned records';
+  } else {
+    statusCls = 'is-unsupported';
+    statusLabel = g.loci.every(function (h) { return h.eqtl_lookup_status === 'skipped_no_rsid'; })
+      ? 'Not assessed' : 'No records';
   }
-  else if (g.best_hit) { statusCls = 'is-lookup-hit'; statusLabel = 'Returned records'; }
-  else { statusCls = 'is-unsupported'; statusLabel = g.loci.every(function (h) { return h.eqtl_lookup_status === 'skipped_no_rsid'; }) ? 'Not assessed' : 'No returned records'; }
 
   var roles = new Set(g.loci.map(function (h) {
     return h.eqtl_gene_role === 'followup' ? 'Follow-up' : 'Candidate';
@@ -228,7 +232,7 @@ function traitRow(g) {
     '<td class="gene-trait-panel">' + escHtml(g.panel_title) + '</td>' +
     '<td><span class="domain-badge">' + fmtDomain(g.domain) + '</span></td>' +
     '<td><span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span>' +
-      (!g.best_supported ? '<div>' + Array.from(roles).join(' / ') + '</div>' : '') + '</td>' +
+      (!g.best_supported ? '<div class="gene-role-sub">' + Array.from(roles).join(' / ') + '</div>' : '') + '</td>' +
     '<td class="num-cell">' + fmtPval(g.best_pval) + '</td>' +
     '<td class="num-cell">' + g.loci.length + '</td>' +
   '</tr>';
