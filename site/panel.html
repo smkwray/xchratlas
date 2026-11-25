@@ -75,10 +75,11 @@
         <div class="filter-bar">
           <label class="sr-only" for="table-search">Filter this panel</label>
           <input type="text" class="search-input" id="table-search" placeholder="Filter by trait, category, or gene..." autocomplete="off">
+          <div id="selected-categories" class="domain-filters" aria-label="Selected categories" role="group" hidden></div>
           <label class="filter-toggle">
             <input type="checkbox" id="eqtl-toggle"> eQTL-supported only
           </label>
-          <span class="result-count" id="result-count"></span>
+          <span class="result-count" id="result-count" role="status"></span>
         </div>
         <label class="mobile-sort">Sort by <select id="trait-sort"></select></label>
         <div class="data-table-wrap" tabindex="0" role="region" aria-label="Panel traits">

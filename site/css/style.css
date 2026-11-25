@@ -1574,3 +1574,28 @@ sup, sub { font-size: 0.72em; line-height: 0; }
 }
 .trait-table-name, .gene-trait-name a, .panel-trait-name, .trait-name a { text-decoration: underline; text-underline-offset: 0.15em; }
 .table-empty a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Keep the card's trait destination and its gene links independently focusable. */
+.trait-card, .discovery-trait-row { position: relative; }
+.card-link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+:is(.trait-card, .discovery-trait-row) .gene-link { position: relative; z-index: 1; }
+.card-link:focus-visible::after { outline: 3px solid var(--accent); outline-offset: -3px; }
+:is(.metric-card, .comparison-item, .domain-bar, .discovery-domain-row):hover {
+  background: var(--accent-subtle);
+}
+.metric-card:focus-visible { outline-offset: -3px; }
+.gene-link, .trait-category button:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+.gene-link:hover { color: var(--accent-text); }
+#selected-categories { margin-bottom: 0; }
+#selected-categories[hidden] { display: none; }
+:where(section, #domain-composition)[id] { scroll-margin-top: calc(var(--header-height) + 1rem); }
+
+@media screen and (max-width: 640px) {
+  .domain-bar, .discovery-domain-row, .filter-chip { min-height: 44px; }
+  .gene-link, .trait-category button {
+    min-height: 44px; min-width: 44px; max-width: 100%;
+    display: inline-flex; align-items: center; justify-content: center;
+    vertical-align: middle; overflow-wrap: anywhere;
+  }
+  .stack-table .genes-cell { flex-wrap: wrap; align-items: center; }
+}

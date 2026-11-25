@@ -144,7 +144,7 @@ function renderLoci(data) {
         '</div>' +
         '<div class="locus-summary-stats">' +
           '<span class="locus-pval">&minus;log<sub>10</sub>(p) ' + pvalHtml + '</span>' +
-          '<span class="locus-top-gene">' + locus.top_gene_name + '</span>' +
+          traitGeneLink(locus.top_gene_name, 'locus-top-gene') +
           '<span class="locus-eqtl-badge ' + status.badgeClass + '">' + status.label + '</span>' +
           '<span class="locus-gene-count">' + genes.length + ' gene' + (genes.length !== 1 ? 's' : '') + '</span>' +
         '</div>' +
@@ -164,6 +164,11 @@ function renderLoci(data) {
   }).join('');
 }
 
+function traitGeneLink(symbol, className) {
+  var label = symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return '<a class="gene-link ' + className + '" href="gene.html?gene=' + encodeURIComponent(symbol) + '">' + label + '</a>';
+}
+
 function geneTable(genes) {
   return '<table class="candidate-table stack-table"><thead><tr>' +
     '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Role</th><th>Mapping</th><th>Distance</th><th>Records</th><th>p &le; 10<sup>&minus;5</sup></th><th>Studies (&le;10<sup>&minus;5</sup>)</th><th>Datasets</th><th>Best eQTL p</th>' +
@@ -174,10 +179,9 @@ function geneTable(genes) {
       var support = g.eqtl_supported
         ? '<span class="eqtl-yes-sm">Yes</span>'
         : (g.eqtl_lookup_hit ? '<span class="eqtl-mid-sm">No</span>' : '\u2014');
-      var geneHref = 'gene.html?gene=' + encodeURIComponent(g.gene_id || g.gene_name);
       return '<tr class="' + (g.eqtl_supported ? 'gene-supported' : '') + '">' +
         '<td class="num-cell" data-label="Rank">' + g.candidate_rank + '</td>' +
-        '<td class="candidate-name"><a class="gene-name gene-name-link" href="' + geneHref + '">' + g.gene_name + '</a></td>' +
+        '<td class="candidate-name">' + traitGeneLink(g.gene_name, 'gene-name gene-name-link') + '</td>' +
         '<td data-label="Biotype"><span class="biotype-badge">' + g.gene_biotype.replace(/_/g, ' ') + '</span></td>' +
         '<td data-label="Role"><span class="gene-role-badge gene-role-' + (g.eqtl_gene_role === 'followup' ? 'followup' : 'candidate') + '">' + role + '</span></td>' +
         '<td data-label="Mapping">' + g.mapping_relation.replace(/_/g, ' ') + '</td>' +
@@ -230,7 +234,7 @@ function renderSupport(data) {
           '<span class="locus-region region-' + l.x_region.toLowerCase() + '">' + l.x_region + '</span>' +
           '<span class="support-locus-range">chrX ' + fmtMb(l.locus_start) + '\u2013' + fmtMb(l.locus_end) + '</span>' +
           '<span class="support-locus-detail">' +
-            '<strong>Rank 1 gene:</strong> ' + l.top_gene_name +
+            '<strong>Rank 1 gene:</strong> ' + traitGeneLink(l.top_gene_name, '') +
           '</span>' +
           '<span class="support-locus-detail">' +
             '<strong>' + (l.lead_selection === 'clipped_unresolved' ? 'Representative' : 'Lead variant') + ':</strong> ' + (l.lead_rsid || l.lead_varid) +
@@ -241,7 +245,7 @@ function renderSupport(data) {
           '<span class="support-locus-detail">' +
             '<strong>Records:</strong> ' + fmt(l.eqtl_lookup_n_hits) +
           '</span>' +
-          (supportedGene ? '<span class="support-locus-detail"><strong>Candidate (p &le; 10<sup>&minus;5</sup>):</strong> <span class="gene-name">' + supportedGene.gene_name + '</span> (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
+          (supportedGene ? '<span class="support-locus-detail"><strong>Candidate (p &le; 10<sup>&minus;5</sup>):</strong> ' + traitGeneLink(supportedGene.gene_name, 'gene-name') + ' (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';
@@ -253,11 +257,11 @@ function renderSupport(data) {
         return '<div class="support-locus-row">' +
           '<span class="locus-region region-' + l.x_region.toLowerCase() + '">' + l.x_region + '</span>' +
           '<span class="support-locus-range">chrX ' + fmtMb(l.locus_start) + '\u2013' + fmtMb(l.locus_end) + '</span>' +
-          '<span class="support-locus-detail"><strong>Rank 1 gene:</strong> ' + l.top_gene_name + '</span>' +
+          '<span class="support-locus-detail"><strong>Rank 1 gene:</strong> ' + traitGeneLink(l.top_gene_name, '') + '</span>' +
           '<span class="support-locus-detail"><strong>' + (l.lead_selection === 'clipped_unresolved' ? 'Representative' : 'Lead variant') + ':</strong> ' + (l.lead_rsid || l.lead_varid) + '</span>' +
           '<span class="support-locus-detail"><strong>Lookup:</strong> ' + fmtLookupStatus(l.eqtl_lookup_status) + '</span>' +
           '<span class="support-locus-detail"><strong>Records:</strong> ' + fmt(l.eqtl_lookup_n_hits) + '</span>' +
-          (lookupGene ? '<span class="support-locus-detail"><strong>Best lookup gene:</strong> <span class="gene-name">' + lookupGene.gene_name + '</span> (best p ' + fmtPval(lookupGene.best_eqtl_pvalue) + ')</span>' : '') +
+          (lookupGene ? '<span class="support-locus-detail"><strong>Best lookup gene:</strong> ' + traitGeneLink(lookupGene.gene_name, 'gene-name') + ' (best p ' + fmtPval(lookupGene.best_eqtl_pvalue) + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';

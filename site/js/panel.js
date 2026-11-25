@@ -62,22 +62,66 @@ function renderFilters() {
         fmtDomain(d.domain) + ' <span class="chip-count">' + d.trait_count + '</span></button>';
     }).join('');
 
-  el.addEventListener('click', function (e) {
-    var chip = e.target.closest('.filter-chip');
+  var selected = document.getElementById('selected-categories');
+  var valid = new Set(ds.map(function (d) { return d.domain; }));
+  new URLSearchParams(location.search).getAll('category').forEach(function (domain) {
+    if (valid.has(domain)) S.domains.add(domain);
+  });
+
+  function showSelection() {
+    el.querySelectorAll('[data-domain]').forEach(function (chip) {
+      var domain = chip.dataset.domain;
+      var active = domain === 'all' ? !S.domains.size : S.domains.has(domain);
+      chip.classList.toggle('active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    });
+    selected.replaceChildren();
+    selected.hidden = !S.domains.size;
+    S.domains.forEach(function (domain) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'filter-chip active';
+      button.dataset.domain = domain;
+      button.textContent = 'Category: ' + fmtDomain(domain) + ' ×';
+      button.setAttribute('aria-label', 'Remove category: ' + fmtDomain(domain));
+      selected.appendChild(button);
+    });
+  }
+
+  function updateSelection() {
+    var url = new URL(location.href);
+    url.searchParams.delete('category');
+    S.domains.forEach(function (domain) { url.searchParams.append('category', domain); });
+    history.replaceState(history.state, '', url);
+    showSelection();
+    applyFilters();
+  }
+
+  el.addEventListener('click', function (event) {
+    var chip = event.target.closest('[data-domain]');
     if (!chip) return;
     var domain = chip.dataset.domain;
-    if (domain === 'all') {
-      S.domains.clear();
-      el.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
-      chip.classList.add('active');
-    } else {
-      el.querySelector('[data-domain="all"]').classList.remove('active');
-      chip.classList.toggle('active');
-      if (S.domains.has(domain)) S.domains.delete(domain); else S.domains.add(domain);
-      if (S.domains.size === 0) el.querySelector('[data-domain="all"]').classList.add('active');
-    }
-    applyFilters();
+    if (domain === 'all') S.domains.clear();
+    else if (S.domains.has(domain)) S.domains.delete(domain);
+    else S.domains.add(domain);
+    updateSelection();
   });
+  selected.addEventListener('click', function (event) {
+    var chip = event.target.closest('[data-domain]');
+    if (!chip) return;
+    S.domains.delete(chip.dataset.domain);
+    updateSelection();
+    (selected.firstElementChild || document.getElementById('table-search')).focus();
+  });
+  document.getElementById('traits-tbody').addEventListener('click', function (event) {
+    var badge = event.target.closest('[data-domain]');
+    if (!badge) return;
+    S.domains.clear();
+    S.domains.add(badge.dataset.domain);
+    updateSelection();
+    selected.firstElementChild.focus();
+  });
+  showSelection();
 }
 
 /* ── Filters + Sort ────────────────────────── */
@@ -126,14 +170,14 @@ function renderTable() {
     var href = 'trait.html?panel=' + encodeURIComponent(S.panelId) + '&trait=' + encodeURIComponent(t.trait_id);
     return '<tr class="trait-row">' +
       '<td class="trait-name-cell"><a class="trait-table-name" href="' + href + '">' + displayTraitName(t) + '</a></td>' +
-      '<td class="trait-category" data-label="Category"><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
+      '<td class="trait-category" data-label="Category"><button type="button" class="domain-badge" data-domain="' + t.domain + '" aria-label="Filter by category: ' + fmtDomain(t.domain) + '">' + fmtDomain(t.domain) + '</button></td>' +
       '<td class="score-cell" data-label="Score"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
       '<td class="num-cell" data-label="Loci">' + t.n_loci + '</td>' +
       '<td data-label="eQTL"><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
         (t.eqtl_total_hit_count > 0 ? '<div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' ' + (t.eqtl_total_hit_count === 1 ? 'record' : 'records') + '</div>' : '') + '</td>' +
       '<td data-label="GWAS grade"><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
       '<td class="genes-cell" data-label="Positional genes">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
-        return '<span class="gene-tag">' + g + '</span>';
+        return listingGeneLink(g, 'gene-tag');
       }).join('') + '</td></tr>';
   }).join('');
 }
@@ -198,12 +242,8 @@ function init() {
   }).then(function (r) {
     S.summary = r[0];
     S.traits = r[1];
-    S.filtered = S.traits.slice();
     renderFilters();
-    sortTraits();
-    renderTable();
-    var rc = document.getElementById('result-count');
-    if (rc) rc.textContent = S.filtered.length + ' of ' + S.traits.length + ' traits';
+    applyFilters();
     initSort();
 
     var si = document.getElementById('table-search');

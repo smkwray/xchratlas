@@ -9,3 +9,8 @@ function listingStatus(trait) {
   var labels = ['No chrX loci', 'Not assessed', 'Partly assessed', 'No records'];
   return { rank: rank, cls: 'is-unsupported', label: labels[rank] };
 }
+
+function listingGeneLink(symbol, className) {
+  var label = symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return '<a class="gene-link ' + className + '" href="gene.html?gene=' + encodeURIComponent(symbol) + '">' + label + '</a>';
+}

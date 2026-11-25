@@ -214,6 +214,10 @@ function updatePanelDetails(summaries) {
 }
 
 /* ── Render: Domain Composition Bars ─────────── */
+function categoryHref(panelId, category) {
+  return 'panel.html?id=' + encodeURIComponent(panelId) + '&category=' + encodeURIComponent(category);
+}
+
 function renderDomainBars(summary) {
   var container = document.getElementById('domain-bars');
   if (!container || !summary.domain_summary) return;
@@ -226,7 +230,8 @@ function renderDomainBars(summary) {
 
   domains.forEach(function (d) {
     var width = (d.locus_count / maxLoci) * 100;
-    var bar = el('div', 'domain-bar');
+    var bar = el('a', 'domain-bar');
+    bar.href = categoryHref(summary.panel.panel_id, d.domain);
     bar.innerHTML =
       '<span class="domain-name">' + fmtDomain(d.domain) + '</span>' +
       '<div class="domain-bar-track">' +
@@ -252,7 +257,7 @@ function renderTopTraits(summary) {
         '<span class="trait-domain-badge">' + fmtDomain(t.domain) + '</span>' +
         '<span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span>' +
       '</div>' +
-      '<h4 class="trait-name"><a href="trait.html?panel=' + summary.panel.panel_id + '&trait=' + encodeURIComponent(t.trait_id) + '">' + displayTraitName(t) + '</a></h4>' +
+      '<h4 class="trait-name"><a class="card-link" href="trait.html?panel=' + summary.panel.panel_id + '&trait=' + encodeURIComponent(t.trait_id) + '">' + displayTraitName(t) + '</a></h4>' +
       '<div class="trait-score">' +
         '<div class="trait-score-bar"><div class="trait-score-fill" style="width:' + scoreWidth + '%"></div></div>' +
         '<span class="trait-score-value">' + t.x_evidence_score.toFixed(0) + '</span>' +
@@ -263,7 +268,7 @@ function renderTopTraits(summary) {
       '</div>' +
       '<div class="trait-genes">' +
         t.top_candidate_genes.slice(0, 3).map(function (g) {
-          return '<span class="gene-tag">' + g + '</span>';
+          return listingGeneLink(g, 'gene-tag');
         }).join('') +
       '</div>';
     rail.appendChild(card);
@@ -285,7 +290,8 @@ function renderPanelComparison(manifest) {
     var lociW = (panel.locus_count / maxLoci) * 100;
     var traitW = (panel.trait_count / maxTraits) * 100;
 
-    var item = el('div', 'comparison-item');
+    var item = el('a', 'comparison-item');
+    item.href = 'panel.html?id=' + encodeURIComponent(panel.panel_id);
     item.setAttribute('data-panel-accent', accent);
     item.innerHTML =
       '<div class="comparison-header">' +
@@ -315,9 +321,9 @@ function discoveryTraitRow(pool, trait) {
   var status = listingStatus(trait);
   var topGenes = (trait.top_candidate_genes || []).slice(0, 3);
 
-  return '<a class="discovery-trait-row" href="' + href + '">' +
+  return '<div class="discovery-trait-row">' +
     '<div class="discovery-trait-main">' +
-      '<span class="discovery-trait-name">' + displayTraitName(trait) + '</span>' +
+      '<a class="discovery-trait-name card-link" href="' + href + '">' + displayTraitName(trait) + '</a>' +
       '<div class="discovery-trait-meta">' +
         '<span class="discovery-trait-domain">' + fmtDomain(trait.domain) + '</span>' +
         '<span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
@@ -328,10 +334,10 @@ function discoveryTraitRow(pool, trait) {
     '</div>' +
     '<div class="discovery-trait-side">' +
       (topGenes.length
-        ? '<span class="discovery-trait-genes">' + topGenes.join(', ') + '</span>'
+        ? '<span class="discovery-trait-genes">' + topGenes.map(function (g) { return listingGeneLink(g, ''); }).join(', ') + '</span>'
         : '<span class="discovery-trait-genes discovery-trait-genes-empty">No candidate genes</span>') +
     '</div>' +
-  '</a>';
+  '</div>';
 }
 
 function discoveryDrawer(title, count, rows, subtitle, open) {
@@ -376,10 +382,10 @@ function renderDiscoveryPool(manifest, summary, traits) {
       '<h4>Top categories by locus count</h4>' +
       '<div class="discovery-domain-list">' +
         topDomains.map(function (d) {
-          return '<div class="discovery-domain-row">' +
+          return '<a class="discovery-domain-row" href="' + categoryHref(pool.panel_id, d.domain) + '">' +
             '<span class="discovery-domain-name">' + fmtDomain(d.domain) + '</span>' +
             '<span class="discovery-domain-value">' + d.locus_count + ' ' + (d.locus_count === 1 ? 'locus' : 'loci') + ' &middot; ' + d.trait_count + ' ' + (d.trait_count === 1 ? 'trait' : 'traits') + '</span>' +
-          '</div>';
+          '</a>';
         }).join('') +
       '</div>' +
     '</div>' +
@@ -419,25 +425,6 @@ function countUniqueDomains(summaries, panels) {
     }
   });
   return Object.keys(domains).length;
-}
-
-/* ── Smooth Scroll ───────────────────────────── */
-function initSmoothScroll() {
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      var href = link.getAttribute('href');
-      if (href === '#') return;
-      var target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        var h = document.querySelector('.header');
-        var offset = h ? h.offsetHeight + 20 : 20;
-        var top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: top, behavior: reducedMotion ? 'auto' : 'smooth' });
-      }
-    });
-  });
 }
 
 /* ── Main ────────────────────────────────────── */
@@ -484,7 +471,6 @@ function init() {
       }
 
       initScrollAnimations();
-      initSmoothScroll();
       loadSearchIndex(manifest);
     });
   }).catch(function (err) {
