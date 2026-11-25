@@ -135,7 +135,9 @@ function renderLoci(data) {
     var pvalHtml = locus.lead_neglog10_is_lower_bound
       ? '<abbr class="pval-bound" title="p-value reached the 1e-300 conversion floor">&ge; ' + locus.lead_neglog10_pvalue.toFixed(1) + '</abbr>'
       : locus.lead_neglog10_pvalue.toFixed(1);
-    return '<details class="locus-card"' + (i < 3 ? ' open' : '') + '>' +
+    return '<div class="locus-card">' +
+      traitGeneLink(locus.top_gene_name, 'locus-top-gene') +
+      '<details' + (i < 3 ? ' open' : '') + '>' +
       '<summary class="locus-summary">' +
         '<div class="locus-summary-main">' +
           '<span class="locus-region region-' + locus.x_region.toLowerCase() + '">' + locus.x_region + '</span>' +
@@ -144,7 +146,6 @@ function renderLoci(data) {
         '</div>' +
         '<div class="locus-summary-stats">' +
           '<span class="locus-pval">&minus;log<sub>10</sub>(p) ' + pvalHtml + '</span>' +
-          traitGeneLink(locus.top_gene_name, 'locus-top-gene') +
           '<span class="locus-eqtl-badge ' + status.badgeClass + '">' + status.label + '</span>' +
           '<span class="locus-gene-count">' + genes.length + ' gene' + (genes.length !== 1 ? 's' : '') + '</span>' +
         '</div>' +
@@ -160,11 +161,12 @@ function renderLoci(data) {
             : '')) +
         (genes.length > 0 ? geneTable(genes) : '<p class="locus-meta-note">No candidate genes mapped.</p>') +
       '</div>' +
-    '</details>';
+    '</details></div>';
   }).join('');
 }
 
 function traitGeneLink(symbol, className) {
+  if (!symbol) return '';
   var label = symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   return '<a class="gene-link ' + className + '" href="gene.html?gene=' + encodeURIComponent(symbol) + '">' + label + '</a>';
 }
