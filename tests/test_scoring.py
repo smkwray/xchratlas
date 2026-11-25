@@ -1,4 +1,7 @@
 import pandas as pd
+import pytest
+
+from xatlas.scoring import lookup_counts
 
 from xatlas.scoring import compute_trait_score, coverage_grade, effective_hq_case_count, summarize_eqtl_lookup_note
 
@@ -103,3 +106,16 @@ def test_compute_trait_score_adds_sex_specific_confidence_notes():
         gene_row={"best_mapping_relation": "lead_overlap", "eqtl_supported": False},
     )
     assert "male-only" in score["confidence_notes"]
+
+@pytest.mark.parametrize(("observations", "expected"), [
+    ([], (0, 0, 0, 0)),
+    ([("complete", 0)], (1, 1, 0, 0)),
+    ([("skipped_no_rsid", 0)], (0, 0, 1, 0)),
+    ([("complete", 3), ("skipped_no_rsid", 0)], (1, 0, 1, 1)),
+])
+def test_lookup_assessment_counts(observations, expected):
+    counts = lookup_counts([{"eqtl_lookup_status": status, "eqtl_lookup_n_hits": hits}
+                            for status, hits in observations])
+    assert tuple(counts[key] for key in ("eqtl_lookup_complete_locus_count",
+        "eqtl_lookup_no_hit_locus_count", "eqtl_lookup_skipped_no_rsid_locus_count",
+        "eqtl_lookup_hit_locus_count")) == expected

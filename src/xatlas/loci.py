@@ -60,6 +60,8 @@ def infer_pvalue_scale(series: pd.Series, column_name: str) -> str:
         return "neglog10"
     if "ln" in col or col.startswith("log_pval"):
         return "ln"
+    if col.startswith(("pval", "pvalue")) and s.max() > 1:
+        raise ValueError(f"Raw p-value above one in {column_name}")
     if s.max() <= 1.0 and s.min() >= 0.0:
         return "raw"
     if "log" in col and s.min() >= 0:
@@ -118,8 +120,11 @@ def call_loci_from_dataframe(
         raise ValueError(f"Could not find a usable p-value column for trait {trait_id}")
 
     d = df.copy()
-    d["pos"] = pd.to_numeric(d["pos"], errors="coerce")
-    d = d.dropna(subset=["pos"]).copy()
+    if not d["chr"].astype(str).str.lower().isin({"x", "chrx", "23"}).all():
+        raise ValueError("Extract contains a chromosome other than X")
+    d["pos"] = pd.to_numeric(d["pos"], errors="raise")
+    if not (d["pos"].gt(0) & d["pos"].mod(1).eq(0)).all():
+        raise ValueError("Expected positive integer variant positions")
     d["pos"] = d["pos"].astype(int)
     d["x_region"] = d["pos"].map(classify_x_region)
 
@@ -143,7 +148,7 @@ def call_loci_from_dataframe(
             "par_only_signal": False,
             "any_nonpar_locus": False,
         }
-        return pd.DataFrame(), summary
+        return pd.DataFrame(columns=["trait_id", "locus_id", "lead_neglog10_pvalue", "locus_start"]), summary
 
     loci: list[dict[str, Any]] = []
     current_rows: list[pd.Series] = []
