@@ -182,7 +182,7 @@ function renderGeneCard(id, query) {
       '<div class="gene-card-summary">' +
         '<span class="gene-card-fact">' + threshold + '</span>' +
         '<span class="gene-card-fact">' + returned + '</span>' +
-        '<span class="gene-card-fact">' + hits.length + (hits.length === 1 ? ' entry' : ' entries') + ' across panels' + '</span>' +
+        '<span class="gene-card-fact">' + hits.length + (hits.length === 1 ? ' entry' : ' entries') + ' across panels</span>' +
       '</div>' +
     '</div>' +
     '<div class="gene-card-traits" tabindex="0" role="region" aria-label="Gene traits">' +
