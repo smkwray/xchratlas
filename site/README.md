@@ -16,10 +16,10 @@ cd site && python3 -m http.server 8891
 
 ## Data
 
-The frontend reads JSON from `data/`, which mirrors the backend's `release/frontend/` output. To refresh after a pipeline rebuild:
+The frontend reads JSON from `data/`, a copy of the pipeline's `data/release/frontend/` output. To refresh it after a rebuild, run from the repository root:
 
 ```bash
-cp -R "$PROJ_SHARED_DATA_ROOT/release/frontend/." site/data/
+cp -R data/release/frontend/. site/data/
 ```
 
 ## Stack
