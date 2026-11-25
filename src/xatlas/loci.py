@@ -58,7 +58,7 @@ def infer_pvalue_scale(series: pd.Series, column_name: str) -> str:
 
     if "neglog10" in col:
         return "neglog10"
-    if "ln" in col:
+    if "ln" in col or col.startswith("log_pval"):
         return "ln"
     if s.max() <= 1.0 and s.min() >= 0.0:
         return "raw"
@@ -73,24 +73,26 @@ def infer_pvalue_scale(series: pd.Series, column_name: str) -> str:
 
 
 def to_raw_pvalue(series: pd.Series, column_name: str) -> tuple[pd.Series, str]:
-    numeric = pd.to_numeric(series, errors="coerce")
-    scale = infer_pvalue_scale(numeric, column_name)
-    if scale == "raw":
-        p = numeric
-    elif scale == "neglog10":
-        p = 10 ** (-numeric)
-    elif scale == "ln":
-        p = np.exp(numeric)
-    else:
-        raise ValueError(f"Unsupported p-value scale: {scale}")
-
-    p = p.clip(lower=1e-300, upper=1.0)
-    return p, scale
+    significance, scale = to_neglog10_pvalue(series, column_name)
+    return np.power(10.0, -significance), scale
 
 
 def to_neglog10_pvalue(series: pd.Series, column_name: str) -> tuple[pd.Series, str]:
-    p, scale = to_raw_pvalue(series, column_name)
-    return -np.log10(p), scale
+    numeric = pd.to_numeric(series, errors="raise").astype(float)
+    scale = infer_pvalue_scale(numeric, column_name)
+    if not np.isfinite(numeric.dropna()).all():
+        raise ValueError(f"Nonfinite p-value in {column_name}")
+    if scale == "ln":
+        significance = -numeric / math.log(10)
+    elif scale == "neglog10":
+        significance = numeric
+    else:
+        if (numeric <= 0).any():
+            raise ValueError(f"Raw p-value has no finite log significance in {column_name}")
+        significance = -np.log10(numeric)
+    if (significance < 0).any():
+        raise ValueError(f"Invalid significance in {column_name}")
+    return significance, scale
 
 
 def _pick_optional(df: pd.DataFrame, choices: list[str]) -> str | None:
@@ -121,14 +123,13 @@ def call_loci_from_dataframe(
     d["pos"] = d["pos"].astype(int)
     d["x_region"] = d["pos"].map(classify_x_region)
 
-    raw_p, scale = to_raw_pvalue(d[pcol], pcol)
-    d["lead_pvalue"] = raw_p
-    d["lead_neglog10_pvalue"] = -np.log10(raw_p)
+    significance, scale = to_neglog10_pvalue(d[pcol], pcol)
+    d["lead_neglog10_pvalue"] = significance
 
     beta_col = _pick_optional(d, ["beta_meta_hq", "beta_meta", "beta"])
     se_col = _pick_optional(d, ["se_meta_hq", "se_meta", "se"])
 
-    sig = d.loc[d["lead_pvalue"] < GWS_P].copy()
+    sig = d.loc[d["lead_neglog10_pvalue"] > GWS_NEGLOG10].copy()
     sig = sig.sort_values(["x_region", "pos", "lead_neglog10_pvalue"], ascending=[True, True, False])
 
     if sig.empty:
@@ -155,7 +156,8 @@ def call_loci_from_dataframe(
         if not current_rows:
             return
         block = pd.DataFrame(current_rows)
-        lead = block.sort_values("lead_neglog10_pvalue", ascending=False).iloc[0]
+        ties = [col for col in ("pos", "ref", "alt") if col in block]
+        lead = block.sort_values(["lead_neglog10_pvalue", *ties], ascending=[False, *[True] * len(ties)]).iloc[0]
         locus_id = f"{trait_id}:{current_region}:{int(current_start)}-{int(current_end)}"
         row = {
             "trait_id": trait_id,
@@ -172,7 +174,7 @@ def call_loci_from_dataframe(
             "lead_varid": lead.get("varid"),
             "lead_beta": lead.get(beta_col) if beta_col else np.nan,
             "lead_se": lead.get(se_col) if se_col else np.nan,
-            "lead_pvalue": float(lead["lead_pvalue"]),
+            "lead_pvalue": 10.0 ** -float(lead["lead_neglog10_pvalue"]),
             "lead_neglog10_pvalue": float(lead["lead_neglog10_pvalue"]),
             "pvalue_column": pcol,
             "pvalue_scale": scale,

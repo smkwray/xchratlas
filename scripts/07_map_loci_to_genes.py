@@ -9,6 +9,7 @@ if str(REPO_ROOT / "src") not in sys.path:
     sys.path.insert(0, str(REPO_ROOT / "src"))
 
 import argparse
+import re
 
 import pandas as pd
 
@@ -226,7 +227,9 @@ def main() -> None:
                 lookup_row = eqtl_lookup_summary.loc[key]
                 if isinstance(lookup_row, pd.DataFrame):
                     lookup_row = lookup_row.iloc[-1]
+                queried = str(lookup_row.get("lead_rsid", ""))
                 lookup_info = {
+                    "eqtl_query_rsid": queried if re.fullmatch(r"rs[0-9]+", queried) else None,
                     "eqtl_lookup_status": lookup_row.get("query_status", pd.NA),
                     "eqtl_lookup_mode": lookup_row.get("query_mode", pd.NA),
                     "eqtl_lookup_detail": lookup_row.get("query_detail", pd.NA),
@@ -297,10 +300,11 @@ def main() -> None:
             if "eqtl_supported" in candidate_group.columns
             else pd.Series([False] * len(candidate_group), index=candidate_group.index)
         )
+        returned = pd.to_numeric(group["eqtl_lookup_n_hits"], errors="coerce").iloc[0]
         locus_rows.append(
             {
                 "locus_id": locus_id,
-                "eqtl_lookup_hit": bool(lookup_mask.any()),
+                "eqtl_lookup_hit": bool(pd.notna(returned) and returned > 0),
                 "eqtl_lookup_hit_gene_count": int(group.loc[lookup_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in group.columns else 0,
                 "eqtl_supported": bool(supported_mask.any()),
                 "eqtl_supported_gene_count": int(candidate_group.loc[supported_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in candidate_group.columns else 0,
@@ -308,7 +312,7 @@ def main() -> None:
                 "best_eqtl_pvalue": pd.to_numeric(candidate_group.loc[candidate_lookup_mask, "best_eqtl_pvalue"], errors="coerce").min() if candidate_lookup_mask.any() else pd.NA,
                 "eqtl_lookup_status": group["eqtl_lookup_status"].iloc[0] if "eqtl_lookup_status" in group.columns else pd.NA,
                 "eqtl_lookup_mode": group["eqtl_lookup_mode"].iloc[0] if "eqtl_lookup_mode" in group.columns else pd.NA,
-                "eqtl_lookup_n_hits": pd.to_numeric(group["eqtl_lookup_n_hits"], errors="coerce").iloc[0] if "eqtl_lookup_n_hits" in group.columns else pd.NA,
+                "eqtl_lookup_n_hits": returned,
             }
         )
     locus_eqtl = pd.DataFrame(locus_rows)

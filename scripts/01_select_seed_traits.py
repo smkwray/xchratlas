@@ -46,32 +46,6 @@ def make_trait_id(row: pd.Series) -> str:
     return "__".join(cleaned)
 
 
-def requested_stratum_rows(
-    scored: pd.DataFrame,
-    requested_pheno_sex: str | None,
-    *,
-    strict: bool,
-    allow_fallback_both_sexes: bool,
-) -> tuple[pd.DataFrame, bool]:
-    if not requested_pheno_sex:
-        return scored, False
-
-    requested = str(requested_pheno_sex or "").strip()
-    if not requested:
-        return scored, False
-
-    exact = scored.loc[scored["pheno_sex"].fillna("").eq(requested)].copy()
-    if requested == "both_sexes" or strict:
-        return exact, False
-    if not allow_fallback_both_sexes:
-        return exact, False
-
-    if not exact.empty:
-        return exact, False
-    fallback = scored.loc[scored["pheno_sex"].fillna("").eq("both_sexes")].copy()
-    return fallback, not fallback.empty
-
-
 def query_score(row: pd.Series, query: str, preferred_trait_type: str | None, preferred_pheno_sex: str | None) -> float:
     blob = row["_search_blob"]
     desc = str(row.get("description", "") or "").lower()
@@ -79,7 +53,11 @@ def query_score(row: pd.Series, query: str, preferred_trait_type: str | None, pr
     q = normalize_text(query)
     desc_norm = normalize_text(str(row.get("description", "") or ""))
     q_tokens = [t for t in re.split(r"[^a-z0-9]+", q) if t]
-    token_hits = sum(token in blob for token in q_tokens)
+    phenotype = " ".join(str(row.get(field, "")) for field in ("description", "coding_description", "phenocode")).lower()
+    phenotype_tokens = set(re.findall(r"[a-z0-9]+", phenotype))
+    if not q_tokens or not set(q_tokens).issubset(phenotype_tokens):
+        return 0.0
+    token_hits = len(q_tokens)
 
     score = 0.0
     if desc_norm == q:
@@ -127,10 +105,6 @@ def main() -> None:
     parser.add_argument("--panel", default="config/panel_small.csv")
     parser.add_argument("--outdir", default=str(INTERIM_DIR))
     parser.add_argument("--max-per-query", type=int, default=5)
-    parser.add_argument("--pheno-sex", choices=["both_sexes", "females", "males"], default=None)
-    parser.add_argument("--strict-pheno-sex", action="store_true")
-    parser.add_argument("--allow-fallback-both-sexes", action="store_true")
-    parser.add_argument("--selection-audit-out", default=None)
     args = parser.parse_args()
 
     outdir = ensure_dir(args.outdir)
@@ -141,13 +115,12 @@ def main() -> None:
 
     candidate_rows = []
     selected_rows = []
-    audit_rows = []
 
     for _, seed in panel.sort_values(["priority", "query_id"]).iterrows():
         qid = seed["query_id"]
         query = seed["query"]
         preferred_trait_type = seed.get("preferred_trait_type")
-        preferred_pheno_sex = args.pheno_sex or seed.get("preferred_pheno_sex")
+        preferred_pheno_sex = seed.get("preferred_pheno_sex")
 
         scored = manifest.copy()
         scored["query_id"] = qid
@@ -163,51 +136,9 @@ def main() -> None:
 
         scored = scored.loc[scored["selection_score"] > 0].copy()
         if scored.empty:
-            audit_rows.append(
-                {
-                    "query_id": qid,
-                    "requested_pheno_sex": preferred_pheno_sex,
-                    "selected_trait_id": None,
-                    "selected_pheno_sex": None,
-                    "selected_description": None,
-                    "selection_score": None,
-                    "used_fallback": False,
-                    "n_candidate_rows_exact_stratum": 0,
-                    "n_candidate_rows_any_stratum": 0,
-                }
-            )
             continue
 
-        n_any_stratum = int(len(scored))
-        requested_pool, used_fallback = requested_stratum_rows(
-            scored,
-            preferred_pheno_sex,
-            strict=args.strict_pheno_sex,
-            allow_fallback_both_sexes=args.allow_fallback_both_sexes,
-        )
-        n_exact = 0
-        if preferred_pheno_sex:
-            n_exact = int(scored["pheno_sex"].fillna("").eq(preferred_pheno_sex).sum())
-            scored = requested_pool
-            if scored.empty:
-                audit_rows.append(
-                    {
-                        "query_id": qid,
-                        "requested_pheno_sex": preferred_pheno_sex,
-                        "selected_trait_id": None,
-                        "selected_pheno_sex": None,
-                        "selected_description": None,
-                        "selection_score": None,
-                        "used_fallback": used_fallback,
-                        "n_candidate_rows_exact_stratum": n_exact,
-                        "n_candidate_rows_any_stratum": n_any_stratum,
-                    }
-                )
-                continue
-
         scored["trait_id"] = scored.apply(make_trait_id, axis=1)
-        scored["requested_pheno_sex"] = preferred_pheno_sex
-        scored["selection_used_fallback"] = used_fallback
         scored["effective_hq_case_count"] = scored.apply(effective_hq_case_count, axis=1)
         scored = scored.sort_values(
             ["selection_score", "in_max_independent_set", "num_pops_pass_qc", "effective_hq_case_count"],
@@ -221,19 +152,6 @@ def main() -> None:
         chosen = topk.iloc[0].copy()
         chosen["selection_rank"] = 1
         selected_rows.append(chosen)
-        audit_rows.append(
-            {
-                "query_id": qid,
-                "requested_pheno_sex": preferred_pheno_sex,
-                "selected_trait_id": chosen.get("trait_id"),
-                "selected_pheno_sex": chosen.get("pheno_sex"),
-                "selected_description": chosen.get("description"),
-                "selection_score": chosen.get("selection_score"),
-                "used_fallback": bool(used_fallback),
-                "n_candidate_rows_exact_stratum": n_exact,
-                "n_candidate_rows_any_stratum": n_any_stratum,
-            }
-        )
 
     if candidate_rows:
         candidates = pd.concat(candidate_rows, ignore_index=True)
@@ -253,8 +171,6 @@ def main() -> None:
 
     write_tsv(candidates, outdir / "candidate_traits.tsv")
     write_tsv(selected, outdir / "selected_traits.tsv")
-    if args.selection_audit_out:
-        write_tsv(pd.DataFrame(audit_rows), args.selection_audit_out)
 
     print(f"[done] candidate rows: {len(candidates):,}")
     print(f"[done] selected rows: {len(selected):,}")

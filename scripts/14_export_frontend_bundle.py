@@ -18,7 +18,6 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Export frontend-ready JSON bundles from chrXatlas release tables.")
     parser.add_argument("--release-root", default=str(RELEASE_DIR))
     parser.add_argument("--outdir", default=str(RELEASE_DIR / "frontend"))
-    parser.add_argument("--min-curated-traits-per-stratum", type=int, default=1)
     parser.add_argument("--expanded-release-dir", default=None)
     parser.add_argument("--mind-release-dir", default=None)
     parser.add_argument("--biochem-release-dir", default=None)
@@ -44,11 +43,7 @@ def main() -> None:
         for spec in specs
     ]
 
-    manifest = export_frontend_bundle(
-        specs,
-        args.outdir,
-        min_curated_traits_per_stratum=args.min_curated_traits_per_stratum,
-    )
+    manifest = export_frontend_bundle(specs, args.outdir)
     print(f"[done] frontend bundle exported to {args.outdir}/")
     print(f"[done] panels: {len(manifest['panels'])}")
 

@@ -1,4 +1,8 @@
 import runpy
+import sys
+
+import pytest
+from xatlas.scoring import compute_trait_score
 from pathlib import Path
 
 import pandas as pd
@@ -107,7 +111,7 @@ def test_build_release_loci_preserves_locus_level_eqtl_summary():
     assert out.loc[0, "best_eqtl_pvalue"] == 1e-7
 
 
-def test_release_export_adds_stratum_ready_trait_fields(tmp_path: Path):
+def test_release_export_uses_source_hq_count(tmp_path: Path):
     selected = pd.DataFrame(
         [
             {
@@ -116,8 +120,6 @@ def test_release_export_adds_stratum_ready_trait_fields(tmp_path: Path):
                 "description": "Trait One",
                 "domain": "alpha",
                 "pheno_sex": "females",
-                "requested_pheno_sex": "females",
-                "selection_used_fallback": False,
                 "num_pops_pass_qc": 2,
                 "in_max_independent_set": True,
                 "n_cases_hq_cohort_females": 12000,
@@ -169,7 +171,44 @@ def test_release_export_adds_stratum_ready_trait_fields(tmp_path: Path):
         sys.argv = argv
 
     trait_scores = pd.read_csv(outdir / "trait_scores.tsv", sep="\t")
-    assert trait_scores.loc[0, "view_stratum"] == "females"
-    assert trait_scores.loc[0, "stratum_label"] == "Females"
     assert trait_scores.loc[0, "effective_hq_case_count"] == 12000
-    assert bool(trait_scores.loc[0, "selection_used_fallback"]) is False
+
+def test_mapping_bonus_is_independent_of_locus_order():
+    rows = pd.DataFrame([
+        dict(trait_id="t", locus_id=locus, gene_id=gene, gene_name=gene, candidate_rank=1,
+             mapping_relation=relation, eqtl_gene_role=role, eqtl_lookup_status="complete",
+             eqtl_lookup_n_hits=3, eqtl_lookup_hit=False)
+        for locus, gene, relation, role in [
+            ("a", "g1", "nearby_window", "candidate"),
+            ("b", "g2", "locus_overlap", "candidate"),
+            ("c", "g3", "lead_overlap", "followup"),
+        ]
+    ])
+    for overlap in ("locus_overlap", "lead_overlap"):
+        rows.loc[1, "mapping_relation"] = overlap
+        rollups = [EXPORT_MOD["build_trait_gene_rollup"](order).iloc[0].to_dict()
+                   for order in (rows, rows.iloc[::-1])]
+        assert rollups[0] == rollups[1]
+        assert rollups[0]["best_mapping_relation"] == overlap
+        assert rollups[0]["eqtl_lookup_hit_locus_count"] == 3
+        assert compute_trait_score({}, {"n_loci": 3}, gene_row=rollups[0])["x_evidence_score"] == 32
+
+
+@pytest.mark.parametrize("summary", ["absent", "unsuccessful"])
+def test_missing_successful_summary(tmp_path, monkeypatch, summary):
+    selected = tmp_path / "selected.tsv"
+    selected.write_text("trait_id\ntest_trait\n")
+    summary_path = tmp_path / "summary.tsv"
+    if summary == "unsuccessful":
+        summary_path.write_text("trait_id\tn_loci\tprocessing_note\ntest_trait\t0\tmissing extract\n")
+    monkeypatch.setattr(sys, "argv", ["export", "--selected", str(selected),
+        "--trait-summary", str(summary_path), "--outdir", str(tmp_path / "release")])
+    with pytest.raises(ValueError, match="test_trait"):
+        EXPORT_MOD["main"]()
+
+
+def test_no_phenotype_match_is_ineligible():
+    selector = runpy.run_path(str(REPO_ROOT / "scripts/01_select_seed_traits.py"))
+    row = pd.Series(dict(description="Age at menarche", _search_blob="age at menarche",
+                         pheno_sex="females", num_pops_pass_qc=4, in_max_independent_set=True))
+    assert selector["query_score"](row, "Standing height", "continuous", "females") == 0

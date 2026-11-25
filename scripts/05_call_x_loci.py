@@ -43,39 +43,13 @@ def main() -> None:
     for trait_id in trait_ids:
         path = extract_dir / f"{trait_id}.tsv.gz"
         if not path.exists():
-            print(f"[warn] {trait_id} skipped: missing extract {path}")
-            summaries.append(
-                {
-                    "trait_id": trait_id,
-                    "n_sig_variants": 0,
-                    "n_loci": 0,
-                    "lead_neglog10_pvalue": pd.NA,
-                    "pvalue_column": pd.NA,
-                    "pvalue_scale": pd.NA,
-                    "par_only_signal": False,
-                    "any_nonpar_locus": False,
-                    "processing_note": f"missing extract {path}",
-                }
-            )
-            continue
+            raise FileNotFoundError(f"{trait_id}: missing extract {path}")
         print(f"[loci] {trait_id}")
-        df = pd.read_csv(path, sep="\t", compression="gzip", low_memory=False)
         try:
+            df = pd.read_csv(path, sep="\t", compression="gzip", low_memory=False)
             loci_df, summary = call_loci_from_dataframe(df, trait_id=trait_id, window_bp=args.window_bp)
-        except Exception as exc:
-            print(f"[warn] {trait_id} skipped: {exc}")
-            loci_df = pd.DataFrame()
-            summary = {
-                "trait_id": trait_id,
-                "n_sig_variants": 0,
-                "n_loci": 0,
-                "lead_neglog10_pvalue": pd.NA,
-                "pvalue_column": pd.NA,
-                "pvalue_scale": pd.NA,
-                "par_only_signal": False,
-                "any_nonpar_locus": False,
-                "processing_note": str(exc),
-            }
+        except (ValueError, OSError, EOFError) as exc:
+            raise ValueError(f"{trait_id}: invalid extract: {exc}") from exc
 
         if not loci_df.empty and trait_lookup is not None and trait_id in trait_lookup.index:
             meta = trait_lookup.loc[trait_id]

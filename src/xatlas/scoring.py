@@ -29,11 +29,33 @@ LOOKUP_COMPLETE_STATUSES = {
     "empty",
 }
 
-STRATUM_LABELS = {
-    "both_sexes": "Both sexes",
-    "females": "Females",
-    "males": "Males",
-}
+def best_positional_relation(relations) -> str:
+    present = set(relations)
+    return next((relation for relation in (
+        "lead_overlap", "locus_overlap", "nearby_window", "nearest_gene"
+    ) if relation in present), "")
+
+
+def lookup_counts(loci) -> dict[str, int]:
+    counts = dict.fromkeys((
+        "eqtl_lookup_complete_locus_count", "eqtl_lookup_no_hit_locus_count",
+        "eqtl_lookup_skipped_no_rsid_locus_count", "eqtl_lookup_incomplete_locus_count",
+        "eqtl_lookup_hit_locus_count", "eqtl_total_hit_count",
+    ), 0)
+    for locus in loci:
+        status = str(locus.get("eqtl_lookup_status", "")).lower()
+        hits = locus.get("eqtl_lookup_n_hits")
+        if pd.notna(hits) and hits > 0:
+            counts["eqtl_lookup_hit_locus_count"] += 1
+            counts["eqtl_total_hit_count"] += int(hits)
+        if status in LOOKUP_COMPLETE_STATUSES and pd.notna(hits):
+            counts["eqtl_lookup_complete_locus_count"] += 1
+            counts["eqtl_lookup_no_hit_locus_count"] += int(hits == 0)
+        elif status == "skipped_no_rsid":
+            counts["eqtl_lookup_skipped_no_rsid_locus_count"] += 1
+        else:
+            counts["eqtl_lookup_incomplete_locus_count"] += 1
+    return counts
 
 
 def _normalize_token(value: Any) -> str:
@@ -44,15 +66,6 @@ def _normalize_token(value: Any) -> str:
     return str(value).strip().lower()
 
 
-def stratum_label(value: Any) -> str:
-    token = _normalize_token(value)
-    if token in STRATUM_LABELS:
-        return STRATUM_LABELS[token]
-    if not token:
-        return ""
-    return token.replace("_", " ").title()
-
-
 def effective_hq_case_count(row: pd.Series | dict[str, Any]) -> float:
     sex = _normalize_token(row.get("pheno_sex"))
     if sex == "females":
@@ -60,37 +73,6 @@ def effective_hq_case_count(row: pd.Series | dict[str, Any]) -> float:
     if sex == "males":
         return pd.to_numeric(row.get("n_cases_hq_cohort_males"), errors="coerce")
     return pd.to_numeric(row.get("n_cases_hq_cohort_both_sexes"), errors="coerce")
-
-
-def eqtl_lookup_note(row: pd.Series | dict[str, Any]) -> str:
-    provided_note = row.get("eqtl_lookup_note", "")
-    if provided_note is not None and not pd.isna(provided_note):
-        provided_note = str(provided_note).strip()
-        if provided_note:
-            return provided_note
-
-    status = _normalize_token(row.get("eqtl_lookup_status"))
-    mode = _normalize_token(row.get("eqtl_lookup_mode"))
-    detail = _normalize_token(row.get("eqtl_lookup_detail"))
-    n_hits = pd.to_numeric(row.get("eqtl_lookup_n_hits"), errors="coerce")
-
-    has_lookup_data = bool(status or detail or pd.notna(n_hits))
-    if not has_lookup_data:
-        return ""
-
-    if "provisional" in mode:
-        return "eQTL follow-up used provisional region lookup; interpret cautiously."
-
-    if status in LOOKUP_COMPLETE_STATUSES:
-        if pd.notna(n_hits) and float(n_hits) == 0.0:
-            return "eQTL follow-up: no support observed in lookup summary."
-        if pd.notna(n_hits) and float(n_hits) > 0.0 and coerce_bool(row.get("eqtl_supported")) is False:
-            return "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
-        if pd.notna(n_hits):
-            return ""
-        return "eQTL follow-up: not safely assessed / lookup incomplete."
-
-    return "eQTL follow-up: not safely assessed / lookup incomplete."
 
 
 def summarize_eqtl_lookup_note(rows: pd.DataFrame) -> str:
@@ -253,10 +235,6 @@ def compute_trait_score(
         notes.append("P-value scale was inferred as ln(P); check whether archived schema was used.")
     elif not pscale:
         notes.append("P-value scale was not recorded.")
-
-    lookup_note = eqtl_lookup_note(g)
-    if lookup_note:
-        notes.append(lookup_note)
 
     score = max(0.0, min(100.0, score))
     tier = tier_from_score(score, weights)

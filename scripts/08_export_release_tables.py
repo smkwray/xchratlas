@@ -15,27 +15,21 @@ import pandas as pd
 
 from xatlas.io import coerce_bool, write_tsv
 from xatlas.scoring import (
-    LOOKUP_COMPLETE_STATUSES,
+    best_positional_relation,
+    lookup_counts,
     compute_trait_score,
     effective_hq_case_count,
     load_weights,
-    stratum_label,
     summarize_eqtl_lookup_note,
 )
 from xatlas.settings import INTERIM_DIR, PROCESSED_DIR, RELEASE_DIR
-
-
-def _status_count(locus_rows: pd.DataFrame, status: str) -> int:
-    if "eqtl_lookup_status" not in locus_rows.columns:
-        return 0
-    return int(locus_rows["eqtl_lookup_status"].astype(str).str.lower().eq(status).sum())
 
 
 def build_trait_gene_rollup(gene_candidates: pd.DataFrame) -> pd.DataFrame:
     if gene_candidates.empty:
         return pd.DataFrame()
 
-    ranked = gene_candidates.sort_values(["trait_id", "candidate_rank"]).copy()
+    ranked = gene_candidates.sort_values(["trait_id", "candidate_rank", "locus_id", "gene_id"]).copy()
     lookup_source = ranked["eqtl_lookup_hit"] if "eqtl_lookup_hit" in ranked.columns else pd.Series([False] * len(ranked), index=ranked.index)
     supported_source = ranked["eqtl_supported"] if "eqtl_supported" in ranked.columns else pd.Series([False] * len(ranked), index=ranked.index)
     ranked["eqtl_lookup_hit_bool"] = lookup_source.map(lambda value: coerce_bool(value) is True)
@@ -47,34 +41,26 @@ def build_trait_gene_rollup(gene_candidates: pd.DataFrame) -> pd.DataFrame:
     top_gene_rows = []
     for trait_id, group in ranked.groupby("trait_id", sort=False):
         candidate_group = group.loc[group["eqtl_gene_role"].str.lower().ne("followup")].copy()
-        top_group = candidate_group if not candidate_group.empty else group
-        top_row = top_group.iloc[0]
+        best_relation = best_positional_relation(candidate_group["mapping_relation"])
         lookup_note = summarize_eqtl_lookup_note(group)
         locus_rows = group.sort_values(["locus_id", "candidate_rank"]).drop_duplicates(subset=["locus_id"], keep="first")
-        completed_mask = locus_rows["eqtl_lookup_status"].astype(str).str.lower().isin(LOOKUP_COMPLETE_STATUSES)
+        counts = lookup_counts(locus_rows.to_dict("records"))
         supported_gene_mask = candidate_group["eqtl_supported_bool"] if not candidate_group.empty else pd.Series(dtype=bool)
         lookup_hit_gene_mask = group["eqtl_lookup_hit_bool"]
 
         row = {
             "trait_id": trait_id,
-            "top_candidate_genes": ",".join(pd.Series(top_group["gene_name"]).dropna().astype(str).head(3)),
-            "eqtl_lookup_hit": bool(lookup_hit_gene_mask.any()),
+            "top_candidate_genes": ",".join(pd.Series(candidate_group["gene_name"]).dropna().astype(str).drop_duplicates().head(3)),
+            "eqtl_lookup_hit": counts["eqtl_lookup_hit_locus_count"] > 0,
             "eqtl_lookup_hit_gene_count": int(group.loc[lookup_hit_gene_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in group.columns else 0,
-            "eqtl_lookup_hit_locus_count": int(group.loc[lookup_hit_gene_mask, "locus_id"].nunique()),
-            "eqtl_lookup_hit_count": int(pd.to_numeric(locus_rows["eqtl_lookup_n_hits"], errors="coerce").fillna(0).sum()),
+            "eqtl_lookup_hit_count": counts["eqtl_total_hit_count"],
             "eqtl_supported": bool(supported_gene_mask.any()),
-            "best_mapping_relation": top_row.get("mapping_relation"),
+            "best_mapping_relation": best_relation,
             "eqtl_supported_gene_count": int(candidate_group.loc[supported_gene_mask, "gene_id"].dropna().astype(str).nunique()) if "gene_id" in candidate_group.columns else 0,
             "eqtl_supported_locus_count": int(
                 candidate_group.loc[supported_gene_mask, "locus_id"].nunique()
             ),
-            "eqtl_lookup_complete_locus_count": int(completed_mask.sum()),
-            "eqtl_lookup_no_hit_locus_count": _status_count(locus_rows, "no_hits"),
-            "eqtl_lookup_skipped_no_rsid_locus_count": _status_count(locus_rows, "skipped_no_rsid"),
-            "eqtl_lookup_incomplete_locus_count": int(
-                (~locus_rows["eqtl_lookup_status"].astype(str).str.lower().isin(LOOKUP_COMPLETE_STATUSES | {"skipped_no_rsid"})).sum()
-            ),
-            "eqtl_total_hit_count": int(pd.to_numeric(locus_rows["eqtl_lookup_n_hits"], errors="coerce").fillna(0).sum()),
+            **counts,
         }
         if lookup_note:
             row["eqtl_lookup_note"] = lookup_note
@@ -90,6 +76,7 @@ def build_release_loci(loci: pd.DataFrame, gene_summary: pd.DataFrame) -> pd.Dat
 
     keep_cols = [
         "locus_id",
+        "eqtl_query_rsid",
         "top_gene_id",
         "top_gene_name",
         "best_mapping_relation",
@@ -136,21 +123,15 @@ def main() -> None:
 
     for _, row in selected.iterrows():
         trait_id = row["trait_id"]
-        summary_row = summary_lookup.loc[trait_id].to_dict() if summary_lookup is not None and trait_id in summary_lookup.index else {
-            "trait_id": trait_id,
-            "n_loci": 0,
-            "lead_neglog10_pvalue": pd.NA,
-            "pvalue_scale": "",
-            "par_only_signal": False,
-            "any_nonpar_locus": False,
-        }
+        if summary_lookup is None or trait_id not in summary_lookup.index:
+            raise ValueError(f"{trait_id}: missing locus summary")
+        summary_row = summary_lookup.loc[trait_id].to_dict()
+        if pd.notna(summary_row.get("processing_note")) or pd.isna(summary_row.get("n_loci")):
+            raise ValueError(f"{trait_id}: unsuccessful locus summary")
         gene_row = gene_lookup.loc[trait_id].to_dict() if gene_lookup is not None and trait_id in gene_lookup.index else {}
         score = compute_trait_score(row.to_dict(), summary_row, gene_row=gene_row, weights=weights)
         merged = {**row.to_dict(), **summary_row, **gene_row, **score}
-        merged["view_stratum"] = merged.get("requested_pheno_sex") or merged.get("pheno_sex")
         merged["effective_hq_case_count"] = effective_hq_case_count(merged)
-        merged["stratum_label"] = stratum_label(merged.get("view_stratum"))
-        merged["selection_used_fallback"] = coerce_bool(merged.get("selection_used_fallback")) is True
         score_rows.append(merged)
 
     trait_scores = pd.DataFrame(score_rows).sort_values(
