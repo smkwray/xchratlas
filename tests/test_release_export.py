@@ -83,6 +83,15 @@ def test_build_release_loci_merges_gene_summary_columns():
     assert out.loc[0, "eqtl_lookup_status"] == "complete"
 
 
+def test_returned_records_survive_an_unmapped_lookup():
+    loci = pd.DataFrame([{"locus_id": "locus1", "trait_id": "trait1"}])
+    summary = pd.DataFrame([{"locus_id": "locus1", "eqtl_lookup_hit": False,
+                             "eqtl_lookup_n_hits": 3, "eqtl_lookup_hit_gene_count": 0}])
+    released = EXPORT_MOD["build_release_loci"](loci, summary)
+    assert bool(released.loc[0, "eqtl_lookup_hit"])
+    assert released.loc[0, "eqtl_lookup_hit_gene_count"] == 0
+
+
 def test_build_release_loci_preserves_locus_level_eqtl_summary():
     build_release_loci = EXPORT_MOD["build_release_loci"]
     loci = pd.DataFrame([{"locus_id": "locus1", "trait_id": "trait1", "lead_rsid": "rs1"}])
@@ -133,11 +142,11 @@ def test_release_export_uses_source_hq_count(tmp_path: Path):
         [
             {
                 "trait_id": "trait1",
-                "n_loci": 1,
-                "lead_neglog10_pvalue": 9.1,
+                "n_loci": 0,
+                "lead_neglog10_pvalue": None,
                 "pvalue_scale": "neglog10",
                 "par_only_signal": False,
-                "any_nonpar_locus": True,
+                "any_nonpar_locus": False,
             }
         ]
     )

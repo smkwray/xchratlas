@@ -91,7 +91,10 @@ def build_release_loci(loci: pd.DataFrame, gene_summary: pd.DataFrame) -> pd.Dat
         "eqtl_lookup_n_hits",
     ]
     usable = gene_summary[[c for c in keep_cols if c in gene_summary.columns]].drop_duplicates(subset=["locus_id"])
-    return loci.merge(usable, on="locus_id", how="left")
+    merged = loci.merge(usable, on="locus_id", how="left")
+    if "eqtl_lookup_n_hits" in merged:
+        merged["eqtl_lookup_hit"] = pd.to_numeric(merged["eqtl_lookup_n_hits"], errors="raise").gt(0)
+    return merged
 
 
 def main() -> None:
@@ -117,8 +120,12 @@ def main() -> None:
     top_gene_by_trait = build_trait_gene_rollup(gene_candidates)
     release_loci = build_release_loci(loci, gene_summary)
 
+    locus_groups = {key: group for key, group in release_loci.groupby("trait_id")} if not release_loci.empty else {}
     score_rows = []
     summary_lookup = trait_summary.set_index("trait_id") if not trait_summary.empty else None
+    if summary_lookup is not None and not summary_lookup.index.is_unique:
+        duplicates = summary_lookup.index[summary_lookup.index.duplicated()].unique()
+        raise ValueError(f"Duplicate locus summaries: {', '.join(map(str, duplicates))}")
     gene_lookup = top_gene_by_trait.set_index("trait_id") if not top_gene_by_trait.empty else None
 
     for _, row in selected.iterrows():
@@ -129,6 +136,13 @@ def main() -> None:
         if pd.notna(summary_row.get("processing_note")) or pd.isna(summary_row.get("n_loci")):
             raise ValueError(f"{trait_id}: unsuccessful locus summary")
         gene_row = gene_lookup.loc[trait_id].to_dict() if gene_lookup is not None and trait_id in gene_lookup.index else {}
+        trait_loci = locus_groups.get(trait_id)
+        actual_loci = 0 if trait_loci is None else len(trait_loci)
+        if summary_row["n_loci"] != actual_loci:
+            raise ValueError(f"{trait_id}: locus summary reports {summary_row['n_loci']}, found {actual_loci}")
+        counts = lookup_counts(trait_loci.to_dict("records") if actual_loci else [])
+        gene_row.update(counts, eqtl_lookup_hit=counts["eqtl_lookup_hit_locus_count"] > 0,
+                        eqtl_lookup_hit_count=counts["eqtl_total_hit_count"])
         score = compute_trait_score(row.to_dict(), summary_row, gene_row=gene_row, weights=weights)
         merged = {**row.to_dict(), **summary_row, **gene_row, **score}
         merged["effective_hq_case_count"] = effective_hq_case_count(merged)

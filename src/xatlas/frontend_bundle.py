@@ -150,7 +150,10 @@ def load_panel_release(spec: PanelBundleSpec) -> PanelRelease:
     trait_scores["eqtl_supported_bool"] = _bool_column(_series_for_frame(trait_scores, "eqtl_supported", False))
     trait_scores["n_loci"] = _int_column(trait_scores["n_loci"])
     trait_scores["eqtl_supported_locus_count"] = _int_column(_series_for_frame(trait_scores, "eqtl_supported_locus_count", 0))
-    trait_scores["effective_hq_case_count"] = trait_scores.apply(effective_hq_case_count, axis=1)
+    source_counts = trait_scores.apply(effective_hq_case_count, axis=1)
+    trait_scores["effective_hq_case_count"] = source_counts.fillna(
+        _float_column(_series_for_frame(trait_scores, "effective_hq_case_count", None))
+    )
     trait_scores["x_evidence_score"] = _float_column(_series_for_frame(trait_scores, "x_evidence_score", 0)).fillna(0.0)
     trait_scores["slug"] = _series_for_frame(
         trait_scores,
