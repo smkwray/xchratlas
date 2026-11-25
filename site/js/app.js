@@ -235,10 +235,9 @@ function renderDomainBars(summary) {
     bar.innerHTML =
       '<span class="domain-name">' + fmtDomain(d.domain) + '</span>' +
       '<div class="domain-bar-track">' +
-        '<div class="domain-bar-fill" style="width:' + width + '%">' +
-          '<span class="domain-bar-value">' + d.locus_count + '</span>' +
-        '</div>' +
+        '<div class="domain-bar-fill" style="width:' + width + '%"></div>' +
       '</div>' +
+      '<span class="domain-bar-value">' + d.locus_count + '</span>' +
       '<span class="domain-trait-count">' + d.trait_count + ' ' + (d.trait_count === 1 ? 'trait' : 'traits') + '</span>';
     container.appendChild(bar);
   });

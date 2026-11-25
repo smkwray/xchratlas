@@ -21,7 +21,7 @@
       btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
     }
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0d1117' : '#fafbfd');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#091012' : '#f7f9f9');
   }
 
   function toggle() {

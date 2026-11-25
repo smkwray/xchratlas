@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f7f9f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#091012" media="(prefers-color-scheme: dark)">
   <meta name="description" content="chrXatlas summarizes chromosome X associations across UK Biobank traits from Pan-UKB summary statistics, with Ensembl GRCh37 candidate genes and eQTL Catalogue lookups.">
   <title>chrXatlas — Chromosome X Associations in Pan-UKB</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
 </head>
@@ -19,7 +19,7 @@
 
   <header class="header" id="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">chr<span class="logo-x">X</span>atlas</a>
+      <a href="index.html" class="logo"><span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span></a>
       <nav class="nav" id="nav" aria-label="Primary">
         <a href="index.html" aria-current="page" class="nav-link">Home</a>
         <a href="gene.html" class="nav-link">Gene Search</a>
@@ -42,10 +42,18 @@
 
     <!-- Hero -->
     <section class="hero" id="hero">
-      <div class="hero-bg-pattern" aria-hidden="true"></div>
       <div class="container hero-content">
+        <div class="chrx-ideogram" aria-hidden="true">
+          <span class="ideogram-seg ideogram-par"></span>
+          <span class="ideogram-seg ideogram-p"></span>
+          <span class="ideogram-cen"></span>
+          <span class="ideogram-seg ideogram-q1"></span>
+          <span class="ideogram-seg ideogram-q2"></span>
+          <span class="ideogram-seg ideogram-q3"></span>
+          <span class="ideogram-seg ideogram-par"></span>
+        </div>
         <h1 class="hero-title">Chromosome X Associations<br>Most Studies Leave Out</h1>
-        <p class="hero-subtitle">Chromosome X carries hundreds of genes, and variants along it are associated with traits from blood chemistry to cognition. Many large genetic studies still leave chromosome X out. chrXatlas maps where those associations fall, which traits carry them, and which nearby genes have supporting gene-expression evidence.</p>
+        <p class="hero-subtitle">Chromosome X carries hundreds of genes, and variants along it are associated with traits from blood chemistry to cognition. Many large genetic studies still leave chromosome X out. <span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span> maps where those associations fall, which traits carry them, and which nearby genes have supporting gene-expression evidence.</p>
         <a href="#panels" class="hero-cta">Browse panels <span class="cta-arrow" aria-hidden="true">&darr;</span></a>
       </div>
     </section>
@@ -85,8 +93,8 @@
             <p>Males carry one copy of chromosome X and females carry two, which complicates quality control and statistical modeling in genetic association studies. Because standard pipelines are built for paired chromosomes, many studies drop chromosome X altogether, leaving roughly 800 protein-coding genes out of published results.</p>
           </div>
           <div class="why-card">
-            <h3>What chrXatlas Does</h3>
-            <p>chrXatlas draws on Pan-UK Biobank summary statistics to catalog chromosome X associations across curated trait panels and a broader discovery pool. For each trait, it groups significant signals into distinct regions, lists nearby candidate genes, and checks for gene-expression associations through eQTL Catalogue lookups.</p>
+            <h3>What <span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span> Does</h3>
+            <p><span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span> draws on Pan-UK Biobank summary statistics to catalog chromosome X associations across curated trait panels and a broader discovery pool. For each trait, it groups significant signals into distinct regions, lists nearby candidate genes, and checks for gene-expression associations through eQTL Catalogue lookups.</p>
           </div>
           <div class="why-card">
             <h3>Why It Matters</h3>
@@ -204,7 +212,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo">chr<span class="logo-x">X</span>atlas</span>
+        <span class="logo"><span class="wordmark">chr<span class="wordmark-x">X</span>atlas</span></span>
         <p class="footer-tagline">Chromosome X associations from Pan-UK Biobank</p>
       </div>
       <div class="footer-nav">

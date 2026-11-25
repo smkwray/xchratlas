@@ -46,6 +46,8 @@ function renderHero() {
   document.getElementById('ph-loci').textContent = fmt(p.locus_count);
   document.getElementById('ph-lookup').textContent = p.lookup_hit_trait_count;
   document.getElementById('ph-supported').textContent = p.supported_trait_count;
+  var hero = document.querySelector('.page-hero');
+  if (hero) hero.setAttribute('data-panel-accent', ACCENTS[p.panel_id] || 'teal');
   var activeBtn = document.querySelector('.nav-panel-btn[href="panel.html?id=' + p.panel_id + '"]');
   if (activeBtn) activeBtn.setAttribute('aria-current', 'page');
 }
@@ -168,17 +170,18 @@ function renderTable() {
     var sw = Math.min(t.x_evidence_score, 100);
     var status = listingStatus(t);
     var href = 'trait.html?panel=' + encodeURIComponent(S.panelId) + '&trait=' + encodeURIComponent(t.trait_id);
+    var topGenes = (t.top_candidate_genes || []).slice(0, 2);
     return '<tr class="trait-row">' +
       '<td class="trait-name-cell"><a class="trait-table-name" href="' + href + '">' + displayTraitName(t) + '</a></td>' +
       '<td class="trait-category" data-label="Category"><button type="button" class="domain-badge" data-domain="' + t.domain + '" aria-label="Filter by category: ' + fmtDomain(t.domain) + '">' + fmtDomain(t.domain) + '</button></td>' +
-      '<td class="score-cell" data-label="Score"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
+      '<td class="score-cell" data-label="Score"><div class="score-cell-inner"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></div></td>' +
       '<td class="num-cell" data-label="Loci">' + t.n_loci + '</td>' +
       '<td data-label="eQTL"><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
         (t.eqtl_total_hit_count > 0 ? '<div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' ' + (t.eqtl_total_hit_count === 1 ? 'record' : 'records') + '</div>' : '') + '</td>' +
       '<td data-label="GWAS grade"><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
-      '<td class="genes-cell" data-label="Positional genes">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
+      '<td class="genes-cell" data-label="Positional genes">' + (topGenes.length ? '<div class="genes-cell-inner">' + topGenes.map(function (g) {
         return listingGeneLink(g, 'gene-tag');
-      }).join('') + '</td></tr>';
+      }).join('') + '</div>' : '') + '</td></tr>';
   }).join('');
 }
 
