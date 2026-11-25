@@ -247,7 +247,7 @@ function renderSupport(data) {
           '<span class="support-locus-detail">' +
             '<strong>Records:</strong> ' + fmt(l.eqtl_lookup_n_hits) +
           '</span>' +
-          (supportedGene ? '<span class="support-locus-detail support-locus-key"><strong>Candidate (p &le; 10<sup>&minus;5</sup>):</strong> ' + traitGeneLink(supportedGene.gene_name, 'gene-name') + ' (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p ' + fmtPval(supportedGene.best_eqtl_pvalue) + ')</span>' : '') +
+          (supportedGene ? '<span class="support-locus-detail support-locus-key"><strong>Candidate (p &le; 10<sup>&minus;5</sup>):</strong> ' + traitGeneLink(supportedGene.gene_name, 'gene-name') + ' (' + supportedGene.eqtl_study_count + ' ' + (supportedGene.eqtl_study_count === 1 ? 'study' : 'studies') + ', best p <span class="nowrap">' + fmtPval(supportedGene.best_eqtl_pvalue) + '</span>' + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';
@@ -263,7 +263,7 @@ function renderSupport(data) {
           '<span class="support-locus-detail"><strong>' + (l.lead_selection === 'clipped_unresolved' ? 'Representative' : 'Lead variant') + ':</strong> ' + (l.lead_rsid || l.lead_varid) + '</span>' +
           '<span class="support-locus-detail"><strong>Lookup:</strong> ' + fmtLookupStatus(l.eqtl_lookup_status) + '</span>' +
           '<span class="support-locus-detail"><strong>Records:</strong> ' + fmt(l.eqtl_lookup_n_hits) + '</span>' +
-          (lookupGene ? '<span class="support-locus-detail support-locus-key"><strong>Best lookup gene:</strong> ' + traitGeneLink(lookupGene.gene_name, 'gene-name') + ' (best p ' + fmtPval(lookupGene.best_eqtl_pvalue) + ')</span>' : '') +
+          (lookupGene ? '<span class="support-locus-detail support-locus-key"><strong>Best lookup gene:</strong> ' + traitGeneLink(lookupGene.gene_name, 'gene-name') + ' (best p <span class="nowrap">' + fmtPval(lookupGene.best_eqtl_pvalue) + '</span>' + ')</span>' : '') +
         '</div>';
       }).join('') +
     '</div>';

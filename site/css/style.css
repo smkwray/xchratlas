@@ -2569,3 +2569,5 @@ p.table-empty {
   section { padding: var(--space-6) 0; break-inside: avoid; }
   .animate-on-scroll { opacity: 1; transform: none; }
 }
+
+.nowrap { white-space: nowrap; }
