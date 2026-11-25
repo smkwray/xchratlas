@@ -1429,7 +1429,7 @@ sup, sub { font-size: 0.72em; line-height: 0; }
 .gene-trait-name { font-weight: 600; min-width: 180px; }
 .gene-trait-panel { font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; }
 .gene-role-sub { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 0.2rem; }
-.gene-overflow-cell { text-align: center; padding: 0.5rem; }
+.gene-card-actions { text-align: center; padding: 0.5rem; border-top: 1px solid var(--border); }
 .gene-show-more {
   font-size: 0.82rem; font-weight: 600; color: var(--accent);
   background: none; border: none; cursor: pointer; min-height: 44px; padding: 0.5rem 1rem;
@@ -1444,6 +1444,57 @@ sup, sub { font-size: 0.72em; line-height: 0; }
   .gene-trait-table { font-size: 0.78rem; }
   .gene-trait-table th,
   .gene-trait-table td { padding: 0.45rem 0.5rem; }
+}
+
+.mobile-sort { display: none; }
+
+@media screen and (max-width: 640px) {
+  .mobile-sort {
+    display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;
+    font-size: 0.82rem; color: var(--text-secondary);
+  }
+  .mobile-sort select {
+    min-height: 44px; padding: 0.35rem 0.5rem; font: inherit; color: var(--text);
+    border: 1px solid var(--border-strong); border-radius: 6px; background: var(--bg-raised);
+  }
+  .stack-table, .stack-table tbody { display: block; }
+  .stack-table thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+  }
+  .stack-table th[data-sort] button { display: none; }
+  .stack-table th[data-sort]::before { content: attr(data-label); }
+  .stack-table tbody tr {
+    display: grid; align-items: start; gap: 0.4rem 0.65rem;
+    padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border);
+  }
+  .stack-table tbody tr:last-child { border-bottom: 0; }
+  .stack-table td {
+    display: block; min-width: 0; padding: 0; border: 0; text-align: left;
+    white-space: normal; overflow-wrap: anywhere;
+  }
+  .stack-table td[data-label]::before {
+    content: attr(data-label) / ""; display: block; margin-bottom: 0.12rem;
+    font: 600 0.66rem/1.25 var(--font-sans); color: var(--text-secondary);
+  }
+  .stack-table :is(.domain-badge, .biotype-badge, .gene-tag) { white-space: normal; }
+  .stack-table .discovery-trait-status { display: inline-block; line-height: 1.35; }
+  .data-table .trait-row {
+    grid-template-columns: auto auto minmax(0, 1fr) minmax(4.5rem, 25%);
+    grid-template-areas: "name name name category" "score loci status grade" "genes genes genes genes";
+  }
+  .trait-name-cell { grid-area: name; }
+  .trait-category { grid-area: category; justify-self: end; }
+  .stack-table .trait-category::before { display: none; }
+  .stack-table .mini-score-bar { display: none; }
+  .stack-table .genes-cell { grid-area: genes; display: flex; align-items: baseline; }
+  .stack-table .genes-cell:empty { display: none; }
+  .stack-table .genes-cell::before { margin: 0 0.15rem 0 0; }
+  .gene-trait-row { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; }
+  .gene-trait-name, .stack-table .table-empty { grid-column: 1 / -1; }
+  .gene-trait-panel + td { grid-column: 2 / -1; }
+  .candidate-table tbody tr { grid-template-columns: repeat(3, minmax(0, 1fr)); padding-inline: 0.25rem; }
+  .candidate-name { grid-column: 1 / 3; grid-row: 1; }
+  .candidate-table td:first-child { grid-column: 3; grid-row: 1; }
 }
 
 /* ── Reduced Motion ────────────────────────── */

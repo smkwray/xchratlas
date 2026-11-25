@@ -126,13 +126,13 @@ function renderTable() {
     var href = 'trait.html?panel=' + encodeURIComponent(S.panelId) + '&trait=' + encodeURIComponent(t.trait_id);
     return '<tr class="trait-row">' +
       '<td class="trait-name-cell"><a class="trait-table-name" href="' + href + '">' + displayTraitName(t) + '</a></td>' +
-      '<td><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
-      '<td class="score-cell"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
-      '<td class="num-cell">' + t.n_loci + '</td>' +
-      '<td><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
+      '<td class="trait-category" data-label="Category"><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
+      '<td class="score-cell" data-label="Score"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
+      '<td class="num-cell" data-label="Loci">' + t.n_loci + '</td>' +
+      '<td data-label="eQTL"><span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
         (t.eqtl_total_hit_count > 0 ? '<div class="panel-eqtl-meta">' + fmt(t.eqtl_total_hit_count) + ' ' + (t.eqtl_total_hit_count === 1 ? 'record' : 'records') + '</div>' : '') + '</td>' +
-      '<td><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
-      '<td class="genes-cell">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
+      '<td data-label="GWAS grade"><span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span></td>' +
+      '<td class="genes-cell" data-label="Positional genes">' + (t.top_candidate_genes || []).slice(0, 2).map(function (g) {
         return '<span class="gene-tag">' + g + '</span>';
       }).join('') + '</td></tr>';
   }).join('');
@@ -140,19 +140,42 @@ function renderTable() {
 
 /* ── Sort Headers ──────────────────────────── */
 function initSort() {
-  document.querySelectorAll('.data-table th[data-sort]').forEach(function (th) {
-    th.querySelector('button').addEventListener('click', function () {
-      var k = th.dataset.sort;
-      if (S.sortKey === k) S.sortDir = S.sortDir === 'asc' ? 'desc' : 'asc';
-      else { S.sortKey = k; S.sortDir = (k === 'description' || k === 'domain') ? 'asc' : 'desc'; }
-      document.querySelectorAll('.data-table th[data-sort]').forEach(function (h) {
-        h.classList.remove('sort-asc', 'sort-desc');
-        h.removeAttribute('aria-sort');
-      });
-      th.setAttribute('aria-sort', S.sortDir === 'asc' ? 'ascending' : 'descending');
-      th.classList.add('sort-' + S.sortDir);
-      applyFilters();
+  var headers = document.querySelectorAll('.data-table th[data-sort]');
+  var select = document.getElementById('trait-sort');
+
+  function setSort(key, direction) {
+    S.sortKey = key;
+    S.sortDir = direction;
+    select.value = key + ':' + direction;
+    headers.forEach(function (th) {
+      th.classList.remove('sort-asc', 'sort-desc');
+      th.removeAttribute('aria-sort');
+      if (th.dataset.sort === key) {
+        th.classList.add('sort-' + direction);
+        th.setAttribute('aria-sort', direction === 'asc' ? 'ascending' : 'descending');
+      }
     });
+    applyFilters();
+  }
+
+  headers.forEach(function (th) {
+    var key = th.dataset.sort;
+    var button = th.querySelector('button');
+    var label = button.firstChild.textContent.trim();
+    th.dataset.label = label;
+    ['asc', 'desc'].forEach(function (direction) {
+      var order = direction === 'asc' ? 'ascending' : 'descending';
+      select.add(new Option(label + ' (' + order + ')', key + ':' + direction));
+    });
+    button.addEventListener('click', function () {
+      var ascending = S.sortKey === key ? S.sortDir === 'desc' : key === 'description' || key === 'domain';
+      setSort(key, ascending ? 'asc' : 'desc');
+    });
+  });
+  select.value = S.sortKey + ':' + S.sortDir;
+  select.addEventListener('change', function () {
+    var parts = select.value.split(':');
+    setSort(parts[0], parts[1]);
   });
 }
 

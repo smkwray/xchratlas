@@ -182,11 +182,11 @@ function renderGeneCard(id, query) {
       '<div class="gene-card-summary">' +
         '<span class="gene-card-fact">' + threshold + '</span>' +
         '<span class="gene-card-fact">' + returned + '</span>' +
-        '<span class="gene-card-fact">' + hits.length + ' panel\u2013trait\u2013locus ' + (hits.length === 1 ? 'entry' : 'entries') + '</span>' +
+        '<span class="gene-card-fact">' + hits.length + (hits.length === 1 ? ' entry' : ' entries') + ' across panels' + '</span>' +
       '</div>' +
     '</div>' +
     '<div class="gene-card-traits" tabindex="0" role="region" aria-label="Gene traits">' +
-      '<table class="gene-trait-table">' +
+      '<table class="gene-trait-table stack-table">' +
         '<thead><tr>' +
           '<th>Trait</th>' +
           '<th>Panel</th>' +
@@ -197,12 +197,10 @@ function renderGeneCard(id, query) {
         '</tr></thead>' +
         '<tbody>' +
           visible.map(function (g) { return traitRow(g); }).join('') +
-          (overflow > 0 ? '<tr class="gene-overflow-row" data-gene="' + escHtml(id) + '"><td colspan="6" class="gene-overflow-cell">' +
-            '<button class="gene-show-more" onclick="expandGene(this, \'' + escHtml(id).replace(/'/g, '\\\'') + '\')">Show ' + overflow + ' more panel ' + (overflow === 1 ? 'entry' : 'entries') + '</button>' +
-          '</td></tr>' : '') +
         '</tbody>' +
       '</table>' +
     '</div>' +
+    (overflow > 0 ? '<div class="gene-card-actions"><button type="button" class="gene-show-more" data-gene="' + escHtml(id) + '" onclick="expandGene(this)">Show ' + overflow + ' more panel ' + (overflow === 1 ? 'entry' : 'entries') + '</button></div>' : '') +
   '</div>';
 }
 
@@ -229,23 +227,25 @@ function traitRow(g) {
 
   return '<tr class="gene-trait-row">' +
     '<td class="gene-trait-name"><a href="' + href + '">' + escHtml(g.trait_desc) + '</a></td>' +
-    '<td class="gene-trait-panel">' + escHtml(g.panel_title) + '</td>' +
-    '<td><span class="domain-badge">' + fmtDomain(g.domain) + '</span></td>' +
-    '<td><span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span>' +
+    '<td class="gene-trait-panel" data-label="Panel">' + escHtml(g.panel_title) + '</td>' +
+    '<td data-label="Category"><span class="domain-badge">' + fmtDomain(g.domain) + '</span></td>' +
+    '<td data-label="eQTL"><span class="discovery-trait-status ' + statusCls + '">' + statusLabel + '</span>' +
       (!g.best_supported ? '<div class="gene-role-sub">' + Array.from(roles).join(' / ') + '</div>' : '') + '</td>' +
-    '<td class="num-cell">' + fmtPval(g.best_pval) + '</td>' +
-    '<td class="num-cell">' + g.loci.length + '</td>' +
+    '<td class="num-cell" data-label="Best eQTL p">' + fmtPval(g.best_pval) + '</td>' +
+    '<td class="num-cell" data-label="Loci">' + g.loci.length + '</td>' +
   '</tr>';
 }
 
 /* ── Expand overflow ─────────────────────────── */
-function expandGene(btn, geneName) {
-  var gene = geneIndex[geneName];
+function expandGene(btn) {
+  var gene = geneIndex[btn.dataset.gene];
   if (!gene) return;
-  var groups = groupAppearances(gene.hits);
-  var extra = groups.slice(5);
-  var overflowRow = btn.closest('tr');
-  overflowRow.outerHTML = extra.map(function (g) { return traitRow(g); }).join('');
+  var tbody = btn.closest('.gene-card').querySelector('tbody');
+  var firstNew = tbody.rows.length;
+  var extra = groupAppearances(gene.hits).slice(firstNew);
+  tbody.insertAdjacentHTML('beforeend', extra.map(traitRow).join(''));
+  tbody.rows[firstNew].querySelector('a').focus();
+  btn.parentElement.remove();
 }
 
 document.addEventListener('DOMContentLoaded', init);

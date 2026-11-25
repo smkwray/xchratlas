@@ -165,7 +165,7 @@ function renderLoci(data) {
 }
 
 function geneTable(genes) {
-  return '<table class="candidate-table"><thead><tr>' +
+  return '<table class="candidate-table stack-table"><thead><tr>' +
     '<th>Rank</th><th>Gene</th><th>Biotype</th><th>Role</th><th>Mapping</th><th>Distance</th><th>Records</th><th>p &le; 10<sup>&minus;5</sup></th><th>Studies (&le;10<sup>&minus;5</sup>)</th><th>Datasets</th><th>Best eQTL p</th>' +
     '</tr></thead><tbody>' +
     genes.map(function (g) {
@@ -176,17 +176,17 @@ function geneTable(genes) {
         : (g.eqtl_lookup_hit ? '<span class="eqtl-mid-sm">No</span>' : '\u2014');
       var geneHref = 'gene.html?gene=' + encodeURIComponent(g.gene_id || g.gene_name);
       return '<tr class="' + (g.eqtl_supported ? 'gene-supported' : '') + '">' +
-        '<td class="num-cell">' + g.candidate_rank + '</td>' +
-        '<td><a class="gene-name gene-name-link" href="' + geneHref + '">' + g.gene_name + '</a></td>' +
-        '<td><span class="biotype-badge">' + g.gene_biotype.replace(/_/g, ' ') + '</span></td>' +
-        '<td><span class="gene-role-badge gene-role-' + (g.eqtl_gene_role === 'followup' ? 'followup' : 'candidate') + '">' + role + '</span></td>' +
-        '<td>' + g.mapping_relation.replace(/_/g, ' ') + '</td>' +
-        '<td class="num-cell">' + fmt(g.distance_to_lead_bp) + ' bp</td>' +
-        '<td class="num-cell">' + lookup + '</td>' +
-        '<td>' + support + '</td>' +
-        '<td class="num-cell">' + g.eqtl_study_count + '</td>' +
-        '<td class="num-cell">' + g.eqtl_dataset_count + '</td>' +
-        '<td class="num-cell">' + fmtPval(g.best_eqtl_pvalue) + '</td></tr>';
+        '<td class="num-cell" data-label="Rank">' + g.candidate_rank + '</td>' +
+        '<td class="candidate-name"><a class="gene-name gene-name-link" href="' + geneHref + '">' + g.gene_name + '</a></td>' +
+        '<td data-label="Biotype"><span class="biotype-badge">' + g.gene_biotype.replace(/_/g, ' ') + '</span></td>' +
+        '<td data-label="Role"><span class="gene-role-badge gene-role-' + (g.eqtl_gene_role === 'followup' ? 'followup' : 'candidate') + '">' + role + '</span></td>' +
+        '<td data-label="Mapping">' + g.mapping_relation.replace(/_/g, ' ') + '</td>' +
+        '<td class="num-cell" data-label="Distance">' + fmt(g.distance_to_lead_bp) + ' bp</td>' +
+        '<td class="num-cell" data-label="Records">' + lookup + '</td>' +
+        '<td data-label="p ≤ 10⁻⁵">' + support + '</td>' +
+        '<td class="num-cell" data-label="Studies (≤10⁻⁵)">' + g.eqtl_study_count + '</td>' +
+        '<td class="num-cell" data-label="Datasets">' + g.eqtl_dataset_count + '</td>' +
+        '<td class="num-cell" data-label="Best eQTL p">' + fmtPval(g.best_eqtl_pvalue) + '</td></tr>';
     }).join('') + '</tbody></table>';
 }
 
