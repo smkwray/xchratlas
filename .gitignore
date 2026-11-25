@@ -45,3 +45,5 @@ uv.lock
 docs/
 
 .private-denylist
+.playwright-cli/
+output/

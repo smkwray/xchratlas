@@ -35,6 +35,12 @@ function safeText(value, fallback) {
   return String(value);
 }
 
+function displayTraitName(trait) {
+  if (!trait) return '';
+  if (trait.query_id === 'operation_code' && trait.coding_description) return trait.coding_description;
+  return safeText(trait.description, safeText(trait.query_id, safeText(trait.trait_id, 'Unlabeled trait')));
+}
+
 function pct(n, d) { return d ? Math.round((n / d) * 100) : 0; }
 function eqtlStatusMeta(item) {
   if (item.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
@@ -188,7 +194,7 @@ function updatePanelDetails(summaries) {
         '<div class="panel-top-traits-label">Top traits</div>' +
         top3.map(function (t) {
           return '<div class="panel-trait-row">' +
-            '<span class="panel-trait-name">' + t.description + '</span>' +
+            '<span class="panel-trait-name">' + displayTraitName(t) + '</span>' +
             '<span class="panel-trait-loci">' + t.n_loci + ' loci</span>' +
           '</div>';
         }).join('');
@@ -235,7 +241,7 @@ function renderTopTraits(summary) {
         '<span class="trait-domain-badge">' + fmtDomain(t.domain) + '</span>' +
         '<span class="trait-grade grade-' + t.coverage_grade.toLowerCase() + '">' + t.coverage_grade + '</span>' +
       '</div>' +
-      '<h4 class="trait-name">' + t.description + '</h4>' +
+      '<h4 class="trait-name">' + displayTraitName(t) + '</h4>' +
       '<div class="trait-score">' +
         '<div class="trait-score-bar"><div class="trait-score-fill" style="width:' + scoreWidth + '%"></div></div>' +
         '<span class="trait-score-value">' + t.x_evidence_score.toFixed(0) + '</span>' +
@@ -300,7 +306,7 @@ function discoveryTraitRow(pool, trait) {
 
   return '<a class="discovery-trait-row" href="' + href + '">' +
     '<div class="discovery-trait-main">' +
-      '<span class="discovery-trait-name">' + trait.description + '</span>' +
+      '<span class="discovery-trait-name">' + displayTraitName(trait) + '</span>' +
       '<div class="discovery-trait-meta">' +
         '<span class="discovery-trait-domain">' + fmtDomain(trait.domain) + '</span>' +
         '<span class="discovery-trait-status ' + status.cls + '">' + status.label + '</span>' +
@@ -343,7 +349,7 @@ function renderDiscoveryPool(manifest, summary, traits) {
   var allTraits = (traits || []).slice().sort(function (a, b) {
     return b.x_evidence_score - a.x_evidence_score ||
       b.n_loci - a.n_loci ||
-      safeText(a.description).localeCompare(safeText(b.description));
+      displayTraitName(a).localeCompare(displayTraitName(b));
   });
   var unsupportedTraits = allTraits.filter(function (t) { return !t.eqtl_supported; });
 
@@ -372,7 +378,7 @@ function renderDiscoveryPool(manifest, summary, traits) {
         unsupportedTraits.length,
         unsupportedTraits.map(function (trait) { return discoveryTraitRow(pool, trait); }),
         'Includes zero-locus traits plus lookup-hit-only traits that did not meet the strict support rule.',
-        true
+        false
       ) +
       discoveryDrawer(
         'All tested discovery traits',
@@ -493,6 +499,7 @@ function loadSearchIndex(manifest) {
       traits.forEach(function (t) {
         searchIndex.push({
           trait_id: t.trait_id, description: t.description,
+          coding_description: t.coding_description,
           domain: t.domain, query_id: t.query_id,
           x_evidence_score: t.x_evidence_score,
           top_candidate_genes: t.top_candidate_genes || [],
@@ -514,9 +521,10 @@ function initSearch() {
     if (q.length < 2) { results.innerHTML = ''; results.style.display = 'none'; return; }
     var matches = searchIndex.filter(function (t) {
       var d = (t.description || '').toLowerCase();
+      var cd = (t.coding_description || '').toLowerCase();
       var dm = (t.domain || '').toLowerCase();
       var qi = (t.query_id || '').toLowerCase();
-      return d.includes(q) || dm.includes(q) || qi.includes(q) ||
+      return d.includes(q) || cd.includes(q) || dm.includes(q) || qi.includes(q) ||
         (t.top_candidate_genes || []).some(function (g) { return g && g.toLowerCase().includes(q); });
     }).slice(0, 12);
 
@@ -527,7 +535,7 @@ function initSearch() {
     results.innerHTML = matches.map(function (t) {
       var score = t.x_evidence_score != null ? t.x_evidence_score.toFixed(0) : '—';
       return '<a href="trait.html?panel=' + t.panel_id + '&trait=' + encodeURIComponent(t.trait_id) + '" class="search-result-item">' +
-        '<div class="search-result-name">' + (t.description || t.query_id) + '</div>' +
+        '<div class="search-result-name">' + displayTraitName(t) + '</div>' +
         '<div class="search-result-meta">' +
           '<span class="search-result-panel">' + (t.panel_title || '') + '</span>' +
           '<span class="search-result-domain">' + fmtDomain(t.domain || '') + '</span>' +

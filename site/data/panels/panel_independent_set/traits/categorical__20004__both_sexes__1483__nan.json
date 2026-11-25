@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "operation_code",
     "slug": "operation-code",
     "description": "Operation code",
+    "coding_description": "haemorroidectomy / piles surgery/ banding of piles",
     "domain": "operations",
     "x_evidence_score": 59.51,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Verbal interview > Operations",
     "description_more": "Code for operation. If the participant was uncertain of the type of operation they had undergone, then they described it to the interviewer (a trained nurse) who attempted to place it within the coding tree. If the operation could not be located in the coding tree then the interviewer entered a free-text description of it. These free-text descriptions were subsequently examined by a doctor and, where possible, matched to entries in the coding tree. Free-text descriptions which could not be matched with very high probability have been marked as \"unclassifiable\".",
-    "coding_description": "haemorroidectomy / piles surgery/ banding of piles",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

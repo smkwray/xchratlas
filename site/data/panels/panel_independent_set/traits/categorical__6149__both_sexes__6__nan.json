@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "mouth_teeth_dental_problems",
     "slug": "mouth-teeth-dental-problems",
     "description": "Mouth/teeth dental problems",
+    "coding_description": "Dentures",
     "domain": "mouth",
     "x_evidence_score": 70.27,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Mouth",
     "description_more": "ACE touchscreen question \"Do you have any of the following? (You can select more than one answer)\" The following checks were performed:  If code -7 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.   If the participant activated the Help button they were shown the message:     Answer this question thinking about the past year.     ",
-    "coding_description": "Dentures",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

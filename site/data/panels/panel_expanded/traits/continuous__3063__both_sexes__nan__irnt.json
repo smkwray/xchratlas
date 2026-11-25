@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "fev1",
     "slug": "fev1",
     "description": "Forced expiratory volume in 1-second (FEV1)",
+    "coding_description": null,
     "domain": "respiratory",
     "x_evidence_score": 88.94,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Spirometry",
     "description_more": "FEV1 value calculated from blow",
-    "coding_description": null,
     "num_pops_pass_qc": 4,
     "in_max_independent_set": false,
     "tier": "A",

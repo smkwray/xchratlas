@@ -96,6 +96,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare a small eQTL Catalogue chrX index.")
     parser.add_argument("--outdir", default=str(RAW_DIR / "eqtl_catalogue"))
     parser.add_argument("--priority-studies", default="config/eqtl_priority_studies.csv")
+    parser.add_argument("--index-out", default=str(INTERIM_DIR / "eqtl_chrX_index.tsv"))
     args = parser.parse_args()
 
     outdir = ensure_dir(args.outdir)
@@ -194,9 +195,9 @@ def main() -> None:
     eqtl_index = merged[keep_cols].drop_duplicates().sort_values(
         ["priority", "study_id"], na_position="last"
     )
-    write_tsv(eqtl_index, INTERIM_DIR / "eqtl_chrX_index.tsv")
+    write_tsv(eqtl_index, args.index_out)
 
-    print(f"[done] wrote {len(eqtl_index):,} eQTL rows to {INTERIM_DIR / 'eqtl_chrX_index.tsv'}")
+    print(f"[done] wrote {len(eqtl_index):,} eQTL rows to {args.index_out}")
 
 
 if __name__ == "__main__":

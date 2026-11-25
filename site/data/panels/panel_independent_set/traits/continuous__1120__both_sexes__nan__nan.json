@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "weekly_usage_of_mobile_phone_in_last_3_months",
     "slug": "weekly-usage-of-mobile-phone-in-last-3-months",
     "description": "Weekly usage of mobile phone in last 3 months",
+    "coding_description": null,
     "domain": "electronic_device_use",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Electronic device use",
     "description_more": "ACE touchscreen question \"Over the last 3 months, on average how much time per week did you spend making or receiving calls on a mobile phone?\" If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.      ~F1120~ was collected from participants who indicated they have used a mobile phone at least once per week in the past or do not know whether they have used or not, as defined by their answers to ~F1110~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

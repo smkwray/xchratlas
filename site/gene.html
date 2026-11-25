@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fafbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="chrXatlas gene search — find chromosome X eQTL evidence by gene name.">
+  <title>Gene Search — chrXatlas</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">chr<span class="logo-x">X</span>atlas</a>
+      <nav class="nav" id="nav">
+        <a href="index.html#panels" class="nav-link">Panels</a>
+        <a href="gene.html" class="nav-link nav-link-active">Gene Search</a>
+        <a href="index.html#methods" class="nav-link">Methods</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <span class="nav-divider"></span>
+        <a href="panel.html?id=panel_expanded" class="nav-panel-btn" data-panel-accent="teal">Broad Atlas</a>
+        <a href="panel.html?id=panel_mind_risk_core" class="nav-panel-btn" data-panel-accent="amber">Mind &amp; Behavior</a>
+        <a href="panel.html?id=panel_blood_biochemistry_core" class="nav-panel-btn" data-panel-accent="blue">Biochemistry</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">chrXatlas</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Gene Search</span>
+        </div>
+        <h1 class="page-hero-title">Gene Search</h1>
+        <p class="page-hero-desc">Search chromosome X genes by name to see which traits have eQTL evidence at nearby loci.</p>
+        <div class="page-hero-metrics">
+          <div class="page-metric">
+            <span class="page-metric-value" id="gm-total">&mdash;</span>
+            <span class="page-metric-label">Genes indexed</span>
+          </div>
+          <div class="page-metric">
+            <span class="page-metric-value" id="gm-eqtl">&mdash;</span>
+            <span class="page-metric-label">With eQTL hits</span>
+          </div>
+          <div class="page-metric">
+            <span class="page-metric-value" id="gm-supported">&mdash;</span>
+            <span class="page-metric-label">Strict eQTL-supported</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gene-search-section" style="padding-top:2rem">
+      <div class="container">
+        <div class="filter-bar">
+          <input type="text" class="search-input gene-search-input" id="gene-search" placeholder="Type a gene name... e.g. EDA, POLA1, AR" autocomplete="off" autofocus>
+          <label class="filter-toggle">
+            <input type="checkbox" id="eqtl-only-toggle"> eQTL hits only
+          </label>
+          <span class="result-count" id="gene-result-count"></span>
+        </div>
+        <div id="gene-results"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">chr<span class="logo-x">X</span>atlas</span>
+        <p class="footer-tagline">Chromosome X Evidence Atlas</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Atlas</h4>
+          <a href="index.html#panels">Panels</a>
+          <a href="index.html#results">Results</a>
+          <a href="index.html#discovery">Discovery Pool</a>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="gene.html">Gene Search</a>
+          <a href="index.html#methods">Methods</a>
+          <a href="index.html#about">About</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="https://github.com/smkwray/xchratlas/blob/main/docs/FRONTEND_DATA_CONTRACT.md">Data schema</a>
+          <a href="https://github.com/smkwray/xchratlas">Source code</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Data sources: Pan-UK Biobank &middot; eQTL Catalogue &middot; Ensembl GRCh37</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/gene.js"></script>
+</body>
+</html>

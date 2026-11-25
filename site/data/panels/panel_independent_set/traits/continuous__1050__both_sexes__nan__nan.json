@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "time_spend_outdoors_in_summer",
     "slug": "time-spend-outdoors-in-summer",
     "description": "Time spend outdoors in summer",
+    "coding_description": null,
     "domain": "sun_exposure",
     "x_evidence_score": 60.85,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
     "description_more": "ACE touchscreen question \"In a typical DAY in summer, how many hours do you spend outdoors?\" The following checks were performed:  If answer   If answer > 24 then rejected  If answer > 10 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If the time you spend outdoors in summer varies a lot, give the average time per day. For example if you spend 1 hour a day on each weekday and 4 hours a day on the weekend, the total hours in a week is 13 (5 + 8), so you spend approximately 2 hours a day.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "birth_weight_known",
     "slug": "birth-weight-known",
     "description": "Birth weight known",
+    "coding_description": "Yes - pounds and ounces",
     "domain": "early_life_factors",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Verbal interview > Early life factors",
     "description_more": "Birth weight known   This question was dropped from the touchscreen protocol on 24/10/2016.",
-    "coding_description": "Yes - pounds and ounces",
     "num_pops_pass_qc": 4,
     "in_max_independent_set": true,
     "tier": "D",

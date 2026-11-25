@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "frequency_of_feeling_guilt_or_remorse_after_drinking_alcohol_in_",
     "slug": "frequency-of-feeling-guilt-or-remorse-after-drinking-alcohol-in",
     "description": "Frequency of feeling guilt or remorse after drinking alcohol in last year",
+    "coding_description": null,
     "domain": "alcohol_use",
     "x_evidence_score": 65.33,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "Online follow-up > Mental health > Alcohol use",
     "description_more": "Question asked: \"How often during the last year have you had a feeling of guilt or remorse after drinking?\"  Question was asked when the sum of the answer to ~F20403~ plus the answer to ~F20416~ was 3 or above. Participants responding \"prefer not to answer\" to one of these trigger questions were scored as 1 for that question.",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

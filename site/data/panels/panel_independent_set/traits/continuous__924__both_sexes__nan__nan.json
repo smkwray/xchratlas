@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "usual_walking_pace",
     "slug": "usual-walking-pace",
     "description": "Usual walking pace",
+    "coding_description": null,
     "domain": "physical_activity",
     "x_evidence_score": 72.57,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Physical activity",
     "description_more": "ACE touchscreen question \"How would you describe your usual walking pace? \" If the participant activated the Help button they were shown the message:     Slow pace is defined as less than 3 miles per hour. Steady average pace is defined as between 3-4 miles per hour. Fast pace is defined as more than 4 miles per hour.      ~F924~ was collected from all participants except those who indicated they were unable to walk, as defined by their answers to ~F864~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

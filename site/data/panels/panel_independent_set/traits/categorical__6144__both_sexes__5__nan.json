@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "never_eat_eggs_dairy_wheat_sugar",
     "slug": "never-eat-eggs-dairy-wheat-sugar",
     "description": "Never eat eggs, dairy, wheat, sugar",
+    "coding_description": "I eat all of the above",
     "domain": "diet",
     "x_evidence_score": 60.54,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
     "description_more": "ACE touchscreen question \"Which of the following do you NEVER eat? (You can select more than one answer)\" The following checks were performed:  If code 5 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.  ",
-    "coding_description": "I eat all of the above",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

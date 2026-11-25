@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "non_cancer_illness_code_self_reported",
     "slug": "non-cancer-illness-code-self-reported",
     "description": "Non-cancer illness code, self-reported",
+    "coding_description": "hypothyroidism/myxoedema",
     "domain": "medical_conditions",
     "x_evidence_score": 63.06,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Verbal interview > Medical conditions",
     "description_more": "Code for non-cancer illness. If the participant was uncertain of the type of illness they had had, then they described it to the interviewer (a trained nurse) who attempted to place it within the coding tree. If the illness could not be located in the coding tree then the interviewer entered a free-text description of it. These free-text descriptions were subsequently examined by a doctor and, where possible, matched to entries in the coding tree. Free-text descriptions which could not be matched with very high probability have been marked as \"unclassifiable\".   Note that myasthenia gravis appears twice (under codes 1260 and 1437). Please ensure you use both codes to capture all relevant diagnoses.",
-    "coding_description": "hypothyroidism/myxoedema",
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "B",

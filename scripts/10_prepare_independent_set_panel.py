@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 
 from xatlas.io import coerce_bool, ensure_dir, maybe_read_bgz_tsv, write_tsv
+from xatlas.scoring import effective_hq_case_count
 from xatlas.settings import INTERIM_DIR, RAW_DIR
 
 
@@ -59,6 +60,9 @@ def main() -> None:
     parser.add_argument("--outdir", default=str(INTERIM_DIR / "panel_independent_set"))
     parser.add_argument("--min-pops-pass-qc", type=int, default=2)
     parser.add_argument("--require-both-sexes", action="store_true")
+    parser.add_argument("--pheno-sex", choices=["both_sexes", "females", "males"], default=None)
+    parser.add_argument("--strict-pheno-sex", action="store_true")
+    parser.add_argument("--allow-fallback-both-sexes", action="store_true")
     args = parser.parse_args()
 
     outdir = ensure_dir(args.outdir)
@@ -67,22 +71,40 @@ def main() -> None:
     independent = manifest["in_max_independent_set"].map(coerce_bool).fillna(False).astype(bool)
     num_pops = pd.to_numeric(manifest.get("num_pops_pass_qc"), errors="coerce").fillna(0)
     mask = independent & (num_pops >= args.min_pops_pass_qc)
-    if args.require_both_sexes:
+    if args.require_both_sexes and args.pheno_sex is None:
         mask &= manifest.get("pheno_sex", "").fillna("").eq("both_sexes")
 
     selected = manifest.loc[mask].copy()
+    if args.pheno_sex:
+        if args.pheno_sex == "both_sexes" or args.strict_pheno_sex:
+            selected = selected.loc[selected["pheno_sex"].fillna("").eq(args.pheno_sex)].copy()
+            selected["selection_used_fallback"] = False
+        else:
+            allowed = selected["pheno_sex"].fillna("").isin([args.pheno_sex, "both_sexes"])
+            selected = selected.loc[allowed].copy()
+            if args.allow_fallback_both_sexes:
+                selected["selection_used_fallback"] = selected["pheno_sex"].fillna("").ne(args.pheno_sex)
+            else:
+                selected = selected.loc[selected["pheno_sex"].fillna("").eq(args.pheno_sex)].copy()
+                selected["selection_used_fallback"] = False
+        selected["requested_pheno_sex"] = args.pheno_sex
+    else:
+        selected["selection_used_fallback"] = False
+        selected["requested_pheno_sex"] = selected.get("pheno_sex", "")
+
     selected["trait_id"] = selected.apply(make_trait_id, axis=1)
     selected["query_id"] = selected.apply(derive_query_id, axis=1)
     selected["domain"] = selected.apply(derive_domain, axis=1)
     selected["priority"] = 1
     selected["query"] = selected["description"].fillna(selected["trait_id"])
     selected["seed_notes"] = "Pan-UKB max independent set"
+    selected["effective_hq_case_count"] = selected.apply(effective_hq_case_count, axis=1)
 
-    hq_cases = pd.to_numeric(selected.get("n_cases_hq_cohort_both_sexes"), errors="coerce").fillna(0)
+    hq_cases = pd.to_numeric(selected["effective_hq_case_count"], errors="coerce").fillna(0)
     selected["selection_score"] = num_pops.loc[selected.index].astype(float) * 100 + np.log10(hq_cases + 1) * 10
     selected = selected.sort_values(
-        ["selection_score", "trait_type", "description"],
-        ascending=[False, True, True],
+        ["selection_used_fallback", "selection_score", "trait_type", "description"],
+        ascending=[True, False, True, True],
     ).reset_index(drop=True)
     selected["selection_rank"] = range(1, len(selected) + 1)
 

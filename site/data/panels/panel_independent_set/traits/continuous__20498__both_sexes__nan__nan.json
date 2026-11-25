@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "felt_very_upset_when_reminded_of_stressful_experience_in_past_mo",
     "slug": "felt-very-upset-when-reminded-of-stressful-experience-in-past-mo",
     "description": "Felt very upset when reminded of stressful experience in past month",
+    "coding_description": null,
     "domain": "traumatic_events",
     "x_evidence_score": 60.45,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "Online follow-up > Mental health > Traumatic events",
     "description_more": "Question asked: \"Next is a list of problems and complaints that people sometimes have in response to such extremely stressful experiences. Please indicate how much you have been bothered by that problem in the past month: Feeling very upset when something reminded you of a stressful experience?\"",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

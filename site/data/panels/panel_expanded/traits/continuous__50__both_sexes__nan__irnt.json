@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "height",
     "slug": "height",
     "description": "Standing height",
+    "coding_description": null,
     "domain": "anthropometrics",
     "x_evidence_score": 100,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Anthropometry > Body size measures",
     "description_more": "Standing height was measured using a Seca 202 device",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": false,
     "tier": "A",

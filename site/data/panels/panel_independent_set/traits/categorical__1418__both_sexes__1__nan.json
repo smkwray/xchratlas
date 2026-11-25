@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "milk_type_used",
     "slug": "milk-type-used",
     "description": "Milk type used",
+    "coding_description": "Full cream",
     "domain": "diet",
     "x_evidence_score": 10,
     "coverage_grade": "B",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
     "description_more": "ACE touchscreen question \"What type of milk do you mainly use?\" If the participant activated the Help button they were shown the message:     If you use more than one type of milk, please select the one that you drink the most. If you are unsure, select Do not know.     ",
-    "coding_description": "Full cream",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "egfr",
     "slug": "egfr",
     "description": "Estimated glomerular filtration rate, serum creatinine",
+    "coding_description": null,
     "domain": "kidney",
     "x_evidence_score": 99,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": null,
     "description_more": "eGFR based on serum creatinine (30700) using the CKD-EPI formula",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": false,
     "tier": "A",

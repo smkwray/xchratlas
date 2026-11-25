@@ -14,7 +14,14 @@ from pathlib import Path
 import pandas as pd
 
 from xatlas.io import coerce_bool, write_tsv
-from xatlas.scoring import LOOKUP_COMPLETE_STATUSES, compute_trait_score, load_weights, summarize_eqtl_lookup_note
+from xatlas.scoring import (
+    LOOKUP_COMPLETE_STATUSES,
+    compute_trait_score,
+    effective_hq_case_count,
+    load_weights,
+    stratum_label,
+    summarize_eqtl_lookup_note,
+)
 from xatlas.settings import INTERIM_DIR, PROCESSED_DIR, RELEASE_DIR
 
 
@@ -139,7 +146,12 @@ def main() -> None:
         }
         gene_row = gene_lookup.loc[trait_id].to_dict() if gene_lookup is not None and trait_id in gene_lookup.index else {}
         score = compute_trait_score(row.to_dict(), summary_row, gene_row=gene_row, weights=weights)
-        score_rows.append({**row.to_dict(), **summary_row, **gene_row, **score})
+        merged = {**row.to_dict(), **summary_row, **gene_row, **score}
+        merged["view_stratum"] = merged.get("requested_pheno_sex") or merged.get("pheno_sex")
+        merged["effective_hq_case_count"] = effective_hq_case_count(merged)
+        merged["stratum_label"] = stratum_label(merged.get("view_stratum"))
+        merged["selection_used_fallback"] = coerce_bool(merged.get("selection_used_fallback")) is True
+        score_rows.append(merged)
 
     trait_scores = pd.DataFrame(score_rows).sort_values(
         ["x_evidence_score", "coverage_grade", "domain", "description"],

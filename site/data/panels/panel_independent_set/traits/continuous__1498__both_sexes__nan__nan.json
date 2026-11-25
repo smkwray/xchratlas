@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "coffee_intake",
     "slug": "coffee-intake",
     "description": "Coffee intake",
+    "coding_description": null,
     "domain": "diet",
     "x_evidence_score": 60.1,
     "coverage_grade": "A",
@@ -35,7 +36,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
     "description_more": "ACE touchscreen question \"How many cups of coffee do you drink each DAY? (Include decaffeinated coffee)\" The following checks were performed:  If answer   If answer > 99 then rejected  If answer > 10 then participant asked to confirm   If the participant activated the Help button they were shown the message:     Please provide an average considering your intake over the last year. If you are unsure, please provide an estimate or select Do not know.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "B",

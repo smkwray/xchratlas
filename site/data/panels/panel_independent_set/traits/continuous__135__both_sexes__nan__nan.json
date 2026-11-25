@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "number_of_self_reported_non_cancer_illnesses",
     "slug": "number-of-self-reported-non-cancer-illnesses",
     "description": "Number of self-reported non-cancer illnesses",
+    "coding_description": null,
     "domain": "medical_conditions",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Verbal interview > Medical conditions",
     "description_more": "Number of non-cancer illnesses entered",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "D",

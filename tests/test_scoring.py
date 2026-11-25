@@ -1,6 +1,6 @@
 import pandas as pd
 
-from xatlas.scoring import summarize_eqtl_lookup_note
+from xatlas.scoring import compute_trait_score, coverage_grade, effective_hq_case_count, summarize_eqtl_lookup_note
 
 
 def test_summarize_eqtl_lookup_note_handles_partial_rsid_coverage():
@@ -62,3 +62,44 @@ def test_summarize_eqtl_lookup_note_reports_lookup_hit_only_state():
         summarize_eqtl_lookup_note(rows)
         == "eQTL follow-up returned lookup-hit associations, but none met the strict candidate-gene support rule."
     )
+
+
+def test_effective_hq_case_count_uses_requested_stratum_sample_size():
+    row = {
+        "pheno_sex": "females",
+        "n_cases_hq_cohort_both_sexes": 100000,
+        "n_cases_hq_cohort_females": 12000,
+        "n_cases_hq_cohort_males": 8000,
+    }
+    assert effective_hq_case_count(row) == 12000
+
+
+def test_coverage_grade_uses_stratum_specific_case_count():
+    row = {
+        "pheno_sex": "males",
+        "in_max_independent_set": True,
+        "num_pops_pass_qc": 1,
+        "n_cases_hq_cohort_both_sexes": 75000,
+        "n_cases_hq_cohort_males": 5000,
+    }
+    assert coverage_grade(row) == "C"
+
+
+def test_compute_trait_score_adds_sex_specific_confidence_notes():
+    score = compute_trait_score(
+        {
+            "pheno_sex": "males",
+            "in_max_independent_set": True,
+            "num_pops_pass_qc": 2,
+            "n_cases_hq_cohort_males": 60000,
+        },
+        {
+            "n_loci": 1,
+            "lead_neglog10_pvalue": 9.5,
+            "any_nonpar_locus": True,
+            "par_only_signal": False,
+            "pvalue_scale": "neglog10",
+        },
+        gene_row={"best_mapping_relation": "lead_overlap", "eqtl_supported": False},
+    )
+    assert "male-only" in score["confidence_notes"]

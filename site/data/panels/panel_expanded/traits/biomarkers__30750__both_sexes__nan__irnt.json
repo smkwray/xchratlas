@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "hba1c",
     "slug": "hba1c",
     "description": "Glycated haemoglobin (HbA1c)",
+    "coding_description": null,
     "domain": "glycemic",
     "x_evidence_score": 100,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "Biological samples > Assay results > Blood assays > Blood biochemistry",
     "description_more": null,
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "A",

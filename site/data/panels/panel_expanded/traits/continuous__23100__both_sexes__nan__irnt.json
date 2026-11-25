@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "body_fat_mass",
     "slug": "body-fat-mass",
     "description": "Whole body fat mass",
+    "coding_description": null,
     "domain": "body_composition",
     "x_evidence_score": 99,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Anthropometry > Impedance measures",
     "description_more": "Body composition estimation by impedance measurement. Fat mass Total fat mass in Kg, in 0.1Kg increments.",
-    "coding_description": null,
     "num_pops_pass_qc": 5,
     "in_max_independent_set": false,
     "tier": "A",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "age_completed_full_time_education",
     "slug": "age-completed-full-time-education",
     "description": "Age completed full time education",
+    "coding_description": null,
     "domain": "education",
     "x_evidence_score": 67.82,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Sociodemographics > Education",
     "description_more": "ACE touchscreen question \"At what age did you complete your continuous full time education?\" The following checks were performed:  If answer   If answer > Participants age then rejected  If answer > 40 then participant asked to confirm   If the participant activated the Help button they were shown the message:     Please give the age that you completed 'continuous' full time education. For example, if you stopped your studies when you were 17 years old with the intention that you had completed your studies but then returned to full time studies when you were 24, enter 17. However if you only temporarily stopped your studies at 17 with the intention that you would return to studies (for instance a gap year) and then completed your full time education at 21, enter 21.      ~F845~ was collected from all participants except those who indicated they have a College or University degree, as defined by their answers to ~F6138~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

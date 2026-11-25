@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "recent_trouble_relaxing",
     "slug": "recent-trouble-relaxing",
     "description": "Recent trouble relaxing",
+    "coding_description": null,
     "domain": "anxiety",
     "x_evidence_score": 64.64,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": null,
     "category": "Online follow-up > Mental health > Anxiety",
     "description_more": "Question asked: \"Over the last 2 weeks, how often have you been bothered by any of the following problems? [anxiety symptoms] Trouble relaxing\"",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

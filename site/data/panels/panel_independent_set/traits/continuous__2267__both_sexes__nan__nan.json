@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "use_of_sun_uv_protection",
     "slug": "use-of-sun-uv-protection",
     "description": "Use of sun/uv protection",
+    "coding_description": null,
     "domain": "sun_exposure",
     "x_evidence_score": 70.69,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
     "description_more": "ACE touchscreen question \"Do you wear sun protection (e.g. sunscreen lotion, hat) when you spend time outdoors in the summer?\" If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "B",

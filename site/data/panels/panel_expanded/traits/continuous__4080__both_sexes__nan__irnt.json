@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "sbp",
     "slug": "sbp",
     "description": "Systolic blood pressure, automated reading",
+    "coding_description": null,
     "domain": "cardiometabolic",
     "x_evidence_score": 89,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Blood pressure",
     "description_more": "Blood pressure, automated reading, systolic. Two measures of blood pressure were taken a few moments apart.   Range returned by the Omron device is is 0-255",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": false,
     "tier": "A",

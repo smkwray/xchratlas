@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "pm_final_answer",
     "slug": "pm-final-answer",
     "description": "PM: final answer",
+    "coding_description": "Orange circle",
     "domain": "prospective_memory",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Cognitive function > Prospective memory",
     "description_more": "Participants were allowed up to 2 attempts to correctly recall the colour/shape shown to them earlier in the touchscreen section. This is the final answer they gave - whether it is their first or second attempt can be gauged from ~F4291~.",
-    "coding_description": "Orange circle",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

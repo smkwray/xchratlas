@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "number_of_days_week_walked_10_minutes",
     "slug": "number-of-days-week-walked-10-minutes",
     "description": "Number of days/week walked 10+ minutes",
+    "coding_description": null,
     "domain": "physical_activity",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Physical activity",
     "description_more": "ACE touchscreen question \"In a typical WEEK, on how many days did you walk for at least 10 minutes at a time? (Include walking that you do at work, travelling to and from work, and for sport or leisure)\" The following checks were performed:  If answer   If answer > 7 then rejected   If the participant activated the Help button they were shown the message:     Count the number of days in a week that you walk for at least 10 minutes continuously at a time.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "D",

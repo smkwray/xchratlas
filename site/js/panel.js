@@ -20,6 +20,11 @@ function safeText(v, fallback) {
   if (v === null || v === undefined || v === '') return fallback || '';
   return String(v);
 }
+function displayTraitName(trait) {
+  if (!trait) return '';
+  if (trait.query_id === 'operation_code' && trait.coding_description) return trait.coding_description;
+  return safeText(trait.description, safeText(trait.query_id, safeText(trait.trait_id, 'Unlabeled trait')));
+}
 function pct(n, d) { return d ? Math.round(n / d * 100) : 0; }
 function eqtlStatusMeta(trait) {
   if (trait.eqtl_supported) return { cls: 'is-supported', label: 'eQTL-supported' };
@@ -84,6 +89,7 @@ function applyFilters() {
   var q = S.searchTerm.toLowerCase();
   S.filtered = S.traits.filter(function (t) {
     if (q && !(
+      displayTraitName(t).toLowerCase().includes(q) ||
       safeText(t.description).toLowerCase().includes(q) ||
       safeText(t.domain).toLowerCase().includes(q) ||
       safeText(t.query_id).toLowerCase().includes(q) ||
@@ -102,6 +108,7 @@ function applyFilters() {
 function sortTraits() {
   var k = S.sortKey, d = S.sortDir === 'asc' ? 1 : -1;
   S.filtered.sort(function (a, b) {
+    if (k === 'description') return d * displayTraitName(a).localeCompare(displayTraitName(b));
     var av = a[k], bv = b[k];
     if (typeof av === 'string' || typeof bv === 'string') return d * safeText(av).localeCompare(safeText(bv));
     return d * ((av || 0) - (bv || 0));
@@ -120,7 +127,7 @@ function renderTable() {
     var sw = Math.min(t.x_evidence_score, 100);
     var status = eqtlStatusMeta(t);
     return '<tr class="trait-row" onclick="location.href=\'trait.html?panel=' + S.panelId + '&trait=' + encodeURIComponent(t.trait_id) + '\'">' +
-      '<td class="trait-name-cell"><span class="trait-table-name">' + t.description + '</span></td>' +
+      '<td class="trait-name-cell"><span class="trait-table-name">' + displayTraitName(t) + '</span></td>' +
       '<td><span class="domain-badge">' + fmtDomain(t.domain) + '</span></td>' +
       '<td class="score-cell"><div class="mini-score-bar"><div class="mini-score-fill" style="width:' + sw + '%"></div></div><span class="score-val">' + t.x_evidence_score.toFixed(0) + '</span></td>' +
       '<td class="num-cell">' + t.n_loci + '</td>' +

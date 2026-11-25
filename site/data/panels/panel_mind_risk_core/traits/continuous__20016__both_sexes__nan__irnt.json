@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_mind_risk_core",
     "slug": "mind-and-behavior",
@@ -12,6 +12,7 @@
     "query_id": "fluid_intelligence",
     "slug": "fluid-intelligence",
     "description": "Fluid intelligence score",
+    "coding_description": null,
     "domain": "cognitive",
     "x_evidence_score": 48.12,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Cognitive function > Fluid intelligence / reasoning",
     "description_more": "This is a simple unweighted sum of the number of correct answers given to the 13 fluid intelligence questions. Participants who did not answer all of the questions within the allotted 2 minute limit are scored as zero for each of the unattempted questions.",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": false,
     "tier": "C",

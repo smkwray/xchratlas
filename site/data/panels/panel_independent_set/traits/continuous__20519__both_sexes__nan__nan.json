@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "recent_feelings_of_tiredness_or_low_energy",
     "slug": "recent-feelings-of-tiredness-or-low-energy",
     "description": "Recent feelings of tiredness or low energy",
+    "coding_description": null,
     "domain": "depression",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "Online follow-up > Mental health > Depression",
     "description_more": "Question asked: \"Over the last 2 weeks, how often have you been bothered by any of the following problems? [depressive symptoms] Feeling tired or having little energy\"",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

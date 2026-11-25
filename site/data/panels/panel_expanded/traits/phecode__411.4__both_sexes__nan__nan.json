@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "coronary_atherosclerosis",
     "slug": "coronary-atherosclerosis",
     "description": "Coronary atherosclerosis",
+    "coding_description": null,
     "domain": "disease",
     "x_evidence_score": 62.63,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "circulatory system",
     "description_more": null,
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": false,
     "tier": "B",

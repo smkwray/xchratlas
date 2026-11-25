@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "medication_for_pain_relief_constipation_heartburn",
     "slug": "medication-for-pain-relief-constipation-heartburn",
     "description": "Medication for pain relief, constipation, heartburn",
+    "coding_description": "Paracetamol",
     "domain": "medication",
     "x_evidence_score": 64.88,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Medication",
     "description_more": "ACE touchscreen question \"Do you regularly take any of the following? (You can select more than one answer)\" The following checks were performed:  If code -7 was selected, then no additional choices were allowed.  If code -1 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.   If the participant activated the Help button they were shown the message:     Some over the counter medicines are known by other names.  Please enter the corresponding name if you take any of the following REGULARLY (that is, most days of the week for the last 4 weeks):  Aspirin: Alka Rapid Crystals, Alka-Seltzer XS, Anadin Extra, Anadin   Original, Askit powders, Aspro Clear, Codis 500, Disprin, Disprin Extra  Ibuprofen: Anadin Ultra, Anadin Ibuprofen, Cuprofen Plus, Nurofen,   Solpaflex, Ibuleve  Paracetamol: Anadin Extra, Hedex Extra, Panadol, Paracodol, Paramol,   Solpadeine, Syndol, Veganin, Feminax, Midrid, Migraleve  Codeine: Codis 500, Cuprofen Plus, Nurofen Plus, Panadol Ultra,   Paracodol, Paramol, Solpadeine Max, Sopadeine Plus, Solpafelx, Syndol,   Veganin, Feminax, Migraleve     ",
-    "coding_description": "Paracetamol",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

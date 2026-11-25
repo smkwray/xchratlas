@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "3mm_weak_meridian_left",
     "slug": "3mm-weak-meridian-left",
     "description": "3mm weak meridian (left)",
+    "coding_description": null,
     "domain": "autorefraction",
     "x_evidence_score": 66.54,
     "coverage_grade": "A",
@@ -35,7 +36,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Eye measures > Autorefraction",
     "description_more": "This is the weak meridian of keratometry results taken at 3mm for the left eye",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

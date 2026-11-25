@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "age_started_wearing_glasses_or_contact_lenses",
     "slug": "age-started-wearing-glasses-or-contact-lenses",
     "description": "Age started wearing glasses or contact lenses",
+    "coding_description": null,
     "domain": "eyesight",
     "x_evidence_score": 76.62,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Eyesight",
     "description_more": "ACE touchscreen question \"What age did you first start to wear glasses or contact lenses?\" The following checks were performed:  If answer   If answer > Participants age then rejected  If answer    If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.      ~F2217~ was collected from participants who indicated they wear glasses or contact lenses to correct their vision, as defined by their answers to ~F2207~",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "A",

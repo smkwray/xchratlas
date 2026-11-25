@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "leisure_social_activities",
     "slug": "leisure-social-activities",
     "description": "Leisure/social activities",
+    "coding_description": "Adult education class",
     "domain": "social_support",
     "x_evidence_score": 10,
     "coverage_grade": "B",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Social support",
     "description_more": "ACE touchscreen question \"Which of the following do you attend once a week or more often? (You can select more than one)\" The following checks were performed:  If code -7 was selected, then no additional choices were allowed.  If code -3 was selected, then no additional choices were allowed.   If the participant activated the Help button they were shown the message:     If this varies, please think about activities in the last year.     ",
-    "coding_description": "Adult education class",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

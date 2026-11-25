@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "length_of_mobile_phone_use",
     "slug": "length-of-mobile-phone-use",
     "description": "Length of mobile phone use",
+    "coding_description": null,
     "domain": "electronic_device_use",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Electronic device use",
     "description_more": "ACE touchscreen question \"For approximately how many years have you been using a mobile phone at least once per week to make or receive calls?\" If the participant activated the Help button they were shown the message:     Do not include time spent text messaging. If you are unsure, please provide an estimate or select Do not know.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

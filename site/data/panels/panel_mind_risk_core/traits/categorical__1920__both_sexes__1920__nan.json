@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_mind_risk_core",
     "slug": "mind-and-behavior",
@@ -12,6 +12,7 @@
     "query_id": "mood_swings",
     "slug": "mood-swings",
     "description": "Mood swings",
+    "coding_description": null,
     "domain": "behavioral",
     "x_evidence_score": 74.51,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Mental health",
     "description_more": "ACE touchscreen question \"Does your mood often go up and down?\" If the participant activated the Help button they were shown the message:     Work through these questions quickly and do not think about the exact meaning of the question     ",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": false,
     "tier": "B",

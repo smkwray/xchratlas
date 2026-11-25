@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "monocyte_percentage",
     "slug": "monocyte-percentage",
     "description": "Monocyte percentage",
+    "coding_description": null,
     "domain": "blood_count",
     "x_evidence_score": 100,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "Biological samples > Assay results > Blood assays > Blood count",
     "description_more": "Result of \"Monocytes Percentage\" assay, performed on blood sample, obtained from UK Biobank assessment centre visit. Monocytes (percentage) is calculated as the proportion of monocytes in the leukocytes.",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "A",

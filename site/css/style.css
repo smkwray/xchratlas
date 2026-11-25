@@ -1372,6 +1372,78 @@ sup { font-size: 0.7em; }
   .metadata-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 }
 
+/* ── Gene Search Page ─────────────────────── */
+.gene-search-input { max-width: 480px; }
+.gene-empty {
+  text-align: center; padding: 3rem 1rem;
+  color: var(--text-tertiary); font-size: 0.95rem;
+}
+.gene-card {
+  background: var(--bg-raised); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  margin-bottom: 1rem;
+}
+.gene-card-header {
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.gene-card-title-row {
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.gene-card-name {
+  font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.gene-card-id {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-tertiary);
+}
+.gene-card-summary { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+.gene-card-fact {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 0.18rem 0.45rem;
+  border-radius: 999px; background: var(--bg-sunken); color: var(--text-secondary);
+}
+.gene-highlight {
+  background: rgba(45, 212, 191, 0.2); color: var(--accent-text);
+  border-radius: 2px; padding: 0 1px;
+}
+[data-theme="dark"] .gene-highlight {
+  background: rgba(45, 212, 191, 0.15); color: var(--accent);
+}
+.biotype-protein { background: var(--accent-subtle); color: var(--accent-text); }
+.biotype-other { background: var(--bg-sunken); color: var(--text-secondary); }
+.gene-card-traits { overflow-x: auto; }
+.gene-trait-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.gene-trait-table th {
+  text-align: left; padding: 0.55rem 0.75rem;
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.gene-trait-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.gene-trait-table tbody tr:last-child td { border-bottom: none; }
+.gene-trait-row { cursor: pointer; transition: background 0.15s; }
+.gene-trait-row:hover { background: var(--accent-subtle); }
+.gene-trait-name { font-weight: 600; min-width: 180px; }
+.gene-trait-panel { font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; }
+.gene-overflow-cell { text-align: center; padding: 0.6rem; }
+.gene-show-more {
+  font-size: 0.82rem; font-weight: 600; color: var(--accent);
+  background: none; border: none; cursor: pointer; padding: 0.3rem 0.8rem;
+  border-radius: var(--radius); transition: background 0.15s;
+}
+.gene-show-more:hover { background: var(--accent-subtle); }
+.nav-link-active { color: var(--accent) !important; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .gene-card-header { padding: 1rem; }
+  .gene-card-name { font-size: 1rem; }
+  .gene-trait-table { font-size: 0.78rem; }
+  .gene-trait-table th,
+  .gene-trait-table td { padding: 0.4rem 0.5rem; }
+}
+
 /* ── Print ─────────────────────────────────── */
 @media print {
   .header, .footer, .hero-scroll-hint, .theme-toggle, .hamburger { display: none; }

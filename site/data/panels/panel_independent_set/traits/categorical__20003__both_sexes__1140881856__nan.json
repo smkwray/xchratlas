@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "treatment_medication_code",
     "slug": "treatment-medication-code",
     "description": "Treatment/medication code",
+    "coding_description": "salbutamol",
     "domain": "medications",
     "x_evidence_score": 10,
     "coverage_grade": "B",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Verbal interview > Medications",
     "description_more": "Code for treatment Negative codes indicate free-text entry.",
-    "coding_description": "salbutamol",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

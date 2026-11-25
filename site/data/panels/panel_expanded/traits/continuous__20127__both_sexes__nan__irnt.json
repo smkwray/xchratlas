@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "neuroticism",
     "slug": "neuroticism",
     "description": "Neuroticism score",
+    "coding_description": null,
     "domain": "behavioral",
     "x_evidence_score": 59.26,
     "coverage_grade": "U",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Touchscreen > Psychosocial factors > Mental health",
     "description_more": "This is an externally derived summary score of neuroticism, based on 12 neurotic behaviour domains as reported from fields 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020 and 2030 from the touchscreen questionnaire at baseline. Participants were assessed for twelve domains of neurotic behaviours via the touchscreen questionnaire. Questions included:    Does your mood often go up and down?   Do you ever feel 'just miserable' for no reason?   Are you an irritable person?   Are your feelings easily hurt?   Do you often feel 'fed-up'?   Would you call yourself a nervous person?   Are you a worrier?   Would you call yourself tense or 'highly strung'?   Do you worry too long after an embarrassing experience?   Do you suffer from 'nerves'?   Do you often feel lonely?   Are you often troubled by feelings of guilt?   Participants could answer Yes, No, Do not know or Prefer not to answer.   This field summarises the number of Yes answers across these twelve questions into a single integer score for each participant.   This derived data field has come from Professor Jill Pell from the Institute of Health &amp; Wellbeing, University of Glasgow. Methods on how these fields were derived can be found in the Additional Resources tab.",
-    "coding_description": null,
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
     "tier": "B",

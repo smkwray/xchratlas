@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "job_involves_heavy_manual_or_physical_work",
     "slug": "job-involves-heavy-manual-or-physical-work",
     "description": "Job involves heavy manual or physical work",
+    "coding_description": null,
     "domain": "employment",
     "x_evidence_score": 68.74,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Sociodemographics > Employment",
     "description_more": "ACE touchscreen question \"Does your work involve heavy manual or physical work?\" If the participant activated the Help button they were shown the message:     If you have more than one 'current job' then answer this question for your MAIN job only. Physical work includes work that involves handling of heavy objects and use of heavy tools.      ~F816~ was collected from participants who indicated they were in paid employment or self-employed as defined by their answers to ~F6142~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_mind_risk_core",
     "slug": "mind-and-behavior",
@@ -12,6 +12,7 @@
     "query_id": "reaction_time",
     "slug": "reaction-time",
     "description": "Mean time to correctly identify matches",
+    "coding_description": null,
     "domain": "cognitive",
     "x_evidence_score": 71.99,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Cognitive function > Reaction time",
     "description_more": "This field is the mean duration to first press of snap-button summed over rounds in which both cards matched. It gives a crude measure of the raw processing+reaction speed of a participant.   The following data points were excluded when forming the average:   Rounds 0-4 were regarded as \"training\";   Times under 50ms must be due to anticipation rather than reaction;   Times over 2000ms were ignored as the cards had disappeared by then.     Values were rounded to the nearest whole number.",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": false,
     "tier": "B",

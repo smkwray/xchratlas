@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "menopause",
     "slug": "menopause",
     "description": "Age at menopause (last menstrual period)",
+    "coding_description": null,
     "domain": "reproductive",
     "x_evidence_score": 84.74,
     "coverage_grade": "U",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Touchscreen > Sex-specific factors > Female-specific factors",
     "description_more": "ACE touchscreen question \"How old were you when your periods stopped?\" The following checks were performed:  If answer   If answer > Participants age then rejected  If answer > 70 then rejected  If answer   If answer > 60 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.      ~F3581~ was collected from women who indicated that their periods had stopped, as defined by their answers to ~F2724~",
-    "coding_description": null,
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
     "tier": "A",

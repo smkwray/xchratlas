@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "insomnia",
     "slug": "insomnia",
     "description": "Sleeplessness / insomnia",
+    "coding_description": null,
     "domain": "neuropsychiatric",
     "x_evidence_score": 40.28,
     "coverage_grade": "U",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sleep",
     "description_more": "ACE touchscreen question \"Do you have trouble falling asleep at night or do you wake up in the middle of the night?\" If the participant activated the Help button they were shown the message:     If this varies a lot, answer this question in relation to the last 4 weeks.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
     "tier": "C",

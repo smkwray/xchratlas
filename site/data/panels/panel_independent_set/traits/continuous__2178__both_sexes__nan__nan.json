@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "overall_health_rating",
     "slug": "overall-health-rating",
     "description": "Overall health rating",
+    "coding_description": null,
     "domain": "general_health",
     "x_evidence_score": 73.42,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > General health",
     "description_more": "ACE touchscreen question \"In general how would you rate your overall health?\"",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "B",

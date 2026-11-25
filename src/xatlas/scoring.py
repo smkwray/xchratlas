@@ -29,6 +29,12 @@ LOOKUP_COMPLETE_STATUSES = {
     "empty",
 }
 
+STRATUM_LABELS = {
+    "both_sexes": "Both sexes",
+    "females": "Females",
+    "males": "Males",
+}
+
 
 def _normalize_token(value: Any) -> str:
     if value is None:
@@ -36,6 +42,24 @@ def _normalize_token(value: Any) -> str:
     if pd.isna(value):
         return ""
     return str(value).strip().lower()
+
+
+def stratum_label(value: Any) -> str:
+    token = _normalize_token(value)
+    if token in STRATUM_LABELS:
+        return STRATUM_LABELS[token]
+    if not token:
+        return ""
+    return token.replace("_", " ").title()
+
+
+def effective_hq_case_count(row: pd.Series | dict[str, Any]) -> float:
+    sex = _normalize_token(row.get("pheno_sex"))
+    if sex == "females":
+        return pd.to_numeric(row.get("n_cases_hq_cohort_females"), errors="coerce")
+    if sex == "males":
+        return pd.to_numeric(row.get("n_cases_hq_cohort_males"), errors="coerce")
+    return pd.to_numeric(row.get("n_cases_hq_cohort_both_sexes"), errors="coerce")
 
 
 def eqtl_lookup_note(row: pd.Series | dict[str, Any]) -> str:
@@ -139,7 +163,7 @@ def coverage_grade(row: pd.Series | dict[str, Any]) -> str:
     get = row.get if isinstance(row, dict) else row.__getitem__
     in_independent = coerce_bool(get("in_max_independent_set")) is True
     num_qc = pd.to_numeric(get("num_pops_pass_qc"), errors="coerce")
-    hq_n = pd.to_numeric(get("n_cases_hq_cohort_both_sexes"), errors="coerce")
+    hq_n = effective_hq_case_count(row)
 
     if in_independent and pd.notna(num_qc) and num_qc >= 2 and pd.notna(hq_n) and hq_n >= 50_000:
         return "A"
@@ -178,7 +202,7 @@ def compute_trait_score(
 
     in_independent = coerce_bool(m.get("in_max_independent_set")) is True
     num_qc = pd.to_numeric(m.get("num_pops_pass_qc"), errors="coerce")
-    hq_n = pd.to_numeric(m.get("n_cases_hq_cohort_both_sexes"), errors="coerce")
+    hq_n = effective_hq_case_count(m)
 
     if in_independent:
         score += weights["coverage"]["independent_set"]
@@ -219,6 +243,10 @@ def compute_trait_score(
     pheno_sex = str(m.get("pheno_sex", "") or "")
     if pheno_sex == "both_sexes":
         notes.append("GWAS is sex-combined; dosage-compensation assumptions are not explicit.")
+    elif pheno_sex == "females":
+        notes.append("GWAS is female-only. chrX dosage and inactivation caveats still apply.")
+    elif pheno_sex == "males":
+        notes.append("GWAS is male-only. Hemizygous chrX dosage caveats still apply.")
 
     pscale = str(s.get("pvalue_scale", "") or "")
     if pscale == "ln":

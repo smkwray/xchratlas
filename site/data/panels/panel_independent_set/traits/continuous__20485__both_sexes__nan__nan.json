@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "ever_contemplated_self_harm",
     "slug": "ever-contemplated-self-harm",
     "description": "Ever contemplated self-harm",
+    "coding_description": null,
     "domain": "self_harm_behaviours",
     "x_evidence_score": 60.27,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "Online follow-up > Mental health > Self-harm behaviours",
     "description_more": "Question asked: \"Have you contemplated harming yourself (for example by cutting, biting, hitting yourself or taking an overdose)?\"",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

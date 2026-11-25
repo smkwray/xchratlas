@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "number_of_vehicles_in_household",
     "slug": "number-of-vehicles-in-household",
     "description": "Number of vehicles in household",
+    "coding_description": null,
     "domain": "household",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Sociodemographics > Household",
     "description_more": "ACE touchscreen question \"How many cars or vans are owned, or available for use, by you or members of your household? (Please include company vehicles if available for private use) \" If the participant activated the Help button they were shown the message:     Do not include motorcycles.      ~F728~ was collected from all participants except those who indicated they were living in a sheltered accommodation or in a care home as defined by their answers to ~F670~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "hearing_difficulty_problems_with_background_noise",
     "slug": "hearing-difficulty-problems-with-background-noise",
     "description": "Hearing difficulty/problems with background noise",
+    "coding_description": null,
     "domain": "hearing",
     "x_evidence_score": 68.72,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Hearing",
     "description_more": "ACE touchscreen question \"Do you find it difficult to follow a conversation if there is background noise (such as TV, radio, children playing)?\" ~F2257~ was collected from all participants except those who indicated they were completely deaf, as defined by their answers to ~F2247~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

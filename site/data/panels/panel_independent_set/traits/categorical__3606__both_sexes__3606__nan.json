@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "chest_pain_or_discomfort_walking_normally",
     "slug": "chest-pain-or-discomfort-walking-normally",
     "description": "Chest pain or discomfort walking normally",
+    "coding_description": null,
     "domain": "chest_pain",
     "x_evidence_score": 10,
     "coverage_grade": "B",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Chest pain",
     "description_more": "ACE touchscreen question \"Do you get this pain or discomfort when you walk at an ordinary pace on the level?\" ~F3606~ was collected from participants who indicated that they get pain or discomfort in their chest, as defined by their answers to ~F2335~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

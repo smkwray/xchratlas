@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "menarche",
     "slug": "menarche",
     "description": "Age when periods started (menarche)",
+    "coding_description": null,
     "domain": "reproductive",
     "x_evidence_score": 74.22,
     "coverage_grade": "U",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Sex-specific factors > Female-specific factors",
     "description_more": "ACE touchscreen question \"How old were you when your periods started?\" The following checks were performed:  If answer   If answer > Participants age then rejected  If answer > 25 then rejected  If answer   If answer > 20 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
     "tier": "B",

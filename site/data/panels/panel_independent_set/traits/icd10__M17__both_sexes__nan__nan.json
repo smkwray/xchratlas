@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "m17_gonarthrosis_arthrosis_of_knee",
     "slug": "m17-gonarthrosis-arthrosis-of-knee",
     "description": "M17 Gonarthrosis [arthrosis of knee]",
+    "coding_description": null,
     "domain": "icd10",
     "x_evidence_score": 10,
     "coverage_grade": "B",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "Chapter XIII Diseases of the musculoskeletal system and connective tissue | M15-M19 Arthrosis | M17 Gonarthrosis [arthrosis of knee]",
     "description_more": "truncated: true",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

@@ -105,3 +105,71 @@ def test_build_release_loci_preserves_locus_level_eqtl_summary():
     assert out.loc[0, "top_gene_name"] == "LOCAL_TOP"
     assert bool(out.loc[0, "eqtl_supported"]) is True
     assert out.loc[0, "best_eqtl_pvalue"] == 1e-7
+
+
+def test_release_export_adds_stratum_ready_trait_fields(tmp_path: Path):
+    selected = pd.DataFrame(
+        [
+            {
+                "trait_id": "trait1",
+                "query_id": "trait_one",
+                "description": "Trait One",
+                "domain": "alpha",
+                "pheno_sex": "females",
+                "requested_pheno_sex": "females",
+                "selection_used_fallback": False,
+                "num_pops_pass_qc": 2,
+                "in_max_independent_set": True,
+                "n_cases_hq_cohort_females": 12000,
+            }
+        ]
+    )
+    selected_path = tmp_path / "selected.tsv"
+    selected.to_csv(selected_path, sep="\t", index=False)
+
+    trait_summary = pd.DataFrame(
+        [
+            {
+                "trait_id": "trait1",
+                "n_loci": 1,
+                "lead_neglog10_pvalue": 9.1,
+                "pvalue_scale": "neglog10",
+                "par_only_signal": False,
+                "any_nonpar_locus": True,
+            }
+        ]
+    )
+    trait_summary_path = tmp_path / "trait_summary.tsv"
+    trait_summary.to_csv(trait_summary_path, sep="\t", index=False)
+
+    outdir = tmp_path / "release"
+    export_main = EXPORT_MOD["main"]
+
+    import sys
+
+    argv = sys.argv[:]
+    try:
+        sys.argv = [
+            "08_export_release_tables.py",
+            "--selected",
+            str(selected_path),
+            "--trait-summary",
+            str(trait_summary_path),
+            "--outdir",
+            str(outdir),
+            "--loci",
+            str(tmp_path / "missing_loci.tsv.gz"),
+            "--gene-summary",
+            str(tmp_path / "missing_gene_summary.tsv"),
+            "--gene-candidates",
+            str(tmp_path / "missing_gene_candidates.tsv.gz"),
+        ]
+        export_main()
+    finally:
+        sys.argv = argv
+
+    trait_scores = pd.read_csv(outdir / "trait_scores.tsv", sep="\t")
+    assert trait_scores.loc[0, "view_stratum"] == "females"
+    assert trait_scores.loc[0, "stratum_label"] == "Females"
+    assert trait_scores.loc[0, "effective_hq_case_count"] == 12000
+    assert bool(trait_scores.loc[0, "selection_used_fallback"]) is False

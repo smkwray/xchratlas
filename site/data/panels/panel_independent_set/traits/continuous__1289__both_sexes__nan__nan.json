@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "cooked_vegetable_intake",
     "slug": "cooked-vegetable-intake",
     "description": "Cooked vegetable intake",
+    "coding_description": null,
     "domain": "diet",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Diet",
     "description_more": "ACE touchscreen question \"On average how many heaped tablespoons of COOKED vegetables would you eat per DAY? (Do not include potatoes; put '0' if you do not eat any)\" The following checks were performed:  If answer > 50 then rejected   If the participant activated the Help button they were shown the message:     Please provide an average considering your intake over the last year. If you are unsure, please provide an estimate or select Do not know. If you have less than one tablespoon a day select Less than one.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "frequency_of_solarium_sunlamp_use",
     "slug": "frequency-of-solarium-sunlamp-use",
     "description": "Frequency of solarium/sunlamp use",
+    "coding_description": null,
     "domain": "sun_exposure",
     "x_evidence_score": 91.07,
     "coverage_grade": "A",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
     "description_more": "ACE touchscreen question \"How many times a year would you use a solarium or sunlamp?\" The following checks were performed:  If answer > 9999 then rejected  If answer > 400 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If you are unsure, please provide an estimate or select Do not know.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "A",

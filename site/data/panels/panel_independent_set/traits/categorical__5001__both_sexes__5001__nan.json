@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "fi7_synonym",
     "slug": "fi7-synonym",
     "description": "FI7 : synonym",
+    "coding_description": null,
     "domain": "fluid_intelligence_reasoning",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Cognitive function > Fluid intelligence / reasoning",
     "description_more": "ACE touchscreen question \"Stop means the same as?\". Part 7 of Fluid Intelligence test.  Offered choice from Pause, Close, Cease, Break or Rest.",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

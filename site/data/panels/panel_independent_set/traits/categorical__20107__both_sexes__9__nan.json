@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "illnesses_of_father",
     "slug": "illnesses-of-father",
     "description": "Illnesses of father",
+    "coding_description": "Diabetes",
     "domain": "family_history",
     "x_evidence_score": 55.36,
     "coverage_grade": "B",
@@ -35,7 +36,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Family history",
     "description_more": "This field contains the combined results of 2 ACE touchscreen questions, both asked \"Has/did your father ever suffer from? (You can select more than one answer)\" for different sets of illnesses. For convenience, the illnesses were arbitrarily divided into two sets:      Group 1 : Heart disease, Stroke, High blood pressure, Chronic bronchitis/emphysema, Alzheimer's disease/dementia, Diabetes.   Group 2 : Parkinson's disease, Severe Depression, Lung cancer, Bowel cancer, Prostate cancer.     If any of codes -11, -13 or -17 were selected then no additional Group 1 choices were allowed. If any of codes -21, -23 or -27 were selected then no additional Group 2 choices were allowed.  If the participant activated the Help button they were shown the message:     Answer this question for blood relations only. If you are not sure if your father suffered from any of the listed illnesses please select Do not know. If you know your father suffered from certain listed illnesses but are unsure about others, only select the ones you are sure about.      The information was collected from participants who indicated they were not adopted as a child, as defined by their answers to ~F1767~ and who indicated whether their natural father was still alive or had died, as defined by their answers to ~F1797~. Note that although Breast cancer is present in ~C1010~, participants were not presented with this option when selecting Father illnesses.",
-    "coding_description": "Diabetes",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_mind_risk_core",
     "slug": "mind-and-behavior",
@@ -12,6 +12,7 @@
     "query_id": "alcohol_frequency",
     "slug": "alcohol-frequency",
     "description": "Alcohol intake frequency.",
+    "coding_description": null,
     "domain": "substance_use",
     "x_evidence_score": 75.02,
     "coverage_grade": "U",
@@ -36,7 +37,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Alcohol",
     "description_more": "ACE touchscreen question \"About how often do you drink alcohol?\" If the participant activated the Help button they were shown the message:     If this varies a lot, please provide an average considering your intake over the last year     ",
-    "coding_description": null,
     "num_pops_pass_qc": 0,
     "in_max_independent_set": false,
     "tier": "A",

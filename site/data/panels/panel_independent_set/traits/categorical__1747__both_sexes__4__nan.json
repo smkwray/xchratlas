@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "hair_colour_natural_before_greying",
     "slug": "hair-colour-natural-before-greying",
     "description": "Hair colour (natural, before greying)",
+    "coding_description": "Dark brown",
     "domain": "sun_exposure",
     "x_evidence_score": 69.13,
     "coverage_grade": "A",
@@ -35,7 +36,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
     "description_more": "ACE touchscreen question \"What best describes your natural hair colour? (If your hair colour is grey, the colour before you went grey)\"  If the participant activated the Help button they were shown the message:        If you are unsure, please select the colour closest to your natural  adult hair colour or select Do not know.          This question was dropped from the touchscreen protocol on 24/10/2016.",
-    "coding_description": "Dark brown",
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

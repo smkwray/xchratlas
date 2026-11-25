@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "pulse_wave_reflection_index",
     "slug": "pulse-wave-reflection-index",
     "description": "Pulse wave reflection index",
+    "coding_description": null,
     "domain": "arterial_stiffness",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": "irnt",
     "category": "UK Biobank Assessment Centre > Physical measures > Arterial stiffness",
     "description_more": "reflection index is a measure of reflection A digital volume pulse can be considered to be the summation of a direct and a reflected component. The direct component is due to transmission of a pressure wave from the left ventricle to the finger via the most direct route. The reflected component is formed by pressure transmitted from the heart to the lower body where it is reflected back up the aorta and thence to the finger. if 'b' is the height of direct wave peak and 'a' is the height of reflected wave peak the reflected index = (a/b) * 100%",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

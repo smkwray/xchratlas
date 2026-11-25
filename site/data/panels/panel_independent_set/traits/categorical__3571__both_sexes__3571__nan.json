@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "back_pain_for_3_months",
     "slug": "back-pain-for-3-months",
     "description": "Back pain for 3+ months",
+    "coding_description": null,
     "domain": "pain",
     "x_evidence_score": 20,
     "coverage_grade": "A",
@@ -32,7 +33,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Health and medical history > Pain",
     "description_more": "ACE touchscreen question \"Have you had back pains for more than 3 months?\" ~F3571~ was collected from participants who indicated that in the last month they experienced back pain that interfered with their usual activities, as defined by their answers to ~F6159~",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "D",

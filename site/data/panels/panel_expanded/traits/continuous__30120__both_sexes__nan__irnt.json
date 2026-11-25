@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_expanded",
     "slug": "broad-atlas",
@@ -12,6 +12,7 @@
     "query_id": "lymphocyte",
     "slug": "lymphocyte",
     "description": "Lymphocyte count",
+    "coding_description": null,
     "domain": "hematology",
     "x_evidence_score": 100,
     "coverage_grade": "B",
@@ -36,7 +37,6 @@
     "modifier": "irnt",
     "category": "Biological samples > Assay results > Blood assays > Blood count",
     "description_more": "Result of \"Lymphocytes Number\" assay, performed on blood sample, obtained from UK Biobank assessment centre visit. Lymphocyte count is the proportion of ( lymphoctyes / 100 ) x white blood cell count",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": false,
     "tier": "A",

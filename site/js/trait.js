@@ -12,6 +12,15 @@ function fmtDomain(d) { return d.replace(/_/g, ' ').replace(/\b\w/g, function (c
 function fmtPval(v) { if (!v || v === null) return '\u2014'; if (v < 0.001) return v.toExponential(1); return v.toFixed(3); }
 function fmtPos(s, e) { return 'X:' + fmt(s) + '\u2013' + fmt(e); }
 function getParam(k) { return new URLSearchParams(location.search).get(k); }
+function safeText(v, fallback) {
+  if (v === null || v === undefined || v === '') return fallback || '';
+  return String(v);
+}
+function displayTraitName(trait) {
+  if (!trait) return '';
+  if (trait.query_id === 'operation_code' && trait.coding_description) return trait.coding_description;
+  return safeText(trait.description, safeText(trait.query_id, safeText(trait.trait_id, 'Unlabeled trait')));
+}
 function eqtlStatusMeta(item) {
   if (item.eqtl_supported) {
     return { key: 'supported', supportClass: 'support-yes', badgeClass: 'eqtl-yes', label: 'eQTL-supported', icon: '\u2713' };
@@ -32,12 +41,13 @@ function pickLookupGene(locus) {
 /* ── Hero ──────────────────────────────────── */
 function renderHero(data) {
   var t = data.trait, p = data.panel;
-  document.title = t.description + ' \u2014 ' + p.title + ' \u2014 chrXatlas';
+  var displayName = displayTraitName(t);
+  document.title = displayName + ' \u2014 ' + p.title + ' \u2014 chrXatlas';
   var bpanel = document.getElementById('trait-breadcrumb-panel');
   bpanel.textContent = p.title;
   bpanel.href = 'panel.html?id=' + p.panel_id;
-  document.getElementById('trait-breadcrumb-name').textContent = t.description;
-  document.getElementById('trait-title').textContent = t.description;
+  document.getElementById('trait-breadcrumb-name').textContent = displayName;
+  document.getElementById('trait-title').textContent = displayName;
   document.getElementById('trait-domain').textContent = fmtDomain(t.domain);
   var g = document.getElementById('trait-grade');
   g.textContent = t.coverage_grade;
@@ -54,11 +64,15 @@ function renderHero(data) {
 function renderMeta(data) {
   var t = data.trait, el = document.getElementById('metadata-grid');
   if (!el) return;
+  var sampleSize = t.effective_hq_case_count;
+  if (sampleSize === null || sampleSize === undefined || sampleSize === '') {
+    sampleSize = t.n_cases_hq_cohort_both_sexes;
+  }
   var items = [
     ['Phenocode', t.phenocode || '\u2014'],
     ['Trait type', t.trait_type || '\u2014'],
     ['Modifier', t.modifier || 'none'],
-    ['Sample size', t.n_cases_hq_cohort_both_sexes ? fmt(t.n_cases_hq_cohort_both_sexes) : '\u2014'],
+    ['Sample size', (sampleSize === null || sampleSize === undefined || sampleSize === '') ? '\u2014' : fmt(sampleSize)],
     ['Populations passing QC', t.num_pops_pass_qc || '\u2014'],
     ['Tier', t.tier || '\u2014'],
     ['Selection rank', t.selection_rank || '\u2014'],
@@ -68,6 +82,10 @@ function renderMeta(data) {
     ['Max independent set', t.in_max_independent_set ? 'Yes' : 'No'],
     ['Category', t.category || '\u2014']
   ];
+  if (t.query_id === 'operation_code' && t.coding_description) {
+    items.unshift(['Source label', t.description || '\u2014']);
+    items.splice(items.length - 1, 0, ['Reported operation', t.coding_description]);
+  }
   el.innerHTML = items.map(function (r) {
     return '<div class="metadata-item"><span class="metadata-label">' + r[0] +
       '</span><span class="metadata-value">' + r[1] + '</span></div>';

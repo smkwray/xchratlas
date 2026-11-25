@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "skin_colour",
     "slug": "skin-colour",
     "description": "Skin colour",
+    "coding_description": null,
     "domain": "sun_exposure",
     "x_evidence_score": 79.75,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sun exposure",
     "description_more": "ACE touchscreen question \"What best describes the colour of your skin without tanning?\"  If the participant activated the Help button they were shown the message:        If you are unsure, please provide an estimate or select Do not know.           This question was dropped from the touchscreen protocol on 24/10/2016.",
-    "coding_description": null,
     "num_pops_pass_qc": 3,
     "in_max_independent_set": true,
     "tier": "A",

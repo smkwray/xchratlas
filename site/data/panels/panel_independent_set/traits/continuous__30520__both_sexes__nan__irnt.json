@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "potassium_in_urine",
     "slug": "potassium-in-urine",
     "description": "Potassium in urine",
+    "coding_description": null,
     "domain": "urine_assays",
     "x_evidence_score": 65.03,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": "irnt",
     "category": "Biological samples > Assay results > Urine assays",
     "description_more": "Measured by ISE (ion selective electrode) analysis on a Beckman Coulter AU5400.",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",

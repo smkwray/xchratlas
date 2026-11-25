@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-19T12:51:34Z",
+  "generated_at": "2026-03-19T18:23:59Z",
   "panel": {
     "panel_id": "panel_independent_set",
     "slug": "discovery-pool",
@@ -12,6 +12,7 @@
     "query_id": "sleep_duration",
     "slug": "sleep-duration",
     "description": "Sleep duration",
+    "coding_description": null,
     "domain": "sleep",
     "x_evidence_score": 64.41,
     "coverage_grade": "A",
@@ -34,7 +35,6 @@
     "modifier": null,
     "category": "UK Biobank Assessment Centre > Touchscreen > Lifestyle and environment > Sleep",
     "description_more": "ACE touchscreen question \"About how many hours sleep do you get in every 24 hours? (please include naps)\" The following checks were performed:  If answer   If answer > 23 then rejected  If answer   If answer > 12 then participant asked to confirm   If the participant activated the Help button they were shown the message:     If the time you spend sleeping varies a lot, give the average time for a 24 hour day in the last 4 weeks.     ",
-    "coding_description": null,
     "num_pops_pass_qc": 2,
     "in_max_independent_set": true,
     "tier": "B",
